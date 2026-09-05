@@ -1,0 +1,5 @@
+[variables]
+COREPACK_ENABLE_DOWNLOAD_PROMPT = "0"
+
+[phases.setup]
+cmds = ["npm install -g yarn pnpm"]
