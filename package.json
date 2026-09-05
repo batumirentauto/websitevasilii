@@ -4,6 +4,7 @@
   "description": "Website for Vasilii Car Rental built with Payload CMS 3.0",
   "license": "MIT",
   "type": "module",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
