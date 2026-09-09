@@ -3,6 +3,9 @@ import React from 'react'
 
 import { Button } from '@/components/ui/button'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default function NotFound() {
   return (
     <div className="container py-28">
