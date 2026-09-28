@@ -12,6 +12,7 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { getServerSideURL } from '@/utilities/getURL'
 import './globals.css'
 
+import { AdminBar } from '@/components/AdminBar'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { MobileFloatingBar } from '@/components/MobileFloatingBar'
