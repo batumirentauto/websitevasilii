@@ -52,6 +52,10 @@ export default function HomePage() {
                 </button>
               ))}
             </div>
+            <div className="mt-2.5 pt-2 border-t border-black/[0.04] text-[11px] text-[#34C759] font-bold flex items-center justify-center gap-1.5">
+              <span>⚡</span>
+              <span>{t.freeIntercityBadge || 'Возврат в другом городе (Батуми / Тбилиси / Кутаиси) — 0 ₾ без доплаты!'}</span>
+            </div>
           </div>
 
           {/* Location Delivery & Station Notice Banner */}
