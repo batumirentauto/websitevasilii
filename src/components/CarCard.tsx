@@ -179,11 +179,6 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 Панорама
               </span>
             )}
-            {car.winterTires && (
-              <span className="text-[11px] font-medium text-[#48484A] bg-[#F5F5F7] px-2.5 py-1 rounded-md flex items-center gap-1">
-                <span>❄️</span> Зима
-              </span>
-            )}
           </div>
         </div>
 
