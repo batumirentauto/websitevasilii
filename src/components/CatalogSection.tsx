@@ -52,7 +52,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
   }, [category, filter7Seats, filterCarplay, filterAwd, filterNoDeposit, limit])
 
   return (
-    <section id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-20">
+    <section id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-36">
       {/* Duration Selector Banner */}
       {showFilters && (
         <div className="bg-[#F5F5F7] p-3.5 sm:p-4 rounded-3xl mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border border-black/[0.04]">

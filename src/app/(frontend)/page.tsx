@@ -3,11 +3,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { CatalogSection } from '@/components/CatalogSection'
-import { useApp, CITIES_DATA, City } from '@/context/AppContext'
+import { useApp, CITIES_DATA, City, DURATION_TIERS } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 export default function HomePage() {
-  const { lang, city, setCity } = useApp()
+  const { lang, city, setCity, duration, setDuration } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
   const currentCity = CITIES_DATA[city]
 
@@ -32,8 +32,8 @@ export default function HomePage() {
             {t.heroSubtitle}
           </p>
 
-          {/* City Selection Pills (Prominent & Clear) */}
-          <div className="max-w-xl mx-auto bg-white/90 backdrop-blur-xl p-2 rounded-3xl border border-black/[0.08] shadow-[0_8px_30px_-6px_rgba(0,0,0,0.06)] mb-8">
+          {/* City & Duration Selection Card (Prominent & Clear) */}
+          <div className="max-w-xl mx-auto bg-white/90 backdrop-blur-xl p-3 sm:p-4 rounded-3xl border border-black/[0.08] shadow-[0_8px_30px_-6px_rgba(0,0,0,0.06)] mb-8">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] block mb-2">
               {t.citySelectLabel}
             </span>
@@ -52,7 +52,48 @@ export default function HomePage() {
                 </button>
               ))}
             </div>
-            <div className="mt-2.5 pt-2 border-t border-black/[0.04] text-[11px] text-[#34C759] font-bold flex items-center justify-center gap-1.5">
+
+            {/* Rental Duration Selection */}
+            <div className="mt-3.5 pt-3 border-t border-black/[0.06]">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] block">
+                  Срок аренды (скидка до 40%):
+                </span>
+                <span className="text-[10px] text-[#34C759] font-bold">
+                  Чем дольше — тем дешевле!
+                </span>
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5">
+                {DURATION_TIERS.map((tier) => (
+                  <button
+                    key={tier.id}
+                    onClick={() => setDuration(tier.id)}
+                    className={`py-2 px-1 rounded-xl text-xs font-bold transition-all duration-200 flex flex-col items-center justify-center ${
+                      duration === tier.id
+                        ? 'bg-[#1D1D1F] text-white shadow-sm scale-[1.02]'
+                        : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
+                    }`}
+                  >
+                    <span>{tier.label}</span>
+                    <span
+                      className={`text-[9px] font-extrabold ${
+                        tier.discountPercent > 0
+                          ? duration === tier.id
+                            ? 'text-[#34C759]'
+                            : 'text-[#34C759]'
+                          : duration === tier.id
+                          ? 'text-white/60'
+                          : 'text-[#86868B]'
+                      }`}
+                    >
+                      {tier.discountPercent > 0 ? `-${tier.discountPercent}%` : 'базовая'}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-3 pt-2.5 border-t border-black/[0.04] text-[11px] text-[#34C759] font-bold flex items-center justify-center gap-1.5">
               <span>⚡</span>
               <span>{t.freeIntercityBadge || 'Возврат в другом городе (Батуми / Тбилиси / Кутаиси) — 0 ₾ без доплаты!'}</span>
             </div>
