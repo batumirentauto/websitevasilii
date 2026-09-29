@@ -58,45 +58,7 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                {/* Rental Duration Selection */}
-                <div className="mt-3.5 pt-3 border-t border-black/[0.06]">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] block">
-                      Срок аренды (скидка до 40%):
-                    </span>
-                    <span className="text-[10px] text-[#34C759] font-bold">
-                      Чем дольше — тем дешевле!
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5">
-                    {DURATION_TIERS.map((tier) => (
-                      <button
-                        key={tier.id}
-                        onClick={() => setDuration(tier.id)}
-                        className={`py-2 px-1 rounded-xl text-xs font-bold transition-all duration-200 flex flex-col items-center justify-center ${
-                          duration === tier.id
-                            ? 'bg-[#1D1D1F] text-white shadow-sm scale-[1.02]'
-                            : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
-                        }`}
-                      >
-                        <span>{tier.label}</span>
-                        <span
-                          className={`text-[9px] font-extrabold ${
-                            tier.discountPercent > 0
-                              ? duration === tier.id
-                                ? 'text-[#34C759]'
-                                : 'text-[#34C759]'
-                              : duration === tier.id
-                              ? 'text-white/60'
-                              : 'text-[#86868B]'
-                          }`}
-                        >
-                          {tier.discountPercent > 0 ? `-${tier.discountPercent}%` : 'базовая'}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+
 
                 {/* Competitive Advantages Row in Hero */}
                 <div className="mt-3 pt-3 border-t border-black/[0.05] grid grid-cols-2 sm:grid-cols-3 gap-2">
