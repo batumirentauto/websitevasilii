@@ -16,7 +16,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
     "priceGel": 150,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Alfa_Romeo_Giulia/IMG_0770.JPG",
@@ -41,7 +41,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 190,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Audi_Q7/IMG_1267.JPG",
@@ -67,7 +67,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
     "priceGel": 150,
-    "depositGel": 300,
+    "depositGel": 600,
     "featured": false,
     "images": [
       "/fleet/Audi_TT/IMG_9292.jpg",
@@ -117,7 +117,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 160,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/BMW_X3/IMG_9323.jpg",
@@ -142,7 +142,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 170,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/BMW_X4/IMG_3628.JPG",
@@ -167,7 +167,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 200,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/BMW_X5/IMG_1463.jpg",
@@ -345,7 +345,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 190,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/HYUNDAI_PALISADE/IMG_1297.JPG",
@@ -495,7 +495,7 @@
     "fuelType": "Hybrid",
     "fuelConsumption": "7.2 L/100km",
     "priceGel": 160,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/LEXUS_ES300h/IMG_1284.JPG",
@@ -520,7 +520,7 @@
     "fuelType": "Diesel",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 250,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Land_Rover_Range_Rover/IMG_8905.jpg",
@@ -545,7 +545,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 220,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Land_Rover_Range_Rover_Velar/IMG_9132.jpg",
@@ -718,7 +718,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 150,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Mitsubishi_Outlander_2023/IMG_0016.PNG",
@@ -951,7 +951,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 160,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Toyota_Sienna/IMG_9301.jpg",
@@ -1001,7 +1001,7 @@
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 180,
-    "depositGel": 300,
+    "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/VOLKSWAGEN_TOUAREG/IMG_9360.jpg"
