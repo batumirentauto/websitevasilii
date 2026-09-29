@@ -102,7 +102,14 @@ export const DURATION_TIERS: DurationTier[] = [
   { id: '30+', label: '30+ дней', daysLabel: 'от 30 дней', discountPercent: 40 },
 ]
 
-export const calculateDailyPrice = (basePriceGel: number, dur: RentalDuration = '1-2'): number => {
+export const calculateDailyPrice = (
+  basePriceGel: number,
+  dur: RentalDuration = '1-2',
+  customPrices?: Partial<Record<RentalDuration, number>>
+): number => {
+  if (customPrices && customPrices[dur] !== undefined) {
+    return customPrices[dur]!
+  }
   const tier = DURATION_TIERS.find((t) => t.id === dur)
   if (!tier || tier.discountPercent === 0) return basePriceGel
   return Math.round(basePriceGel * (1 - tier.discountPercent / 100))
@@ -119,12 +126,17 @@ interface AppContextType {
   setDuration: (d: RentalDuration) => void
   convertPrice: (priceGel: number) => number
   formatPrice: (priceGel: number) => string
-  calculatePrice: (basePriceGel: number, dur?: RentalDuration) => number
+  calculatePrice: (
+    basePriceGel: number,
+    dur?: RentalDuration,
+    customPrices?: Partial<Record<RentalDuration, number>>
+  ) => number
   getBookingLink: (
     carName: string,
     basePriceGel: number,
     type: 'whatsapp' | 'telegram',
-    customDuration?: RentalDuration
+    customDuration?: RentalDuration,
+    customPrices?: Partial<Record<RentalDuration, number>>
   ) => string
 }
 
@@ -203,18 +215,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return currency === 'GEL' ? `${val} ${sym}` : `${sym}${val}`
   }
 
-  const calculatePrice = (basePriceGel: number, dur?: RentalDuration): number => {
-    return calculateDailyPrice(basePriceGel, dur || duration)
+  const calculatePrice = (
+    basePriceGel: number,
+    dur?: RentalDuration,
+    customPrices?: Partial<Record<RentalDuration, number>>
+  ): number => {
+    return calculateDailyPrice(basePriceGel, dur || duration, customPrices)
   }
 
   const getBookingLink = (
     carName: string,
     basePriceGel: number,
     type: 'whatsapp' | 'telegram',
-    customDuration?: RentalDuration
+    customDuration?: RentalDuration,
+    customPrices?: Partial<Record<RentalDuration, number>>
   ) => {
     const activeDur = customDuration || duration
-    const effectivePriceGel = calculateDailyPrice(basePriceGel, activeDur)
+    const effectivePriceGel = calculateDailyPrice(basePriceGel, activeDur, customPrices)
     const cityName = CITIES_DATA[city].nameRu
     const priceText = formatPrice(effectivePriceGel)
     const tier = DURATION_TIERS.find((t) => t.id === activeDur)

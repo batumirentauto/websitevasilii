@@ -71,14 +71,14 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
     // Sorting
     if (sortBy === 'price-asc') {
       result = [...result].sort((a, b) => {
-        const pA = calculateDailyPrice(a.priceGel, duration)
-        const pB = calculateDailyPrice(b.priceGel, duration)
+        const pA = calculateDailyPrice(a.priceGel, duration, a.prices)
+        const pB = calculateDailyPrice(b.priceGel, duration, b.prices)
         return pA - pB
       })
     } else if (sortBy === 'price-desc') {
       result = [...result].sort((a, b) => {
-        const pA = calculateDailyPrice(a.priceGel, duration)
-        const pB = calculateDailyPrice(b.priceGel, duration)
+        const pA = calculateDailyPrice(a.priceGel, duration, a.prices)
+        const pB = calculateDailyPrice(b.priceGel, duration, b.prices)
         return pB - pA
       })
     } else if (sortBy === 'brand-asc') {

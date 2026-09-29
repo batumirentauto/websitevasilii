@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { useApp, DURATION_TIERS, calculateDailyPrice } from '@/context/AppContext'
+import { useApp, DURATION_TIERS, calculateDailyPrice, RentalDuration } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 export interface CarItem {
@@ -22,6 +22,7 @@ export interface CarItem {
   fuelType: string
   fuelConsumption: string
   priceGel: number
+  prices?: Partial<Record<RentalDuration, number>>
   depositGel: number
   featured?: boolean
   images: string[]
@@ -34,9 +35,13 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
   const [activeImageIdx, setActiveImageIdx] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
 
-  const effectivePriceGel = calculateDailyPrice(car.priceGel, duration)
-  const hasDiscount = duration !== '1-2'
+  const effectivePriceGel = calculateDailyPrice(car.priceGel, duration, car.prices)
+  const hasDiscount = duration !== '1-2' || effectivePriceGel < car.priceGel
   const activeTier = DURATION_TIERS.find((t) => t.id === duration)
+  const currentDiscountPercent =
+    car.priceGel > 0 && effectivePriceGel < car.priceGel
+      ? Math.round(((car.priceGel - effectivePriceGel) / car.priceGel) * 100)
+      : activeTier?.discountPercent || 0
 
   const hasImages = car.images && car.images.length > 0
   const currentImg = hasImages ? car.images[activeImageIdx] : '/favicon.ico'
@@ -152,12 +157,18 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               Срок аренды:
             </span>
             <span className="text-[10px] text-[#34C759] font-bold">
-              {activeTier?.discountPercent ? `скидка ${activeTier.discountPercent}%` : 'базовая цена'}
+              {currentDiscountPercent > 0 ? `скидка ${currentDiscountPercent}%` : 'базовая цена'}
             </span>
           </div>
           <div className="grid grid-cols-5 gap-1">
             {DURATION_TIERS.map((tier) => {
               const isSelected = duration === tier.id
+              const tierPrice = calculateDailyPrice(car.priceGel, tier.id, car.prices)
+              const tierDiscount =
+                car.priceGel > 0 && tierPrice < car.priceGel
+                  ? Math.round(((car.priceGel - tierPrice) / car.priceGel) * 100)
+                  : tier.discountPercent
+
               return (
                 <button
                   key={tier.id}
@@ -186,16 +197,14 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                   </span>
                   <span
                     className={`text-[9px] font-extrabold mt-0.5 ${
-                      tier.discountPercent > 0
-                        ? isSelected
-                          ? 'text-[#34C759]'
-                          : 'text-[#34C759]'
+                      tierDiscount > 0
+                        ? 'text-[#34C759]'
                         : isSelected
                         ? 'text-white/50'
                         : 'text-[#86868B]'
                     }`}
                   >
-                    {tier.discountPercent > 0 ? `-${tier.discountPercent}%` : '100%'}
+                    {tierDiscount > 0 ? `-${tierDiscount}%` : '100%'}
                   </span>
                 </button>
               )
@@ -219,14 +228,14 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             </div>
             {hasDiscount && (
               <span className="text-[10px] font-bold text-[#34C759] block mt-0.5">
-                Скидка {activeTier?.discountPercent}% ({activeTier?.daysLabel})
+                Скидка {currentDiscountPercent}% ({activeTier?.daysLabel})
               </span>
             )}
           </div>
 
           <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
             <a
-              href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration)}
+              href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices)}
               target="_blank"
               rel="noreferrer"
               className="h-9 px-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
@@ -235,7 +244,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               <span>{t.btnBookWhatsApp}</span>
             </a>
             <a
-              href={getBookingLink(car.name, car.priceGel, 'telegram', duration)}
+              href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices)}
               target="_blank"
               rel="noreferrer"
               className="h-9 px-3.5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
@@ -309,8 +318,13 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                 {DURATION_TIERS.map((tier) => {
-                  const p = calculateDailyPrice(car.priceGel, tier.id)
+                  const p = calculateDailyPrice(car.priceGel, tier.id, car.prices)
                   const isSelected = duration === tier.id
+                  const tierDiscount =
+                    car.priceGel > 0 && p < car.priceGel
+                      ? Math.round(((car.priceGel - p) / car.priceGel) * 100)
+                      : tier.discountPercent
+
                   return (
                     <button
                       key={tier.id}
@@ -328,8 +342,8 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                       <span className="text-xs sm:text-sm font-bold block mt-0.5">
                         {formatPrice(p)}
                       </span>
-                      <span className={`text-[9px] font-bold block mt-0.5 ${tier.discountPercent > 0 ? (isSelected ? 'text-[#34C759]' : 'text-[#34C759]') : (isSelected ? 'text-white/50' : 'text-[#86868B]')}`}>
-                        {tier.discountPercent > 0 ? `-${tier.discountPercent}%` : 'базовая'}
+                      <span className={`text-[9px] font-bold block mt-0.5 ${tierDiscount > 0 ? (isSelected ? 'text-[#34C759]' : 'text-[#34C759]') : (isSelected ? 'text-white/50' : 'text-[#86868B]')}`}>
+                        {tierDiscount > 0 ? `-${tierDiscount}%` : 'базовая'}
                       </span>
                     </button>
                   )
@@ -398,7 +412,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
 
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <a
-                  href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration)}
+                  href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices)}
                   target="_blank"
                   rel="noreferrer"
                   className="flex-1 sm:flex-initial h-12 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
@@ -406,7 +420,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href={getBookingLink(car.name, car.priceGel, 'telegram', duration)}
+                  href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices)}
                   target="_blank"
                   rel="noreferrer"
                   className="flex-1 sm:flex-initial h-12 px-6 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-sm font-semibold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"

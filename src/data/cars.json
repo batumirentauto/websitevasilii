@@ -919,7 +919,14 @@
     "panoramicRoof": false,
     "fuelType": "Hybrid",
     "fuelConsumption": "5.5 L/100km",
-    "priceGel": 80,
+    "priceGel": 110,
+    "prices": {
+      "1-2": 110,
+      "3-5": 100,
+      "6-13": 90,
+      "14-29": 80,
+      "30+": 52
+    },
     "depositGel": 0,
     "featured": false,
     "images": [
