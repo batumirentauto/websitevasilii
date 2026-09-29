@@ -31,18 +31,44 @@ export default function TermsPage() {
           <h2 className="text-xl font-bold text-[#1D1D1F] mb-4 flex items-center gap-2">
             <span>👤</span> {t.termReqTitle}
           </h2>
-          <ul className="space-y-3 text-sm text-[#48484A]">
+          <ul className="space-y-3.5 text-sm text-[#48484A]">
             <li className="flex items-start gap-2.5">
               <span className="text-[#34C759] font-bold">✓</span>
               <span>{t.termReq1}</span>
             </li>
             <li className="flex items-start gap-2.5">
               <span className="text-[#34C759] font-bold">✓</span>
-              <span>{t.termReq2}</span>
+              <span>
+                <strong>Водительский стаж:</strong> доступно со стажем <strong>от 0 лет</strong>. При стаже <strong>от 2 лет</strong> страховка действует <strong>без франшизы</strong> (0 франшиза). Со стажем <strong>от 0 до 2 лет</strong> страховка действует <strong>с франшизой</strong>.
+              </span>
             </li>
             <li className="flex items-start gap-2.5">
               <span className="text-[#34C759] font-bold">✓</span>
               <span>{t.termReq3}</span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="text-[#34C759] font-bold">✓</span>
+              <span>
+                <strong>Пробег:</strong> полностью <strong>безлимитный пробег</strong> по всей Грузии без ограничений по километражу в сутки.
+              </span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="text-[#34C759] font-bold">✓</span>
+              <span>
+                <strong>Бронирование:</strong> <strong>без предоплаты</strong>, оплата при получении автомобиля. <strong>Бесплатная отмена</strong> в любое время.
+              </span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="text-[#34C759] font-bold">✓</span>
+              <span>
+                <strong>Срок аренды:</strong> аренда <strong>от 1 дня</strong> без искусственных минимальных сроков.
+              </span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="text-[#34C759] font-bold">✓</span>
+              <span>
+                <strong>Залог:</strong> аренда <strong>без депозита (0 ₾)</strong> на большинство автомобилей автопарка.
+              </span>
             </li>
           </ul>
         </div>
@@ -55,14 +81,18 @@ export default function TermsPage() {
           <p className="text-sm text-[#6E6E73] leading-relaxed mb-4">
             {t.termInsuranceDesc}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div className="bg-white p-3.5 rounded-2xl border border-black/[0.06]">
-              <span className="font-bold text-[#1D1D1F] block mb-1">КАСКО и ОСАГО</span>
-              <span className="text-[#86868B]">Страхование ответственности и автомобиля включено в тариф.</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
+              <span className="font-bold text-[#34C759] block mb-1">Без франшизы (стаж 2+ года)</span>
+              <span className="text-[#6E6E73]">При стаже от 2 лет действует страховка без франшизы — вы полностью защищены без рисков.</span>
             </div>
-            <div className="bg-white p-3.5 rounded-2xl border border-black/[0.06]">
-              <span className="font-bold text-[#1D1D1F] block mb-1">Возврат залога</span>
-              <span className="text-[#86868B]">Залог возвращается сразу при сдаче автомобиля в чистом виде.</span>
+            <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
+              <span className="font-bold text-[#1D1D1F] block mb-1">Стаж от 0 до 2 лет</span>
+              <span className="text-[#6E6E73]">Мы доверяем даже начинающим водителям — страховка действует с прозрачной франшизой.</span>
+            </div>
+            <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
+              <span className="font-bold text-[#1D1D1F] block mb-1">Без депозита (0 ₾)</span>
+              <span className="text-[#6E6E73]">Большинство авто сдаются без денежного залога. Деньги не замораживаются на картах.</span>
             </div>
           </div>
         </div>

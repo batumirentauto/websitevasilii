@@ -388,14 +388,22 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 </span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Зимняя резина (по сезону):</span>
-                <span className="font-semibold text-[#1D1D1F]">Установлена</span>
+                <span className="text-[#86868B] block">Пробег:</span>
+                <span className="font-semibold text-[#34C759]">Безлимитный</span>
+              </div>
+              <div>
+                <span className="text-[#86868B] block">Страховка:</span>
+                <span className="font-semibold text-[#1D1D1F]">Включена (0 франшиза от 2 лет)</span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Размер залога:</span>
                 <span className="font-semibold text-[#1D1D1F]">
-                  {car.depositGel === 0 ? 'Без залога' : formatPrice(car.depositGel)}
+                  {car.depositGel === 0 ? 'Без залога (0 ₾)' : formatPrice(car.depositGel)}
                 </span>
+              </div>
+              <div>
+                <span className="text-[#86868B] block">Условия бронирования:</span>
+                <span className="font-semibold text-[#1D1D1F]">Без предоплаты • Отмена 0 ₾</span>
               </div>
             </div>
 

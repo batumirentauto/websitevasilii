@@ -98,6 +98,34 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Competitive Advantages Row in Hero */}
+                <div className="mt-3 pt-3 border-t border-black/[0.05] grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>Безлимитный пробег</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>Без депозита (0 ₾)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>Без предоплаты</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>Бесплатная отмена</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>Аренда от 1 дня</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>Страховка (0 франшиза 2+ г.)</span>
+                  </div>
+                </div>
+
                 <div className="mt-3 pt-2.5 border-t border-black/[0.04] text-[11px] text-[#34C759] font-bold flex items-center justify-start gap-1.5">
                   <span>⚡</span>
                   <span>{t.freeIntercityBadge || 'Возврат в другом городе (Батуми / Тбилиси / Кутаиси) — 0 ₾ без доплаты!'}</span>
@@ -191,45 +219,104 @@ export default function HomePage() {
       {/* Key Benefits Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-black/[0.05]">
         <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] block mb-2">
+            ПОЧЕМУ ВЫБИРАЮТ НАС
+          </span>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#1D1D1F] tracking-tight mb-3">
             {t.benefitsTitle}
           </h2>
           <p className="text-sm text-[#86868B]">
-            Делаем аренду авто в Грузии простой, честной и комфортной с первого километра.
+            Честные и прозрачные условия аренды автомобилей в Грузии с первого километра.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-[#F5F5F7] p-6 rounded-3xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* 1. Unlimited Mileage */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
-              ⚡
+              🛣️
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit1Title}</h3>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">{t.benefit1Desc}</p>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Безлимитный пробег</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              Никаких суточных лимитов по километражу. Путешествуйте по всей Грузии без ограничений и скрытых доплат.
+            </p>
           </div>
 
-          <div className="bg-[#F5F5F7] p-6 rounded-3xl">
+          {/* 2. No Deposit */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
+            <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
+              💳
+            </div>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Отсутствие депозита</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              Большинство автомобилей сдаются без залога (0 ₾). Не нужно замораживать сотни долларов на карте или оставлять наличные.
+            </p>
+          </div>
+
+          {/* 3. No Prepayment */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
+            <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
+              📅
+            </div>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Бронь без предоплаты</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              Бронируйте авто заранее без внесения аванса. Оплата производится только при получении ключей после осмотра.
+            </p>
+          </div>
+
+          {/* 4. Free Cancellation */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
+            <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
+              🔄
+            </div>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Бесплатная отмена</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              Планы изменились или перенесли рейс? Вы можете отменить или изменить бронирование в любое время без штрафов.
+            </p>
+          </div>
+
+          {/* 5. Rent from 1 Day */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
+            <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
+              ⏱️
+            </div>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Аренда от 1 дня</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              Вы можете арендовать автомобиль даже на 1 сутки. Честная базовая цена без наценок за короткий период.
+            </p>
+          </div>
+
+          {/* 6. Insurance Included (Zero Franchise from 2 yrs) */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors border border-[#34C759]/20 relative overflow-hidden">
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               🛡️
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit2Title}</h3>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">{t.benefit2Desc}</p>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Страховка включена</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              <strong>Без франшизы</strong> при стаже от 2 лет! Также доступна аренда со стажем <strong>от 0 до 2 лет</strong> (действует с франшизой).
+            </p>
           </div>
 
-          <div className="bg-[#F5F5F7] p-6 rounded-3xl">
+          {/* 7. Free Intercity Drop-off */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
-              📍
+              ⚡
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit3Title}</h3>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">{t.benefit3Desc}</p>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Возврат в другом городе</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              Возьмите авто в Батуми и сдайте в Тбилиси или в аэропорту Кутаиси абсолютно БЕЗ доплаты за перегон (0 ₾).
+            </p>
           </div>
 
-          <div className="bg-[#F5F5F7] p-6 rounded-3xl">
+          {/* 8. 100% Automatic & A/C */}
+          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
-              💬
+              ❄️
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit4Title}</h3>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">{t.benefit4Desc}</p>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">100% АКПП и Климат</h3>
+            <p className="text-xs text-[#6E6E73] leading-relaxed">
+              Все 45 автомобилей автопарка оснащены надёжной автоматической коробкой передач и исправным кондиционером.
+            </p>
           </div>
         </div>
       </section>
