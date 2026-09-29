@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { useApp } from '@/context/AppContext'
+import { useApp, DURATION_TIERS, calculateDailyPrice } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 export interface CarItem {
@@ -28,11 +28,15 @@ export interface CarItem {
 }
 
 export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
-  const { formatPrice, getBookingLink, lang, city } = useApp()
+  const { formatPrice, getBookingLink, lang, city, duration, setDuration } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
 
   const [activeImageIdx, setActiveImageIdx] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+
+  const effectivePriceGel = calculateDailyPrice(car.priceGel, duration)
+  const hasDiscount = duration !== '1-2'
+  const activeTier = DURATION_TIERS.find((t) => t.id === duration)
 
   const hasImages = car.images && car.images.length > 0
   const currentImg = hasImages ? car.images[activeImageIdx] : '/favicon.ico'
@@ -144,17 +148,27 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
         {/* Footer: Price Row & Quick Actions */}
         <div className="pt-3 border-t border-black/[0.05] flex items-center justify-between gap-2">
           <div>
-            <div className="flex items-baseline gap-1">
+            <div className="flex items-baseline gap-1.5">
               <span className="text-2xl font-bold text-[#1D1D1F] tracking-tight">
-                {formatPrice(car.priceGel)}
+                {formatPrice(effectivePriceGel)}
               </span>
+              {hasDiscount && (
+                <span className="text-xs text-[#86868B] line-through font-normal">
+                  {formatPrice(car.priceGel)}
+                </span>
+              )}
               <span className="text-xs font-normal text-[#86868B]">{t.perDay}</span>
             </div>
+            {hasDiscount && (
+              <span className="text-[10px] font-bold text-[#34C759] block mt-0.5">
+                Скидка {activeTier?.discountPercent}% ({activeTier?.daysLabel})
+              </span>
+            )}
           </div>
 
           <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
             <a
-              href={getBookingLink(car.name, car.priceGel, 'whatsapp')}
+              href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration)}
               target="_blank"
               rel="noreferrer"
               className="h-9 px-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
@@ -163,7 +177,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               <span>{t.btnBookWhatsApp}</span>
             </a>
             <a
-              href={getBookingLink(car.name, car.priceGel, 'telegram')}
+              href={getBookingLink(car.name, car.priceGel, 'telegram', duration)}
               target="_blank"
               rel="noreferrer"
               className="h-9 px-3.5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
@@ -225,6 +239,46 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               </div>
             )}
 
+            {/* Duration Pricing Matrix */}
+            <div className="bg-[#F5F5F7] p-4 rounded-2xl mb-5">
+              <div className="flex items-center justify-between mb-2.5">
+                <span className="text-xs font-bold text-[#1D1D1F] flex items-center gap-1.5">
+                  <span>📅</span> Тарифная сетка по срокам аренды:
+                </span>
+                <span className="text-[10px] text-[#86868B]">
+                  Нажмите для выбора срока
+                </span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                {DURATION_TIERS.map((tier) => {
+                  const p = calculateDailyPrice(car.priceGel, tier.id)
+                  const isSelected = duration === tier.id
+                  return (
+                    <button
+                      key={tier.id}
+                      type="button"
+                      onClick={() => setDuration(tier.id)}
+                      className={`p-2.5 rounded-xl text-center border transition-all ${
+                        isSelected
+                          ? 'bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-sm'
+                          : 'bg-white text-[#1D1D1F] border-black/[0.06] hover:border-black/[0.15]'
+                      }`}
+                    >
+                      <span className={`text-[10px] block font-medium ${isSelected ? 'text-white/70' : 'text-[#86868B]'}`}>
+                        {tier.daysLabel}
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold block mt-0.5">
+                        {formatPrice(p)}
+                      </span>
+                      <span className={`text-[9px] font-bold block mt-0.5 ${tier.discountPercent > 0 ? (isSelected ? 'text-[#34C759]' : 'text-[#34C759]') : (isSelected ? 'text-white/50' : 'text-[#86868B]')}`}>
+                        {tier.discountPercent > 0 ? `-${tier.discountPercent}%` : 'базовая'}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
             {/* Specification Grid */}
             <div className="grid grid-cols-2 gap-3 text-xs bg-[#F5F5F7] p-4 rounded-2xl mb-6">
               <div>
@@ -268,18 +322,25 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             {/* Booking CTA row */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
               <div>
-                <span className="text-xs text-[#86868B] block">Стоимость аренды:</span>
-                <div className="flex items-baseline gap-1">
+                <span className="text-xs text-[#86868B] block">
+                  Стоимость ({activeTier?.daysLabel}):
+                </span>
+                <div className="flex items-baseline gap-1.5">
                   <span className="text-3xl font-extrabold text-[#1D1D1F]">
-                    {formatPrice(car.priceGel)}
+                    {formatPrice(effectivePriceGel)}
                   </span>
+                  {hasDiscount && (
+                    <span className="text-sm text-[#86868B] line-through font-normal">
+                      {formatPrice(car.priceGel)}
+                    </span>
+                  )}
                   <span className="text-sm text-[#86868B]">{t.perDay}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <a
-                  href={getBookingLink(car.name, car.priceGel, 'whatsapp')}
+                  href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration)}
                   target="_blank"
                   rel="noreferrer"
                   className="flex-1 sm:flex-initial h-12 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
@@ -287,7 +348,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href={getBookingLink(car.name, car.priceGel, 'telegram')}
+                  href={getBookingLink(car.name, car.priceGel, 'telegram', duration)}
                   target="_blank"
                   rel="noreferrer"
                   className="flex-1 sm:flex-initial h-12 px-6 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-sm font-semibold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"

@@ -85,6 +85,29 @@ export const CITIES_DATA: Record<
 export const PHONE_NUMBER = '+995 591 050 752'
 export const WHATSAPP_PHONE = '995591050752'
 
+export type RentalDuration = '1-2' | '3-5' | '6-13' | '14-29' | '30+'
+
+export interface DurationTier {
+  id: RentalDuration
+  label: string
+  daysLabel: string
+  discountPercent: number
+}
+
+export const DURATION_TIERS: DurationTier[] = [
+  { id: '1-2', label: '1–2 дня', daysLabel: '1–2 дня', discountPercent: 0 },
+  { id: '3-5', label: '3–5 дней', daysLabel: '3–5 дней', discountPercent: 10 },
+  { id: '6-13', label: '6–13 дней', daysLabel: '6–13 дней', discountPercent: 20 },
+  { id: '14-29', label: '14–29 дней', daysLabel: '14–29 дней', discountPercent: 30 },
+  { id: '30+', label: '30+ дней', daysLabel: 'от 30 дней', discountPercent: 40 },
+]
+
+export const calculateDailyPrice = (basePriceGel: number, dur: RentalDuration = '1-2'): number => {
+  const tier = DURATION_TIERS.find((t) => t.id === dur)
+  if (!tier || tier.discountPercent === 0) return basePriceGel
+  return Math.round(basePriceGel * (1 - tier.discountPercent / 100))
+}
+
 interface AppContextType {
   currency: Currency
   setCurrency: (c: Currency) => void
@@ -92,9 +115,17 @@ interface AppContextType {
   setCity: (city: City) => void
   lang: Lang
   setLang: (lang: Lang) => void
+  duration: RentalDuration
+  setDuration: (d: RentalDuration) => void
   convertPrice: (priceGel: number) => number
   formatPrice: (priceGel: number) => string
-  getBookingLink: (carName: string, priceGel: number, type: 'whatsapp' | 'telegram') => string
+  calculatePrice: (basePriceGel: number, dur?: RentalDuration) => number
+  getBookingLink: (
+    carName: string,
+    basePriceGel: number,
+    type: 'whatsapp' | 'telegram',
+    customDuration?: RentalDuration
+  ) => string
 }
 
 const AppContext = createContext<AppContextType | null>(null)
@@ -103,6 +134,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [currency, setCurrencyState] = useState<Currency>('GEL')
   const [city, setCityState] = useState<City>('batumi')
   const [lang, setLangState] = useState<Lang>('ru')
+  const [duration, setDurationState] = useState<RentalDuration>('1-2')
 
   useEffect(() => {
     try {
@@ -117,6 +149,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const savedLang = localStorage.getItem('vasilii_lang') as Lang
       if (savedLang) {
         setLangState(savedLang)
+      }
+      const savedDur = localStorage.getItem('vasilii_duration') as RentalDuration
+      if (savedDur && ['1-2', '3-5', '6-13', '14-29', '30+'].includes(savedDur)) {
+        setDurationState(savedDur)
       }
     } catch {}
   }, [])
@@ -147,6 +183,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch {}
   }
 
+  const setDuration = (d: RentalDuration) => {
+    setDurationState(d)
+    try {
+      localStorage.setItem('vasilii_duration', d)
+    } catch {}
+  }
+
   // Convert GEL to target currency with upward rounding (Math.ceil)
   const convertPrice = (priceGel: number): number => {
     if (currency === 'GEL') return priceGel
@@ -160,11 +203,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return currency === 'GEL' ? `${val} ${sym}` : `${sym}${val}`
   }
 
-  const getBookingLink = (carName: string, priceGel: number, type: 'whatsapp' | 'telegram') => {
+  const calculatePrice = (basePriceGel: number, dur?: RentalDuration): number => {
+    return calculateDailyPrice(basePriceGel, dur || duration)
+  }
+
+  const getBookingLink = (
+    carName: string,
+    basePriceGel: number,
+    type: 'whatsapp' | 'telegram',
+    customDuration?: RentalDuration
+  ) => {
+    const activeDur = customDuration || duration
+    const effectivePriceGel = calculateDailyPrice(basePriceGel, activeDur)
     const cityName = CITIES_DATA[city].nameRu
-    const priceText = formatPrice(priceGel)
+    const priceText = formatPrice(effectivePriceGel)
+    const tier = DURATION_TIERS.find((t) => t.id === activeDur)
+    const durLabel = tier ? tier.daysLabel : 'аренду'
+
     const message = encodeURIComponent(
-      `Здравствуйте! Интересует аренда автомобиля ${carName} (${priceText}/сутки) в городе ${cityName}. Свободна ли машина на мои даты?`
+      `Здравствуйте! Интересует аренда автомобиля ${carName} на ${durLabel} (${priceText}/сутки) в городе ${cityName}. Свободна ли машина на мои даты?`
     )
 
     if (type === 'whatsapp') {
@@ -184,8 +241,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setCity,
         lang,
         setLang,
+        duration,
+        setDuration,
         convertPrice,
         formatPrice,
+        calculatePrice,
         getBookingLink,
       }}
     >
