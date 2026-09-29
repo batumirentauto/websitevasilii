@@ -28,6 +28,39 @@ export interface CarItem {
   images: string[]
 }
 
+export function formatFuel(fuelType: string, lang: string): string {
+  if (lang === 'en') return fuelType
+  const map: Record<string, string> = {
+    Petrol: 'Бензин',
+    Diesel: 'Дизель',
+    Hybrid: 'Гибрид',
+    Electric: 'Электро',
+  }
+  return map[fuelType] || fuelType
+}
+
+export function formatTransmission(trans: string, lang: string): string {
+  if (lang === 'en') return trans
+  const map: Record<string, string> = {
+    Automatic: 'Автомат',
+    Manual: 'Механика',
+  }
+  return map[trans] || trans
+}
+
+export function formatDrive(drive: string, lang: string): string {
+  if (lang === 'en') return drive
+  if (drive.includes('AWD') || drive.includes('4x4')) return 'Полный привод'
+  if (drive === 'FWD') return 'Передний привод'
+  if (drive === 'RWD') return 'Задний привод'
+  return drive
+}
+
+export function formatConsumption(consumption: string, lang: string): string {
+  if (lang === 'en') return consumption
+  return consumption.replace(/L\/100km/i, 'л / 100 км').replace(/l\/100km/i, 'л / 100 км')
+}
+
 export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
   const { formatPrice, getBookingLink, lang, city, duration: globalDuration } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
@@ -80,7 +113,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 {car.name}
               </h3>
               <p className="text-xs text-[#86868B] font-normal mt-0.5">
-                {car.year} • {car.fuelType} • {car.transmission}
+                {car.year} • {formatFuel(car.fuelType, lang)} • {formatTransmission(car.transmission, lang)}
               </p>
             </div>
             {car.depositGel === 0 ? (
@@ -135,10 +168,10 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
           {/* Micro-Badges Specification Layer */}
           <div className="flex flex-wrap gap-1.5 mb-4">
             <span className="text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
-              {car.drive}
+              {formatDrive(car.drive, lang)}
             </span>
             <span className="text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
-              {car.seats} мест
+              {lang === 'en' ? `${car.seats} seats` : `${car.seats} мест`}
             </span>
             {car.carplay && (
               <span className="text-[11px] font-medium text-[#0071E3] bg-[#0071E3]/10 px-2.5 py-1 rounded-md">
@@ -363,47 +396,69 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             <div className="grid grid-cols-2 gap-3 text-xs bg-[#F5F5F7] p-4 rounded-2xl mb-6">
               <div>
                 <span className="text-[#86868B] block">Коробка передач:</span>
-                <span className="font-semibold text-[#1D1D1F]">Автомат (АКПП)</span>
+                <span className="font-semibold text-[#1D1D1F]">{formatTransmission(car.transmission, lang)} (АКПП)</span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Кондиционер:</span>
-                <span className="font-semibold text-[#1D1D1F]">Есть (исправен)</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {lang === 'en' ? 'A/C (working)' : 'Есть (климат-контроль)'}
+                </span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Привод:</span>
-                <span className="font-semibold text-[#1D1D1F]">{car.drive}</span>
+                <span className="font-semibold text-[#1D1D1F]">{formatDrive(car.drive, lang)}</span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Количество мест:</span>
-                <span className="font-semibold text-[#1D1D1F]">{car.seats} мест</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {lang === 'en' ? `${car.seats} seats` : `${car.seats} мест`}
+                </span>
+              </div>
+              <div>
+                <span className="text-[#86868B] block">Тип топлива:</span>
+                <span className="font-semibold text-[#1D1D1F]">{formatFuel(car.fuelType, lang)}</span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Расход топлива:</span>
-                <span className="font-semibold text-[#1D1D1F]">{car.fuelConsumption}</span>
+                <span className="font-semibold text-[#1D1D1F]">{formatConsumption(car.fuelConsumption, lang)}</span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Apple CarPlay / Android:</span>
                 <span className="font-semibold text-[#1D1D1F]">
-                  {car.carplay ? 'Да (установлен)' : 'Bluetooth аудио'}
+                  {car.carplay
+                    ? (lang === 'en' ? 'Yes (CarPlay installed)' : 'Да (CarPlay / Android)')
+                    : 'Bluetooth аудио'}
                 </span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Пробег:</span>
-                <span className="font-semibold text-[#34C759]">Безлимитный</span>
+                <span className="font-semibold text-[#34C759]">
+                  {lang === 'en' ? 'Unlimited (0 ₾)' : 'Безлимитный (0 ₾)'}
+                </span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Страховка:</span>
-                <span className="font-semibold text-[#1D1D1F]">Включена (0 франшиза от 2 лет)</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {lang === 'en' ? 'Included (Zero franchise 2+ yrs)' : 'Включена (0 франшиза от 2 лет)'}
+                </span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Размер залога:</span>
                 <span className="font-semibold text-[#1D1D1F]">
-                  {car.depositGel === 0 ? 'Без залога (0 ₾)' : formatPrice(car.depositGel)}
+                  {car.depositGel === 0 ? (lang === 'en' ? 'Zero deposit (0 ₾)' : 'Без залога (0 ₾)') : formatPrice(car.depositGel)}
                 </span>
               </div>
               <div>
                 <span className="text-[#86868B] block">Условия бронирования:</span>
-                <span className="font-semibold text-[#1D1D1F]">Без предоплаты • Отмена 0 ₾</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {lang === 'en' ? 'No prepayment • Free cancel' : 'Без предоплаты • Отмена 0 ₾'}
+                </span>
+              </div>
+              <div>
+                <span className="text-[#86868B] block">Срок аренды:</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {lang === 'en' ? 'From 1 day' : 'От 1 дня'}
+                </span>
               </div>
             </div>
 
