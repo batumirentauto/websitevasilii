@@ -145,6 +145,64 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
           </div>
         </div>
 
+        {/* Interactive Duration Radio Dots directly on Card */}
+        <div className="pt-2.5 pb-2 border-t border-black/[0.05]" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between mb-1.5 px-0.5">
+            <span className="text-[11px] font-bold text-[#86868B] uppercase tracking-wider">
+              Срок аренды:
+            </span>
+            <span className="text-[10px] text-[#34C759] font-bold">
+              {activeTier?.discountPercent ? `скидка ${activeTier.discountPercent}%` : 'базовая цена'}
+            </span>
+          </div>
+          <div className="grid grid-cols-5 gap-1">
+            {DURATION_TIERS.map((tier) => {
+              const isSelected = duration === tier.id
+              return (
+                <button
+                  key={tier.id}
+                  type="button"
+                  onClick={() => setDuration(tier.id)}
+                  className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer border ${
+                    isSelected
+                      ? 'bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-xs scale-[1.02]'
+                      : 'bg-[#F5F5F7] text-[#1D1D1F] border-transparent hover:border-black/[0.12] hover:bg-[#EBEBEF]'
+                  }`}
+                >
+                  {/* Radio dot */}
+                  <span
+                    className={`w-3 h-3 rounded-full border mb-1 flex items-center justify-center transition-all ${
+                      isSelected
+                        ? 'border-white bg-white'
+                        : 'border-[#86868B] bg-white'
+                    }`}
+                  >
+                    {isSelected && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1D1D1F]" />
+                    )}
+                  </span>
+                  <span className={`text-[10px] font-semibold leading-tight ${isSelected ? 'text-white' : 'text-[#1D1D1F]'}`}>
+                    {tier.label.replace(' дня', ' дн').replace(' дней', ' дн')}
+                  </span>
+                  <span
+                    className={`text-[9px] font-extrabold mt-0.5 ${
+                      tier.discountPercent > 0
+                        ? isSelected
+                          ? 'text-[#34C759]'
+                          : 'text-[#34C759]'
+                        : isSelected
+                        ? 'text-white/50'
+                        : 'text-[#86868B]'
+                    }`}
+                  >
+                    {tier.discountPercent > 0 ? `-${tier.discountPercent}%` : '100%'}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         {/* Footer: Price Row & Quick Actions */}
         <div className="pt-3 border-t border-black/[0.05] flex items-center justify-between gap-2">
           <div>
