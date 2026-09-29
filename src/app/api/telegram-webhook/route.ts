@@ -36,6 +36,48 @@ async function sendChatAction(chatId: number, action = 'typing') {
   } catch {}
 }
 
+// Resilient multi-model Gemini caller with automatic fallback
+const GEMINI_MODELS = [
+  'gemini-3.5-flash-lite',
+  'gemini-3.6-flash',
+  'gemini-flash-lite-latest',
+  'gemini-3.1-flash-lite',
+  'gemini-3-flash-preview',
+]
+
+async function callGemini(contents: any[], jsonMode = false): Promise<string> {
+  let lastError: any = null
+  for (const model of GEMINI_MODELS) {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`
+      const body: any = { contents }
+      if (jsonMode) {
+        body.generationConfig = { responseMimeType: 'application/json' }
+      }
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      if (!res.ok) {
+        const errJson = await res.json().catch(() => ({}))
+        console.warn(`[Gemini] Model ${model} returned ${res.status}:`, errJson)
+        lastError = new Error(errJson.error?.message || `HTTP ${res.status}`)
+        continue
+      }
+      const data = await res.json()
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
+      if (text) {
+        return text
+      }
+      lastError = new Error(`Model ${model} returned empty content`)
+    } catch (e: any) {
+      lastError = e
+    }
+  }
+  throw lastError || new Error('Все модели Gemini временно недоступны')
+}
+
 // Transcribe Telegram voice message using Gemini
 async function transcribeVoice(fileId: string): Promise<string> {
   // 1. Get file path from Telegram
@@ -51,32 +93,23 @@ async function transcribeVoice(fileId: string): Promise<string> {
   const audioBuffer = await audioRes.arrayBuffer()
   const base64Audio = Buffer.from(audioBuffer).toString('base64')
 
-  // 3. Transcribe via Gemini
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_API_KEY}`
-  const geminiRes = await fetch(geminiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [
+  // 3. Transcribe via resilient Gemini call
+  const text = await callGemini([
+    {
+      parts: [
         {
-          parts: [
-            {
-              inlineData: {
-                mimeType: 'audio/ogg',
-                data: base64Audio,
-              },
-            },
-            {
-              text: 'Расшифруй это голосовое сообщение на русском языке. Верни только распознанный текст без кавычек и комментариев.',
-            },
-          ],
+          inlineData: {
+            mimeType: 'audio/ogg',
+            data: base64Audio,
+          },
+        },
+        {
+          text: 'Расшифруй это голосовое сообщение на русском языке. Верни только распознанный текст без кавычек и комментариев.',
         },
       ],
-    }),
-  })
+    },
+  ])
 
-  const geminiData = await geminiRes.json()
-  const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
   if (!text) {
     throw new Error('Не удалось распознать голос')
   }
@@ -173,7 +206,7 @@ async function executeAgentTask(promptText: string, chatId: number) {
   await sendChatAction(chatId, 'typing')
 
   const systemInstruction = `Ты — ведущий AI-разработчик сайта Vasilii Rent (vslrentcar.com), построенного на Next.js 15 (App Router, Tailwind CSS, TypeScript).
-Твоя задача — изменять код и данные сайта по текстовым или голосовым командам владельца (Василия).
+Владелец сайта (Василий) пишет тебе задачи, идеи или вопросы по сайту и автопарку голосом или текстом.
 
 Ключевые файлы сайта:
 1. "src/data/cars.json" — каталог 45 автомобилей:
@@ -189,33 +222,37 @@ async function executeAgentTask(promptText: string, chatId: number) {
 6. "src/components/Header.tsx", "src/components/Footer.tsx" — шапка и подвал.
 
 Инструкция:
-Определи, в какой файл нужно внести изменения для выполнения задачи: "${promptText}".
-Ответь СТРОГО в формате JSON:
-{
-  "targetFile": "относительный путь к файлу (например, src/data/cars.json или src/context/translations.ts или src/app/(frontend)/page.tsx)",
-  "explanation": "краткое объяснение на русском, что именно меняем",
-  "commitMessage": "краткое сообщение коммита на английском (например, feat: update BMW X5 rental price)"
-}`
+Определи тип запроса владельца:
 
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_API_KEY}`
-  
-  // Step 1: Decision
-  const planRes = await fetch(geminiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: systemInstruction }] }],
-      generationConfig: { responseMimeType: 'application/json' },
-    }),
-  })
-  
-  const planJson = await planRes.json()
-  const rawPlan = planJson.candidates?.[0]?.content?.parts?.[0]?.text
-  if (!rawPlan) {
-    throw new Error('ИИ не смог спланировать изменения.')
-  }
+Вариант 1 (reply): если Василий спрашивает совет, обсуждает идею, предлагает концепцию или требуется согласовать логику/тарифы перед внедрением:
+{
+  "action": "reply",
+  "reply": "развернутый, полезный, профессиональный ответ Василию на русском языке с предложением конкретного решения"
+}
+
+Вариант 2 (edit): если задача понятна и готова для немедленного внесения изменений в код или данные сайта:
+{
+  "action": "edit",
+  "targetFile": "относительный путь к файлу (например, src/data/cars.json)",
+  "explanation": "краткое объяснение на русском, что именно меняем",
+  "commitMessage": "краткое сообщение коммита на английском (например, feat: update Audi TT specs)"
+}
+
+Ответь СТРОГО в формате JSON.`
+
+  // Step 1: Decision or Reply
+  const rawPlan = await callGemini([
+    { parts: [{ text: systemInstruction }, { text: `Запрос владельца: "${promptText}"` }] },
+  ], true)
 
   const plan = JSON.parse(rawPlan)
+
+  // If AI determines this is a consultation, proposal or question
+  if (plan.action === 'reply' || (!plan.targetFile && plan.reply)) {
+    await sendTelegramMessage(chatId, `💡 <b>Ответ разработчика:</b>\n\n${plan.reply}`)
+    return
+  }
+
   const targetFile = plan.targetFile
   if (!targetFile) {
     throw new Error('Целевой файл не определен.')
@@ -259,20 +296,9 @@ ${currentFile.content}
   "fullContent": "строка с полным кодом (только если patches пустой)"
 }`
 
-  const patchRes = await fetch(geminiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: patchPrompt }] }],
-      generationConfig: { responseMimeType: 'application/json' },
-    }),
-  })
-
-  const patchJson = await patchRes.json()
-  const rawPatch = patchJson.candidates?.[0]?.content?.parts?.[0]?.text
-  if (!rawPatch) {
-    throw new Error('ИИ не вернул патч для файла.')
-  }
+  const rawPatch = await callGemini([
+    { parts: [{ text: patchPrompt }] },
+  ], true)
 
   const patchData = JSON.parse(rawPatch)
   let newContent = currentFile.content
