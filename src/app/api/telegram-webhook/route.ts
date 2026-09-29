@@ -36,6 +36,34 @@ async function sendChatAction(chatId: number, action = 'typing') {
   } catch {}
 }
 
+// In-memory conversation history for context continuity
+interface ChatMessage {
+  role: 'user' | 'model'
+  text: string
+  timestamp: number
+}
+
+const chatHistories = new Map<number, ChatMessage[]>()
+
+function appendMessage(chatId: number, role: 'user' | 'model', text: string) {
+  const history = chatHistories.get(chatId) || []
+  history.push({ role, text, timestamp: Date.now() })
+  if (history.length > 14) {
+    history.shift()
+  }
+  chatHistories.set(chatId, history)
+}
+
+function getFormattedHistory(chatId: number): string {
+  const history = chatHistories.get(chatId) || []
+  if (history.length <= 1) return ''
+  return history
+    .slice(0, -1)
+    .slice(-6)
+    .map((m) => `${m.role === 'user' ? 'Василий' : 'Бот'}: ${m.text}`)
+    .join('\n\n')
+}
+
 // Resilient multi-model Gemini caller with automatic fallback
 const GEMINI_MODELS = [
   'gemini-3.5-flash-lite',
@@ -204,9 +232,15 @@ function applyPatch(content: string, search: string, replace: string): string {
 // AI Agent: Decide and modify code/data
 async function executeAgentTask(promptText: string, chatId: number) {
   await sendChatAction(chatId, 'typing')
+  appendMessage(chatId, 'user', promptText)
+
+  const previousHistory = getFormattedHistory(chatId)
+  const historySection = previousHistory
+    ? `\n\nКОНТЕКСТ ПРЕДЫДУЩЕГО ДИАЛОГА С ВАСИЛИЕМ (ОБЯЗАТЕЛЬНО УЧИТЫВАЙ ЕГО!):\n${previousHistory}\n\nКРИТИЧЕСКОЕ ПРАВИЛО: Если в диалоге выше ты предлагал решение или спрашивал «Сделать эту правку?» и т.п., а текущий запрос Василия — это согласие («Сделай эту правку», «Да», «Вноси», «Применяй», «Ок»), то ТЫ ОБЯЗАН выбрать Вариант 2 (edit) и немедленно применить именно то, что обсуждалось в диалоге! Ни в коем случае НЕ переспрашивай Василия!\n`
+    : ''
 
   const systemInstruction = `Ты — ведущий AI-разработчик сайта Vasilii Rent (vslrentcar.com), построенного на Next.js 15 (App Router, Tailwind CSS, TypeScript).
-Владелец сайта (Василий) пишет тебе задачи, идеи или вопросы по сайту и автопарку голосом или текстом.
+Владелец сайта (Василий) пишет тебе задачи, идеи или вопросы по сайту и автопарку голосом или текстом.${historySection}
 
 Ключевые файлы сайта:
 1. "src/data/cars.json" — каталог моделей автомобилей (45 моделей, всего в парке более 80 машин):
@@ -258,6 +292,7 @@ async function executeAgentTask(promptText: string, chatId: number) {
 
   // If AI determines this is a consultation, proposal or question
   if (plan.action === 'reply' || (!plan.targetFile && plan.reply)) {
+    appendMessage(chatId, 'model', plan.reply)
     await sendTelegramMessage(chatId, `💡 <b>Ответ разработчика:</b>\n\n${plan.reply}`)
     return
   }
@@ -347,6 +382,8 @@ ${currentFile.content}
     `🚀 <b>Railway</b> уже начал автоматическую сборку и обновление сайта.\n` +
     `Через 1-2 минуты изменения появятся на <a href="https://vslrentcar.com">vslrentcar.com</a>!`
   )
+
+  appendMessage(chatId, 'model', `Применил изменения в ${targetFile}: ${plan.explanation}`)
 }
 
 // Webhook Handler (POST)
