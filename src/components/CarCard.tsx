@@ -79,10 +79,6 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
   const effectivePriceGel = calculateDailyPrice(car.priceGel, duration, car.prices)
   const hasDiscount = duration !== '1-2' || effectivePriceGel < car.priceGel
   const activeTier = DURATION_TIERS.find((t) => t.id === duration)
-  const currentDiscountPercent =
-    car.priceGel > 0 && effectivePriceGel < car.priceGel
-      ? Math.round(((car.priceGel - effectivePriceGel) / car.priceGel) * 100)
-      : activeTier?.discountPercent || 0
 
   const hasImages = car.images && car.images.length > 0
   const currentImg = hasImages ? car.images[activeImageIdx] : '/favicon.ico'
@@ -193,12 +189,9 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
 
         {/* Interactive Duration Radio Dots directly on Card */}
         <div className="pt-2.5 pb-2 border-t border-black/[0.05]" onClick={(e) => e.stopPropagation()}>
-          <div className="flex items-center justify-between mb-1.5 px-0.5">
+          <div className="mb-1.5 px-0.5">
             <span className="text-[11px] font-bold text-[#86868B] uppercase tracking-wider">
               Срок аренды:
-            </span>
-            <span className="text-[10px] text-[#34C759] font-bold">
-              {currentDiscountPercent > 0 ? `скидка ${currentDiscountPercent}%` : 'базовая цена'}
             </span>
           </div>
           <div className="grid grid-cols-5 gap-1">
@@ -267,11 +260,6 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               )}
               <span className="text-xs font-normal text-[#86868B]">{t.perDay}</span>
             </div>
-            {hasDiscount && (
-              <span className="text-[10px] font-bold text-[#34C759] block mt-0.5">
-                Скидка {currentDiscountPercent}% ({activeTier?.daysLabel})
-              </span>
-            )}
           </div>
 
           <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
