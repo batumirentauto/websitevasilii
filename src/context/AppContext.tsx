@@ -162,10 +162,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (savedLang) {
         setLangState(savedLang)
       }
-      const savedDur = localStorage.getItem('vasilii_duration') as RentalDuration
-      if (savedDur && ['1-2', '3-5', '6-13', '14-29', '30+'].includes(savedDur)) {
-        setDurationState(savedDur)
-      }
+      // Ensure duration always defaults to '1-2' days for every visit
+      localStorage.removeItem('vasilii_duration')
+      setDurationState('1-2')
     } catch {}
   }, [])
 
@@ -197,9 +196,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const setDuration = (d: RentalDuration) => {
     setDurationState(d)
-    try {
-      localStorage.setItem('vasilii_duration', d)
-    } catch {}
   }
 
   // Convert GEL to target currency with upward rounding (Math.ceil)

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useApp, DURATION_TIERS, calculateDailyPrice, RentalDuration } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
@@ -29,11 +29,19 @@ export interface CarItem {
 }
 
 export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
-  const { formatPrice, getBookingLink, lang, city, duration, setDuration } = useApp()
+  const { formatPrice, getBookingLink, lang, city, duration: globalDuration } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
 
   const [activeImageIdx, setActiveImageIdx] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+  const [localDuration, setLocalDuration] = useState<RentalDuration>(globalDuration || '1-2')
+
+  useEffect(() => {
+    setLocalDuration(globalDuration || '1-2')
+  }, [globalDuration])
+
+  const duration = localDuration
+  const setDuration = setLocalDuration
 
   const effectivePriceGel = calculateDailyPrice(car.priceGel, duration, car.prices)
   const hasDiscount = duration !== '1-2' || effectivePriceGel < car.priceGel
@@ -204,7 +212,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                         : 'text-[#86868B]'
                     }`}
                   >
-                    {tierDiscount > 0 ? `-${tierDiscount}%` : '100%'}
+                    {tierDiscount > 0 ? `-${tierDiscount}%` : 'базовая'}
                   </span>
                 </button>
               )
