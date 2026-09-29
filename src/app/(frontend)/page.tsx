@@ -173,7 +173,7 @@ export default function HomePage() {
                       🏔️ Казбеги • Батуми • Тбилиси
                     </span>
                     <span className="bg-white/90 backdrop-blur-md text-[#1D1D1F] text-[11px] font-bold px-3 py-1.5 rounded-full shadow-sm">
-                      45 авто на АКПП
+                      80+ авто на АКПП
                     </span>
                   </div>
 
@@ -315,7 +315,7 @@ export default function HomePage() {
             </div>
             <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">100% АКПП и Климат</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Все 45 автомобилей автопарка оснащены надёжной автоматической коробкой передач и исправным кондиционером.
+              Все 80+ автомобилей автопарка (45 моделей) оснащены надёжной автоматической коробкой передач и исправным кондиционером.
             </p>
           </div>
         </div>
@@ -339,7 +339,7 @@ export default function HomePage() {
                 </span>
                 <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Выберите автомобиль</h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Посмотрите наш автопарк из 45 моделей. Выберите подходящий класс: кроссовер 4x4, комфортный седан или кабриолет.
+                  Посмотрите наш автопарк из более чем 80 автомобилей (45 различных моделей). Выберите подходящий класс: кроссовер 4x4, комфортный седан или кабриолет.
                 </p>
               </div>
             </div>

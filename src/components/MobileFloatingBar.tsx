@@ -14,7 +14,7 @@ export const MobileFloatingBar: React.FC = () => {
       <div className="bg-[#1D1D1F]/90 backdrop-blur-2xl border border-white/10 rounded-2xl p-2.5 px-3.5 shadow-[0_16px_36px_-4px_rgba(0,0,0,0.35)] flex items-center justify-between gap-2 text-white">
         <div>
           <span className="text-[10px] text-[#86868B] block uppercase font-bold tracking-wider">
-            {currentCity.nameRu} • 45 авто
+            {currentCity.nameRu} • 80+ авто
           </span>
           <span className="text-xs font-semibold text-white">
             База: 0₾ выдача

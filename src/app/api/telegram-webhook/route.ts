@@ -209,7 +209,7 @@ async function executeAgentTask(promptText: string, chatId: number) {
 Владелец сайта (Василий) пишет тебе задачи, идеи или вопросы по сайту и автопарку голосом или текстом.
 
 Ключевые файлы сайта:
-1. "src/data/cars.json" — каталог 45 автомобилей:
+1. "src/data/cars.json" — каталог моделей автомобилей (45 моделей, всего в парке более 80 машин):
    - id, name, category, year, transmission, seats, drive, carplay, fuelType, fuelConsumption, priceGel (цена в лари), depositGel (залог в лари), featured (хит), images.
 2. "src/context/translations.ts" — словарь 8 языков (ru, en, ar, fa, pl, de, it, fr):
    - тексты hero-блока, преимущества, бейджи (в т.ч. freeIntercityBadge), требования, контакты.
@@ -386,7 +386,7 @@ export async function POST(req: NextRequest) {
         `• <i>«Добавь блок вопросов и ответов (FAQ) перед футером»</i>\n\n` +
         `📊 <b>Служебные команды:</b>\n` +
         `• /status — статус репозитория и боевого сайта\n` +
-        `• /cars — список всех 45 машин и текущих цен`
+        `• /cars — список всех моделей и текущих цен`
       )
       return NextResponse.json({ ok: true })
     }
@@ -397,7 +397,7 @@ export async function POST(req: NextRequest) {
         `🚀 <b>Статус сайта:</b>\n\n` +
         `🌐 <b>Домен:</b> <a href="https://vslrentcar.com">https://vslrentcar.com</a>\n` +
         `📦 <b>Репозиторий:</b> <a href="https://github.com/${GITHUB_REPO}">${GITHUB_REPO}</a>\n` +
-        `🚗 <b>Автопарк:</b> 45 автомобилей (все на АКПП, кузов 1-й картинкой)\n` +
+        `🚗 <b>Автопарк:</b> 80+ автомобилей (45 моделей, все на АКПП, кузов 1-й картинкой)\n` +
         `⚡ <b>Деплой:</b> автоматический через Railway при каждом коммите`
       )
       return NextResponse.json({ ok: true })
@@ -408,7 +408,7 @@ export async function POST(req: NextRequest) {
       if (carsFile) {
         const cars = JSON.parse(carsFile.content)
         const summary = cars.slice(0, 20).map((c: any) => `• ${c.name}: <b>${c.priceGel} ₾</b> (залог ${c.depositGel} ₾)`).join('\n')
-        await sendTelegramMessage(chatId, `📋 <b>Первые 20 авто из каталога:</b>\n\n${summary}\n\n<i>Всего машин в парке: ${cars.length}</i>`)
+        await sendTelegramMessage(chatId, `📋 <b>Первые 20 моделей из каталога:</b>\n\n${summary}\n\n<i>Всего в каталоге: ${cars.length} моделей (более 80 авто в парке)</i>`)
       }
       return NextResponse.json({ ok: true })
     }
