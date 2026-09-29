@@ -123,6 +123,51 @@ async function commitGitHubFile(filePath: string, newContent: string, sha: strin
   return await res.json()
 }
 
+// Robust patch application with 4-level fallback
+function applyPatch(content: string, search: string, replace: string): string {
+  // 1. Direct match
+  if (content.includes(search)) {
+    return content.replace(search, replace)
+  }
+
+  // 2. Normalized CRLF to LF
+  const normContent = content.replace(/\r\n/g, '\n')
+  const normSearch = search.replace(/\r\n/g, '\n')
+  const normReplace = replace.replace(/\r\n/g, '\n')
+  if (normContent.includes(normSearch)) {
+    return normContent.replace(normSearch, normReplace)
+  }
+
+  // 3. Trimmed search match
+  const trimSearch = normSearch.trim()
+  if (normContent.includes(trimSearch)) {
+    return normContent.replace(trimSearch, normReplace.trim())
+  }
+
+  // 4. Line-by-line whitespace-tolerant match
+  const contentLines = normContent.split('\n')
+  const searchLines = normSearch.trim().split('\n').map((l) => l.trim()).filter(Boolean)
+
+  if (searchLines.length > 0) {
+    for (let i = 0; i <= contentLines.length - searchLines.length; i++) {
+      let matches = true
+      for (let j = 0; j < searchLines.length; j++) {
+        if (contentLines[i + j].trim() !== searchLines[j]) {
+          matches = false
+          break
+        }
+      }
+      if (matches) {
+        const before = contentLines.slice(0, i).join('\n')
+        const after = contentLines.slice(i + searchLines.length).join('\n')
+        return `${before}\n${normReplace}\n${after}`
+      }
+    }
+  }
+
+  throw new Error('Не удалось сопоставить фрагмент кода для замены в файле.')
+}
+
 // AI Agent: Decide and modify code/data
 async function executeAgentTask(promptText: string, chatId: number) {
   await sendChatAction(chatId, 'typing')
@@ -182,41 +227,69 @@ async function executeAgentTask(promptText: string, chatId: number) {
     throw new Error(`Файл ${targetFile} не найден в репозитории.`)
   }
 
-  await sendTelegramMessage(chatId, `🔍 <b>Анализирую файл:</b> <code>${targetFile}</code>\n<i>${plan.explanation}</i>\n⏳ Генерирую обновленный код...`)
+  await sendTelegramMessage(chatId, `🔍 <b>Анализирую файл:</b> <code>${targetFile}</code>\n<i>${plan.explanation}</i>\n⚡ Генерирую патч изменений...`)
   await sendChatAction(chatId, 'typing')
 
-  // Step 3: Generate updated full file content
-  const codePrompt = `Ты — эксперт по TypeScript и React.
+  // Step 3: Fast Patch Generation
+  const patchPrompt = `Ты — эксперт по веб-разработке (Next.js 15, TypeScript, Tailwind).
 Задача владельца: "${promptText}".
 Целевой файл: "${targetFile}".
 
-Текущее полное содержимое файла:
+Текущее содержимое файла:
 \`\`\`
 ${currentFile.content}
 \`\`\`
 
-Требования:
-1. Внеси ТОЧНЫЕ изменения согласно задаче владельца.
-2. Сохрани абсолютно всю остальную структуру, комментарии, импорты и данные.
-3. Верни ТОЛЬКО готовое полное содержимое обновленного файла без какого-либо обрамления в markdown \`\`\` или пояснений.`
+Инструкция:
+Чтобы изменение применилось мгновенно и без задержек, верни точный патч в формате JSON с блоками "search" и "replace".
+Правила:
+1. В "search" укажи точный фрагмент существующего кода из файла (включи 2-4 строки контекста вокруг изменений, чтобы совпадение было 100% уникальным).
+2. В "replace" укажи точный фрагмент с внесёнными изменениями.
+3. Если требуется несколько правок, добавь их все в массив "patches".
+4. Если файл новый или очень короткий (< 100 строк) и его проще переписать полностью, укажи поле "fullContent".
 
-  const codeRes = await fetch(geminiUrl, {
+Формат ответа СТРОГО JSON:
+{
+  "patches": [
+    {
+      "search": "точный фрагмент из файла для поиска",
+      "replace": "обновленный фрагмент для замены"
+    }
+  ],
+  "fullContent": "строка с полным кодом (только если patches пустой)"
+}`
+
+  const patchRes = await fetch(geminiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: codePrompt }] }],
+      contents: [{ parts: [{ text: patchPrompt }] }],
+      generationConfig: { responseMimeType: 'application/json' },
     }),
   })
 
-  const codeJson = await codeRes.json()
-  let newContent = codeJson.candidates?.[0]?.content?.parts?.[0]?.text
-  if (!newContent) {
-    throw new Error('ИИ не вернул обновленный код.')
+  const patchJson = await patchRes.json()
+  const rawPatch = patchJson.candidates?.[0]?.content?.parts?.[0]?.text
+  if (!rawPatch) {
+    throw new Error('ИИ не вернул патч для файла.')
   }
 
-  // Strip markdown fences if present
-  if (newContent.startsWith('```')) {
-    newContent = newContent.replace(/^```[a-z]*\n/, '').replace(/\n```$/, '')
+  const patchData = JSON.parse(rawPatch)
+  let newContent = currentFile.content
+
+  if (patchData.patches && Array.isArray(patchData.patches) && patchData.patches.length > 0) {
+    for (const p of patchData.patches) {
+      if (!p.search) continue
+      newContent = applyPatch(newContent, p.search, p.replace || '')
+    }
+  } else if (patchData.fullContent) {
+    newContent = patchData.fullContent
+  } else {
+    throw new Error('ИИ не предоставил ни патчей, ни содержимого файла.')
+  }
+
+  if (newContent === currentFile.content) {
+    throw new Error('Файл не изменился. Проверьте формулировку задачи.')
   }
 
   // Step 4: Commit directly to GitHub
