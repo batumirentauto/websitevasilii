@@ -144,6 +144,37 @@ async function transcribeVoice(fileId: string): Promise<string> {
   return text
 }
 
+interface ImagePayload {
+  base64: string
+  mimeType: string
+}
+
+// Download image file from Telegram (photos or image documents)
+async function downloadTelegramImage(fileId: string): Promise<ImagePayload> {
+  const fileRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getFile?file_id=${fileId}`)
+  const fileData = await fileRes.json()
+  if (!fileData.ok || !fileData.result?.file_path) {
+    throw new Error('Не удалось получить файл изображения из Telegram')
+  }
+
+  const filePath: string = fileData.result.file_path
+  const fileUrl = `https://api.telegram.org/file/bot${TELEGRAM_BOT_TOKEN}/${filePath}`
+  const res = await fetch(fileUrl)
+  if (!res.ok) {
+    throw new Error(`Ошибка загрузки изображения из Telegram: HTTP ${res.status}`)
+  }
+  const arrayBuffer = await res.arrayBuffer()
+  const base64 = Buffer.from(arrayBuffer).toString('base64')
+
+  let mimeType = 'image/jpeg'
+  const lower = filePath.toLowerCase()
+  if (lower.endsWith('.png')) mimeType = 'image/png'
+  else if (lower.endsWith('.webp')) mimeType = 'image/webp'
+  else if (lower.endsWith('.gif')) mimeType = 'image/gif'
+
+  return { base64, mimeType }
+}
+
 // GitHub API: Get file content and SHA
 async function getGitHubFile(filePath: string): Promise<{ content: string; sha: string } | null> {
   const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`
@@ -230,9 +261,12 @@ function applyPatch(content: string, search: string, replace: string): string {
 }
 
 // AI Agent: Decide and modify code/data
-async function executeAgentTask(promptText: string, chatId: number) {
+async function executeAgentTask(promptText: string, chatId: number, image?: ImagePayload) {
   await sendChatAction(chatId, 'typing')
-  appendMessage(chatId, 'user', promptText)
+  const promptRecord = image
+    ? (promptText ? `[Скриншот]: ${promptText}` : `[Скриншот без текста]`)
+    : promptText
+  appendMessage(chatId, 'user', promptRecord)
 
   const previousHistory = getFormattedHistory(chatId)
   const historySection = previousHistory
@@ -240,7 +274,7 @@ async function executeAgentTask(promptText: string, chatId: number) {
     : ''
 
   const systemInstruction = `Ты — ведущий AI-разработчик сайта Vasilii Rent (vslrentcar.com), построенного на Next.js 15 (App Router, Tailwind CSS, TypeScript).
-Владелец сайта (Василий) пишет тебе задачи, идеи или вопросы по сайту и автопарку голосом или текстом.${historySection}
+Владелец сайта (Василий) пишет тебе задачи, идеи или вопросы по сайту и автопарку голосом, текстом или присылает скриншоты сайта, прайс-листов и документов.${historySection}
 
 Ключевые файлы сайта:
 1. "src/data/cars.json" — каталог моделей автомобилей (45 моделей, всего в парке более 80 машин):
@@ -267,13 +301,13 @@ async function executeAgentTask(promptText: string, chatId: number) {
 Инструкция:
 Определи тип запроса владельца:
 
-Вариант 1 (reply): если Василий спрашивает совет, обсуждает идею, предлагает концепцию или требуется согласовать логику/тарифы перед внедрением:
+Вариант 1 (reply): если Василий спрашивает совет, обсуждает идею, предлагает концепцию, прислал скриншот с вопросом или требуется согласовать логику/тарифы перед внедрением:
 {
   "action": "reply",
-  "reply": "развернутый, полезный, профессиональный ответ Василию на русском языке с предложением конкретного решения"
+  "reply": "развернутый, полезный, профессиональный ответ Василию на русском языке с детальным анализом скриншота/вопроса и предложением конкретного решения"
 }
 
-Вариант 2 (edit): если задача понятна и готова для немедленного внесения изменений в код или данные сайта:
+Вариант 2 (edit): если задача понятна (из текста, голосового или скриншота) и готова для немедленного внесения изменений в код или данные сайта:
 {
   "action": "edit",
   "targetFile": "относительный путь к файлу (например, src/data/cars.json)",
@@ -284,9 +318,22 @@ async function executeAgentTask(promptText: string, chatId: number) {
 Ответь СТРОГО в формате JSON.`
 
   // Step 1: Decision or Reply
-  const rawPlan = await callGemini([
-    { parts: [{ text: systemInstruction }, { text: `Запрос владельца: "${promptText}"` }] },
-  ], true)
+  const promptParts: any[] = [{ text: systemInstruction }]
+  if (image) {
+    promptParts.push({
+      inlineData: {
+        mimeType: image.mimeType,
+        data: image.base64,
+      },
+    })
+  }
+
+  const userQuery = promptText
+    ? `Запрос владельца: "${promptText}"`
+    : `Владелец отправил скриншот/изображение без подписи. Внимательно изучи изображение, определи суть вопроса, проблему или ошибку на сайте и дай понятный, профессиональный ответ Василию либо предложи/выполни решение.`
+  promptParts.push({ text: userQuery })
+
+  const rawPlan = await callGemini([{ parts: promptParts }], true)
 
   const plan = JSON.parse(rawPlan)
 
@@ -313,7 +360,7 @@ async function executeAgentTask(promptText: string, chatId: number) {
 
   // Step 3: Fast Patch Generation
   const patchPrompt = `Ты — эксперт по веб-разработке (Next.js 15, TypeScript, Tailwind).
-Задача владельца: "${promptText}".
+Задача владельца: "${promptText || 'Внести правки по присланному скриншоту'}".
 Целевой файл: "${targetFile}".
 
 Текущее содержимое файла:
@@ -340,9 +387,17 @@ ${currentFile.content}
   "fullContent": "строка с полным кодом (только если patches пустой)"
 }`
 
-  const rawPatch = await callGemini([
-    { parts: [{ text: patchPrompt }] },
-  ], true)
+  const patchParts: any[] = [{ text: patchPrompt }]
+  if (image) {
+    patchParts.push({
+      inlineData: {
+        mimeType: image.mimeType,
+        data: image.base64,
+      },
+    })
+  }
+
+  const rawPatch = await callGemini([{ parts: patchParts }], true)
 
   const patchData = JSON.parse(rawPatch)
   let newContent = currentFile.content
@@ -414,8 +469,9 @@ export async function POST(req: NextRequest) {
         chatId,
         `👋 <b>Привет, Василий!</b>\n\n` +
         `Я твой личный AI-разработчик и администратор сайта <b>vslrentcar.com</b>.\n\n` +
-        `Ты можешь отправлять мне команды <b>голосом</b> или <b>текстом</b> прямо из машины или со смартфона:\n\n` +
+        `Ты можешь отправлять мне команды <b>голосом</b>, <b>текстом</b> или <b>скриншотами / фото</b> прямо со смартфона:\n\n` +
         `💡 <b>Примеры задач:</b>\n` +
+        `• <i>Отправь скриншот сайта: «почему здесь так?» или «исправь эту кнопку»</i>\n` +
         `• <i>«Поменяй цену на Audi Q7 на 180 лари»</i>\n` +
         `• <i>«Сделай депозит на BMW 325d равным 200 лари»</i>\n` +
         `• <i>«Добавь на главную плашку акции: скидка 10% от 7 дней»</i>\n` +
@@ -450,8 +506,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true })
     }
 
-    // Extract prompt from Voice or Text
+    // Extract prompt from Voice, Photo, Document or Text
     let prompt = ''
+    let imagePayload: ImagePayload | undefined = undefined
+
     if (message.voice) {
       await sendChatAction(chatId, 'record_voice')
       await sendTelegramMessage(chatId, '🎙 <i>Слушаю голосовое сообщение...</i>')
@@ -462,16 +520,47 @@ export async function POST(req: NextRequest) {
         await sendTelegramMessage(chatId, `❌ Не удалось распознать голосовое сообщение: ${err.message}`)
         return NextResponse.json({ ok: true })
       }
+    } else if (message.photo && Array.isArray(message.photo) && message.photo.length > 0) {
+      await sendChatAction(chatId, 'upload_photo')
+      const largestPhoto = message.photo[message.photo.length - 1]
+      prompt = (message.caption || '').trim()
+
+      const statusMsg = prompt
+        ? `📸 <b>Получен скриншот:</b> «<i>${prompt}</i>»\nИзучаю изображение и анализирую код проекта...`
+        : `📸 <b>Получен скриншот.</b>\nВнимательно изучаю детали на изображении и анализирую проект...`
+      await sendTelegramMessage(chatId, statusMsg)
+
+      try {
+        imagePayload = await downloadTelegramImage(largestPhoto.file_id)
+      } catch (err: any) {
+        await sendTelegramMessage(chatId, `❌ Не удалось загрузить изображение: ${err.message}`)
+        return NextResponse.json({ ok: true })
+      }
+    } else if (message.document && message.document.mime_type?.startsWith('image/')) {
+      await sendChatAction(chatId, 'upload_photo')
+      prompt = (message.caption || '').trim()
+
+      const statusMsg = prompt
+        ? `📸 <b>Получен файл изображения:</b> «<i>${prompt}</i>»\nИзучаю изображение и анализирую проект...`
+        : `📸 <b>Получен файл изображения.</b>\nВнимательно изучаю детали...`
+      await sendTelegramMessage(chatId, statusMsg)
+
+      try {
+        imagePayload = await downloadTelegramImage(message.document.file_id)
+      } catch (err: any) {
+        await sendTelegramMessage(chatId, `❌ Не удалось загрузить изображение: ${err.message}`)
+        return NextResponse.json({ ok: true })
+      }
     } else if (message.text) {
-      prompt = message.text
+      prompt = message.text.trim()
       await sendTelegramMessage(chatId, `⏳ <b>Принято в работу:</b> «<i>${prompt}</i>»\nАнализирую архитектуру проекта...`)
     } else {
-      await sendTelegramMessage(chatId, 'ℹ️ Отправьте текстовое или голосовое сообщение с задачей.')
+      await sendTelegramMessage(chatId, 'ℹ️ Отправьте текстовое, голосовое сообщение или скриншот/фотографию с задачей.')
       return NextResponse.json({ ok: true })
     }
 
     // Execute the agent task asynchronously
-    executeAgentTask(prompt, chatId).catch(async (err) => {
+    executeAgentTask(prompt, chatId, imagePayload).catch(async (err) => {
       console.error('Agent task error:', err)
       await sendTelegramMessage(chatId, `❌ <b>Ошибка при выполнении:</b>\n<code>${err.message}</code>\n\nПопробуйте переформулировать задачу.`)
     })
