@@ -12,6 +12,12 @@ export default function HomePage() {
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
   const currentCity = CITIES_DATA[city]
 
+  React.useEffect(() => {
+    document.title = lang === 'ru'
+      ? 'Прокат автомобилей в Грузии от 1 дня'
+      : 'Car Rental in Georgia from 1 Day — VSL'
+  }, [lang])
+
   return (
     <div className="bg-[#FFFFFF]">
       {/* Hero Section */}

@@ -28,6 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="ru" suppressHydrationWarning>
       <head>
         <InitTheme />
+        <title>Прокат автомобилей в Грузии от 1 дня</title>
         <link href="/favicon.svg?v=4" rel="icon" type="image/svg+xml" />
         <link href="/favicon-32x32.png?v=4" rel="icon" type="image/png" sizes="32x32" />
         <link href="/favicon-16x16.png?v=4" rel="icon" type="image/png" sizes="16x16" />
@@ -56,7 +57,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
+  title: 'Прокат автомобилей в Грузии от 1 дня',
+  description: 'Прокат автомобилей в Грузии от 1 дня без залога. Аренда авто в Батуми, Тбилиси, Кутаиси.',
+  openGraph: mergeOpenGraph({
+    title: 'Прокат автомобилей в Грузии от 1 дня',
+    description: 'Прокат автомобилей в Грузии от 1 дня без залога. Аренда авто в Батуми, Тбилиси, Кутаиси.',
+  }),
   icons: {
     icon: [
       { url: '/favicon.svg?v=4', type: 'image/svg+xml' },
