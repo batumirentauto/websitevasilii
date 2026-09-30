@@ -299,9 +299,9 @@ export default function HomePage() {
                 <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider block mb-2">
                   Шаг 01
                 </span>
-                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Выберите автомобиль</h3>
+                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Напишите в мессенджер</h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Посмотрите наш автопарк из более чем 80 автомобилей (45 различных моделей). Выберите подходящий класс: кроссовер 4x4, комфортный седан или кабриолет.
+                  Напишите нам в WhatsApp или Telegram и укажите даты поездки и город получения (Батуми, Тбилиси или Кутаиси).
                 </p>
               </div>
             </div>
@@ -311,9 +311,9 @@ export default function HomePage() {
                 <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider block mb-2">
                   Шаг 02
                 </span>
-                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Напишите в мессенджер</h3>
+                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Подбор и выбор авто</h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Нажмите кнопку WhatsApp или Telegram на карточке авто. Мы мгновенно проверим доступность на ваши даты и зафиксируем бронь.
+                  Мы проверяем занятость и присылаем вам список свободных автомобилей с реальными фото и ценами. Вы выбираете лучший вариант.
                 </p>
               </div>
             </div>
@@ -323,9 +323,9 @@ export default function HomePage() {
                 <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider block mb-2">
                   Шаг 03
                 </span>
-                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Получите ключи за 5 мин</h3>
+                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Быстрое оформление</h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Приезжайте на базу в Батуми / Тбилиси или встречайте нас в аэропорту Кутаиси. Подписание договора занимает 5 минут.
+                  Фиксируем бронь без предоплаты. При получении машины на базе или в аэропорту оформление занимает всего 5 минут — и в путь!
                 </p>
               </div>
             </div>
