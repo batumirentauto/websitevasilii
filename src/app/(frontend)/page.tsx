@@ -29,7 +29,7 @@ export default function HomePage() {
             <div className="lg:col-span-7 text-left">
               {/* Micro Tagline */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.04] text-[#1D1D1F] text-[11px] font-bold tracking-wider mb-4">
-                <span>🇬🇪</span>
+                <span>🚗</span>
                 <span>{t.heroTag}</span>
               </div>
 
