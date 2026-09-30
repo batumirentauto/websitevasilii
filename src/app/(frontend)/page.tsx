@@ -140,14 +140,14 @@ export default function HomePage() {
                     </span>
                   </div>
 
-                  {/* Bottom caption */}
-                  <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-none">
-                    <span className="text-xs uppercase tracking-wider text-white/80 font-bold block mb-0.5">
-                      {t.travelFreedom}
+                  {/* Floating badges on image */} 
+                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 pointer-events-none">
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
+                      {t.unlimitedMileage}
                     </span>
-                    <p className="text-sm font-bold leading-snug text-white">
-                      {t.travelFreedomSubtitle}
-                    </p>
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
+                      {t.zeroDepositPill}
+                    </span>
                   </div>
                 </div>
               </div>
