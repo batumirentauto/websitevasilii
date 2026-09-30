@@ -482,6 +482,10 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <span className="font-semibold text-[#1D1D1F]">{t.specInsuranceIncluded}</span>
               </div>
               <div>
+                <span className="text-[#86868B] block">{t.specFranchise || 'Франшиза:'}</span>
+                <span className="font-semibold text-[#1D1D1F]">{t.specFranchiseValue || '0 ₾ (стаж от 2 лет) • 3–5% (до 2 лет)'}</span>
+              </div>
+              <div>
                 <span className="text-[#86868B] block">{t.specDeposit}</span>
                 <span className="font-semibold text-[#1D1D1F]">
                   {car.depositGel === 0 ? t.specDepositZero : formatPrice(car.depositGel)}
