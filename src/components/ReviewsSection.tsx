@@ -4,12 +4,14 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useApp } from '@/context/AppContext'
+import { TRANSLATIONS } from '@/context/translations'
 import reviewsData from '@/data/reviews.json'
 
 const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/3zfbyPqrpVV4QmAj8?g_st=ic'
 
 export default function ReviewsSection() {
-  const { t } = useApp()
+  const { lang, t: contextT } = useApp()
+  const t = contextT || TRANSLATIONS[lang] || TRANSLATIONS.ru
 
   // Curate top 4 high-impact reviews for the homepage
   const featuredReviews = reviewsData.filter((r) =>

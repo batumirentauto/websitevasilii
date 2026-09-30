@@ -1,6 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import { TRANSLATIONS } from './translations'
 
 export type Currency = 'GEL' | 'USD' | 'EUR'
 export type City = 'batumi' | 'tbilisi' | 'kutaisi'
@@ -182,6 +183,7 @@ interface AppContextType {
   setCity: (city: City) => void
   lang: Lang
   setLang: (lang: Lang) => void
+  t: (typeof TRANSLATIONS)['ru']
   duration: RentalDuration
   setDuration: (d: RentalDuration) => void
   convertPrice: (priceGel: number) => number
@@ -329,6 +331,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setCity,
         lang,
         setLang,
+        t: TRANSLATIONS[lang] || TRANSLATIONS.ru,
         duration,
         setDuration,
         convertPrice,
