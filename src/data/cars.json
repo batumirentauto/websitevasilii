@@ -14,7 +14,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Hybrid",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.6 л • Средний 7.4 л",
     "priceGel": 110,
     "depositGel": 0,
     "featured": false,
@@ -29,7 +29,11 @@
       "6-13": 90,
       "14-29": 90,
       "30+": 52
-    }
+    },
+    "engine": "2.5 Гибрид",
+    "engineEn": "2.5L Hybrid",
+    "consumptionHighway": "7.6 л",
+    "consumptionMixed": "7.4 л"
   },
   {
     "id": "hyundai_accent",
@@ -46,7 +50,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.4 л • Средний 7.4 л",
     "priceGel": 110,
     "depositGel": 0,
     "featured": false,
@@ -61,7 +65,11 @@
       "6-13": 90,
       "14-29": 80,
       "30+": 70
-    }
+    },
+    "engine": "1.6 Бензин",
+    "engineEn": "1.6L Petrol",
+    "consumptionHighway": "6.4 л",
+    "consumptionMixed": "7.4 л"
   },
   {
     "id": "toyota_prius",
@@ -78,7 +86,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Hybrid",
-    "fuelConsumption": "5.5 L/100km",
+    "fuelConsumption": "Трасса 4.5 л • Средний 4.3 л",
     "priceGel": 110,
     "prices": {
       "1-2": 110,
@@ -92,7 +100,11 @@
     "images": [
       "/fleet/Toyota_Prius/IMG_8912.jpg",
       "/fleet/Toyota_Prius/IMG_8913.jpg"
-    ]
+    ],
+    "engine": "1.8 Гибрид",
+    "engineEn": "1.8L Hybrid",
+    "consumptionHighway": "4.5 л",
+    "consumptionMixed": "4.3 л"
   },
   {
     "id": "volkswagen_jetta_2016",
@@ -109,7 +121,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.0 л • Средний 7.1 л",
     "priceGel": 130,
     "depositGel": 0,
     "featured": false,
@@ -124,7 +136,11 @@
       "6-13": 100,
       "14-29": 90,
       "30+": 70
-    }
+    },
+    "engine": "1.4Т Бензин",
+    "engineEn": "1.4T Petrol",
+    "consumptionHighway": "6.0 л",
+    "consumptionMixed": "7.1 л"
   },
   {
     "id": "ford_fusion",
@@ -141,7 +157,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 7.6 л • Средний 9.0 л",
     "priceGel": 140,
     "depositGel": 0,
     "featured": false,
@@ -156,7 +172,11 @@
       "6-13": 110,
       "14-29": 90,
       "30+": 70
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "7.6 л",
+    "consumptionMixed": "9.0 л"
   },
   {
     "id": "mazda_cx5_2016",
@@ -173,7 +193,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.8 л • Средний 8.7 л",
     "priceGel": 140,
     "depositGel": 0,
     "featured": false,
@@ -187,7 +207,11 @@
       "6-13": 110,
       "14-29": 100,
       "30+": 70
-    }
+    },
+    "engine": "2.5 Бензин",
+    "engineEn": "2.5L Petrol",
+    "consumptionHighway": "7.8 л",
+    "consumptionMixed": "8.7 л"
   },
   {
     "id": "fiat_500c",
@@ -204,7 +228,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 7.1 л • Средний 8.1 л",
     "priceGel": 160,
     "depositGel": 0,
     "featured": false,
@@ -221,7 +245,11 @@
       "6-13": 120,
       "14-29": 100,
       "30+": 70
-    }
+    },
+    "engine": "1.4Т Бензин",
+    "engineEn": "1.4T Petrol",
+    "consumptionHighway": "7.1 л",
+    "consumptionMixed": "8.1 л"
   },
   {
     "id": "mazda_6",
@@ -238,7 +266,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.2 л • Средний 7.4 л",
     "priceGel": 160,
     "depositGel": 0,
     "featured": false,
@@ -252,7 +280,11 @@
       "6-13": 110,
       "14-29": 100,
       "30+": 70
-    }
+    },
+    "engine": "2.5 Бензин",
+    "engineEn": "2.5L Petrol",
+    "consumptionHighway": "6.2 л",
+    "consumptionMixed": "7.4 л"
   },
   {
     "id": "мерседес_с350",
@@ -269,7 +301,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 8.4 л • Средний 10.2 л",
     "priceGel": 160,
     "depositGel": 0,
     "featured": false,
@@ -284,7 +316,11 @@
       "6-13": 130,
       "14-29": 120,
       "30+": 100
-    }
+    },
+    "engine": "3.5 Бензин",
+    "engineEn": "3.5L Petrol",
+    "consumptionHighway": "8.4 л",
+    "consumptionMixed": "10.2 л"
   },
   {
     "id": "toyota_corolla",
@@ -301,7 +337,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 5.9 л • Средний 6.9 л",
     "priceGel": 160,
     "depositGel": 0,
     "featured": false,
@@ -316,7 +352,11 @@
       "6-13": 120,
       "14-29": 100,
       "30+": 90
-    }
+    },
+    "engine": "2.0 Бензин",
+    "engineEn": "2.0L Petrol",
+    "consumptionHighway": "5.9 л",
+    "consumptionMixed": "6.9 л"
   },
   {
     "id": "volkswagen_jetta",
@@ -333,7 +373,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 5.9 л • Средний 6.9 л",
     "priceGel": 160,
     "depositGel": 0,
     "featured": false,
@@ -348,7 +388,11 @@
       "6-13": 130,
       "14-29": 120,
       "30+": 100
-    }
+    },
+    "engine": "1.4Т Бензин",
+    "engineEn": "1.4T Petrol",
+    "consumptionHighway": "5.9 л",
+    "consumptionMixed": "6.9 л"
   },
   {
     "id": "volkswagen_passat",
@@ -365,7 +409,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.9 л • Средний 8.1 л",
     "priceGel": 160,
     "depositGel": 0,
     "featured": false,
@@ -380,7 +424,11 @@
       "6-13": 120,
       "14-29": 100,
       "30+": 80
-    }
+    },
+    "engine": "1.8Т Бензин",
+    "engineEn": "1.8T Petrol",
+    "consumptionHighway": "6.9 л",
+    "consumptionMixed": "8.1 л"
   },
   {
     "id": "ford_escape_2020",
@@ -397,7 +445,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 6.5 л • Средний 7.6 л",
     "priceGel": 170,
     "depositGel": 0,
     "featured": false,
@@ -412,7 +460,11 @@
       "6-13": 120,
       "14-29": 110,
       "30+": 70
-    }
+    },
+    "engine": "1.5Т Бензин",
+    "engineEn": "1.5T Petrol",
+    "consumptionHighway": "6.5 л",
+    "consumptionMixed": "7.6 л"
   },
   {
     "id": "mazda_3",
@@ -429,7 +481,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.4 л • Средний 7.4 л",
     "priceGel": 170,
     "depositGel": 0,
     "featured": false,
@@ -444,7 +496,11 @@
       "6-13": 120,
       "14-29": 110,
       "30+": 90
-    }
+    },
+    "engine": "2.0 Бензин",
+    "engineEn": "2.0L Petrol",
+    "consumptionHighway": "6.4 л",
+    "consumptionMixed": "7.4 л"
   },
   {
     "id": "subaru_outback",
@@ -461,7 +517,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.4 л • Средний 8.7 л",
     "priceGel": 170,
     "depositGel": 0,
     "featured": false,
@@ -479,7 +535,11 @@
       "6-13": 130,
       "14-29": 110,
       "30+": 90
-    }
+    },
+    "engine": "2.5 Бензин",
+    "engineEn": "2.5L Petrol",
+    "consumptionHighway": "7.4 л",
+    "consumptionMixed": "8.7 л"
   },
   {
     "id": "subaru_xv",
@@ -496,7 +556,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Hybrid",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 6.9 л • Средний 7.1 л",
     "priceGel": 170,
     "depositGel": 0,
     "featured": false,
@@ -511,7 +571,11 @@
       "6-13": 130,
       "14-29": 110,
       "30+": 65
-    }
+    },
+    "engine": "2.0 Гибрид",
+    "engineEn": "2.0L Hybrid",
+    "consumptionHighway": "6.9 л",
+    "consumptionMixed": "7.1 л"
   },
   {
     "id": "hyundai_elantra_2021",
@@ -528,7 +592,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 5.7 л • Средний 6.7 л",
     "priceGel": 180,
     "depositGel": 0,
     "featured": false,
@@ -542,7 +606,11 @@
       "6-13": 130,
       "14-29": 110,
       "30+": 100
-    }
+    },
+    "engine": "2.0 Бензин",
+    "engineEn": "2.0L Petrol",
+    "consumptionHighway": "5.7 л",
+    "consumptionMixed": "6.7 л"
   },
   {
     "id": "subaru_forester_2016",
@@ -559,7 +627,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.4 л • Средний 8.7 л",
     "priceGel": 180,
     "depositGel": 0,
     "featured": false,
@@ -574,7 +642,11 @@
       "6-13": 140,
       "14-29": 120,
       "30+": 100
-    }
+    },
+    "engine": "2.5 Бензин",
+    "engineEn": "2.5L Petrol",
+    "consumptionHighway": "7.4 л",
+    "consumptionMixed": "8.7 л"
   },
   {
     "id": "jeep_renegade",
@@ -591,7 +663,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 8.1 л • Средний 9.4 л",
     "priceGel": 190,
     "depositGel": 0,
     "featured": false,
@@ -605,7 +677,11 @@
       "6-13": 140,
       "14-29": 120,
       "30+": 100
-    }
+    },
+    "engine": "2.4 Бензин",
+    "engineEn": "2.4L Petrol",
+    "consumptionHighway": "8.1 л",
+    "consumptionMixed": "9.4 л"
   },
   {
     "id": "mini_cooper_s",
@@ -622,7 +698,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.7 л • Средний 7.6 л",
     "priceGel": 190,
     "depositGel": 0,
     "featured": false,
@@ -637,7 +713,11 @@
       "6-13": 140,
       "14-29": 110,
       "30+": 90
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "6.7 л",
+    "consumptionMixed": "7.6 л"
   },
   {
     "id": "toyota_avalon",
@@ -654,7 +734,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 7.6 л • Средний 9.4 л",
     "priceGel": 200,
     "depositGel": 0,
     "featured": false,
@@ -669,7 +749,11 @@
       "6-13": 120,
       "14-29": 110,
       "30+": 90
-    }
+    },
+    "engine": "3.5 Бензин",
+    "engineEn": "3.5L Petrol",
+    "consumptionHighway": "7.6 л",
+    "consumptionMixed": "9.4 л"
   },
   {
     "id": "chevrolet_trailblazer",
@@ -686,7 +770,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.8 л • Средний 8.4 л",
     "priceGel": 210,
     "depositGel": 0,
     "featured": false,
@@ -701,7 +785,11 @@
       "6-13": 160,
       "14-29": 140,
       "30+": 120
-    }
+    },
+    "engine": "1.3Т Бензин",
+    "engineEn": "1.3T Petrol",
+    "consumptionHighway": "7.8 л",
+    "consumptionMixed": "8.4 л"
   },
   {
     "id": "jeep_compass_2022",
@@ -718,7 +806,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.8 л • Средний 9.0 л",
     "priceGel": 230,
     "depositGel": 0,
     "featured": false,
@@ -733,7 +821,11 @@
       "6-13": 180,
       "14-29": 150,
       "30+": 105
-    }
+    },
+    "engine": "2.4 Бензин",
+    "engineEn": "2.4L Petrol",
+    "consumptionHighway": "7.8 л",
+    "consumptionMixed": "9.0 л"
   },
   {
     "id": "alfa_romeo_giulia",
@@ -750,7 +842,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 7.6 л • Средний 9.0 л",
     "priceGel": 240,
     "depositGel": 0,
     "featured": false,
@@ -765,7 +857,11 @@
       "6-13": 180,
       "14-29": 150,
       "30+": 120
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "7.6 л",
+    "consumptionMixed": "9.0 л"
   },
   {
     "id": "bmw_325d",
@@ -782,7 +878,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Diesel",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 4.6 л • Средний 5.2 л",
     "priceGel": 240,
     "depositGel": 0,
     "featured": false,
@@ -796,7 +892,11 @@
       "6-13": 180,
       "14-29": 150,
       "30+": 100
-    }
+    },
+    "engine": "2.0 Турбодизель",
+    "engineEn": "2.0L Turbo Diesel",
+    "consumptionHighway": "4.6 л",
+    "consumptionMixed": "5.2 л"
   },
   {
     "id": "bmw_x4",
@@ -813,7 +913,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 8.4 л • Средний 9.8 л",
     "priceGel": 240,
     "depositGel": 0,
     "featured": false,
@@ -828,7 +928,11 @@
       "6-13": 180,
       "14-29": 150,
       "30+": 120
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "8.4 л",
+    "consumptionMixed": "9.8 л"
   },
   {
     "id": "mini_cooper_s_cabrio",
@@ -845,7 +949,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.9 л • Средний 7.8 л",
     "priceGel": 240,
     "depositGel": 0,
     "featured": true,
@@ -859,7 +963,11 @@
       "6-13": 190,
       "14-29": 170,
       "30+": 150
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "6.9 л",
+    "consumptionMixed": "7.8 л"
   },
   {
     "id": "toyota_camry",
@@ -876,7 +984,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 6.0 л • Средний 7.4 л",
     "priceGel": 240,
     "depositGel": 0,
     "featured": true,
@@ -890,7 +998,11 @@
       "6-13": 160,
       "14-29": 140,
       "30+": 105
-    }
+    },
+    "engine": "2.5 Бензин",
+    "engineEn": "2.5L Petrol",
+    "consumptionHighway": "6.0 л",
+    "consumptionMixed": "7.4 л"
   },
   {
     "id": "volkswagen_tiguan",
@@ -907,7 +1019,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 8.1 л • Средний 9.8 л",
     "priceGel": 240,
     "depositGel": 0,
     "featured": false,
@@ -922,7 +1034,11 @@
       "6-13": 180,
       "14-29": 150,
       "30+": 130
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "8.1 л",
+    "consumptionMixed": "9.8 л"
   },
   {
     "id": "mazda_cx5_2021",
@@ -939,7 +1055,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.6 л • Средний 8.4 л",
     "priceGel": 250,
     "depositGel": 0,
     "featured": false,
@@ -954,7 +1070,11 @@
       "6-13": 170,
       "14-29": 150,
       "30+": 120
-    }
+    },
+    "engine": "2.5 Бензин",
+    "engineEn": "2.5L Petrol",
+    "consumptionHighway": "7.6 л",
+    "consumptionMixed": "8.4 л"
   },
   {
     "id": "subaru_crosstrek_2023",
@@ -971,7 +1091,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.1 л • Средний 8.1 л",
     "priceGel": 250,
     "depositGel": 0,
     "featured": true,
@@ -986,7 +1106,11 @@
       "6-13": 190,
       "14-29": 160,
       "30+": 140
-    }
+    },
+    "engine": "2.0 Бензин",
+    "engineEn": "2.0L Petrol",
+    "consumptionHighway": "7.1 л",
+    "consumptionMixed": "8.1 л"
   },
   {
     "id": "dodge_caravan",
@@ -1003,7 +1127,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 9.4 л • Средний 11.8 л",
     "priceGel": 260,
     "depositGel": 0,
     "featured": false,
@@ -1019,7 +1143,11 @@
       "6-13": 180,
       "14-29": 160,
       "30+": 130
-    }
+    },
+    "engine": "3.6 Бензин",
+    "engineEn": "3.6L Petrol",
+    "consumptionHighway": "9.4 л",
+    "consumptionMixed": "11.8 л"
   },
   {
     "id": "honda_accord_2022",
@@ -1036,7 +1164,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Hybrid",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 5.0 л • Средний 4.9 л",
     "priceGel": 260,
     "depositGel": 0,
     "featured": false,
@@ -1051,7 +1179,11 @@
       "6-13": 180,
       "14-29": 160,
       "30+": 130
-    }
+    },
+    "engine": "2.0 Гибрид",
+    "engineEn": "2.0L Hybrid",
+    "consumptionHighway": "5.0 л",
+    "consumptionMixed": "4.9 л"
   },
   {
     "id": "mitsubishi_outlander_2023",
@@ -1068,7 +1200,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.6 л • Средний 8.7 л",
     "priceGel": 290,
     "depositGel": 0,
     "featured": true,
@@ -1083,7 +1215,11 @@
       "6-13": 190,
       "14-29": 170,
       "30+": 140
-    }
+    },
+    "engine": "2.5 Бензин",
+    "engineEn": "2.5L Petrol",
+    "consumptionHighway": "7.6 л",
+    "consumptionMixed": "8.7 л"
   },
   {
     "id": "toyota_sienna",
@@ -1100,7 +1236,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 8.7 л • Средний 10.7 л",
     "priceGel": 290,
     "depositGel": 0,
     "featured": true,
@@ -1115,7 +1251,11 @@
       "6-13": 200,
       "14-29": 180,
       "30+": 150
-    }
+    },
+    "engine": "3.5 Бензин",
+    "engineEn": "3.5L Petrol",
+    "consumptionHighway": "8.7 л",
+    "consumptionMixed": "10.7 л"
   },
   {
     "id": "toyota_venza",
@@ -1132,7 +1272,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Hybrid",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 6.4 л • Средний 6.0 л",
     "priceGel": 290,
     "depositGel": 0,
     "featured": false,
@@ -1147,7 +1287,11 @@
       "6-13": 200,
       "14-29": 170,
       "30+": 140
-    }
+    },
+    "engine": "2.0 Гибрид",
+    "engineEn": "2.0L Hybrid",
+    "consumptionHighway": "6.4 л",
+    "consumptionMixed": "6.0 л"
   },
   {
     "id": "volkswagen_touareg",
@@ -1164,7 +1308,7 @@
     "winterTires": true,
     "panoramicRoof": true,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 10.2 л • Средний 12.4 л",
     "priceGel": 290,
     "depositGel": 0,
     "featured": false,
@@ -1177,7 +1321,11 @@
       "6-13": 200,
       "14-29": 170,
       "30+": 150
-    }
+    },
+    "engine": "3.6 Бензин",
+    "engineEn": "3.6L Petrol",
+    "consumptionHighway": "10.2 л",
+    "consumptionMixed": "12.4 л"
   },
   {
     "id": "lexus_es300h",
@@ -1194,7 +1342,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Hybrid",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 5.3 л • Средний 5.1 л",
     "priceGel": 320,
     "depositGel": 0,
     "featured": false,
@@ -1209,7 +1357,11 @@
       "6-13": 210,
       "14-29": 190,
       "30+": 170
-    }
+    },
+    "engine": "2.5 Гибрид",
+    "engineEn": "2.5L Hybrid",
+    "consumptionHighway": "5.3 л",
+    "consumptionMixed": "5.1 л"
   },
   {
     "id": "hyundai_palisade",
@@ -1226,7 +1378,7 @@
     "winterTires": true,
     "panoramicRoof": true,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 9.8 л • Средний 11.8 л",
     "priceGel": 360,
     "depositGel": 0,
     "featured": true,
@@ -1243,7 +1395,11 @@
       "6-13": 240,
       "14-29": 220,
       "30+": 200
-    }
+    },
+    "engine": "3.8 Бензин",
+    "engineEn": "3.8L Petrol",
+    "consumptionHighway": "9.8 л",
+    "consumptionMixed": "11.8 л"
   },
   {
     "id": "audi_q7",
@@ -1260,7 +1416,7 @@
     "winterTires": true,
     "panoramicRoof": true,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 9.4 л • Средний 10.7 л",
     "priceGel": 390,
     "depositGel": 0,
     "featured": true,
@@ -1276,7 +1432,11 @@
       "6-13": 300,
       "14-29": 260,
       "30+": 200
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "9.4 л",
+    "consumptionMixed": "10.7 л"
   },
   {
     "id": "audi_tt",
@@ -1293,7 +1453,7 @@
     "winterTires": true,
     "panoramicRoof": false,
     "fuelType": "Petrol",
-    "fuelConsumption": "7.2 L/100km",
+    "fuelConsumption": "Трасса 7.8 л • Средний 8.7 л",
     "priceGel": 430,
     "depositGel": 600,
     "featured": false,
@@ -1309,7 +1469,11 @@
       "6-13": 260,
       "14-29": 240,
       "30+": 200
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "7.8 л",
+    "consumptionMixed": "8.7 л"
   },
   {
     "id": "bmw_x3",
@@ -1326,7 +1490,7 @@
     "winterTires": true,
     "panoramicRoof": true,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 8.1 л • Средний 8.9 л",
     "priceGel": 480,
     "depositGel": 0,
     "featured": false,
@@ -1341,7 +1505,11 @@
       "6-13": 350,
       "14-29": 280,
       "30+": 250
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "8.1 л",
+    "consumptionMixed": "8.9 л"
   },
   {
     "id": "land_rover_range_rover_velar",
@@ -1358,7 +1526,7 @@
     "winterTires": true,
     "panoramicRoof": true,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 8.7 л • Средний 9.8 л",
     "priceGel": 550,
     "depositGel": 0,
     "featured": false,
@@ -1374,7 +1542,11 @@
       "6-13": 400,
       "14-29": 360,
       "30+": 280
-    }
+    },
+    "engine": "2.0Т Бензин",
+    "engineEn": "2.0T Petrol",
+    "consumptionHighway": "8.7 л",
+    "consumptionMixed": "9.8 л"
   },
   {
     "id": "bmw_x5",
@@ -1391,7 +1563,7 @@
     "winterTires": true,
     "panoramicRoof": true,
     "fuelType": "Petrol",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 9.0 л • Средний 10.5 л",
     "priceGel": 590,
     "depositGel": 0,
     "featured": true,
@@ -1406,7 +1578,11 @@
       "6-13": 480,
       "14-29": 400,
       "30+": 350
-    }
+    },
+    "engine": "3.0Т Бензин",
+    "engineEn": "3.0T Petrol",
+    "consumptionHighway": "9.0 л",
+    "consumptionMixed": "10.5 л"
   },
   {
     "id": "land_rover_range_rover",
@@ -1423,7 +1599,7 @@
     "winterTires": true,
     "panoramicRoof": true,
     "fuelType": "Diesel",
-    "fuelConsumption": "8.5 L/100km",
+    "fuelConsumption": "Трасса 7.1 л • Средний 8.5 л",
     "priceGel": 645,
     "depositGel": 0,
     "featured": false,
@@ -1438,6 +1614,10 @@
       "6-13": 400,
       "14-29": 350,
       "30+": 200
-    }
+    },
+    "engine": "3.0Т Дизель",
+    "engineEn": "3.0L Turbo Diesel",
+    "consumptionHighway": "7.1 л",
+    "consumptionMixed": "8.5 л"
   }
 ]

@@ -20,6 +20,10 @@ export interface CarItem {
   winterTires: boolean
   panoramicRoof: boolean
   fuelType: string
+  engine?: string
+  engineEn?: string
+  consumptionHighway?: string
+  consumptionMixed?: string
   fuelConsumption: string
   priceGel: number
   prices?: Partial<Record<RentalDuration, number>>
@@ -118,7 +122,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 {car.name}
               </h3>
               <p className="text-xs text-[#86868B] font-normal mt-0.5">
-                {car.year} • {formatFuel(car.fuelType, lang)} • {formatTransmission(car.transmission, lang)}
+                {car.year} • {lang === 'ru' ? (car.engine || formatFuel(car.fuelType, lang)) : (car.engineEn || car.engine || formatFuel(car.fuelType, lang))} • {formatTransmission(car.transmission, lang)}
               </p>
             </div>
             {car.depositGel === 0 ? (
@@ -331,7 +335,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
 
             <h2 className="text-2xl font-bold text-[#1D1D1F] tracking-tight">{car.name}</h2>
             <p className="text-sm text-[#86868B] mt-0.5">
-              {t.yearLabel}: {car.year} • {t.categoryLabel}: {car.category.toUpperCase()} • {formatFuel(car.fuelType, lang)}
+              {t.yearLabel}: {car.year} • {lang === 'ru' ? (car.engine || formatFuel(car.fuelType, lang)) : (car.engineEn || car.engine || formatFuel(car.fuelType, lang))} • {t.categoryLabel}: {car.category.toUpperCase()}
             </p>
 
             {/* Gallery in Modal */}
@@ -427,12 +431,26 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 </span>
               </div>
               <div>
+                <span className="text-[#86868B] block">{t.specEngine || 'Двигатель:'}</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {lang === 'ru' ? (car.engine || formatFuel(car.fuelType, lang)) : (car.engineEn || car.engine || formatFuel(car.fuelType, lang))}
+                </span>
+              </div>
+              <div>
                 <span className="text-[#86868B] block">{t.specFuel}</span>
                 <span className="font-semibold text-[#1D1D1F]">{formatFuel(car.fuelType, lang)}</span>
               </div>
               <div>
-                <span className="text-[#86868B] block">{t.specConsumption}</span>
-                <span className="font-semibold text-[#1D1D1F]">{formatConsumption(car.fuelConsumption, lang)}</span>
+                <span className="text-[#86868B] block">{t.specConsumptionHighway || 'Расход (трасса):'}</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {car.consumptionHighway ? `${car.consumptionHighway} / 100 км` : formatConsumption(car.fuelConsumption, lang)}
+                </span>
+              </div>
+              <div>
+                <span className="text-[#86868B] block">{t.specConsumptionMixed || 'Расход (средний):'}</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {car.consumptionMixed ? `${car.consumptionMixed} / 100 км` : formatConsumption(car.fuelConsumption, lang)}
+                </span>
               </div>
               <div>
                 <span className="text-[#86868B] block">{t.specCarPlay}</span>
