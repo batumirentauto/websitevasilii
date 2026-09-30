@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CatalogSection } from '@/components/CatalogSection'
+import ReviewsSection from '@/components/ReviewsSection'
 import { useApp, CITIES_DATA, City, getCityName, getCityAddress, getCityDeliveryNote } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
@@ -333,6 +334,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Real Customer Reviews Section */}
+      <ReviewsSection />
     </div>
   )
 }
