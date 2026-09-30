@@ -28,6 +28,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
   const [selectedBrand, setSelectedBrand] = useState<string>('all')
   const [sortBy, setSortBy] = useState<SortOption>('price-asc')
   const [filter7Seats, setFilter7Seats] = useState(false)
+  const [filterHybrid, setFilterHybrid] = useState(false)
   const [filterCarplay, setFilterCarplay] = useState(false)
   const [filterAwd, setFilterAwd] = useState(false)
   const [filterNoDeposit, setFilterNoDeposit] = useState(false)
@@ -54,6 +55,14 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
 
     if (filter7Seats) {
       result = result.filter((c) => c.seats >= 7)
+    }
+
+    if (filterHybrid) {
+      result = result.filter(
+        (c) =>
+          c.fuelType.toLowerCase().includes('hybrid') ||
+          c.name.toLowerCase().includes('hybrid')
+      )
     }
 
     if (filterCarplay) {
@@ -92,7 +101,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
     }
 
     return result
-  }, [category, selectedBrand, sortBy, filter7Seats, filterCarplay, filterAwd, filterNoDeposit, duration, limit])
+  }, [category, selectedBrand, sortBy, filter7Seats, filterHybrid, filterCarplay, filterAwd, filterNoDeposit, duration, limit])
 
   return (
     <section id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-36">
@@ -241,6 +250,16 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
               🚐 {t.filter7Seats}
             </button>
             <button
+              onClick={() => setFilterHybrid(!filterHybrid)}
+              className={`px-3.5 py-1.5 rounded-full border transition-all ${
+                filterHybrid
+                  ? 'bg-[#1D1D1F] text-white border-[#1D1D1F] font-semibold'
+                  : 'bg-white text-[#6E6E73] border-black/[0.08] hover:border-black/[0.2]'
+              }`}
+            >
+              🔋 {t.filterHybrid}
+            </button>
+            <button
               onClick={() => setFilterCarplay(!filterCarplay)}
               className={`px-3.5 py-1.5 rounded-full border transition-all ${
                 filterCarplay
@@ -271,13 +290,14 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
               ✨ {t.filterWithoutDeposit}
             </button>
 
-            {(filter7Seats || filterCarplay || filterAwd || filterNoDeposit || category !== 'all' || selectedBrand !== 'all' || sortBy !== 'price-asc') && (
+            {(filter7Seats || filterHybrid || filterCarplay || filterAwd || filterNoDeposit || category !== 'all' || selectedBrand !== 'all' || sortBy !== 'price-asc') && (
               <button
                 onClick={() => {
                   setCategory('all')
                   setSelectedBrand('all')
                   setSortBy('price-asc')
                   setFilter7Seats(false)
+                  setFilterHybrid(false)
                   setFilterCarplay(false)
                   setFilterAwd(false)
                   setFilterNoDeposit(false)
@@ -363,6 +383,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
               setSelectedBrand('all')
               setSortBy('price-asc')
               setFilter7Seats(false)
+              setFilterHybrid(false)
               setFilterCarplay(false)
               setFilterAwd(false)
               setFilterNoDeposit(false)
