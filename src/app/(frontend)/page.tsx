@@ -106,9 +106,9 @@ export default function HomePage() {
                   </span>
                   <span className="text-[#6E6E73]">{getCityDeliveryNote(city, lang)}</span>
                 </div>
-                {currentCity.yandexMapUrl && (
+                {currentCity.googleMapUrl && (
                   <a
-                    href={currentCity.yandexMapUrl}
+                    href={currentCity.googleMapUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="shrink-0 px-3.5 py-1.5 bg-white border border-black/[0.1] rounded-full font-semibold text-[11px] text-[#1D1D1F] hover:bg-black hover:text-white transition-colors"
@@ -142,11 +142,11 @@ export default function HomePage() {
 
                   {/* Floating badges on image */}
                   <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 pointer-events-none">
-                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
-                      {t.unlimitedMileage}
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
+                      ✓ {t.heroBadgeNoPrepayment}
                     </span>
-                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
-                      {t.zeroDepositPill}
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
+                      ✓ {t.heroBadgeFreeCancellation}
                     </span>
                   </div>
                 </div>

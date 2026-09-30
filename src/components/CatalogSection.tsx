@@ -199,55 +199,37 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
             </button>
           </div>
 
-          {/* Car Brand Filter Pills */}
-          <div className="pt-1">
-            <div className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] mb-2 flex items-center justify-between">
-              <span>{t.brandFilterLabel}</span>
-              {selectedBrand !== 'all' && (
-                <button
-                  onClick={() => setSelectedBrand('all')}
-                  className="text-[#0071E3] hover:underline font-semibold text-xs"
-                >
-                  {t.allBrands} ({allCars.length})
-                </button>
-              )}
-            </div>
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none">
-              <button
-                onClick={() => setSelectedBrand('all')}
-                className={`h-8 px-3 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
-                  selectedBrand === 'all'
-                    ? 'bg-[#1D1D1F] text-white shadow-xs'
-                    : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
+          {/* Quick Feature Filter Pills & Brand Dropdown */}
+          <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+            {/* Brand Select Dropdown */}
+            <div className="relative inline-flex items-center">
+              <select
+                value={selectedBrand}
+                aria-label={t.brandFilterLabel}
+                onChange={(e) => setSelectedBrand(e.target.value)}
+                className={`h-9 pl-3.5 pr-8 rounded-full border text-xs font-semibold appearance-none cursor-pointer transition-all focus:outline-hidden ${
+                  selectedBrand !== 'all'
+                    ? 'bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-xs'
+                    : 'bg-[#F5F5F7] text-[#1D1D1F] border-black/[0.08] hover:border-black/[0.2] hover:bg-[#EBEBEF]'
                 }`}
               >
-                {t.allBrands} ({allCars.length})
-              </button>
-              {allBrands.map(([brand, count]) => (
-                <button
-                  key={brand}
-                  onClick={() => setSelectedBrand(selectedBrand === brand ? 'all' : brand)}
-                  className={`h-8 px-3 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
-                    selectedBrand === brand
-                      ? 'bg-[#1D1D1F] text-white shadow-xs'
-                      : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
-                  }`}
-                >
-                  <span>{brand}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                      selectedBrand === brand ? 'bg-white/20 text-white' : 'bg-black/[0.06] text-[#86868B]'
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              ))}
+                <option value="all" className="text-black bg-white">
+                  {t.allBrands} ({allCars.length})
+                </option>
+                {allBrands.map(([brand, count]) => (
+                  <option key={brand} value={brand} className="text-black bg-white">
+                    {brand} ({count})
+                  </option>
+                ))}
+              </select>
+              <span
+                className={`pointer-events-none absolute right-3 text-[10px] transition-colors ${
+                  selectedBrand !== 'all' ? 'text-white' : 'text-[#86868B]'
+                }`}
+              >
+                ▾
+              </span>
             </div>
-          </div>
-
-          {/* Quick Feature Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
             <button
               onClick={() => setFilter7Seats(!filter7Seats)}
               className={`px-3.5 py-1.5 rounded-full border transition-all ${
