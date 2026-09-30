@@ -36,30 +36,95 @@ async function sendChatAction(chatId: number, action = 'typing') {
   } catch {}
 }
 
-// In-memory conversation history for context continuity
+// Persistent conversation history backed by GitHub Issue #1 + in-memory fast cache
 interface ChatMessage {
   role: 'user' | 'model'
   text: string
   timestamp: number
 }
 
-const chatHistories = new Map<number, ChatMessage[]>()
+let cachedHistory: ChatMessage[] = []
+let cacheLoaded = false
+const MEMORY_ISSUE_NUMBER = 1
 
-function appendMessage(chatId: number, role: 'user' | 'model', text: string) {
-  const history = chatHistories.get(chatId) || []
-  history.push({ role, text, timestamp: Date.now() })
-  if (history.length > 14) {
-    history.shift()
+async function loadHistory(): Promise<ChatMessage[]> {
+  if (cacheLoaded && cachedHistory.length > 0) {
+    return cachedHistory
   }
-  chatHistories.set(chatId, history)
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/issues/${MEMORY_ISSUE_NUMBER}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github.v3+json',
+      },
+      cache: 'no-store',
+    })
+    if (res.ok) {
+      const data = await res.json()
+      if (data.body) {
+        const parsed = JSON.parse(data.body)
+        if (Array.isArray(parsed.messages)) {
+          cachedHistory = parsed.messages
+          cacheLoaded = true
+          return cachedHistory
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('[Memory] Failed to load history from GitHub issue:', err)
+  }
+
+  cacheLoaded = true
+  return cachedHistory
 }
 
-function getFormattedHistory(chatId: number): string {
-  const history = chatHistories.get(chatId) || []
-  if (history.length <= 1) return ''
-  return history
-    .slice(0, -1)
-    .slice(-6)
+async function persistHistory(messages: ChatMessage[]) {
+  cachedHistory = messages
+  try {
+    await fetch(`https://api.github.com/repos/${GITHUB_REPO}/issues/${MEMORY_ISSUE_NUMBER}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/vnd.github.v3+json',
+      },
+      body: JSON.stringify({
+        body: JSON.stringify(
+          {
+            updatedAt: new Date().toISOString(),
+            messages: messages.slice(-50), // keep up to 50 messages for rich continuous dialogue
+          },
+          null,
+          2
+        ),
+      }),
+    })
+  } catch (err) {
+    console.warn('[Memory] Failed to persist history to GitHub issue:', err)
+  }
+}
+
+async function addChatMessage(role: 'user' | 'model', text: string) {
+  const history = await loadHistory()
+  history.push({ role, text, timestamp: Date.now() })
+  if (history.length > 50) {
+    history.shift()
+  }
+  await persistHistory(history)
+}
+
+async function clearChatHistory() {
+  cachedHistory = []
+  await persistHistory([])
+}
+
+async function getFormattedHistory(excludeLast = true): Promise<string> {
+  const history = await loadHistory()
+  const list = excludeLast ? history.slice(0, -1) : history
+  if (list.length === 0) return ''
+  return list
+    .slice(-30) // pass last 30 messages for long, deep context continuity
     .map((m) => `${m.role === 'user' ? 'Василий' : 'Бот'}: ${m.text}`)
     .join('\n\n')
 }
@@ -266,11 +331,11 @@ async function executeAgentTask(promptText: string, chatId: number, image?: Imag
   const promptRecord = image
     ? (promptText ? `[Скриншот]: ${promptText}` : `[Скриншот без текста]`)
     : promptText
-  appendMessage(chatId, 'user', promptRecord)
+  await addChatMessage('user', promptRecord)
 
-  const previousHistory = getFormattedHistory(chatId)
+  const previousHistory = await getFormattedHistory(true)
   const historySection = previousHistory
-    ? `\n\nКОНТЕКСТ ПРЕДЫДУЩЕГО ДИАЛОГА С ВАСИЛИЕМ (ОБЯЗАТЕЛЬНО УЧИТЫВАЙ ЕГО!):\n${previousHistory}\n\nКРИТИЧЕСКОЕ ПРАВИЛО: Если в диалоге выше ты предлагал решение или спрашивал «Сделать эту правку?» и т.п., а текущий запрос Василия — это согласие («Сделай эту правку», «Да», «Вноси», «Применяй», «Ок»), то ТЫ ОБЯЗАН выбрать Вариант 2 (edit) и немедленно применить именно то, что обсуждалось в диалоге! Ни в коем случае НЕ переспрашивай Василия!\n`
+    ? `\n\nПОЛНАЯ ИСТОРИЯ ДИАЛОГА С ВАСИЛИЕМ (УЧИТЫВАЙ ВСЕ ПРЕДЫДУЩИЕ РЕПЛИКИ!):\n${previousHistory}\n\nКРИТИЧЕСКОЕ ПРАВИЛО: Ты ведёшь ЕДИНЫЙ непрерывный диалог. Если Василий отвечает «Сделай эту правку», «Да», «Вноси», «Применяй», «Ок» или ссылается на прошлое обсуждение — не переспрашивай, а сразу примени согласованное решение через Вариант 2 (edit)!\n`
     : ''
 
   const systemInstruction = `Ты — ведущий AI-разработчик сайта Vasilii Rent (vslrentcar.com), построенного на Next.js 15 (App Router, Tailwind CSS, TypeScript).
@@ -339,7 +404,7 @@ async function executeAgentTask(promptText: string, chatId: number, image?: Imag
 
   // If AI determines this is a consultation, proposal or question
   if (plan.action === 'reply' || (!plan.targetFile && plan.reply)) {
-    appendMessage(chatId, 'model', plan.reply)
+    await addChatMessage('model', plan.reply)
     await sendTelegramMessage(chatId, `💡 <b>Ответ разработчика:</b>\n\n${plan.reply}`)
     return
   }
@@ -438,7 +503,7 @@ ${currentFile.content}
     `Через 1-2 минуты изменения появятся на <a href="https://vslrentcar.com">vslrentcar.com</a>!`
   )
 
-  appendMessage(chatId, 'model', `Применил изменения в ${targetFile}: ${plan.explanation}`)
+  await addChatMessage('model', `Применил изменения в ${targetFile}: ${plan.explanation}`)
 }
 
 // Webhook Handler (POST)
@@ -479,7 +544,17 @@ export async function POST(req: NextRequest) {
         `• <i>«Добавь блок вопросов и ответов (FAQ) перед футером»</i>\n\n` +
         `📊 <b>Служебные команды:</b>\n` +
         `• /status — статус репозитория и боевого сайта\n` +
-        `• /cars — список всех моделей и текущих цен`
+        `• /cars — список всех моделей и текущих цен\n` +
+        `• /clear — начать новый диалог (очистить историю)`
+      )
+      return NextResponse.json({ ok: true })
+    }
+
+    if (message.text?.startsWith('/clear') || message.text?.startsWith('/reset')) {
+      await clearChatHistory()
+      await sendTelegramMessage(
+        chatId,
+        '🧹 <b>Память диалога очищена!</b>\nНачинаем новый разговор с чистого листа.'
       )
       return NextResponse.json({ ok: true })
     }
@@ -504,6 +579,15 @@ export async function POST(req: NextRequest) {
         await sendTelegramMessage(chatId, `📋 <b>Первые 20 моделей из каталога:</b>\n\n${summary}\n\n<i>Всего в каталоге: ${cars.length} моделей (более 80 авто в парке)</i>`)
       }
       return NextResponse.json({ ok: true })
+    }
+
+    // Support swipe-to-reply in Telegram
+    let replyPrefix = ''
+    if (message.reply_to_message) {
+      const parentText = (message.reply_to_message.text || message.reply_to_message.caption || '').trim()
+      if (parentText) {
+        replyPrefix = `[В ответ на реплику: "${parentText.slice(0, 250)}"]\n`
+      }
     }
 
     // Extract prompt from Voice, Photo, Document or Text
@@ -559,8 +643,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true })
     }
 
+    const fullPrompt = replyPrefix ? `${replyPrefix}${prompt}` : prompt
+
     // Execute the agent task asynchronously
-    executeAgentTask(prompt, chatId, imagePayload).catch(async (err) => {
+    executeAgentTask(fullPrompt, chatId, imagePayload).catch(async (err) => {
       console.error('Agent task error:', err)
       await sendTelegramMessage(chatId, `❌ <b>Ошибка при выполнении:</b>\n<code>${err.message}</code>\n\nПопробуйте переформулировать задачу.`)
     })
