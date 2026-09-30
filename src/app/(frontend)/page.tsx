@@ -135,13 +135,10 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
 
-                  {/* Top floating badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 pointer-events-none">
-                    <span className="bg-black/50 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20">
-                      🏔️ Казбеги • Батуми • Тбилиси
-                    </span>
-                    <span className="bg-white/90 backdrop-blur-md text-[#1D1D1F] text-[11px] font-bold px-3 py-1.5 rounded-full shadow-sm">
-                      80+ авто на АКПП
+                  {/* Top floating badge */}
+                  <div className="absolute top-4 left-4 pointer-events-none">
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] sm:text-xs font-semibold px-3.5 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
+                      {t.heroPhotoBadge || '🛡️ Страховка КАСКО и ОСАГО включена'}
                     </span>
                   </div>
 
