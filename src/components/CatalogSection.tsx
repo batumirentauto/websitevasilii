@@ -15,7 +15,7 @@ function getCarBrand(carName: string): string {
   return carName.split(' ')[0]
 }
 
-type SortOption = 'default' | 'price-asc' | 'price-desc' | 'brand-asc'
+type SortOption = 'price-asc' | 'price-desc' | 'brand-asc'
 
 export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }> = ({
   limit,
@@ -26,7 +26,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
 
   const [category, setCategory] = useState<'all' | 'suv' | 'sedan' | 'cabrio' | 'minivan'>('all')
   const [selectedBrand, setSelectedBrand] = useState<string>('all')
-  const [sortBy, setSortBy] = useState<SortOption>('default')
+  const [sortBy, setSortBy] = useState<SortOption>('price-asc')
   const [filter7Seats, setFilter7Seats] = useState(false)
   const [filterCarplay, setFilterCarplay] = useState(false)
   const [filterAwd, setFilterAwd] = useState(false)
@@ -68,14 +68,8 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
       result = result.filter((c) => c.depositGel === 0)
     }
 
-    // Sorting
-    if (sortBy === 'price-asc') {
-      result = [...result].sort((a, b) => {
-        const pA = calculateDailyPrice(a.priceGel, duration, a.prices)
-        const pB = calculateDailyPrice(b.priceGel, duration, b.prices)
-        return pA - pB
-      })
-    } else if (sortBy === 'price-desc') {
+    // Sorting (defaults to price ascending: cheapest first)
+    if (sortBy === 'price-desc') {
       result = [...result].sort((a, b) => {
         const pA = calculateDailyPrice(a.priceGel, duration, a.prices)
         const pB = calculateDailyPrice(b.priceGel, duration, b.prices)
@@ -83,6 +77,14 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
       })
     } else if (sortBy === 'brand-asc') {
       result = [...result].sort((a, b) => a.name.localeCompare(b.name))
+    } else {
+      // price-asc (default)
+      result = [...result].sort((a, b) => {
+        const pA = calculateDailyPrice(a.priceGel, duration, a.prices)
+        const pB = calculateDailyPrice(b.priceGel, duration, b.prices)
+        if (pA !== pB) return pA - pB
+        return a.name.localeCompare(b.name)
+      })
     }
 
     if (limit) {
@@ -287,12 +289,12 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
               ✨ {t.filterWithoutDeposit}
             </button>
 
-            {(filter7Seats || filterCarplay || filterAwd || filterNoDeposit || category !== 'all' || selectedBrand !== 'all' || sortBy !== 'default') && (
+            {(filter7Seats || filterCarplay || filterAwd || filterNoDeposit || category !== 'all' || selectedBrand !== 'all' || sortBy !== 'price-asc') && (
               <button
                 onClick={() => {
                   setCategory('all')
                   setSelectedBrand('all')
-                  setSortBy('default')
+                  setSortBy('price-asc')
                   setFilter7Seats(false)
                   setFilterCarplay(false)
                   setFilterAwd(false)
@@ -325,16 +327,6 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
             <span className="text-[11px] font-bold text-[#86868B] uppercase tracking-wider mr-1">
               {t.sortByLabel}
             </span>
-            <button
-              onClick={() => setSortBy('default')}
-              className={`h-8 px-3 rounded-full font-medium transition-all ${
-                sortBy === 'default'
-                  ? 'bg-[#1D1D1F] text-white font-semibold shadow-xs'
-                  : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
-              }`}
-            >
-              {t.sortDefault}
-            </button>
             <button
               onClick={() => setSortBy('price-asc')}
               className={`h-8 px-3 rounded-full font-medium transition-all flex items-center gap-1 ${
@@ -387,7 +379,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
             onClick={() => {
               setCategory('all')
               setSelectedBrand('all')
-              setSortBy('default')
+              setSortBy('price-asc')
               setFilter7Seats(false)
               setFilterCarplay(false)
               setFilterAwd(false)
