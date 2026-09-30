@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useApp, CITIES_DATA, City, Currency, Lang, PHONE_NUMBER } from '@/context/AppContext'
+import { useApp, CITIES_DATA, City, Currency, Lang, PHONE_NUMBER, getCityName } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 const LANG_OPTIONS: { code: Lang; label: string; flag: string }[] = [
@@ -66,7 +66,7 @@ export const Header: React.FC = () => {
                   : 'text-[#6E6E73] hover:text-[#1D1D1F]'
               }`}
             >
-              {CITIES_DATA[cKey].nameRu}
+              {getCityName(cKey, lang)}
             </button>
           ))}
         </div>
@@ -136,14 +136,34 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Direct WhatsApp Call button */}
-          <a
-            href={`https://wa.me/995591050752?text=${encodeURIComponent('Здравствуйте! Хочу уточнить по поводу аренды авто в Грузии.')}`}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden sm:flex h-9 px-4 rounded-full bg-[#1D1D1F] text-white text-xs font-semibold items-center gap-1.5 hover:bg-black transition-all active:scale-95 shadow-sm"
-          >
-            <span>WhatsApp</span>
-          </a>
+          {(() => {
+            let rawHeaderMsg = 'Здравствуйте! Хочу уточнить по поводу аренды авто в Грузии.'
+            if (lang === 'en') {
+              rawHeaderMsg = 'Hello! I would like to inquire about car rental in Georgia.'
+            } else if (lang === 'de') {
+              rawHeaderMsg = 'Hallo! Ich interessiere mich für eine Autovermietung in Georgien.'
+            } else if (lang === 'fr') {
+              rawHeaderMsg = 'Bonjour ! Je souhaite me renseigner sur la location de voiture en Géorgie.'
+            } else if (lang === 'it') {
+              rawHeaderMsg = 'Ciao! Vorrei informazioni sul noleggio auto in Georgia.'
+            } else if (lang === 'pl') {
+              rawHeaderMsg = 'Dzień dobry! Chciałbym zapytać o wynajem samochodu w Gruzji.'
+            } else if (lang === 'ar') {
+              rawHeaderMsg = 'مرحباً! أود الاستفسار عن تأجير سيارة في جورجيا.'
+            } else if (lang === 'fa') {
+              rawHeaderMsg = 'سلام! مایل به کسب اطلاعات درباره اجاره خودرو در گرجستان هستم.'
+            }
+            return (
+              <a
+                href={`https://wa.me/995591050752?text=${encodeURIComponent(rawHeaderMsg)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="hidden sm:flex h-9 px-4 rounded-full bg-[#1D1D1F] text-white text-xs font-semibold items-center gap-1.5 hover:bg-black transition-all active:scale-95 shadow-sm"
+              >
+                <span>WhatsApp</span>
+              </a>
+            )
+          })()}
 
           {/* Mobile hamburger */}
           <button
@@ -172,7 +192,7 @@ export const Header: React.FC = () => {
                       : 'text-[#6E6E73]'
                   }`}
                 >
-                  {CITIES_DATA[cKey].nameRu}
+                  {getCityName(cKey, lang)}
                 </button>
               ))}
             </div>

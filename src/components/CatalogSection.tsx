@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react'
 import carsData from '@/data/cars.json'
 import { CarCard, CarItem } from '@/components/CarCard'
-import { useApp, DURATION_TIERS, calculateDailyPrice } from '@/context/AppContext'
+import { useApp, DURATION_TIERS, calculateDailyPrice, getTierLabel } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 const allCars = carsData as CarItem[]
@@ -61,7 +61,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
     }
 
     if (filterAwd) {
-      result = result.filter((c) => c.drive.includes('AWD'))
+      result = result.filter((c) => c.drive.toUpperCase().includes('AWD') || c.drive.toUpperCase().includes('4X4') || c.drive.toUpperCase().includes('4WD'))
     }
 
     if (filterNoDeposit) {
@@ -103,10 +103,10 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
             </div>
             <div>
               <span className="text-xs font-bold text-[#1D1D1F] block">
-                Срок аренды (скидка до 40%):
+                {t.durationDiscountBanner}
               </span>
               <span className="text-[11px] text-[#86868B]">
-                Цены в каталоге автоматически пересчитываются под выбранный период
+                {t.durationAutoRecalc}
               </span>
             </div>
           </div>
@@ -122,7 +122,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
                     : 'bg-white text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
                 }`}
               >
-                <span>{tier.label}</span>
+                <span>{getTierLabel(tier, lang)}</span>
                 {tier.discountPercent > 0 && (
                   <span
                     className={`text-[10px] px-1.5 py-0.5 rounded-full font-extrabold ${
@@ -200,13 +200,13 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
           {/* Car Brand Filter Pills */}
           <div className="pt-1">
             <div className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] mb-2 flex items-center justify-between">
-              <span>Марка автомобиля:</span>
+              <span>{t.brandFilterLabel}</span>
               {selectedBrand !== 'all' && (
                 <button
                   onClick={() => setSelectedBrand('all')}
                   className="text-[#0071E3] hover:underline font-semibold text-xs"
                 >
-                  Все марки ({allCars.length})
+                  {t.allBrands} ({allCars.length})
                 </button>
               )}
             </div>
@@ -219,7 +219,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
                     : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
                 }`}
               >
-                Все ({allCars.length})
+                {t.allBrands} ({allCars.length})
               </button>
               {allBrands.map(([brand, count]) => (
                 <button
@@ -300,7 +300,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
                 }}
                 className="text-[#86868B] hover:text-[#1D1D1F] underline ml-2 font-medium"
               >
-                Сбросить всё
+                {t.resetAll}
               </button>
             )}
           </div>
@@ -312,18 +312,18 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pt-3 border-t border-black/[0.06]">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-[#1D1D1F]">
-              Найдено: {filteredCars.length} из {allCars.length} авто
+              {t.foundCarsCount} {filteredCars.length} {t.ofCars} {allCars.length} {t.carsUnit}
             </span>
             {selectedBrand !== 'all' && (
               <span className="text-[11px] font-semibold bg-black/5 text-[#1D1D1F] px-2 py-0.5 rounded-full">
-                Марка: {selectedBrand}
+                {t.brandLabel} {selectedBrand}
               </span>
             )}
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5 text-xs">
             <span className="text-[11px] font-bold text-[#86868B] uppercase tracking-wider mr-1">
-              Сортировка:
+              {t.sortByLabel}
             </span>
             <button
               onClick={() => setSortBy('default')}
@@ -333,7 +333,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
                   : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
               }`}
             >
-              По умолчанию
+              {t.sortDefault}
             </button>
             <button
               onClick={() => setSortBy('price-asc')}
@@ -343,7 +343,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
                   : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
               }`}
             >
-              <span>Сначала дешевле</span>
+              <span>{t.sortPriceAsc}</span>
               <span>↑</span>
             </button>
             <button
@@ -354,7 +354,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
                   : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
               }`}
             >
-              <span>Сначала дороже</span>
+              <span>{t.sortPriceDesc}</span>
               <span>↓</span>
             </button>
             <button
@@ -365,8 +365,8 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
                   : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
               }`}
             >
-              <span>По марке</span>
-              <span>А-Я</span>
+              <span>{t.sortBrand}</span>
+              <span>{lang === 'ru' ? 'А-Я' : 'A-Z'}</span>
             </button>
           </div>
         </div>
@@ -381,8 +381,8 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
         </div>
       ) : (
         <div className="text-center py-16 bg-[#F5F5F7] rounded-3xl p-8">
-          <p className="text-[#1D1D1F] font-semibold text-base mb-1">По вашим фильтрам ничего не найдено</p>
-          <p className="text-xs text-[#86868B] mb-4">Попробуйте сбросить параметры поиска</p>
+          <p className="text-[#1D1D1F] font-semibold text-base mb-1">{t.noCarsFound}</p>
+          <p className="text-xs text-[#86868B] mb-4">{t.tryResetFilters}</p>
           <button
             onClick={() => {
               setCategory('all')
@@ -395,7 +395,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
             }}
             className="px-5 py-2 rounded-full bg-[#1D1D1F] text-white text-xs font-semibold"
           >
-            Сбросить фильтры
+            {t.btnResetFilters}
           </button>
         </div>
       )}

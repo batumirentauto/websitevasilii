@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useApp, CITIES_DATA, PHONE_NUMBER } from '@/context/AppContext'
+import { useApp, CITIES_DATA, PHONE_NUMBER, getCityName, getCityAddress, getCityLandmarks } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 export const Footer: React.FC = () => {
@@ -30,14 +30,14 @@ export const Footer: React.FC = () => {
               {t.heroSubtitle}
             </p>
             <p className="text-xs text-[#86868B]">
-              Батуми • Тбилиси • Кутаиси
+              {t.footerCities}
             </p>
           </div>
 
           {/* Col 2: Navigation */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#86868B] mb-4">
-              Навигация
+              {t.footerNav}
             </h4>
             <ul className="space-y-2.5 text-sm font-medium text-[#6E6E73]">
               <li>
@@ -61,13 +61,13 @@ export const Footer: React.FC = () => {
           {/* Col 3: Current Selected City Base */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#86868B] mb-4">
-              База: {currentCityData.nameRu}
+              {t.baseLabel}: {getCityName(city, lang)}
             </h4>
             <p className="text-xs text-[#1D1D1F] font-semibold mb-1">
-              {currentCityData.baseAddressRu}
+              {getCityAddress(city, lang)}
             </p>
             <p className="text-xs text-[#6E6E73] leading-relaxed mb-3">
-              {currentCityData.landmarksRu}
+              {getCityLandmarks(city, lang)}
             </p>
             <div className="flex flex-wrap gap-2 text-xs">
               {currentCityData.yandexMapUrl && (
@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="px-2.5 py-1 bg-white border border-black/[0.08] rounded-md font-medium text-[#1D1D1F] hover:bg-black hover:text-white transition-colors"
                 >
-                  Яндекс Карты
+                  {t.viewOnYandex || 'Yandex Maps'}
                 </a>
               )}
               {currentCityData.googleMapUrl && (
@@ -87,7 +87,7 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="px-2.5 py-1 bg-white border border-black/[0.08] rounded-md font-medium text-[#1D1D1F] hover:bg-black hover:text-white transition-colors"
                 >
-                  Google Maps
+                  {t.viewOnGoogle || 'Google Maps'}
                 </a>
               )}
             </div>
@@ -96,7 +96,7 @@ export const Footer: React.FC = () => {
           {/* Col 4: Direct Contacts */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#86868B] mb-4">
-              Связь с нами
+              {t.footerContact}
             </h4>
             <div className="space-y-2 text-xs">
               <a
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
               >
                 {PHONE_NUMBER}
               </a>
-              <p className="text-xs text-[#86868B]">Звонки и WhatsApp круглосуточно</p>
+              <p className="text-xs text-[#86868B]">{t.footer247}</p>
               <div className="flex gap-2 pt-2">
                 <a
                   href="https://wa.me/995591050752"
@@ -129,13 +129,13 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-black/[0.06] flex flex-col sm:flex-row items-center justify-between text-xs text-[#86868B] gap-4">
-          <p>© {new Date().getFullYear()} VASILII RENT. Прокат автомобилей в Грузии. Все права защищены.</p>
+          <p>© {new Date().getFullYear()} VASILII RENT. {t.footerCopyright}</p>
           <div className="flex gap-4">
             <Link href="/terms" className="hover:text-[#1D1D1F]">
-              Условия аренды
+              {t.footerTerms}
             </Link>
             <Link href="/contacts" className="hover:text-[#1D1D1F]">
-              Контакты
+              {t.footerContacts}
             </Link>
           </div>
         </div>

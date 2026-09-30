@@ -1,20 +1,24 @@
 'use client'
 
 import React from 'react'
-import { CITIES_DATA, City, PHONE_NUMBER } from '@/context/AppContext'
+import { useApp, CITIES_DATA, PHONE_NUMBER, getCityName, getCityAddress, getCityLandmarks } from '@/context/AppContext'
+import { TRANSLATIONS } from '@/context/translations'
 
 export default function ContactsPage() {
+  const { lang } = useApp()
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <div className="text-center max-w-2xl mx-auto mb-14">
         <span className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] block mb-2">
-          ЛОКАЦИИ И СВЯЗЬ
+          {t.contactsTag}
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-[#1D1D1F] tracking-tight mb-4">
-          Наши базы и контакты
+          {t.contactsTitle}
         </h1>
         <p className="text-sm text-[#6E6E73] leading-relaxed">
-          Работаем ежедневно. Выдача авто на базах за 5 минут, встреча в аэропортах и круглосуточная поддержка.
+          {t.contactsSubtitle}
         </p>
       </div>
 
@@ -25,37 +29,43 @@ export default function ContactsPage() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider">
-                Основная база
+                {t.batumiBaseTitle}
               </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#34C759]" title="Открыто" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#34C759]" title={t.openStatus} />
             </div>
-            <h2 className="text-2xl font-bold text-[#1D1D1F] mb-1">Батуми</h2>
+            <h2 className="text-2xl font-bold text-[#1D1D1F] mb-1">
+              {getCityName('batumi', lang)}
+            </h2>
             <p className="text-sm font-semibold text-[#1D1D1F] mb-2">
-              ул. Варшанидзе 154
+              {getCityAddress('batumi', lang)}
             </p>
             <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
-              Ориентир: <strong>Adjara Detailing</strong>, вход на охраняемую территорию напротив здания <strong>Apolo</strong>.
+              {getCityLandmarks('batumi', lang)}
             </p>
           </div>
 
           <div className="space-y-3 pt-4 border-t border-black/[0.06]">
             <div className="flex flex-wrap gap-2 text-xs">
-              <a
-                href={CITIES_DATA.batumi.yandexMapUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
-              >
-                Яндекс Карты
-              </a>
-              <a
-                href={CITIES_DATA.batumi.googleMapUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
-              >
-                Google Maps
-              </a>
+              {CITIES_DATA.batumi.yandexMapUrl && (
+                <a
+                  href={CITIES_DATA.batumi.yandexMapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
+                >
+                  {t.viewOnYandex}
+                </a>
+              )}
+              {CITIES_DATA.batumi.googleMapUrl && (
+                <a
+                  href={CITIES_DATA.batumi.googleMapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
+                >
+                  {t.viewOnGoogle}
+                </a>
+              )}
             </div>
             <a
               href={`https://t.me/${CITIES_DATA.batumi.telegram}`}
@@ -73,37 +83,43 @@ export default function ContactsPage() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider">
-                База в столице
+                {t.tbilisiBaseTitle}
               </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#34C759]" title="Открыто" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#34C759]" title={t.openStatus} />
             </div>
-            <h2 className="text-2xl font-bold text-[#1D1D1F] mb-1">Тбилиси</h2>
+            <h2 className="text-2xl font-bold text-[#1D1D1F] mb-1">
+              {getCityName('tbilisi', lang)}
+            </h2>
             <p className="text-sm font-semibold text-[#1D1D1F] mb-2">
-              3-й мкрн Нуцубидзе, 4-й квартал
+              {getCityAddress('tbilisi', lang)}
             </p>
             <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
-              Координаты для навигатора: <strong>41.730792, 44.735812</strong>. Удобный заезд и бесплатная выдача.
+              {getCityLandmarks('tbilisi', lang)}
             </p>
           </div>
 
           <div className="space-y-3 pt-4 border-t border-black/[0.06]">
             <div className="flex flex-wrap gap-2 text-xs">
-              <a
-                href={CITIES_DATA.tbilisi.yandexMapUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
-              >
-                Яндекс Карты
-              </a>
-              <a
-                href={CITIES_DATA.tbilisi.googleMapUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
-              >
-                Google Maps
-              </a>
+              {CITIES_DATA.tbilisi.yandexMapUrl && (
+                <a
+                  href={CITIES_DATA.tbilisi.yandexMapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
+                >
+                  {t.viewOnYandex}
+                </a>
+              )}
+              {CITIES_DATA.tbilisi.googleMapUrl && (
+                <a
+                  href={CITIES_DATA.tbilisi.googleMapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
+                >
+                  {t.viewOnGoogle}
+                </a>
+              )}
             </div>
             <a
               href={`https://t.me/${CITIES_DATA.tbilisi.telegram}`}
@@ -121,29 +137,33 @@ export default function ContactsPage() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider">
-                Аэропорт KUT
+                {t.kutaisiBaseTitle}
               </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#34C759]" title="Открыто" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#34C759]" title={t.openStatus} />
             </div>
-            <h2 className="text-2xl font-bold text-[#1D1D1F] mb-1">Кутаиси</h2>
+            <h2 className="text-2xl font-bold text-[#1D1D1F] mb-1">
+              {getCityName('kutaisi', lang)}
+            </h2>
             <p className="text-sm font-semibold text-[#1D1D1F] mb-2">
-              Международный Аэропорт (KUT)
+              {getCityAddress('kutaisi', lang)}
             </p>
             <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
-              Базовая выдача прямо в зале прилёта. Встречаем к рейсам Wizz Air и других авиалиний 24/7.
+              {getCityLandmarks('kutaisi', lang)}
             </p>
           </div>
 
           <div className="space-y-3 pt-4 border-t border-black/[0.06]">
             <div className="flex flex-wrap gap-2 text-xs">
-              <a
-                href={CITIES_DATA.kutaisi.googleMapUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
-              >
-                Открыть на карте
-              </a>
+              {CITIES_DATA.kutaisi.googleMapUrl && (
+                <a
+                  href={CITIES_DATA.kutaisi.googleMapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
+                >
+                  {t.openMapBtn}
+                </a>
+              )}
             </div>
             <a
               href={`https://t.me/${CITIES_DATA.kutaisi.telegram}`}
@@ -161,7 +181,7 @@ export default function ContactsPage() {
       <div className="bg-[#1D1D1F] text-white p-8 sm:p-10 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <span className="text-xs text-[#86868B] uppercase tracking-wider block mb-1">
-            ЕДИНЫЙ ТЕЛЕФОН И WHATSAPP
+            {t.globalPhoneTag}
           </span>
           <a
             href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
@@ -170,7 +190,7 @@ export default function ContactsPage() {
             {PHONE_NUMBER}
           </a>
           <p className="text-xs text-[#86868B] mt-2">
-            Круглосуточный приём звонков и сообщений в мессенджерах по всей Грузии
+            {t.globalPhoneDesc}
           </p>
         </div>
 
@@ -181,7 +201,7 @@ export default function ContactsPage() {
             rel="noreferrer"
             className="h-12 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
           >
-            Написать в WhatsApp
+            {t.termsCtaWhatsApp}
           </a>
         </div>
       </div>

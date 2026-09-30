@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { useApp, DURATION_TIERS, calculateDailyPrice, RentalDuration } from '@/context/AppContext'
+import { useApp, DURATION_TIERS, calculateDailyPrice, RentalDuration, getTierLabel, Lang } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 export interface CarItem {
@@ -29,40 +29,41 @@ export interface CarItem {
 }
 
 export function formatFuel(fuelType: string, lang: string): string {
-  if (lang === 'en') return fuelType
-  const map: Record<string, string> = {
-    Petrol: 'Бензин',
-    Diesel: 'Дизель',
-    Hybrid: 'Гибрид',
-    Electric: 'Электро',
-  }
-  return map[fuelType] || fuelType
+  const t = TRANSLATIONS[lang as Lang] || TRANSLATIONS.ru
+  const key = (fuelType || '').toLowerCase()
+  if (key.includes('petrol') || key.includes('gas') || key.includes('benzin')) return t.fuelPetrol || fuelType
+  if (key.includes('diesel')) return t.fuelDiesel || fuelType
+  if (key.includes('hybrid')) return t.fuelHybrid || fuelType
+  if (key.includes('electric')) return t.fuelElectric || fuelType
+  return fuelType
 }
 
 export function formatTransmission(trans: string, lang: string): string {
-  if (lang === 'en') return trans
-  const map: Record<string, string> = {
-    Automatic: 'Автомат',
-    Manual: 'Механика',
-  }
-  return map[trans] || trans
+  const t = TRANSLATIONS[lang as Lang] || TRANSLATIONS.ru
+  const key = (trans || '').toLowerCase()
+  if (key.includes('auto')) return t.transmissionAuto || 'Automatic'
+  if (key.includes('man')) return t.transmissionManual || 'Manual'
+  return trans
 }
 
 export function formatDrive(drive: string, lang: string): string {
-  if (lang === 'en') return drive
-  if (drive.includes('AWD') || drive.includes('4x4')) return 'Полный привод'
-  if (drive === 'FWD') return 'Передний привод'
-  if (drive === 'RWD') return 'Задний привод'
+  const t = TRANSLATIONS[lang as Lang] || TRANSLATIONS.ru
+  const key = (drive || '').toUpperCase()
+  if (key.includes('AWD') || key.includes('4X4') || key.includes('4WD')) return t.driveAwd || drive
+  if (key.includes('FWD')) return t.driveFwd || drive
+  if (key.includes('RWD')) return t.driveRwd || drive
   return drive
 }
 
 export function formatConsumption(consumption: string, lang: string): string {
-  if (lang === 'en') return consumption
-  return consumption.replace(/L\/100km/i, 'л / 100 км').replace(/l\/100km/i, 'л / 100 км')
+  if (lang === 'ru') {
+    return consumption.replace(/L\/100km/i, 'л / 100 км').replace(/l\/100km/i, 'л / 100 км')
+  }
+  return consumption
 }
 
 export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
-  const { formatPrice, getBookingLink, lang, city, duration: globalDuration } = useApp()
+  const { formatPrice, getBookingLink, lang, duration: globalDuration } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
 
   const [activeImageIdx, setActiveImageIdx] = useState(0)
@@ -167,7 +168,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               {formatDrive(car.drive, lang)}
             </span>
             <span className="text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
-              {lang === 'en' ? `${car.seats} seats` : `${car.seats} мест`}
+              {car.seats} {t.seatsCount}
             </span>
             {car.carplay && (
               <span className="text-[11px] font-medium text-[#0071E3] bg-[#0071E3]/10 px-2.5 py-1 rounded-md">
@@ -176,7 +177,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             )}
             {car.panoramicRoof && (
               <span className="text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
-                Панорама
+                {t.panorama}
               </span>
             )}
           </div>
@@ -186,7 +187,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
         <div className="pt-2.5 pb-2 border-t border-black/[0.05]" onClick={(e) => e.stopPropagation()}>
           <div className="mb-1.5 px-0.5">
             <span className="text-[11px] font-bold text-[#86868B] uppercase tracking-wider">
-              Срок аренды:
+              {t.rentalPeriodLabel}
             </span>
           </div>
           <div className="grid grid-cols-5 gap-1">
@@ -222,7 +223,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                     )}
                   </span>
                   <span className={`text-[10px] font-semibold leading-tight ${isSelected ? 'text-white' : 'text-[#1D1D1F]'}`}>
-                    {tier.label.replace(' дня', ' дн').replace(' дней', ' дн')}
+                    {getTierLabel(tier, lang, true)}
                   </span>
                   <span
                     className={`text-[9px] font-extrabold mt-0.5 ${
@@ -233,7 +234,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                         : 'text-[#86868B]'
                     }`}
                   >
-                    {tierDiscount > 0 ? `-${tierDiscount}%` : 'базовая'}
+                    {tierDiscount > 0 ? `-${tierDiscount}%` : t.baseRateLabel}
                   </span>
                 </button>
               )
@@ -263,7 +264,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               target="_blank"
               rel="noreferrer"
               className="h-9 px-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
-              title="Забронировать в WhatsApp"
+              title="WhatsApp"
             >
               <span>{t.btnBookWhatsApp}</span>
             </a>
@@ -272,7 +273,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               target="_blank"
               rel="noreferrer"
               className="h-9 px-3.5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
-              title="Забронировать в Telegram"
+              title="Telegram"
             >
               <span>{t.btnBookTelegram}</span>
             </a>
@@ -300,7 +301,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
 
             <h2 className="text-2xl font-bold text-[#1D1D1F] tracking-tight">{car.name}</h2>
             <p className="text-sm text-[#86868B] mt-0.5">
-              Год: {car.year} • Категория: {car.category.toUpperCase()} • {car.fuelType}
+              {t.yearLabel}: {car.year} • {t.categoryLabel}: {car.category.toUpperCase()} • {formatFuel(car.fuelType, lang)}
             </p>
 
             {/* Gallery in Modal */}
@@ -334,10 +335,10 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             <div className="bg-[#F5F5F7] p-4 rounded-2xl mb-5">
               <div className="flex items-center justify-between mb-2.5">
                 <span className="text-xs font-bold text-[#1D1D1F] flex items-center gap-1.5">
-                  <span>📅</span> Тарифная сетка по срокам аренды:
+                  <span>📅</span> {t.pricingTableTitle}
                 </span>
                 <span className="text-[10px] text-[#86868B]">
-                  Нажмите для выбора срока
+                  {t.pricingTableSubtitle}
                 </span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
@@ -361,13 +362,13 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                       }`}
                     >
                       <span className={`text-[10px] block font-medium ${isSelected ? 'text-white/70' : 'text-[#86868B]'}`}>
-                        {tier.daysLabel}
+                        {getTierLabel(tier, lang)}
                       </span>
                       <span className="text-xs sm:text-sm font-bold block mt-0.5">
                         {formatPrice(p)}
                       </span>
-                      <span className={`text-[9px] font-bold block mt-0.5 ${tierDiscount > 0 ? (isSelected ? 'text-[#34C759]' : 'text-[#34C759]') : (isSelected ? 'text-white/50' : 'text-[#86868B]')}`}>
-                        {tierDiscount > 0 ? `-${tierDiscount}%` : 'базовая'}
+                      <span className={`text-[9px] font-bold block mt-0.5 ${tierDiscount > 0 ? 'text-[#34C759]' : (isSelected ? 'text-white/50' : 'text-[#86868B]')}`}>
+                        {tierDiscount > 0 ? `-${tierDiscount}%` : t.baseRateLabel}
                       </span>
                     </button>
                   )
@@ -378,70 +379,58 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             {/* Specification Grid */}
             <div className="grid grid-cols-2 gap-3 text-xs bg-[#F5F5F7] p-4 rounded-2xl mb-6">
               <div>
-                <span className="text-[#86868B] block">Коробка передач:</span>
-                <span className="font-semibold text-[#1D1D1F]">{formatTransmission(car.transmission, lang)} (АКПП)</span>
+                <span className="text-[#86868B] block">{t.specTransmission}</span>
+                <span className="font-semibold text-[#1D1D1F]">{formatTransmission(car.transmission, lang)}</span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Кондиционер:</span>
-                <span className="font-semibold text-[#1D1D1F]">
-                  {lang === 'en' ? 'A/C (working)' : 'Есть (климат-контроль)'}
-                </span>
+                <span className="text-[#86868B] block">{t.specAc}</span>
+                <span className="font-semibold text-[#1D1D1F]">{t.specAcValue}</span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Привод:</span>
+                <span className="text-[#86868B] block">{t.specDrive}</span>
                 <span className="font-semibold text-[#1D1D1F]">{formatDrive(car.drive, lang)}</span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Количество мест:</span>
+                <span className="text-[#86868B] block">{t.specSeats}</span>
                 <span className="font-semibold text-[#1D1D1F]">
-                  {lang === 'en' ? `${car.seats} seats` : `${car.seats} мест`}
+                  {car.seats} {t.seatsCount}
                 </span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Тип топлива:</span>
+                <span className="text-[#86868B] block">{t.specFuel}</span>
                 <span className="font-semibold text-[#1D1D1F]">{formatFuel(car.fuelType, lang)}</span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Расход топлива:</span>
+                <span className="text-[#86868B] block">{t.specConsumption}</span>
                 <span className="font-semibold text-[#1D1D1F]">{formatConsumption(car.fuelConsumption, lang)}</span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Apple CarPlay / Android:</span>
+                <span className="text-[#86868B] block">{t.specCarPlay}</span>
                 <span className="font-semibold text-[#1D1D1F]">
-                  {car.carplay
-                    ? (lang === 'en' ? 'Yes (CarPlay installed)' : 'Да (CarPlay / Android)')
-                    : 'Bluetooth аудио'}
+                  {car.carplay ? t.specCarPlayYes : t.specCarPlayBluetooth}
                 </span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Пробег:</span>
-                <span className="font-semibold text-[#34C759]">
-                  {lang === 'en' ? 'Unlimited (0 ₾)' : 'Безлимитный (0 ₾)'}
+                <span className="text-[#86868B] block">{t.specMileage}</span>
+                <span className="font-semibold text-[#34C759]">{t.specMileageUnlimited}</span>
+              </div>
+              <div>
+                <span className="text-[#86868B] block">{t.specInsurance}</span>
+                <span className="font-semibold text-[#1D1D1F]">{t.specInsuranceIncluded}</span>
+              </div>
+              <div>
+                <span className="text-[#86868B] block">{t.specDeposit}</span>
+                <span className="font-semibold text-[#1D1D1F]">
+                  {car.depositGel === 0 ? t.specDepositZero : formatPrice(car.depositGel)}
                 </span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Страховка:</span>
-                <span className="font-semibold text-[#1D1D1F]">
-                  {lang === 'en' ? 'Included (Zero franchise 2+ yrs)' : 'Включена (0 франшиза от 2 лет)'}
-                </span>
+                <span className="text-[#86868B] block">{t.specBookingTerms}</span>
+                <span className="font-semibold text-[#1D1D1F]">{t.specBookingTermsValue}</span>
               </div>
               <div>
-                <span className="text-[#86868B] block">Размер залога:</span>
-                <span className="font-semibold text-[#1D1D1F]">
-                  {car.depositGel === 0 ? (lang === 'en' ? 'Zero deposit (0 ₾)' : 'Без залога (0 ₾)') : formatPrice(car.depositGel)}
-                </span>
-              </div>
-              <div>
-                <span className="text-[#86868B] block">Условия бронирования:</span>
-                <span className="font-semibold text-[#1D1D1F]">
-                  {lang === 'en' ? 'No prepayment • Free cancel' : 'Без предоплаты • Отмена 0 ₾'}
-                </span>
-              </div>
-              <div>
-                <span className="text-[#86868B] block">Срок аренды:</span>
-                <span className="font-semibold text-[#1D1D1F]">
-                  {lang === 'en' ? 'From 1 day' : 'От 1 дня'}
-                </span>
+                <span className="text-[#86868B] block">{t.specMinPeriod}</span>
+                <span className="font-semibold text-[#1D1D1F]">{t.specMinPeriodValue}</span>
               </div>
             </div>
 
@@ -449,7 +438,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
               <div>
                 <span className="text-xs text-[#86868B] block">
-                  Стоимость ({activeTier?.daysLabel}):
+                  {t.specCostForPeriod} ({activeTier ? getTierLabel(activeTier, lang) : ''}):
                 </span>
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-3xl font-extrabold text-[#1D1D1F]">

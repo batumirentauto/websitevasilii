@@ -4,11 +4,11 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CatalogSection } from '@/components/CatalogSection'
-import { useApp, CITIES_DATA, City, DURATION_TIERS } from '@/context/AppContext'
+import { useApp, CITIES_DATA, City, getCityName, getCityAddress, getCityDeliveryNote } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 export default function HomePage() {
-  const { lang, city, setCity, duration, setDuration } = useApp()
+  const { lang, city, setCity } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
   const currentCity = CITIES_DATA[city]
 
@@ -59,44 +59,42 @@ export default function HomePage() {
                           : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
                       }`}
                     >
-                      {CITIES_DATA[cKey].nameRu}
+                      {getCityName(cKey, lang)}
                     </button>
                   ))}
                 </div>
-
-
 
                 {/* Competitive Advantages Row in Hero */}
                 <div className="mt-3 pt-3 border-t border-black/[0.05] grid grid-cols-2 sm:grid-cols-3 gap-2">
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>Безлимитный пробег</span>
+                    <span>{t.unlimitedMileage}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>Без депозита (0 ₾)</span>
+                    <span>{t.zeroDepositPill}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>Без предоплаты</span>
+                    <span>{t.noPrepaymentPill}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>Бесплатная отмена</span>
+                    <span>{t.freeCancellationPill}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>Аренда от 1 дня</span>
+                    <span>{t.rentFrom1DayPill}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>Страховка (0 франшиза 2+ г.)</span>
+                    <span>{t.zeroFranchisePill}</span>
                   </div>
                 </div>
 
                 <div className="mt-3 pt-2.5 border-t border-black/[0.04] text-[11px] text-[#34C759] font-bold flex items-center justify-start gap-1.5">
                   <span>⚡</span>
-                  <span>{t.freeIntercityBadge || 'Возврат в другом городе (Батуми / Тбилиси / Кутаиси) — 0 ₾ без доплаты!'}</span>
+                  <span>{t.freeIntercityBadge}</span>
                 </div>
               </div>
 
@@ -104,9 +102,9 @@ export default function HomePage() {
               <div className="bg-[#F5F5F7] p-3.5 rounded-2xl text-xs text-[#1D1D1F] flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
                 <div>
                   <span className="font-bold block text-[#1D1D1F] mb-0.5">
-                    База: {currentCity.nameRu} ({currentCity.baseAddressRu})
+                    {t.baseLabel}: {getCityName(city, lang)} ({getCityAddress(city, lang)})
                   </span>
-                  <span className="text-[#6E6E73]">{currentCity.deliveryNoteRu}</span>
+                  <span className="text-[#6E6E73]">{getCityDeliveryNote(city, lang)}</span>
                 </div>
                 {currentCity.yandexMapUrl && (
                   <a
@@ -115,19 +113,19 @@ export default function HomePage() {
                     rel="noreferrer"
                     className="shrink-0 px-3.5 py-1.5 bg-white border border-black/[0.1] rounded-full font-semibold text-[11px] text-[#1D1D1F] hover:bg-black hover:text-white transition-colors"
                   >
-                    На карте ↗
+                    {t.onMap}
                   </a>
                 )}
               </div>
             </div>
 
-            {/* Right Column: Visual Showcase (Vehicle, Happy Travelers & Majestic Mountains) */}
+            {/* Right Column: Visual Showcase */}
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.18)] border border-black/[0.08] group">
                 <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full">
                   <Image
                     src="/images/hero-georgia.jpg"
-                    alt="Аренда авто в Грузии: путешествия по горам и побережью"
+                    alt={t.heroTitle}
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -138,17 +136,17 @@ export default function HomePage() {
                   {/* Top floating badge */}
                   <div className="absolute top-4 left-4 pointer-events-none">
                     <span className="bg-black/60 backdrop-blur-md text-white text-[11px] sm:text-xs font-semibold px-3.5 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
-                      {t.heroPhotoBadge || '🛡️ Страховка КАСКО и ОСАГО включена'}
+                      {t.heroPhotoBadge}
                     </span>
                   </div>
 
                   {/* Bottom caption */}
                   <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-none">
                     <span className="text-xs uppercase tracking-wider text-white/80 font-bold block mb-0.5">
-                      Свобода путешествий
+                      {t.travelFreedom}
                     </span>
                     <p className="text-sm font-bold leading-snug text-white">
-                      Исследуйте живописные горные перевалы и пляжи Грузии на надежном авто
+                      {t.travelFreedomSubtitle}
                     </p>
                   </div>
                 </div>
@@ -185,13 +183,13 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-black/[0.05]">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#86868B] block mb-2">
-            ПОЧЕМУ ВЫБИРАЮТ НАС
+            {t.whyChooseUs}
           </span>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#1D1D1F] tracking-tight mb-3">
             {t.benefitsTitle}
           </h2>
           <p className="text-sm text-[#86868B]">
-            Честные и прозрачные условия аренды автомобилей в Грузии с первого километра.
+            {t.whyChooseUsSubtitle}
           </p>
         </div>
 
@@ -201,9 +199,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               🛣️
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Безлимитный пробег</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit1Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Никаких суточных лимитов по километражу. Путешествуйте по всей Грузии без ограничений и скрытых доплат.
+              {t.benefit1Desc}
             </p>
           </div>
 
@@ -212,9 +210,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               💳
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Отсутствие депозита</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit2Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Большинство автомобилей сдаются без залога (0 ₾). Не нужно замораживать сотни долларов на карте или оставлять наличные.
+              {t.benefit2Desc}
             </p>
           </div>
 
@@ -223,9 +221,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               📅
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Бронь без предоплаты</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit3Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Бронируйте авто заранее без внесения аванса. Оплата производится только при получении ключей после осмотра.
+              {t.benefit3Desc}
             </p>
           </div>
 
@@ -234,9 +232,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               🔄
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Бесплатная отмена</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit4Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Планы изменились или перенесли рейс? Вы можете отменить или изменить бронирование в любое время без штрафов.
+              {t.benefit4Desc}
             </p>
           </div>
 
@@ -245,20 +243,20 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               ⏱️
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Аренда от 1 дня</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit5Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Вы можете арендовать автомобиль даже на 1 сутки. Честная базовая цена без наценок за короткий период.
+              {t.benefit5Desc}
             </p>
           </div>
 
-          {/* 6. Insurance Included (Zero Franchise from 2 yrs) */}
+          {/* 6. Insurance Included */}
           <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors border border-[#34C759]/20 relative overflow-hidden">
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               🛡️
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Страховка включена</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit6Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              <strong>Без франшизы</strong> при стаже от 2 лет! Также доступна аренда со стажем <strong>от 0 до 2 лет</strong> (действует с франшизой).
+              {t.benefit6Desc}
             </p>
           </div>
 
@@ -267,9 +265,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               ⚡
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">Возврат в другом городе</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit7Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Возьмите авто в Батуми и сдайте в Тбилиси или в аэропорту Кутаиси абсолютно БЕЗ доплаты за перегон (0 ₾).
+              {t.benefit7Desc}
             </p>
           </div>
 
@@ -278,33 +276,33 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
               ❄️
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">100% АКПП и Климат</h3>
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit8Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Все 80+ автомобилей автопарка (45 моделей) оснащены надёжной автоматической коробкой передач и исправным кондиционером.
+              {t.benefit8Desc}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Fast 3-Step Process */}
+      {/* 3-Step Process */}
       <section className="bg-[#F5F5F7] py-20 border-y border-black/[0.05]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F] tracking-tight mb-2">
-              Как арендовать автомобиль
+              {t.howToRentTitle}
             </h2>
-            <p className="text-xs text-[#86868B]">Всего 3 простых шага без лишней бюрократии</p>
+            <p className="text-xs text-[#86868B]">{t.howToRentSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-3xl border border-black/[0.06] flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider block mb-2">
-                  Шаг 01
+                  {t.step1Tag}
                 </span>
-                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Напишите в мессенджер</h3>
+                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">{t.step1Title}</h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Напишите нам в WhatsApp или Telegram и укажите даты поездки и город получения (Батуми, Тбилиси или Кутаиси).
+                  {t.step1Desc}
                 </p>
               </div>
             </div>
@@ -312,11 +310,11 @@ export default function HomePage() {
             <div className="bg-white p-6 rounded-3xl border border-black/[0.06] flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider block mb-2">
-                  Шаг 02
+                  {t.step2Tag}
                 </span>
-                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Подбор и выбор авто</h3>
+                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">{t.step2Title}</h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Мы проверяем занятость и присылаем вам список свободных автомобилей с реальными фото и ценами. Вы выбираете лучший вариант.
+                  {t.step2Desc}
                 </p>
               </div>
             </div>
@@ -324,11 +322,11 @@ export default function HomePage() {
             <div className="bg-white p-6 rounded-3xl border border-black/[0.06] flex flex-col justify-between">
               <div>
                 <span className="text-xs font-bold text-[#86868B] uppercase tracking-wider block mb-2">
-                  Шаг 03
+                  {t.step3Tag}
                 </span>
-                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">Быстрое оформление</h3>
+                <h3 className="text-lg font-bold text-[#1D1D1F] mb-2">{t.step3Title}</h3>
                 <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Фиксируем бронь без предоплаты. При получении машины на базе или в аэропорту оформление занимает всего 5 минут — и в путь!
+                  {t.step3Desc}
                 </p>
               </div>
             </div>

@@ -46,8 +46,8 @@ export const CITIES_DATA: Record<
     landmarksRu: 'Ориентир: Adjara Detailing, вход на территорию напротив здания Apolo',
     landmarksEn: 'Landmark: Adjara Detailing, entrance opposite the Apolo building',
     pickupType: 'base',
-    deliveryNoteRu: 'Выдача с базы бесплатно за 5 минут. Подача в аэропорт Батуми / по городу — по согласованию.',
-    deliveryNoteEn: 'Free 5-minute pick-up at our base. Airport / city delivery on request.',
+    deliveryNoteRu: 'Выдача с базы бесплатно. Подача в аэропорт Батуми / по городу — по согласованию.',
+    deliveryNoteEn: 'Free pick-up at our base. Airport / city delivery on request.',
     telegram: 'rentcarvasilii',
     yandexMapUrl: 'https://yandex.ru/maps/?text=Batumi+Varshanidze+154',
     googleMapUrl: 'https://maps.google.com/?q=Batumi+Varshanidze+154',
@@ -113,6 +113,66 @@ export const calculateDailyPrice = (
   const tier = DURATION_TIERS.find((t) => t.id === dur)
   if (!tier || tier.discountPercent === 0) return basePriceGel
   return Math.round(basePriceGel * (1 - tier.discountPercent / 100))
+}
+
+export function getTierLabel(tier: DurationTier, lang: Lang, short = false): string {
+  if (lang === 'ru') {
+    if (short) return tier.label.replace(' дня', ' дн').replace(' дней', ' дн')
+    return tier.label
+  }
+  if (lang === 'de') {
+    const dayWord = short ? 'T.' : 'Tage'
+    return `${tier.id.replace('-', '–')} ${dayWord}`
+  }
+  if (lang === 'fr') {
+    const dayWord = short ? 'j.' : 'jours'
+    return `${tier.id.replace('-', '–')} ${dayWord}`
+  }
+  if (lang === 'it') {
+    const dayWord = short ? 'gg.' : 'giorni'
+    return `${tier.id.replace('-', '–')} ${dayWord}`
+  }
+  if (lang === 'pl') {
+    const dayWord = short ? 'd.' : 'dni'
+    return `${tier.id.replace('-', '–')} ${dayWord}`
+  }
+  if (lang === 'ar') {
+    return `${tier.id.replace('-', '–')} يوم`
+  }
+  if (lang === 'fa') {
+    return `${tier.id.replace('-', '–')} روز`
+  }
+  const dayWord = short ? 'd' : 'days'
+  if (tier.id === '1-2') return `1–2 ${dayWord}`
+  if (tier.id === '3-5') return `3–5 ${dayWord}`
+  if (tier.id === '6-13') return `6–13 ${dayWord}`
+  if (tier.id === '14-29') return `14–29 ${dayWord}`
+  if (tier.id === '30+') return `30+ ${dayWord}`
+  return tier.label
+}
+
+export function getCityName(cityKey: City, lang: Lang): string {
+  const city = CITIES_DATA[cityKey]
+  if (!city) return ''
+  return lang === 'ru' ? city.nameRu : city.nameEn
+}
+
+export function getCityAddress(cityKey: City, lang: Lang): string {
+  const city = CITIES_DATA[cityKey]
+  if (!city) return ''
+  return lang === 'ru' ? city.baseAddressRu : city.baseAddressEn
+}
+
+export function getCityLandmarks(cityKey: City, lang: Lang): string {
+  const city = CITIES_DATA[cityKey]
+  if (!city) return ''
+  return lang === 'ru' ? city.landmarksRu : city.landmarksEn
+}
+
+export function getCityDeliveryNote(cityKey: City, lang: Lang): string {
+  const city = CITIES_DATA[cityKey]
+  if (!city) return ''
+  return lang === 'ru' ? city.deliveryNoteRu : city.deliveryNoteEn
 }
 
 interface AppContextType {
@@ -228,14 +288,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   ) => {
     const activeDur = customDuration || duration
     const effectivePriceGel = calculateDailyPrice(basePriceGel, activeDur, customPrices)
-    const cityName = CITIES_DATA[city].nameRu
+    const cityName = getCityName(city, lang)
     const priceText = formatPrice(effectivePriceGel)
     const tier = DURATION_TIERS.find((t) => t.id === activeDur)
-    const durLabel = tier ? tier.daysLabel : 'аренду'
+    const durLabel = getTierLabel(tier || DURATION_TIERS[0], lang)
 
-    const message = encodeURIComponent(
-      `Здравствуйте! Интересует аренда автомобиля ${carName} на ${durLabel} (${priceText}/сутки) в городе ${cityName}. Свободна ли машина на мои даты?`
-    )
+    let messageText = `Здравствуйте! Интересует аренда автомобиля ${carName} на ${durLabel} (${priceText}/сутки) в городе ${cityName}. Свободна ли машина на мои даты?`
+    if (lang === 'en') {
+      messageText = `Hello! I would like to rent the ${carName} for ${durLabel} (${priceText}/day) in ${cityName}. Is it available for my dates?`
+    } else if (lang === 'de') {
+      messageText = `Hallo! Ich interessiere mich für den ${carName} für ${durLabel} (${priceText}/Tag) in ${cityName}. Ist der Wagen verfügbar?`
+    } else if (lang === 'fr') {
+      messageText = `Bonjour ! Je souhaite louer la ${carName} pour ${durLabel} (${priceText}/jour) à ${cityName}. Est-elle disponible ?`
+    } else if (lang === 'it') {
+      messageText = `Ciao! Vorrei noleggiare la ${carName} per ${durLabel} (${priceText}/giorno) a ${cityName}. È disponibile per le mie date?`
+    } else if (lang === 'pl') {
+      messageText = `Dzień dobry! Interesuje mnie wynajem ${carName} na ${durLabel} (${priceText}/dzień) w mieście ${cityName}. Czy auto jest dostępne?`
+    } else if (lang === 'ar') {
+      messageText = `مرحباً! أود استئجار سيارة ${carName} لمدة ${durLabel} (${priceText}/يوم) في ${cityName}. هل هي متوفرة لتاريخ رحلتي؟`
+    } else if (lang === 'fa') {
+      messageText = `سلام! مایل به اجاره خودروی ${carName} برای ${durLabel} (${priceText}/روز) در ${cityName} هستم. آیا در تاریخ‌های من موجود است؟`
+    }
+
+    const message = encodeURIComponent(messageText)
 
     if (type === 'whatsapp') {
       return `https://wa.me/${WHATSAPP_PHONE}?text=${message}`
