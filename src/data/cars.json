@@ -15,14 +15,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 150,
+    "priceGel": 240,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Alfa_Romeo_Giulia/IMG_0770.JPG",
       "/fleet/Alfa_Romeo_Giulia/IMG_0771.JPG",
       "/fleet/Alfa_Romeo_Giulia/IMG_0765.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 240,
+      "3-5": 200,
+      "6-13": 180,
+      "14-29": 150,
+      "30+": 120
+    }
   },
   {
     "id": "audi_q7",
@@ -40,7 +47,7 @@
     "panoramicRoof": true,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 190,
+    "priceGel": 390,
     "depositGel": 0,
     "featured": true,
     "images": [
@@ -48,7 +55,14 @@
       "/fleet/Audi_Q7/IMG_1266.JPG",
       "/fleet/Audi_Q7/IMG_1468.JPG",
       "/fleet/Audi_Q7/IMG_1469.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 390,
+      "3-5": 340,
+      "6-13": 300,
+      "14-29": 260,
+      "30+": 200
+    }
   },
   {
     "id": "audi_tt",
@@ -66,7 +80,7 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 150,
+    "priceGel": 430,
     "depositGel": 600,
     "featured": false,
     "images": [
@@ -74,7 +88,14 @@
       "/fleet/Audi_TT/IMG_1313.JPG",
       "/fleet/Audi_TT/IMG_1314.JPG",
       "/fleet/Audi_TT/IMG_1312.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 430,
+      "3-5": 350,
+      "6-13": 260,
+      "14-29": 240,
+      "30+": 200
+    }
   },
   {
     "id": "bmw_325d",
@@ -92,13 +113,20 @@
     "panoramicRoof": false,
     "fuelType": "Diesel",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 120,
+    "priceGel": 240,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/BMW_325d/IMG_9407.jpg",
       "/fleet/BMW_325d/IMG_1323.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 240,
+      "3-5": 210,
+      "6-13": 180,
+      "14-29": 150,
+      "30+": 100
+    }
   },
   {
     "id": "bmw_x3",
@@ -116,14 +144,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 160,
+    "priceGel": 480,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/BMW_X3/IMG_9323.jpg",
       "/fleet/BMW_X3/IMG_1326.JPG",
       "/fleet/BMW_X3/IMG_1458.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 480,
+      "3-5": 400,
+      "6-13": 350,
+      "14-29": 280,
+      "30+": 250
+    }
   },
   {
     "id": "bmw_x4",
@@ -141,14 +176,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 170,
+    "priceGel": 240,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/BMW_X4/IMG_3628.JPG",
       "/fleet/BMW_X4/IMG_3627.JPG",
       "/fleet/BMW_X4/IMG_3626.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 240,
+      "3-5": 200,
+      "6-13": 180,
+      "14-29": 150,
+      "30+": 120
+    }
   },
   {
     "id": "bmw_x5",
@@ -166,14 +208,21 @@
     "panoramicRoof": true,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 200,
+    "priceGel": 590,
     "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/BMW_X5/IMG_1463.jpg",
       "/fleet/BMW_X5/IMG_1465.jpg",
       "/fleet/BMW_X5/IMG_1464.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 590,
+      "3-5": 540,
+      "6-13": 480,
+      "14-29": 400,
+      "30+": 350
+    }
   },
   {
     "id": "chevrolet_trailblazer",
@@ -191,14 +240,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 110,
+    "priceGel": 210,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Chevrolet_Trailblazer/IMG_8861.jpg",
       "/fleet/Chevrolet_Trailblazer/IMG_8860.jpg",
       "/fleet/Chevrolet_Trailblazer/IMG_8842.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 210,
+      "3-5": 180,
+      "6-13": 160,
+      "14-29": 140,
+      "30+": 120
+    }
   },
   {
     "id": "dodge_caravan",
@@ -216,7 +272,7 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 130,
+    "priceGel": 260,
     "depositGel": 0,
     "featured": false,
     "images": [
@@ -224,7 +280,14 @@
       "/fleet/Dodge_Caravan/IMG_9461.jpg",
       "/fleet/Dodge_Caravan/IMG_9458.JPG",
       "/fleet/Dodge_Caravan/IMG_9462.PNG"
-    ]
+    ],
+    "prices": {
+      "1-2": 260,
+      "3-5": 200,
+      "6-13": 180,
+      "14-29": 160,
+      "30+": 130
+    }
   },
   {
     "id": "fiat_500c",
@@ -242,7 +305,7 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 110,
+    "priceGel": 160,
     "depositGel": 0,
     "featured": false,
     "images": [
@@ -251,7 +314,14 @@
       "/fleet/Fiat_500C/IMG_1330.JPG",
       "/fleet/Fiat_500C/IMG_1327.JPG",
       "/fleet/Fiat_500C/IMG_1329.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 160,
+      "3-5": 130,
+      "6-13": 120,
+      "14-29": 100,
+      "30+": 70
+    }
   },
   {
     "id": "ford_escape_2010",
@@ -269,14 +339,21 @@
     "panoramicRoof": false,
     "fuelType": "Hybrid",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 85,
+    "priceGel": 110,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Ford_Escape_2010/IMG_9271.jpg",
       "/fleet/Ford_Escape_2010/IMG_1334.JPG",
       "/fleet/Ford_Escape_2010/IMG_1333.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 110,
+      "3-5": 100,
+      "6-13": 90,
+      "14-29": 90,
+      "30+": 52
+    }
   },
   {
     "id": "ford_escape_2020",
@@ -294,14 +371,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 120,
+    "priceGel": 170,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Ford_Escape_2020/IMG_1233.JPG",
       "/fleet/Ford_Escape_2020/IMG_1234.JPG",
       "/fleet/Ford_Escape_2020/IMG_1235.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 170,
+      "3-5": 140,
+      "6-13": 120,
+      "14-29": 110,
+      "30+": 70
+    }
   },
   {
     "id": "ford_fusion",
@@ -319,14 +403,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 90,
+    "priceGel": 140,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Ford_Fusion/IMG_9106.jpg",
       "/fleet/Ford_Fusion/IMG_8959.PNG",
       "/fleet/Ford_Fusion/88c17dcc-87bb-4cdf-b26c-4114e7c9b7dc.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 140,
+      "3-5": 120,
+      "6-13": 110,
+      "14-29": 90,
+      "30+": 70
+    }
   },
   {
     "id": "hyundai_palisade",
@@ -344,7 +435,7 @@
     "panoramicRoof": true,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 190,
+    "priceGel": 360,
     "depositGel": 0,
     "featured": true,
     "images": [
@@ -353,7 +444,14 @@
       "/fleet/HYUNDAI_PALISADE/IMG_5082.JPG",
       "/fleet/HYUNDAI_PALISADE/IMG_5084.JPG",
       "/fleet/HYUNDAI_PALISADE/IMG_6810.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 360,
+      "3-5": 290,
+      "6-13": 240,
+      "14-29": 220,
+      "30+": 200
+    }
   },
   {
     "id": "honda_accord_2022",
@@ -371,14 +469,21 @@
     "panoramicRoof": false,
     "fuelType": "Hybrid",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 120,
+    "priceGel": 260,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Honda_Accord_2022/IMG_8555.jpg",
       "/fleet/Honda_Accord_2022/IMG_8556.jpg",
       "/fleet/Honda_Accord_2022/195be702-5eeb-46ec-86f5-ac25d242b3e9.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 260,
+      "3-5": 220,
+      "6-13": 180,
+      "14-29": 160,
+      "30+": 130
+    }
   },
   {
     "id": "hyundai_accent",
@@ -396,14 +501,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 75,
+    "priceGel": 110,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Hyundai_Accent/IMG_9284.jpg",
       "/fleet/Hyundai_Accent/IMG_1338.JPG",
       "/fleet/Hyundai_Accent/2c52a771-3feb-4517-9dc2-6415fd530c65.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 110,
+      "3-5": 100,
+      "6-13": 90,
+      "14-29": 80,
+      "30+": 70
+    }
   },
   {
     "id": "hyundai_elantra_2021",
@@ -421,13 +533,20 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 105,
+    "priceGel": 180,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Hyundai_Elantra_2021/IMG_9536.PNG",
       "/fleet/Hyundai_Elantra_2021/IMG_9537.PNG"
-    ]
+    ],
+    "prices": {
+      "1-2": 180,
+      "3-5": 150,
+      "6-13": 130,
+      "14-29": 110,
+      "30+": 100
+    }
   },
   {
     "id": "jeep_renegade",
@@ -445,13 +564,20 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 110,
+    "priceGel": 190,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/JEEP_RENEGADE/IMG_9311.jpg",
       "/fleet/JEEP_RENEGADE/IMG_6351.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 190,
+      "3-5": 160,
+      "6-13": 140,
+      "14-29": 120,
+      "30+": 100
+    }
   },
   {
     "id": "jeep_compass_2022",
@@ -469,14 +595,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 135,
+    "priceGel": 230,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Jeep_Compass_2022/IMG_9357.jpg",
       "/fleet/Jeep_Compass_2022/IMG_1342.JPG",
       "/fleet/Jeep_Compass_2022/IMG_1339.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 230,
+      "3-5": 200,
+      "6-13": 180,
+      "14-29": 150,
+      "30+": 105
+    }
   },
   {
     "id": "lexus_es300h",
@@ -494,14 +627,21 @@
     "panoramicRoof": false,
     "fuelType": "Hybrid",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 160,
+    "priceGel": 320,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/LEXUS_ES300h/IMG_1284.JPG",
       "/fleet/LEXUS_ES300h/IMG_1285.JPG",
       "/fleet/LEXUS_ES300h/IMG_1282.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 320,
+      "3-5": 240,
+      "6-13": 210,
+      "14-29": 190,
+      "30+": 170
+    }
   },
   {
     "id": "land_rover_range_rover",
@@ -519,14 +659,21 @@
     "panoramicRoof": true,
     "fuelType": "Diesel",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 250,
+    "priceGel": 645,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Land_Rover_Range_Rover/IMG_8905.jpg",
       "/fleet/Land_Rover_Range_Rover/IMG_8906.jpg",
       "/fleet/Land_Rover_Range_Rover/IMG_8907.PNG"
-    ]
+    ],
+    "prices": {
+      "1-2": 645,
+      "3-5": 450,
+      "6-13": 400,
+      "14-29": 350,
+      "30+": 200
+    }
   },
   {
     "id": "land_rover_range_rover_velar",
@@ -544,7 +691,7 @@
     "panoramicRoof": true,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 220,
+    "priceGel": 550,
     "depositGel": 0,
     "featured": false,
     "images": [
@@ -552,7 +699,14 @@
       "/fleet/Land_Rover_Range_Rover_Velar/IMG_1350.JPG",
       "/fleet/Land_Rover_Range_Rover_Velar/8de7b735-ed6d-4b0b-887b-e51cf4775139.JPG",
       "/fleet/Land_Rover_Range_Rover_Velar/c7be1361-8660-47fd-819e-4293acb21ad7.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 550,
+      "3-5": 480,
+      "6-13": 400,
+      "14-29": 360,
+      "30+": 280
+    }
   },
   {
     "id": "mazda_3",
@@ -570,14 +724,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 95,
+    "priceGel": 170,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Mazda_3/IMG_1270.PNG",
       "/fleet/Mazda_3/IMG_9585.PNG",
       "/fleet/Mazda_3/IMG_9586.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 170,
+      "3-5": 140,
+      "6-13": 120,
+      "14-29": 110,
+      "30+": 90
+    }
   },
   {
     "id": "mazda_6",
@@ -595,13 +756,20 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 100,
+    "priceGel": 160,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Mazda_6/IMG_8952.jpg",
       "/fleet/Mazda_6/IMG_8953.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 160,
+      "3-5": 120,
+      "6-13": 110,
+      "14-29": 100,
+      "30+": 70
+    }
   },
   {
     "id": "mazda_cx5_2016",
@@ -619,13 +787,20 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 115,
+    "priceGel": 140,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Mazda_CX5_2016/IMG_9316.jpg",
       "/fleet/Mazda_CX5_2016/f0a73021-7958-4325-8924-3461ae57933e.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 140,
+      "3-5": 120,
+      "6-13": 110,
+      "14-29": 100,
+      "30+": 70
+    }
   },
   {
     "id": "mazda_cx5_2021",
@@ -643,14 +818,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 135,
+    "priceGel": 250,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Mazda_CX5_2021/IMG_9322.jpg",
       "/fleet/Mazda_CX5_2021/IMG_1351.JPG",
       "/fleet/Mazda_CX5_2021/IMG_1478.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 250,
+      "3-5": 190,
+      "6-13": 170,
+      "14-29": 150,
+      "30+": 120
+    }
   },
   {
     "id": "mini_cooper_s",
@@ -668,14 +850,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 115,
+    "priceGel": 190,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Mini_Cooper_S/IMG_0424.JPG",
       "/fleet/Mini_Cooper_S/IMG_0423.JPG",
       "/fleet/Mini_Cooper_S/IMG_0427.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 190,
+      "3-5": 160,
+      "6-13": 140,
+      "14-29": 110,
+      "30+": 90
+    }
   },
   {
     "id": "mini_cooper_s_cabrio",
@@ -693,13 +882,20 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 140,
+    "priceGel": 240,
     "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Mini_Cooper_S_Cabrio/IMG_9179.jpg",
       "/fleet/Mini_Cooper_S_Cabrio/IMG_9180.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 240,
+      "3-5": 210,
+      "6-13": 190,
+      "14-29": 170,
+      "30+": 150
+    }
   },
   {
     "id": "mitsubishi_outlander_2023",
@@ -717,14 +913,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 150,
+    "priceGel": 290,
     "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Mitsubishi_Outlander_2023/IMG_0016.PNG",
       "/fleet/Mitsubishi_Outlander_2023/IMG_0017.PNG",
       "/fleet/Mitsubishi_Outlander_2023/258ac72c-f798-49ac-a609-e38210b1e53c.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 290,
+      "3-5": 220,
+      "6-13": 190,
+      "14-29": 170,
+      "30+": 140
+    }
   },
   {
     "id": "subaru_forester_2016",
@@ -742,14 +945,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 110,
+    "priceGel": 180,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/SUBARU_FORESTER_2016/IMG_1239.JPG",
       "/fleet/SUBARU_FORESTER_2016/IMG_1240.JPG",
       "/fleet/SUBARU_FORESTER_2016/IMG_1241.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 180,
+      "3-5": 150,
+      "6-13": 140,
+      "14-29": 120,
+      "30+": 100
+    }
   },
   {
     "id": "subaru_crosstrek_2023",
@@ -767,14 +977,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 135,
+    "priceGel": 250,
     "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Subaru_Crosstrek_2023/IMG_9104.jpg",
       "/fleet/Subaru_Crosstrek_2023/IMG_1354.JPG",
       "/fleet/Subaru_Crosstrek_2023/IMG_1352.PNG"
-    ]
+    ],
+    "prices": {
+      "1-2": 250,
+      "3-5": 230,
+      "6-13": 190,
+      "14-29": 160,
+      "30+": 140
+    }
   },
   {
     "id": "subaru_outback",
@@ -792,7 +1009,7 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 130,
+    "priceGel": 170,
     "depositGel": 0,
     "featured": false,
     "images": [
@@ -802,7 +1019,14 @@
       "/fleet/Subaru_Outback/IMG_7064.JPG",
       "/fleet/Subaru_Outback/IMG_0816.JPG",
       "/fleet/Subaru_Outback/IMG_7067.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 170,
+      "3-5": 140,
+      "6-13": 130,
+      "14-29": 110,
+      "30+": 90
+    }
   },
   {
     "id": "subaru_xv",
@@ -820,14 +1044,21 @@
     "panoramicRoof": false,
     "fuelType": "Hybrid",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 105,
+    "priceGel": 170,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Subaru_XV/IMG_9189.jpg",
       "/fleet/Subaru_XV/IMG_9191.jpg",
       "/fleet/Subaru_XV/IMG_1455.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 170,
+      "3-5": 140,
+      "6-13": 130,
+      "14-29": 110,
+      "30+": 65
+    }
   },
   {
     "id": "toyota_avalon",
@@ -845,14 +1076,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 130,
+    "priceGel": 200,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Toyota_Avalon/IMG_1277.JPG",
       "/fleet/Toyota_Avalon/IMG_1358.JPG",
       "/fleet/Toyota_Avalon/be2fc3e0-36ed-4a50-ae08-b1d2b2ca49b1.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 200,
+      "3-5": 140,
+      "6-13": 120,
+      "14-29": 110,
+      "30+": 90
+    }
   },
   {
     "id": "toyota_camry",
@@ -870,13 +1108,20 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 120,
+    "priceGel": 240,
     "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Toyota_Camry/IMG_8837.jpg",
       "/fleet/Toyota_Camry/IMG_8838.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 240,
+      "3-5": 200,
+      "6-13": 160,
+      "14-29": 140,
+      "30+": 105
+    }
   },
   {
     "id": "toyota_corolla",
@@ -894,14 +1139,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 90,
+    "priceGel": 160,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Toyota_Corolla/IMG_7894.jpg",
       "/fleet/Toyota_Corolla/IMG_1316.JPG",
       "/fleet/Toyota_Corolla/IMG_1317.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 160,
+      "3-5": 140,
+      "6-13": 120,
+      "14-29": 100,
+      "30+": 90
+    }
   },
   {
     "id": "toyota_prius",
@@ -950,14 +1202,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 160,
+    "priceGel": 290,
     "depositGel": 0,
     "featured": true,
     "images": [
       "/fleet/Toyota_Sienna/IMG_9301.jpg",
       "/fleet/Toyota_Sienna/IMG_1361.JPG",
       "/fleet/Toyota_Sienna/IMG_1360.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 290,
+      "3-5": 240,
+      "6-13": 200,
+      "14-29": 180,
+      "30+": 150
+    }
   },
   {
     "id": "toyota_venza",
@@ -975,14 +1234,21 @@
     "panoramicRoof": false,
     "fuelType": "Hybrid",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 125,
+    "priceGel": 290,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Toyota_Venza/IMG_1236.JPG",
       "/fleet/Toyota_Venza/IMG_1237.JPG",
       "/fleet/Toyota_Venza/IMG_1238.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 290,
+      "3-5": 240,
+      "6-13": 200,
+      "14-29": 170,
+      "30+": 140
+    }
   },
   {
     "id": "volkswagen_touareg",
@@ -1000,12 +1266,19 @@
     "panoramicRoof": true,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 180,
+    "priceGel": 290,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/VOLKSWAGEN_TOUAREG/IMG_9360.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 290,
+      "3-5": 240,
+      "6-13": 200,
+      "14-29": 170,
+      "30+": 150
+    }
   },
   {
     "id": "volkswagen_jetta",
@@ -1023,14 +1296,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 95,
+    "priceGel": 160,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Volkswagen_Jetta/IMG_1289.JPG",
       "/fleet/Volkswagen_Jetta/IMG_1288.JPG",
       "/fleet/Volkswagen_Jetta/IMG_1311.PNG"
-    ]
+    ],
+    "prices": {
+      "1-2": 160,
+      "3-5": 140,
+      "6-13": 130,
+      "14-29": 120,
+      "30+": 100
+    }
   },
   {
     "id": "volkswagen_jetta_2016",
@@ -1048,14 +1328,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 85,
+    "priceGel": 130,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Volkswagen_Jetta_2016/IMG_8934.jpg",
       "/fleet/Volkswagen_Jetta_2016/IMG_8935.jpg",
       "/fleet/Volkswagen_Jetta_2016/IMG_1449.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 130,
+      "3-5": 110,
+      "6-13": 100,
+      "14-29": 90,
+      "30+": 70
+    }
   },
   {
     "id": "volkswagen_passat",
@@ -1073,14 +1360,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 105,
+    "priceGel": 160,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Volkswagen_Passat/IMG_8990.jpg",
       "/fleet/Volkswagen_Passat/IMG_8549.jpg",
       "/fleet/Volkswagen_Passat/IMG_8547.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 160,
+      "3-5": 140,
+      "6-13": 120,
+      "14-29": 100,
+      "30+": 80
+    }
   },
   {
     "id": "volkswagen_tiguan",
@@ -1098,14 +1392,21 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
-    "priceGel": 140,
+    "priceGel": 240,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Volkswagen_Tiguan/IMG_9308.jpg",
       "/fleet/Volkswagen_Tiguan/IMG_1364.JPG",
       "/fleet/Volkswagen_Tiguan/IMG_1504.JPG"
-    ]
+    ],
+    "prices": {
+      "1-2": 240,
+      "3-5": 210,
+      "6-13": 180,
+      "14-29": 150,
+      "30+": 130
+    }
   },
   {
     "id": "мерседес_с350",
@@ -1123,13 +1424,20 @@
     "panoramicRoof": false,
     "fuelType": "Petrol",
     "fuelConsumption": "7.2 L/100km",
-    "priceGel": 130,
+    "priceGel": 160,
     "depositGel": 0,
     "featured": false,
     "images": [
       "/fleet/Мерседес_С350/IMG_9362.jpg",
       "/fleet/Мерседес_С350/IMG_1307.JPG",
       "/fleet/Мерседес_С350/IMG_1306.jpg"
-    ]
+    ],
+    "prices": {
+      "1-2": 160,
+      "3-5": 140,
+      "6-13": 130,
+      "14-29": 120,
+      "30+": 100
+    }
   }
 ]
