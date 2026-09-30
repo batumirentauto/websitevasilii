@@ -122,7 +122,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 {car.name}
               </h3>
               <p className="text-xs text-[#86868B] font-normal mt-0.5">
-                {car.year} • {lang === 'ru' ? (car.engine || formatFuel(car.fuelType, lang)) : (car.engineEn || car.engine || formatFuel(car.fuelType, lang))} • {formatTransmission(car.transmission, lang)}
+                {car.year} • {formatFuel(car.fuelType, lang)} • {formatTransmission(car.transmission, lang)}
               </p>
             </div>
             {car.depositGel === 0 ? (
@@ -356,7 +356,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
 
             <h2 className="text-2xl font-bold text-[#1D1D1F] tracking-tight">{car.name}</h2>
             <p className="text-sm text-[#86868B] mt-0.5">
-              {t.yearLabel}: {car.year} • {lang === 'ru' ? (car.engine || formatFuel(car.fuelType, lang)) : (car.engineEn || car.engine || formatFuel(car.fuelType, lang))} • {t.categoryLabel}: {car.category.toUpperCase()}
+              {t.yearLabel}: {car.year} • {t.categoryLabel}: {car.category.toUpperCase()} • {formatFuel(car.fuelType, lang)}
             </p>
 
             {/* Gallery in Modal */}
@@ -449,12 +449,6 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <span className="text-[#86868B] block">{t.specSeats}</span>
                 <span className="font-semibold text-[#1D1D1F]">
                   {formatSeats(car.seats, lang, t.seatsCount)}
-                </span>
-              </div>
-              <div>
-                <span className="text-[#86868B] block">{t.specEngine || 'Двигатель:'}</span>
-                <span className="font-semibold text-[#1D1D1F]">
-                  {lang === 'ru' ? (car.engine || formatFuel(car.fuelType, lang)) : (car.engineEn || car.engine || formatFuel(car.fuelType, lang))}
                 </span>
               </div>
               <div>
