@@ -192,9 +192,17 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               </div>
             )}
 
+            {/* Trust badge on bottom left of image */}
+            <div className="absolute bottom-2.5 left-2.5 z-10 pointer-events-none">
+              <span className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-full border border-white/20 shadow-xs">
+                <span className="text-[#34C759] font-bold">✓</span>
+                <span>{t.badgeNoPrepaymentZeroCancel || 'Без предоплаты • Отмена 0 ₾'}</span>
+              </span>
+            </div>
+
             {/* Photo Counter */}
             {car.images.length > 1 && (
-              <div className="absolute bottom-2 right-2 bg-black/50 backdrop-blur-md text-white text-[10px] font-medium px-2 py-0.5 rounded-full">
+              <div className="absolute bottom-2.5 right-2.5 bg-black/50 backdrop-blur-md text-white text-[10px] font-medium px-2 py-0.5 rounded-full">
                 {activeImageIdx + 1} / {car.images.length}
               </div>
             )}
