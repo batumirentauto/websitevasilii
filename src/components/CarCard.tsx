@@ -62,6 +62,14 @@ export function formatConsumption(consumption: string, lang: string): string {
   return consumption
 }
 
+export function formatSeats(seats: number, lang: string, fallback: string): string {
+  if (lang === 'ru') {
+    if (seats >= 2 && seats <= 4) return `${seats} места`
+    return `${seats} мест`
+  }
+  return `${seats} ${fallback}`
+}
+
 export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
   const { formatPrice, getBookingLink, lang, duration: globalDuration } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
@@ -194,7 +202,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               {formatDrive(car.drive, lang)}
             </span>
             <span className="text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
-              {car.seats} {t.seatsCount}
+              {formatSeats(car.seats, lang, t.seatsCount)}
             </span>
             {car.panoramicRoof && (
               <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
@@ -415,7 +423,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               <div>
                 <span className="text-[#86868B] block">{t.specSeats}</span>
                 <span className="font-semibold text-[#1D1D1F]">
-                  {car.seats} {t.seatsCount}
+                  {formatSeats(car.seats, lang, t.seatsCount)}
                 </span>
               </div>
               <div>
