@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
   const currentCityData = CITIES_DATA[city]
 
   return (
-    <footer className="bg-[#F5F5F7] text-[#1D1D1F] border-t border-black/[0.06] pt-16 pb-24 md:pb-16 mt-24">
+    <footer className="bg-[#F5F5F7] text-[#1D1D1F] border-t border-black/[0.06] pt-16 pb-24 md:pb-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Col 1: Brand Info */}
