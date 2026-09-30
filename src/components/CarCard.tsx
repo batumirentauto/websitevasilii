@@ -134,6 +134,32 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             />
 
+            {/* Floating feature badges on image (A/C & CarPlay) */}
+            <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10 pointer-events-none">
+              {car.climate !== false && (
+                <span
+                  className="inline-flex items-center gap-1 bg-black/60 backdrop-blur-md text-white text-[10px] font-semibold px-2 py-0.5 rounded-full border border-white/20 shadow-xs"
+                  title={t.specAcValue || 'Кондиционер'}
+                >
+                  <svg className="w-3 h-3 text-[#70D6FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18l-2.5 2.5m2.5-2.5l2.5 2.5m-2.5 15.5l-2.5-2.5m2.5 2.5l2.5-2.5M3 12h18m-18 0l2.5-2.5M3 12l2.5 2.5m15.5-2.5l-2.5-2.5m2.5 2.5l-2.5 2.5" />
+                  </svg>
+                  <span>A/C</span>
+                </span>
+              )}
+              {car.carplay && (
+                <span
+                  className="inline-flex items-center gap-1 bg-black/60 backdrop-blur-md text-white text-[10px] font-semibold px-2 py-0.5 rounded-full border border-white/20 shadow-xs"
+                  title="Apple CarPlay"
+                >
+                  <svg className="w-2.5 h-2.5 fill-current text-white" viewBox="0 0 24 24">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.13-1.96.99-3.1-.98.04-2.16.65-2.84 1.47-.6.7-1.12 1.83-.98 2.96 1.09.08 2.21-.56 2.83-1.33z" />
+                  </svg>
+                  <span>CarPlay</span>
+                </span>
+              )}
+            </div>
+
             {/* Gallery Arrows on hover */}
             {car.images.length > 1 && (
               <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -170,14 +196,10 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             <span className="text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
               {car.seats} {t.seatsCount}
             </span>
-            {car.carplay && (
-              <span className="text-[11px] font-medium text-[#0071E3] bg-[#0071E3]/10 px-2.5 py-1 rounded-md">
-                CarPlay
-              </span>
-            )}
             {car.panoramicRoof && (
-              <span className="text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
-                {t.panorama}
+              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-md">
+                <span>✨</span>
+                <span>{t.panorama}</span>
               </span>
             )}
           </div>
