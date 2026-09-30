@@ -1324,7 +1324,7 @@
     "carplay": true,
     "bluetooth": true,
     "winterTires": true,
-    "panoramicRoof": false,
+    "panoramicRoof": true,
     "fuelType": "Petrol",
     "fuelConsumption": "8.5 L/100km",
     "priceGel": 480,
