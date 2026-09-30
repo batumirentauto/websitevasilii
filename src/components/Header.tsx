@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useApp, CITIES_DATA, City, Currency, Lang, PHONE_NUMBER } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
@@ -43,12 +44,14 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Brandmark */}
         <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <div className="w-8 h-8 rounded-full bg-[#1D1D1F] flex items-center justify-center text-white font-bold text-xs tracking-wider group-hover:scale-105 transition-transform">
-            V
-          </div>
-          <span className="font-bold text-base tracking-tight text-[#1D1D1F]">
-            VASILII <span className="text-[#86868B] font-medium">RENT</span>
-          </span>
+          <Image
+            src="/images/vsl-logo-black.png"
+            alt="VSL Car Rental Georgia"
+            width={120}
+            height={52}
+            className="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            priority
+          />
         </Link>
 
         {/* City Segmented Picker (Center / Left) */}

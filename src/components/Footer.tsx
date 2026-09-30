@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useApp, CITIES_DATA, PHONE_NUMBER } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
@@ -16,13 +17,14 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Col 1: Brand Info */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-full bg-[#1D1D1F] flex items-center justify-center text-white font-bold text-xs tracking-wider">
-                V
-              </div>
-              <span className="font-bold text-lg tracking-tight text-[#1D1D1F]">
-                VASILII <span className="text-[#86868B] font-normal">RENT</span>
-              </span>
+            <div className="flex items-center gap-2 mb-4">
+              <Image
+                src="/images/vsl-logo-black.png"
+                alt="VSL Car Rental Georgia"
+                width={130}
+                height={56}
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-xs text-[#6E6E73] leading-relaxed mb-4">
               {t.heroSubtitle}
