@@ -7,8 +7,6 @@ import { useApp } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 import reviewsData from '@/data/reviews.json'
 
-const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/3zfbyPqrpVV4QmAj8?g_st=ic'
-
 export default function ReviewsSection() {
   const { lang, t: contextT } = useApp()
   const t = contextT || TRANSLATIONS[lang] || TRANSLATIONS.ru
