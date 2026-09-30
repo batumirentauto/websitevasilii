@@ -140,7 +140,7 @@ export default function HomePage() {
                     </span>
                   </div>
 
-                  {/* Floating badges on image */} 
+                  {/* Floating badges on image */}
                   <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 pointer-events-none">
                     <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
                       {t.unlimitedMileage}
