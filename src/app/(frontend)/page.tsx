@@ -84,11 +84,11 @@ export default function HomePage() {
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>{t.zeroFranchisePill}</span>
+                    <span>{lang === 'ru' ? 'Возраст от 21 года' : 'Age 21+' }</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
-                    <span>{lang === 'ru' ? 'Стаж от 0 лет, 21+' : 'Age 21+, license from 0y'}</span>
+                    <span>{lang === 'ru' ? 'Стаж от 0 лет' : 'License from 0y'}</span>
                   </div>
                 </div>
 
