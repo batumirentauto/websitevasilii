@@ -209,7 +209,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             <div className="absolute bottom-2.5 left-2.5 z-10 pointer-events-none">
               <span className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-full border border-white/20 shadow-xs">
                 <span className="text-[#34C759] font-bold">✓</span>
-                <span>{t.badgeNoPrepaymentZeroCancel || 'Без предоплаты • Отмена 0 ₾'}</span>
+                <span>{t.badgeNoPrepaymentZeroCancel || 'Бронь без предоплаты • Отмена 0 ₾'}</span>
               </span>
             </div>
 
