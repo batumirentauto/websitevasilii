@@ -39,7 +39,7 @@ export default function ContactsPage() {
             <p className="text-sm font-semibold text-[#1D1D1F] mb-2">
               {getCityAddress('batumi', lang)}
             </p>
-            <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
+            <p className="text-xs text-[#6E6E73] leading-relaxed mb-6 whitespace-pre-line">
               {getCityLandmarks('batumi', lang)}
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function ContactsPage() {
               rel="noreferrer"
               className="w-full h-10 rounded-xl bg-[#1D1D1F] hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
             >
-              <span>Telegram: @{CITIES_DATA.batumi.telegram}</span>
+              <span>Telegram</span>
             </a>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function ContactsPage() {
             <p className="text-sm font-semibold text-[#1D1D1F] mb-2">
               {getCityAddress('tbilisi', lang)}
             </p>
-            <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
+            <p className="text-xs text-[#6E6E73] leading-relaxed mb-6 whitespace-pre-line">
               {getCityLandmarks('tbilisi', lang)}
             </p>
           </div>
@@ -127,7 +127,7 @@ export default function ContactsPage() {
               rel="noreferrer"
               className="w-full h-10 rounded-xl bg-[#1D1D1F] hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
             >
-              <span>Telegram: @{CITIES_DATA.tbilisi.telegram}</span>
+              <span>Telegram</span>
             </a>
           </div>
         </div>
@@ -147,21 +147,31 @@ export default function ContactsPage() {
             <p className="text-sm font-semibold text-[#1D1D1F] mb-2">
               {getCityAddress('kutaisi', lang)}
             </p>
-            <p className="text-xs text-[#6E6E73] leading-relaxed mb-6">
+            <p className="text-xs text-[#6E6E73] leading-relaxed mb-6 whitespace-pre-line">
               {getCityLandmarks('kutaisi', lang)}
             </p>
           </div>
 
           <div className="space-y-3 pt-4 border-t border-black/[0.06]">
             <div className="flex flex-wrap gap-2 text-xs">
+              {CITIES_DATA.kutaisi.yandexMapUrl && (
+                <a
+                  href={CITIES_DATA.kutaisi.yandexMapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
+                >
+                  {t.viewOnYandex}
+                </a>
+              )}
               {CITIES_DATA.kutaisi.googleMapUrl && (
                 <a
                   href={CITIES_DATA.kutaisi.googleMapUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
+                  className="flex-1 py-2 px-3 bg-white border border-black/[0.08] rounded-xl text-center font-medium hover:bg-black hover:text-white transition-colors"
                 >
-                  {t.openMapBtn}
+                  {t.viewOnGoogle}
                 </a>
               )}
             </div>
@@ -171,7 +181,7 @@ export default function ContactsPage() {
               rel="noreferrer"
               className="w-full h-10 rounded-xl bg-[#1D1D1F] hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
             >
-              <span>Telegram: @{CITIES_DATA.kutaisi.telegram}</span>
+              <span>Telegram</span>
             </a>
           </div>
         </div>

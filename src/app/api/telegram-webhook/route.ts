@@ -351,7 +351,7 @@ async function executeAgentTask(promptText: string, chatId: number, image?: Imag
 4. "src/app/(frontend)/terms/page.tsx" — страница условий аренды:
    - требования, страховка, правила поездок, бесплатный возврат в любом городе.
 5. "src/app/(frontend)/contacts/page.tsx" — адреса баз и координаты:
-   - Батуми (Варшанидзе 154), Тбилиси (Нуцубидзе), Кутаиси (Аэропорт KUT).
+   - Батуми (ул. Мамия Варшанидзе 154), Тбилиси (Нуцубидзе), Кутаиси (Аэропорт KUT).
 6. "src/components/Header.tsx", "src/components/Footer.tsx" — шапка и подвал.
 7. "src/context/AppContext.tsx" — глобальный контекст приложения:
    - курсы валют (RATES: GEL: 1, USD, EUR) и логика конвертации цен с округлением вверх (Math.ceil), телефоны WhatsApp и горячей линии, адреса и координаты баз в городах (Батуми, Тбилиси, Кутаиси).
