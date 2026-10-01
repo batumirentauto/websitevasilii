@@ -8,12 +8,12 @@ export type City = 'batumi' | 'tbilisi' | 'kutaisi'
 export type Lang = 'ru' | 'en' | 'ar' | 'fa' | 'pl' | 'de' | 'it' | 'fr'
 
 // Currency exchange rates relative to 1 GEL
-// 1 USD ~ 2.70 GEL -> 1 GEL ~ 0.370 USD
-// 1 EUR ~ 2.95 GEL -> 1 GEL ~ 0.339 EUR
+// 1 USD = 2.60 GEL
+// 1 EUR = 2.94 GEL
 const RATES: Record<Currency, number> = {
   GEL: 1,
-  USD: 2.70, // GEL per 1 USD
-  EUR: 2.95, // GEL per 1 EUR
+  USD: 2.60, // GEL per 1 USD
+  EUR: 2.94, // GEL per 1 EUR
 }
 
 export const CURRENCY_SYMBOLS: Record<Currency, string> = {
