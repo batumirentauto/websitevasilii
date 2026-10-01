@@ -272,10 +272,10 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* 8. 100% Automatic & A/C */}
+          {/* 8. Mobility & Car Replacement Guarantee */}
           <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
-              ❄️
+              🛡️
             </div>
             <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit8Title}</h3>
             <p className="text-xs text-[#6E6E73] leading-relaxed">
