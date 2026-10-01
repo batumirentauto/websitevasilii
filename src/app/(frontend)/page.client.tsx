@@ -168,41 +168,92 @@ export default function HomePage({
                     </Link>
                   ))}
                 </div>
+
+                {/* Competitive Advantages Row in Hero */}
+                <div className="mt-3 pt-3 border-t border-black/[0.05] grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>{t.unlimitedMileage}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>{t.zeroDepositPill}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>{lang === 'ru' ? 'Мыть при возврате не нужно' : 'No need to wash on return'}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>{t.rentFrom1DayPill}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>{lang === 'ru' ? 'Возраст от 21 года' : 'Age 21+'}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>{lang === 'ru' ? 'Стаж от 0 лет' : 'License from 0y'}</span>
+                  </div>
+                </div>
+
+                <div className="mt-3 pt-2.5 border-t border-black/[0.04] text-[11px] text-[#34C759] font-bold flex items-center justify-start gap-1.5">
+                  <span>⚡</span>
+                  <span>{t.freeIntercityBadge}</span>
+                </div>
               </div>
 
-              {/* Dynamic Delivery & Base Location Info Note */}
-              <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-black/[0.04] text-xs text-[#1D1D1F] flex items-start gap-3">
-                <span className="text-base shrink-0 mt-0.5">📍</span>
+              {/* Location Delivery & Station Notice */}
+              <div className="bg-[#F5F5F7] p-3.5 rounded-2xl text-xs text-[#1D1D1F] flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
                 <div>
-                  <p className="font-semibold mb-0.5">
-                    {t.baseLabel}: {getCityAddress(city, lang)}
-                  </p>
-                  <p className="text-[#6E6E73]">{getCityDeliveryNote(city, lang)}</p>
+                  <span className="font-bold block text-[#1D1D1F] mb-0.5">
+                    {t.baseLabel}: {getCityName(city, lang)} ({getCityAddress(city, lang)})
+                  </span>
+                  <span className="text-[#6E6E73]">{getCityDeliveryNote(city, lang)}</span>
                 </div>
+                {currentCity?.googleMapUrl && (
+                  <a
+                    href={currentCity.googleMapUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shrink-0 px-3.5 py-1.5 bg-white border border-black/[0.1] rounded-full font-semibold text-[11px] text-[#1D1D1F] hover:bg-black hover:text-white transition-colors"
+                  >
+                    {t.onMap}
+                  </a>
+                )}
               </div>
             </div>
 
-            {/* Right Column: Hero Visual Showcase */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto w-full max-w-[500px] lg:max-w-none aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-black/5 bg-[#F5F5F7]">
-                <Image
-                  src="/fleet/Ford_Escape_2010/IMG_9271.jpg"
-                  alt="Car Rental Georgia"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-                
-                {/* Floating Highlights Badges */}
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md border border-black/5 flex items-center gap-1.5 text-xs font-bold text-[#1D1D1F]">
-                  <span>🛡️</span>
-                  <span>{t.badgeFullInsurance}</span>
-                </div>
+            {/* Right Column: Visual Showcase */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.18)] border border-black/[0.08] group">
+                <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full">
+                  <Image
+                    src="/images/hero-georgia.jpg"
+                    alt={heroHeadline || t.heroTitle}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
 
-                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md border border-black/5 flex items-center gap-1.5 text-xs font-bold text-[#34C759]">
-                  <span>✓</span>
-                  <span>{t.badgeNoDeposit}</span>
+                  {/* Top floating badge */}
+                  <div className="absolute top-4 left-4 pointer-events-none">
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] sm:text-xs font-semibold px-3.5 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
+                      {t.heroPhotoBadge}
+                    </span>
+                  </div>
+
+                  {/* Floating badges on image */}
+                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 pointer-events-none">
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
+                      ✓ {t.heroBadgeNoPrepayment}
+                    </span>
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
+                      ✓ {t.heroBadgeFreeCancellation}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
