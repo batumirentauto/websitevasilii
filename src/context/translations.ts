@@ -230,6 +230,9 @@ export const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     accidentHelpTitle: 'Помощь при ДТП или происшествии (24/7)',
     accidentHelpDesc: 'Если случится ДТП или другое происшествие — не переживайте. Сохраняйте спокойствие и сразу свяжитесь с нами по номеру экстренной линии. Мы скоординируем ваши действия, подробно объясним как всё правильно оформить и оперативно поможем с решением ситуации или подменой авто.',
     accidentHelpShort: 'При ДТП или происшествии (24/7):',
+    navSos: 'При ДТП / SOS',
+    sosPageTitle: 'Что делать при ДТП или происшествии в Грузии',
+    sosPageSubtitle: 'Главное — не переживайте. Мы всегда на связи 24 часа в сутки и поможем в любой ситуации на дороге.',
   },
   en: {
     brandName: 'VASILII RENT',
@@ -460,6 +463,9 @@ freeIntercityBadge: 'Intercity return (Batumi / Tbilisi / Kutaisi) — 0 ₾ (no
     accidentHelpTitle: '24/7 Roadside & Accident Support',
     accidentHelpDesc: 'If an accident or other incident occurs on the road — stay calm and call our emergency line immediately. We will guide you through the process, explain the exact steps to take, and promptly arrange assistance or a replacement car.',
     accidentHelpShort: 'Accident / roadside support 24/7:',
+    navSos: 'Accident / SOS',
+    sosPageTitle: 'What to Do in an Accident or Incident in Georgia',
+    sosPageSubtitle: 'Stay calm — we are available 24/7 to guide you through every step on the road.',
   },
   ar: {
     brandName: 'VASILII RENT',
@@ -690,6 +696,9 @@ freeIntercityBadge: 'التسليم في مدينة أخرى (باتومي / ت�
     accidentHelpTitle: 'الدعم في حالات الحوادث والطوارئ (24/7)',
     accidentHelpDesc: 'في حال وقوع حادث أو أي طارئ على الطريق — لا تقلق. تواصل معنا فورًا على خط الطوارئ، وسنقوم بتنسيق الإجراءات وتوفير المساعدة أو سيارة بديلة على الفور.',
     accidentHelpShort: 'في حال الحوادث أو الطوارئ (24/7):',
+    navSos: 'عند الحوادث / طوارئ',
+    sosPageTitle: 'ماذا تفعل في حال وقوع حادث في جورجيا',
+    sosPageSubtitle: 'لا تقلق أبدًا — نحن متواجدون على مدار 24 ساعة لدعمك وإرشادك خطوة بخطوة.',
   },
   fa: {
     brandName: 'VASILII RENT',
@@ -920,6 +929,9 @@ freeIntercityBadge: 'تحویل در شهر دیگر (باتومی / تفلیس 
     accidentHelpTitle: 'پشتیبانی ۲۴ ساعته تصادفات و حوادث',
     accidentHelpDesc: 'اگر تصادف یا اتفاق دیگری در جاده رخ داد — نگران نباشید. بلافاصله با شماره امداد اضطراری ما تماس بگیرید. ما همه اقدامات لازم، اعزام امداد و در صورت نیاز خودروی جایگزین را هماهنگ می‌کنیم.',
     accidentHelpShort: 'در صورت تصادف یا سانحه (۲۴/۷):',
+    navSos: 'در تصادفات / امداد',
+    sosPageTitle: 'اقدامات لازم در زمان تصادف یا حادثه در گرجستان',
+    sosPageSubtitle: 'آرامش خود را حفظ کنید — ما ۲۴ ساعته در کنار شما هستیم تا تمام مراحل را هماهنگ کنیم.',
   },
   pl: {
     brandName: 'VASILII RENT',
@@ -1150,6 +1162,9 @@ freeIntercityBadge: 'Zwrot w innym mieście (Batumi / Tbilisi / Kutaisi) — 0 �
     accidentHelpTitle: 'Pomoc w razie wypadku lub kolizji (24/7)',
     accidentHelpDesc: 'W razie kolizji, wypadku lub awarii na drodze — zachowaj spokój i natychmiast skontaktuj się z nami pod numerem alarmowym. Skoordynujemy pomoc drogową i zorganizujemy auto zastępcze.',
     accidentHelpShort: 'W razie wypadku lub kolizji (24/7):',
+    navSos: 'Wypadek / SOS',
+    sosPageTitle: 'Co zrobić w razie kolizji lub wypadku w Gruzji',
+    sosPageSubtitle: 'Zachowaj spokój — jesteśmy dostępni 24/7, aby pomóc Ci w każdej sytuacji na drodze.',
   },
   de: {
     brandName: 'VASILII RENT',
@@ -1380,6 +1395,9 @@ freeIntercityBadge: 'Rückgabe in anderer Stadt (Batumi / Tiflis / Kutaissi) —
     accidentHelpTitle: '24/7 Unfall- & Pannenunterstützung',
     accidentHelpDesc: 'Sollte es zu einem Unfall oder Vorfall auf der Straße kommen — bewahren Sie Ruhe und rufen Sie sofort unsere Notfallnummer an. Wir koordinieren die nötigen Schritte und organisieren bei Bedarf ein Ersatzfahrzeug.',
     accidentHelpShort: 'Bei Unfall oder Notfall (24/7):',
+    navSos: 'Unfall / SOS',
+    sosPageTitle: 'Was tun bei einem Unfall in Georgien',
+    sosPageSubtitle: 'Bleiben Sie ruhig — unsere Notfallhilfe ist rund um die Uhr für Sie da.',
   },
   it: {
     brandName: 'VASILII RENT',
@@ -1610,6 +1628,9 @@ freeIntercityBadge: 'Riconsegna in altra città (Batumi / Tbilisi / Kutaisi) —
     accidentHelpTitle: 'Assistenza incidenti ed emergenze 24/7',
     accidentHelpDesc: 'In caso di incidente o emergenza stradale — non preoccuparti. Contattaci subito al nostro numero di emergenza: coordineremo l\'assistenza necessaria e organizzeremo un\'auto sostitutiva.',
     accidentHelpShort: 'In caso di incidente (24/7):',
+    navSos: 'Incidente / SOS',
+    sosPageTitle: 'Cosa fare in caso di incidente in Georgia',
+    sosPageSubtitle: 'Niente panico — siamo disponibili 24/7 per guidarti e supportarti in ogni situazione.',
   },
   fr: {
     brandName: 'VASILII RENT',
@@ -1840,5 +1861,8 @@ freeIntercityBadge: 'Retour dans une autre ville (Batoumi / Tbilissi / Koutaïss
     accidentHelpTitle: 'Assistance 24/7 en cas d\'accident ou incident',
     accidentHelpDesc: 'En cas d\'accident ou incident sur la route — restez serein et contactez immédiatement notre ligne d\'urgence. Nous coordonnerons l\'assistance requise et mettrons à disposition un véhicule de remplacement.',
     accidentHelpShort: 'En cas d\'accident ou incident (24/7) :',
+    navSos: 'Accident / SOS',
+    sosPageTitle: 'Que faire en cas d\'accident ou incident en Géorgie',
+    sosPageSubtitle: 'Restez serein — notre équipe d\'assistance 24/7 vous guide pas à pas dans toutes les démarches.',
   },
 }

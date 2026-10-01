@@ -60,6 +60,11 @@ export const Footer: React.FC = () => {
                   {t.navContacts}
                 </Link>
               </li>
+              <li>
+                <Link href="/sos" className="text-[#FF3B30] hover:underline font-semibold flex items-center gap-1">
+                  <span>🚨</span> {t.navSos || 'При ДТП / SOS'}
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -85,6 +85,13 @@ export const Header: React.FC = () => {
           <Link href="/contacts" className="hover:text-[#1D1D1F] transition-colors">
             {t.navContacts}
           </Link>
+          <Link
+            href="/sos"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F5] hover:bg-[#FFE5E5] text-[#FF3B30] text-xs font-bold border border-[#FF3B30]/25 transition-all shadow-xs shrink-0"
+          >
+            <span>🚨</span>
+            <span>{t.navSos || 'При ДТП / SOS'}</span>
+          </Link>
         </nav>
 
         {/* Right Section: Currency Switcher + Lang Dropdown + Messenger Call */}
@@ -229,6 +236,14 @@ export const Header: React.FC = () => {
               className="py-1 hover:text-[#0071E3]"
             >
               {t.navContacts}
+            </Link>
+            <Link
+              href="/sos"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 rounded-2xl bg-[#FFF5F5] border border-[#FF3B30]/20 text-[#FF3B30] font-bold flex items-center gap-2"
+            >
+              <span>🚨</span>
+              <span>{t.navSos || 'При ДТП / SOS'}</span>
             </Link>
           </div>
 
