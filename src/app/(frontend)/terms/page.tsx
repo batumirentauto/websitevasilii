@@ -142,15 +142,15 @@ export default function TermsPage() {
           <p className="text-sm text-[#6E6E73] leading-relaxed mb-4">
             {t.termTravelDesc}
           </p>
-          <div className="bg-white p-4 rounded-2xl border border-black/[0.06] text-xs text-[#86868B] space-y-1.5">
-            <p>
-              <strong className="text-[#1D1D1F]">{t.termsAllowedTitle} </strong>
-              <span>{t.termsAllowedText}</span>
-            </p>
-            <p>
-              <strong className="text-[#FF3B30]">{t.termsForbiddenTitle} </strong>
-              <span>{t.termsForbiddenText}</span>
-            </p>
+          <div className="bg-white p-5 rounded-2xl border border-black/[0.06] text-xs space-y-3">
+            <div>
+              <strong className="text-[#34C759] font-bold block mb-1">{t.termsAllowedTitle} </strong>
+              <p className="text-[#48484A] leading-relaxed">{t.termsAllowedText}</p>
+            </div>
+            <div className="pt-2.5 border-t border-black/[0.06]">
+              <strong className="text-[#FF3B30] font-bold block mb-1">{t.termsForbiddenTitle} </strong>
+              <p className="text-[#48484A] leading-relaxed">{t.termsForbiddenText}</p>
+            </div>
           </div>
         </div>
 
