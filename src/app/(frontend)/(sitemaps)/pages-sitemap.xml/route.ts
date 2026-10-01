@@ -33,24 +33,64 @@ const getPagesSitemap = unstable_cache(
 
     const defaultSitemap = [
       {
+        loc: `${SITE_URL}/`,
+        lastmod: dateFallback,
+        changefreq: 'daily',
+        priority: 1.0,
+      },
+      {
+        loc: `${SITE_URL}/terms`,
+        lastmod: dateFallback,
+        changefreq: 'weekly',
+        priority: 0.8,
+      },
+      {
+        loc: `${SITE_URL}/contacts`,
+        lastmod: dateFallback,
+        changefreq: 'weekly',
+        priority: 0.8,
+      },
+      {
+        loc: `${SITE_URL}/reviews`,
+        lastmod: dateFallback,
+        changefreq: 'daily',
+        priority: 0.8,
+      },
+      {
+        loc: `${SITE_URL}/sos`,
+        lastmod: dateFallback,
+        changefreq: 'monthly',
+        priority: 0.7,
+      },
+      {
         loc: `${SITE_URL}/search`,
         lastmod: dateFallback,
+        changefreq: 'weekly',
+        priority: 0.5,
       },
       {
         loc: `${SITE_URL}/posts`,
         lastmod: dateFallback,
+        changefreq: 'weekly',
+        priority: 0.6,
       },
     ]
+
+    const existingLocs = new Set(defaultSitemap.map((item) => item.loc))
 
     const sitemap = results.docs
       ? results.docs
           .filter((page) => Boolean(page?.slug))
           .map((page) => {
+            const loc = page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`
             return {
-              loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
+              loc,
               lastmod: page.updatedAt || dateFallback,
+              changefreq: 'weekly',
+              priority: 0.7,
             }
           })
+          .filter((item) => !existingLocs.has(item.loc))
       : []
 
     return [...defaultSitemap, ...sitemap]

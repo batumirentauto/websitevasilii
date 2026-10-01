@@ -17,6 +17,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { MobileFloatingBar } from '@/components/MobileFloatingBar'
 import { AppProvider } from '@/context/AppContext'
+import { JsonLd } from '@/components/JsonLd'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -28,7 +29,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="ru" suppressHydrationWarning>
       <head>
         <InitTheme />
-        <title>Прокат автомобилей в Грузии от 1 дня</title>
         <link href="/favicon.svg?v=20261001-v2" rel="icon" type="image/svg+xml" />
         <link href="/favicon-32x32.png?v=20261001-v2" rel="icon" type="image/png" sizes="32x32" />
         <link href="/favicon-16x16.png?v=20261001-v2" rel="icon" type="image/png" sizes="16x16" />
@@ -36,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.ico?v=20261001-v2" rel="shortcut icon" />
         <link href="/apple-touch-icon.png?v=20261001-v2" rel="apple-touch-icon" sizes="180x180" />
         <link href="/apple-touch-icon-precomposed.png?v=20261001-v2" rel="apple-touch-icon-precomposed" sizes="180x180" />
+        <JsonLd />
       </head>
       <body className="bg-[#FFFFFF] text-[#1D1D1F] antialiased selection:bg-black selection:text-white">
         <AppProvider>
@@ -59,24 +60,70 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  title: 'Прокат автомобилей в Грузии от 1 дня',
-  description: 'Прокат автомобилей в Грузии от 1 дня без залога. Аренда авто в Батуми, Тбилиси, Кутаиси.',
+  title: {
+    default: 'Аренда авто в Грузии от 1 дня без залога | Батуми, Тбилиси, Кутаиси — VASILII RENT',
+    template: '%s | VASILII RENT',
+  },
+  description:
+    'Прокат автомобилей в Грузии от 1 суток без депозита (0 ₾) и без предоплаты. Честные цены, страховка КАСКО + ОСАГО, неограниченный пробег, бесплатный 1-й час продления. Автопарк в Батуми, Тбилиси и аэропорту Кутаиси.',
+  keywords: [
+    'аренда авто в грузии',
+    'прокат авто батуми',
+    'аренда авто тбилиси',
+    'прокат авто аэропорт кутаиси',
+    'аренда авто без залога грузия',
+    'прокат машин без депозита',
+    'аренда авто каско осаго',
+    'car rental georgia',
+    'car hire batumi',
+    'tbilisi car rental',
+    'kutaisi airport car hire',
+    'rent a car batumi',
+  ],
+  authors: [{ name: 'VASILII RENT', url: getServerSideURL() }],
+  creator: 'VASILII RENT',
+  publisher: 'VASILII RENT',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: mergeOpenGraph({
-    title: 'Прокат автомобилей в Грузии от 1 дня',
-    description: 'Прокат автомобилей в Грузии от 1 дня без залога. Аренда авто в Батуми, Тбилиси, Кутаиси.',
+    title: 'Аренда авто в Грузии от 1 дня без залога — VASILII RENT',
+    description:
+      'Прокат автомобилей в Грузии от 1 суток без депозита (0 ₾) и без предоплаты. Честные цены, КАСКО + ОСАГО, бесплатный 1-й час продления. Батуми, Тбилиси, Кутаиси.',
+    url: getServerSideURL(),
+    siteName: 'VASILII RENT',
+    locale: 'ru_RU',
+    type: 'website',
     images: [
       {
         url: `${getServerSideURL()}/images/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'VSL Car Rental Georgia',
+        alt: 'VASILII RENT — Прокат автомобилей в Грузии',
       },
     ],
   }),
   twitter: {
     card: 'summary_large_image',
-    title: 'Прокат автомобилей в Грузии от 1 дня',
-    description: 'Прокат автомобилей в Грузии от 1 дня без залога. Аренда авто в Батуми, Тбилиси, Кутаиси.',
+    title: 'Аренда авто в Грузии от 1 дня без залога — VASILII RENT',
+    description:
+      'Прокат автомобилей в Грузии от 1 суток без депозита (0 ₾) и без предоплаты. Батуми, Тбилиси, Кутаиси.',
     images: [`${getServerSideURL()}/images/og-image.jpg`],
   },
   icons: {
