@@ -45,7 +45,7 @@ export const Header: React.FC = () => {
         {/* Brandmark */}
         <Link href="/" className="flex items-center gap-2 group shrink-0">
           <Image
-            src="/images/vsl-logo-black.png"
+            src="/images/vsl-logo.svg"
             alt="VSL Car Rental Georgia"
             width={120}
             height={52}
