@@ -6,7 +6,10 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   description: 'Прокат автомобилей в Грузии от 1 дня без залога. Аренда авто в Батуми, Тбилиси, Кутаиси.',
   images: [
     {
-      url: `${getServerSideURL()}/images/hero-georgia.jpg`,
+      url: `${getServerSideURL()}/images/og-image.jpg`,
+      width: 1200,
+      height: 630,
+      alt: 'VSL Car Rental Georgia',
     },
   ],
   siteName: 'VSL Car Rental Georgia',
