@@ -122,7 +122,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 {car.name}
               </h3>
               <p className="text-xs text-[#86868B] font-normal mt-0.5">
-                {car.year} • {formatFuel(car.fuelType, lang)} • {formatTransmission(car.transmission, lang)}
+                {car.year} • {formatFuel(car.fuelType, lang)} • {formatTransmission(car.transmission, lang)} • <span className="text-[#6E6E73]">{t.orSimilarCar || 'или аналогичный'}</span>
               </p>
             </div>
             {car.depositGel === 0 ? (
@@ -354,7 +354,10 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               ✕
             </button>
 
-            <h2 className="text-2xl font-bold text-[#1D1D1F] tracking-tight">{car.name}</h2>
+            <h2 className="text-2xl font-bold text-[#1D1D1F] tracking-tight">
+              {car.name}{' '}
+              <span className="text-sm font-normal text-[#86868B]">({t.orSimilarCar || 'или аналогичный авто'})</span>
+            </h2>
             <p className="text-sm text-[#86868B] mt-0.5">
               {t.yearLabel}: {car.year} • {t.categoryLabel}: {car.category.toUpperCase()} • {formatFuel(car.fuelType, lang)}
             </p>
@@ -499,6 +502,17 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <span className="text-[#86868B] block">{t.specMinPeriod}</span>
                 <span className="font-semibold text-[#1D1D1F]">{t.specMinPeriodValue}</span>
               </div>
+            </div>
+
+            {/* Mobility Guarantee Notice */}
+            <div className="bg-[#F5F5F7] p-4 rounded-2xl border border-black/[0.05] mb-5">
+              <div className="flex items-center gap-2 font-bold text-xs text-[#1D1D1F] mb-1.5">
+                <span className="text-sm">🛡️</span>
+                <span>{t.guaranteeTitle || 'Гарантия подмены: вы не останетесь без машины'}</span>
+              </div>
+              <p className="text-xs text-[#6E6E73] leading-relaxed">
+                {t.guaranteeDesc}
+              </p>
             </div>
 
             {/* Booking CTA row */}

@@ -97,6 +97,16 @@ export default function TermsPage() {
           </div>
         </div>
 
+        {/* Mobility Guarantee */}
+        <div className="bg-[#F5F5F7] p-8 rounded-3xl border border-black/[0.04]">
+          <h2 className="text-xl font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">
+            <span>🛡️</span> {t.termsGuaranteeTitle || 'Гарантия предоставления автомобиля'}
+          </h2>
+          <p className="text-sm text-[#48484A] leading-relaxed">
+            {t.termsGuaranteeText}
+          </p>
+        </div>
+
         {/* Territory */}
         <div className="bg-[#F5F5F7] p-8 rounded-3xl border border-black/[0.04]">
           <h2 className="text-xl font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">
