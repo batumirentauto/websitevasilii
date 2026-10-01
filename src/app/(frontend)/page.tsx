@@ -285,6 +285,36 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Route Consultation Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="bg-gradient-to-r from-[#F5F5F7] via-[#FAFAFC] to-[#F0F0F3] border border-black/[0.05] p-6 sm:p-8 rounded-3xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
+          <div className="flex items-start sm:items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-white shadow-xs flex items-center justify-center text-2xl shrink-0 border border-black/[0.04]">
+              🧭
+            </div>
+            <div>
+              <h3 className="font-bold text-base sm:text-lg text-[#1D1D1F] mb-1">
+                {t.routeAdviceTitle || 'Не знаете, куда поехать? Поможем составить маршрут!'}
+              </h3>
+              <p className="text-xs sm:text-sm text-[#6E6E73] max-w-2xl leading-relaxed">
+                {t.routeAdviceDesc || 'Спросите у менеджера по бронированию: мы с радостью предложим красивые варианты под ваши даты, подскажем реальное время в пути и поможем составить комфортный маршрут.'}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <a
+              href="https://wa.me/995591050752?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D1%8B%20%D0%BA%D1%83%D0%B4%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%85%D0%B0%D1%82%D1%8C%20%D0%B8%20%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8%20%D0%B7%D0%B0%D0%B9%D0%BC%D1%91%D1%82%20%D0%B4%D0%BE%D1%80%D0%BE%D0%B3%D0%B0%3F"
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 md:flex-initial h-11 px-6 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-sm"
+            >
+              <span>{t.routeAdviceBtn || 'Спросить маршрут'}</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Real Customer Reviews Section */}
       <ReviewsSection />
     </div>

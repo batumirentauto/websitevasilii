@@ -152,6 +152,29 @@ export default function TermsPage() {
               <p className="text-[#48484A] leading-relaxed">{t.termsForbiddenText}</p>
             </div>
           </div>
+
+          {/* Route Advice Prompt */}
+          <div className="mt-4 p-5 rounded-2xl bg-white border border-black/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-start gap-3.5">
+              <span className="text-2xl shrink-0">🧭</span>
+              <div>
+                <strong className="text-sm font-bold text-[#1D1D1F] block mb-1">
+                  {t.routeAdviceTitle}
+                </strong>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
+                  {t.routeAdviceDesc}
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://wa.me/995591050752?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D1%8B%20%D0%BA%D1%83%D0%B4%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%85%D0%B0%D1%82%D1%8C%20%D0%B8%20%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE%20%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8%20%D0%B7%D0%B0%D0%B9%D0%BC%D1%91%D1%82%20%D0%B4%D0%BE%D1%80%D0%BE%D0%B3%D0%B0%3F"
+              target="_blank"
+              rel="noreferrer"
+              className="shrink-0 h-10 px-5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-transform active:scale-95 shadow-xs"
+            >
+              <span>{t.routeAdviceBtn}</span>
+            </a>
+          </div>
         </div>
 
         {/* Delivery & Bases */}

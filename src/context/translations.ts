@@ -233,6 +233,9 @@ export const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     navSos: 'При ДТП / SOS',
     sosPageTitle: 'Что делать при ДТП или происшествии в Грузии',
     sosPageSubtitle: 'Главное — не переживайте. Мы всегда на связи 24 часа в сутки и поможем в любой ситуации на дороге.',
+    routeAdviceTitle: 'Не знаете, куда поехать? Поможем составить маршрут!',
+    routeAdviceDesc: 'Спросите у менеджера по бронированию: мы с радостью предложим красивые варианты под ваши даты, подскажем реальное время в пути и поможем составить комфортный маршрут.',
+    routeAdviceBtn: 'Спросить маршрут',
   },
   en: {
     brandName: 'VASILII RENT',
@@ -466,6 +469,9 @@ freeIntercityBadge: 'Intercity return (Batumi / Tbilisi / Kutaisi) — 0 ₾ (no
     navSos: 'Accident / SOS',
     sosPageTitle: 'What to Do in an Accident or Incident in Georgia',
     sosPageSubtitle: 'Stay calm — we are available 24/7 to guide you through every step on the road.',
+    routeAdviceTitle: 'Not sure where to go? We’ll help plan your trip!',
+    routeAdviceDesc: 'Ask our booking manager: we will gladly recommend scenic routes for your travel dates, estimate realistic driving times, and help you pick the best car.',
+    routeAdviceBtn: 'Ask for Route Advice',
   },
   ar: {
     brandName: 'VASILII RENT',
@@ -699,6 +705,9 @@ freeIntercityBadge: 'التسليم في مدينة أخرى (باتومي / ت�
     navSos: 'عند الحوادث / طوارئ',
     sosPageTitle: 'ماذا تفعل في حال وقوع حادث في جورجيا',
     sosPageSubtitle: 'لا تقلق أبدًا — نحن متواجدون على مدار 24 ساعة لدعمك وإرشادك خطوة بخطوة.',
+    routeAdviceTitle: 'لست متأكداً إلى أين تذهب؟ سنساعدك في تخطيط مسارك!',
+    routeAdviceDesc: 'اسأل مدير الحجوزات لدينا: سنقترح عليك أجمل الوجهات ونوضح لك الوقت الفعلي المستغرق على الطريق لمساعدتك في اختيار السيارة المناسبة.',
+    routeAdviceBtn: 'استشر المدير',
   },
   fa: {
     brandName: 'VASILII RENT',
@@ -932,6 +941,9 @@ freeIntercityBadge: 'تحویل در شهر دیگر (باتومی / تفلیس 
     navSos: 'در تصادفات / امداد',
     sosPageTitle: 'اقدامات لازم در زمان تصادف یا حادثه در گرجستان',
     sosPageSubtitle: 'آرامش خود را حفظ کنید — ما ۲۴ ساعته در کنار شما هستیم تا تمام مراحل را هماهنگ کنیم.',
+    routeAdviceTitle: 'نمی‌دانید کجا سفر کنید؟ به شما در انتخاب مسیر کمک می‌کنیم!',
+    routeAdviceDesc: 'از مدیر رزرواسیون ما بپرسید: زیباترین مقاصد را متناسب با زمان سفرتان پیشنهاد می‌دهیم و زمان واقعی رانندگی را مشخص می‌کنیم.',
+    routeAdviceBtn: 'مشاوره مسیر',
   },
   pl: {
     brandName: 'VASILII RENT',
@@ -1165,6 +1177,9 @@ freeIntercityBadge: 'Zwrot w innym mieście (Batumi / Tbilisi / Kutaisi) — 0 �
     navSos: 'Wypadek / SOS',
     sosPageTitle: 'Co zrobić w razie kolizji lub wypadku w Gruzji',
     sosPageSubtitle: 'Zachowaj spokój — jesteśmy dostępni 24/7, aby pomóc Ci w każdej sytuacji na drodze.',
+    routeAdviceTitle: 'Nie wiesz, dokąd pojechać? Pomożemy zaplanować trasę!',
+    routeAdviceDesc: 'Zapytaj naszego menedżera: chętnie polecimy malownicze miejsca na Twoje terminy i podpowiemy realny czas podróży.',
+    routeAdviceBtn: 'Zapytaj o trasę',
   },
   de: {
     brandName: 'VASILII RENT',
@@ -1398,6 +1413,9 @@ freeIntercityBadge: 'Rückgabe in anderer Stadt (Batumi / Tiflis / Kutaissi) —
     navSos: 'Unfall / SOS',
     sosPageTitle: 'Was tun bei einem Unfall in Georgien',
     sosPageSubtitle: 'Bleiben Sie ruhig — unsere Notfallhilfe ist rund um die Uhr für Sie da.',
+    routeAdviceTitle: 'Noch unsicher über die Route? Wir helfen bei der Planung!',
+    routeAdviceDesc: 'Fragen Sie unseren Buchungsmanager: Wir empfehlen malerische Routen passend zu Ihren Reisedaten und schätzen die reale Fahrzeit ein.',
+    routeAdviceBtn: 'Route anfragen',
   },
   it: {
     brandName: 'VASILII RENT',
@@ -1631,6 +1649,9 @@ freeIntercityBadge: 'Riconsegna in altra città (Batumi / Tbilisi / Kutaisi) —
     navSos: 'Incidente / SOS',
     sosPageTitle: 'Cosa fare in caso di incidente in Georgia',
     sosPageSubtitle: 'Niente panico — siamo disponibili 24/7 per guidarti e supportarti in ogni situazione.',
+    routeAdviceTitle: 'Non sai dove andare? Ti aiutiamo a pianificare l\'itinerario!',
+    routeAdviceDesc: 'Chiedi al nostro responsabile: ti suggeriremo splendidi percorsi per le tue date e ti daremo indicazioni sui tempi di percorrenza effettivi.',
+    routeAdviceBtn: 'Chiedi un consiglio',
   },
   fr: {
     brandName: 'VASILII RENT',
@@ -1864,5 +1885,8 @@ freeIntercityBadge: 'Retour dans une autre ville (Batoumi / Tbilissi / Koutaïss
     navSos: 'Accident / SOS',
     sosPageTitle: 'Que faire en cas d\'accident ou incident en Géorgie',
     sosPageSubtitle: 'Restez serein — notre équipe d\'assistance 24/7 vous guide pas à pas dans toutes les démarches.',
+    routeAdviceTitle: 'Vous hésitez sur l\'itinéraire ? Nous vous aidons à choisir !',
+    routeAdviceDesc: 'Demandez conseil à notre responsable des réservations : nous vous suggérerons les plus beaux trajets et le temps de route réel pour chaque étape.',
+    routeAdviceBtn: 'Conseil itinéraire',
   },
 }
