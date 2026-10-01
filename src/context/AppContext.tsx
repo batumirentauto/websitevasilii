@@ -212,18 +212,53 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   useEffect(() => {
     try {
-      const savedCurr = localStorage.getItem('vasilii_currency') as Currency
-      if (savedCurr && (savedCurr === 'GEL' || savedCurr === 'USD' || savedCurr === 'EUR')) {
-        setCurrencyState(savedCurr)
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search)
+
+        // 1. Language from URL (?lang=... or ?l=...)
+        const urlLang = (params.get('lang') || params.get('l'))?.toLowerCase() as Lang
+        const validLangs: Lang[] = ['ru', 'en', 'ar', 'fa', 'pl', 'de', 'it', 'fr']
+        if (urlLang && validLangs.includes(urlLang)) {
+          setLangState(urlLang)
+          localStorage.setItem('vasilii_lang', urlLang)
+          document.documentElement.lang = urlLang
+          document.documentElement.dir = urlLang === 'ar' || urlLang === 'fa' ? 'rtl' : 'ltr'
+        } else {
+          const savedLang = localStorage.getItem('vasilii_lang') as Lang
+          if (savedLang && validLangs.includes(savedLang)) {
+            setLangState(savedLang)
+            document.documentElement.lang = savedLang
+            document.documentElement.dir = savedLang === 'ar' || savedLang === 'fa' ? 'rtl' : 'ltr'
+          }
+        }
+
+        // 2. City from URL (?city=... or ?c=...)
+        const urlCity = (params.get('city') || params.get('c'))?.toLowerCase() as City
+        const validCities: City[] = ['batumi', 'tbilisi', 'kutaisi']
+        if (urlCity && validCities.includes(urlCity)) {
+          setCityState(urlCity)
+          localStorage.setItem('vasilii_city', urlCity)
+        } else {
+          const savedCity = localStorage.getItem('vasilii_city') as City
+          if (savedCity && validCities.includes(savedCity)) {
+            setCityState(savedCity)
+          }
+        }
+
+        // 3. Currency from URL (?currency=... or ?cur=...)
+        const urlCurr = (params.get('currency') || params.get('cur'))?.toUpperCase() as Currency
+        const validCurrs: Currency[] = ['GEL', 'USD', 'EUR']
+        if (urlCurr && validCurrs.includes(urlCurr)) {
+          setCurrencyState(urlCurr)
+          localStorage.setItem('vasilii_currency', urlCurr)
+        } else {
+          const savedCurr = localStorage.getItem('vasilii_currency') as Currency
+          if (savedCurr && validCurrs.includes(savedCurr)) {
+            setCurrencyState(savedCurr)
+          }
+        }
       }
-      const savedCity = localStorage.getItem('vasilii_city') as City
-      if (savedCity && (savedCity === 'batumi' || savedCity === 'tbilisi' || savedCity === 'kutaisi')) {
-        setCityState(savedCity)
-      }
-      const savedLang = localStorage.getItem('vasilii_lang') as Lang
-      if (savedLang) {
-        setLangState(savedLang)
-      }
+
       // Ensure duration always defaults to '1-2' days for every visit
       localStorage.removeItem('vasilii_duration')
       setDurationState('1-2')
@@ -248,6 +283,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setLangState(l)
     try {
       localStorage.setItem('vasilii_lang', l)
+      document.documentElement.lang = l
       if (l === 'ar' || l === 'fa') {
         document.documentElement.dir = 'rtl'
       } else {
