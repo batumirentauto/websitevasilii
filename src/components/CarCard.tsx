@@ -146,7 +146,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
           <div className="relative w-full aspect-[16/10] my-4 overflow-hidden rounded-2xl bg-[#F5F5F7]">
             <Image
               src={currentImg}
-              alt={car.name}
+              alt={`${car.name} — ${t.heroTag || 'Аренда авто в Грузии'}`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
@@ -197,6 +197,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <button
                   type="button"
                   onClick={prevImg}
+                  aria-label="Предыдущее фото автомобиля"
                   className="w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black text-xs"
                 >
                   ‹
@@ -204,6 +205,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <button
                   type="button"
                   onClick={nextImg}
+                  aria-label="Следующее фото автомобиля"
                   className="w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black text-xs"
                 >
                   ›
@@ -355,6 +357,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             {/* Close Button */}
             <button
               onClick={() => setModalOpen(false)}
+              aria-label="Закрыть карточку автомобиля"
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E5E5EA] flex items-center justify-center font-bold"
             >
               ✕
@@ -372,7 +375,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             <div className="relative w-full aspect-[16/10] my-4 rounded-2xl overflow-hidden bg-[#F5F5F7]">
               <Image
                 src={car.images[activeImageIdx] || '/favicon.ico'}
-                alt={car.name}
+                alt={`${car.name} — фото автомобиля`}
                 fill
                 className="object-contain"
               />
@@ -385,11 +388,12 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                   <button
                     key={i}
                     onClick={() => setActiveImageIdx(i)}
+                    aria-label={`Открыть фото ${i + 1}`}
                     className={`relative w-16 h-12 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${
                       i === activeImageIdx ? 'border-black' : 'border-transparent opacity-60'
                     }`}
                   >
-                    <Image src={img} alt="thumb" fill className="object-cover" />
+                    <Image src={img} alt={`${car.name} миниатюра ${i + 1}`} fill className="object-cover" />
                   </button>
                 ))}
               </div>

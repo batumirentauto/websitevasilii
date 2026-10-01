@@ -26,6 +26,13 @@ export const metadata: Metadata = {
   },
 }
 
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+
 export default function TermsPage() {
-  return <TermsClient />
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Условия аренды', url: '/terms' }]} />
+      <TermsClient />
+    </>
+  )
 }

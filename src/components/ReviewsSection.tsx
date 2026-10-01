@@ -96,7 +96,7 @@ export default function ReviewsSection() {
                   >
                     <Image
                       src={r.photo}
-                      alt={r.car}
+                      alt={`Отзыв о прокате авто ${r.car} в Грузии — ${r.author}`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />

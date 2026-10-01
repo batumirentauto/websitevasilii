@@ -33,6 +33,13 @@ export const metadata: Metadata = {
   },
 }
 
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+
 export default function KutaisiPage() {
-  return <PageClient initialCity="kutaisi" />
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Прокат авто в аэропорту Кутаиси', url: '/kutaisi' }]} />
+      <PageClient initialCity="kutaisi" />
+    </>
+  )
 }

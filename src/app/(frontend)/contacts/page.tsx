@@ -26,6 +26,13 @@ export const metadata: Metadata = {
   },
 }
 
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+
 export default function ContactsPage() {
-  return <ContactsClient />
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Контакты и пункты выдачи', url: '/contacts' }]} />
+      <ContactsClient />
+    </>
+  )
 }

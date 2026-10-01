@@ -154,17 +154,18 @@ export default function HomePage({
                 </span>
                 <div className="grid grid-cols-3 gap-2">
                   {(['batumi', 'tbilisi', 'kutaisi'] as City[]).map((cKey) => (
-                    <button
+                    <Link
                       key={cKey}
+                      href={`/${cKey}`}
                       onClick={() => setCity(cKey)}
-                      className={`py-3 px-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 ${
+                      className={`py-3 px-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 text-center ${
                         city === cKey
                           ? 'bg-[#1D1D1F] text-white shadow-md scale-[1.02]'
                           : 'bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#E5E5EA]'
                       }`}
                     >
                       {getCityName(cKey, lang)}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </div>

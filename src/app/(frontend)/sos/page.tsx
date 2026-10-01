@@ -26,6 +26,13 @@ export const metadata: Metadata = {
   },
 }
 
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+
 export default function SosPage() {
-  return <SosClient />
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Помощь при ДТП (SOS)', url: '/sos' }]} />
+      <SosClient />
+    </>
+  )
 }

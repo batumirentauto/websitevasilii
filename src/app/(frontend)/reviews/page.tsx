@@ -26,6 +26,13 @@ export const metadata: Metadata = {
   },
 }
 
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+
 export default function ReviewsPage() {
-  return <ReviewsClient />
+  return (
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Отзывы клиентов', url: '/reviews' }]} />
+      <ReviewsClient />
+    </>
+  )
 }

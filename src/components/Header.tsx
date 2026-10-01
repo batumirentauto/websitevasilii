@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
         <Link href="/" className="flex items-center gap-2 group shrink-0">
           <Image
             src="/images/vsl-logo-black.png"
-            alt="VSL Car Rental Georgia"
+            alt="VASILII RENT — Прокат автомобилей в Грузии"
             width={120}
             height={52}
             className="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
@@ -57,8 +57,9 @@ export const Header: React.FC = () => {
         {/* City Segmented Picker (Center / Left) */}
         <div className="hidden lg:flex items-center bg-[#F5F5F7] p-1 rounded-full text-xs font-semibold">
           {(['batumi', 'tbilisi', 'kutaisi'] as City[]).map((cKey) => (
-            <button
+            <Link
               key={cKey}
+              href={`/${cKey}`}
               onClick={() => setCity(cKey)}
               className={`px-3 py-1 rounded-full transition-all duration-200 ${
                 city === cKey
@@ -67,7 +68,7 @@ export const Header: React.FC = () => {
               }`}
             >
               {getCityName(cKey, lang)}
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -178,6 +179,7 @@ export const Header: React.FC = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
             className="md:hidden w-8 h-8 rounded-full bg-[#F5F5F7] flex items-center justify-center text-sm"
           >
             {mobileMenuOpen ? '✕' : '☰'}
@@ -193,17 +195,21 @@ export const Header: React.FC = () => {
             <span className="text-xs text-[#86868B] block mb-2">{t.citySelectLabel}</span>
             <div className="grid grid-cols-3 gap-1 bg-[#F5F5F7] p-1 rounded-2xl text-xs font-semibold">
               {(['batumi', 'tbilisi', 'kutaisi'] as City[]).map((cKey) => (
-                <button
+                <Link
                   key={cKey}
-                  onClick={() => setCity(cKey)}
-                  className={`py-1.5 rounded-xl transition-all ${
+                  href={`/${cKey}`}
+                  onClick={() => {
+                    setCity(cKey)
+                    setMobileMenuOpen(false)
+                  }}
+                  className={`py-1.5 rounded-xl transition-all text-center ${
                     city === cKey
                       ? 'bg-white text-[#1D1D1F] shadow-sm font-bold'
                       : 'text-[#6E6E73]'
                   }`}
                 >
                   {getCityName(cKey, lang)}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
