@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import React from 'react'
 import PageClient from '../page.client'
 import { getServerSideURL } from '@/utilities/getURL'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 export const metadata: Metadata = {
   title: 'Прокат авто в аэропорту Кутаиси от 1 дня без залога',
@@ -17,21 +18,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/kutaisi',
   },
-  openGraph: {
+  openGraph: mergeOpenGraph({
     title: 'Прокат авто в аэропорту Кутаиси от 1 дня — VASILII RENT',
     description:
       'Круглосуточная встреча у терминала прилёта в аэропорту Кутаиси (KUT). Прокат авто без депозита (0 ₾) и предоплаты, КАСКО + ОСАГО.',
     url: `${getServerSideURL()}/kutaisi`,
+  }),
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Прокат авто в аэропорту Кутаиси от 1 дня — VASILII RENT',
+    description:
+      'Круглосуточная подача в аэропорт Кутаиси (KUT). Без залога (0 ₾), КАСКО + ОСАГО, возможность возврата в Батуми или Тбилиси.',
+    images: [`${getServerSideURL()}/images/og-image.jpg`],
   },
 }
 
 export default function KutaisiPage() {
-  return (
-    <PageClient
-      initialCity="kutaisi"
-      customTitle="Прокат авто в аэропорту Кутаиси от 1 дня без залога — VASILII RENT"
-      customH1="Прокат авто в аэропорту Кутаиси от 1 дня без залога"
-      customSubtitle="Встречаем у терминала прилёта 24/7 под ваш рейс. Быстрое оформление за 10 минут, страховка КАСКО + ОСАГО включена, без залога и с возможностью возврата в Батуми или Тбилиси."
-    />
-  )
+  return <PageClient initialCity="kutaisi" />
 }

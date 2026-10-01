@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import React from 'react'
 import TermsClient from './page.client'
 import { getServerSideURL } from '@/utilities/getURL'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 export const metadata: Metadata = {
   title: 'Условия аренды авто в Грузии без залога',
@@ -10,11 +11,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/terms',
   },
-  openGraph: {
+  openGraph: mergeOpenGraph({
     title: 'Условия аренды авто в Грузии без залога — VASILII RENT',
     description:
       'Прозрачные условия проката: без депозита, стаж от 0 лет, страховка КАСКО + ОСАГО, выезд по всей Грузии, почасовое продление до 7 часов.',
     url: `${getServerSideURL()}/terms`,
+  }),
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Условия аренды авто в Грузии без залога — VASILII RENT',
+    description:
+      'Прозрачные условия проката: 0 залог, КАСКО + ОСАГО, стаж от 0 лет, бесплатный 1-й час продления.',
+    images: [`${getServerSideURL()}/images/og-image.jpg`],
   },
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import React from 'react'
 import PageClient from '../page.client'
 import { getServerSideURL } from '@/utilities/getURL'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 export const metadata: Metadata = {
   title: 'Аренда авто в Тбилиси от 1 дня без залога',
@@ -18,21 +19,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/tbilisi',
   },
-  openGraph: {
+  openGraph: mergeOpenGraph({
     title: 'Аренда авто в Тбилиси от 1 дня без залога — VASILII RENT',
     description:
       'Прокат авто в Тбилиси без депозита (0 ₾) и предоплаты. Выдача на Нуцубидзе или в аэропорту Тбилиси (TBS). КАСКО + ОСАГО.',
     url: `${getServerSideURL()}/tbilisi`,
+  }),
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Аренда авто в Тбилиси от 1 дня без залога — VASILII RENT',
+    description:
+      'Прокат авто в Тбилиси без депозита (0 ₾). КАСКО + ОСАГО, безлимитный пробег, бесплатный 1-й час продления.',
+    images: [`${getServerSideURL()}/images/og-image.jpg`],
   },
 }
 
 export default function TbilisiPage() {
-  return (
-    <PageClient
-      initialCity="tbilisi"
-      customTitle="Аренда авто в Тбилиси от 1 дня без залога — VASILII RENT"
-      customH1="Аренда автомобилей в Тбилиси от 1 дня без залога"
-      customSubtitle="Надежные автомобили для поездок по Тбилиси, в Казбеги, Кахетию, Боржоми и Гудаури. Без депозита на карте, со страховкой КАСКО + ОСАГО и бесплатным 1-м часом продления."
-    />
-  )
+  return <PageClient initialCity="tbilisi" />
 }

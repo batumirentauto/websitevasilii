@@ -234,10 +234,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           }
         }
 
-        // 2. City from URL (?city=... or ?c=...)
+        // 2. City from URL path or param (?city=... or ?c=...)
+        const pathname = window.location.pathname.toLowerCase()
+        let pathCity: City | null = null
+        if (pathname.includes('/batumi')) pathCity = 'batumi'
+        else if (pathname.includes('/tbilisi')) pathCity = 'tbilisi'
+        else if (pathname.includes('/kutaisi')) pathCity = 'kutaisi'
+
         const urlCity = (params.get('city') || params.get('c'))?.toLowerCase() as City
         const validCities: City[] = ['batumi', 'tbilisi', 'kutaisi']
-        if (urlCity && validCities.includes(urlCity)) {
+
+        if (pathCity) {
+          setCityState(pathCity)
+          localStorage.setItem('vasilii_city', pathCity)
+        } else if (urlCity && validCities.includes(urlCity)) {
           setCityState(urlCity)
           localStorage.setItem('vasilii_city', urlCity)
         } else {
