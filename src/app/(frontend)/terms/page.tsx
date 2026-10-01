@@ -81,7 +81,7 @@ export default function TermsPage() {
           <p className="text-sm text-[#6E6E73] leading-relaxed mb-4">
             {t.termInsuranceDesc}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-5">
             <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
               <span className="font-bold text-[#34C759] block mb-1">{t.termsZeroFranchiseTitle}</span>
               <span className="text-[#6E6E73]">{t.termsZeroFranchiseDesc}</span>
@@ -93,6 +93,52 @@ export default function TermsPage() {
             <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
               <span className="font-bold text-[#1D1D1F] block mb-1">{t.termsZeroDepositTitle}</span>
               <span className="text-[#6E6E73]">{t.termsZeroDepositDesc}</span>
+            </div>
+          </div>
+
+          {/* Insurance Exceptions & Exclusions */}
+          <div className="bg-white p-6 rounded-2xl border border-black/[0.06] text-xs">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-base">⚠️</span>
+              <h3 className="font-bold text-sm text-[#1D1D1F]">
+                {t.insuranceExceptionsTitle}
+              </h3>
+            </div>
+            <p className="text-[#6E6E73] mb-3 leading-relaxed">
+              {t.insuranceExceptionsSubtitle}
+            </p>
+            <ul className="space-y-2 text-[#48484A] mb-4">
+              <li className="flex items-start gap-2.5">
+                <span className="text-[#FF3B30] font-bold text-sm shrink-0">✕</span>
+                <span className="leading-relaxed">{t.insuranceEx1}</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-[#FF3B30] font-bold text-sm shrink-0">✕</span>
+                <span className="leading-relaxed">{t.insuranceEx2}</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-[#FF3B30] font-bold text-sm shrink-0">✕</span>
+                <span className="leading-relaxed">{t.insuranceEx3}</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-[#FF3B30] font-bold text-sm shrink-0">✕</span>
+                <span className="leading-relaxed">{t.insuranceEx4}</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-[#FF3B30] font-bold text-sm shrink-0">✕</span>
+                <span className="leading-relaxed">{t.insuranceEx5}</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-[#FF3B30] font-bold text-sm shrink-0">✕</span>
+                <span className="leading-relaxed">{t.insuranceEx6}</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-[#FF3B30] font-bold text-sm shrink-0">✕</span>
+                <span className="leading-relaxed">{t.insuranceEx7}</span>
+              </li>
+            </ul>
+            <div className="bg-[#FFF9F2] border border-[#FF9500]/20 p-3.5 rounded-xl text-[11px] text-[#8A5A00] leading-relaxed">
+              💡 <strong>Простыми словами:</strong> {t.insuranceExceptionsNote}
             </div>
           </div>
         </div>
