@@ -74,6 +74,12 @@ export function formatSeats(seats: number, lang: string, fallback: string): stri
   return `${seats} ${fallback}`
 }
 
+export function getExtensionHourlyRate(dailyPriceGel: number): number {
+  if (dailyPriceGel <= 160) return 10
+  if (dailyPriceGel <= 260) return 15
+  return 20
+}
+
 export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
   const { formatPrice, getBookingLink, lang, duration: globalDuration } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
@@ -501,6 +507,17 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               <div>
                 <span className="text-[#86868B] block">{t.specMinPeriod}</span>
                 <span className="font-semibold text-[#1D1D1F]">{t.specMinPeriodValue}</span>
+              </div>
+              <div className="col-span-2 pt-2.5 mt-0.5 border-t border-black/[0.06] flex items-center justify-between flex-wrap gap-1.5">
+                <div>
+                  <span className="text-[#86868B] block text-[11px]">{t.specExtension || 'Продление аренды:'}</span>
+                  <span className="font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759] font-bold">{t.specExtFreeHour || '+1 ч бесплатно'}</span> • {formatPrice(getExtensionHourlyRate(car.priceGel))}{t.specPerHour || '/час'}
+                  </span>
+                </div>
+                <span className="text-[11px] text-[#86868B]">
+                  {t.specExtHint || 'со 2 по 7 ч (по согласованию)'}
+                </span>
               </div>
             </div>
 

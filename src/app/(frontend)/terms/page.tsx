@@ -240,6 +240,39 @@ export default function TermsPage() {
             </span>
           </div>
         </div>
+
+        {/* Rental Extension & Flexible Return */}
+        <div className="bg-[#F5F5F7] p-8 rounded-3xl border border-black/[0.04]">
+          <h2 className="text-xl font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">
+            <span>⏱️</span> {t.termsExtensionTitle}
+          </h2>
+          <p className="text-sm text-[#6E6E73] leading-relaxed mb-4">
+            {t.termsExtensionSubtitle}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-4">
+            <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
+              <span className="font-bold text-[#34C759] block mb-1">🎁 {t.termsExtHourFreeTitle}</span>
+              <span className="text-[#6E6E73] leading-relaxed">{t.termsExtHourFreeDesc}</span>
+            </div>
+            <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
+              <span className="font-bold text-[#1D1D1F] block mb-1">🕐 {t.termsExtHourlyTitle}</span>
+              <p className="text-[#6E6E73] mb-2 leading-relaxed">{t.termsExtHourlyDesc}</p>
+              <ul className="space-y-1 font-semibold text-[#1D1D1F]">
+                <li>• {t.termsExtTier1}</li>
+                <li>• {t.termsExtTier2}</li>
+                <li>• {t.termsExtTier3}</li>
+              </ul>
+            </div>
+            <div className="bg-white p-4 rounded-2xl border border-black/[0.06]">
+              <span className="font-bold text-[#FF9500] block mb-1">📅 {t.termsExtDayTitle}</span>
+              <span className="text-[#6E6E73] leading-relaxed">{t.termsExtDayDesc}</span>
+            </div>
+          </div>
+          <div className="bg-white p-4 rounded-2xl border border-black/[0.06] text-xs flex items-center gap-2.5 text-[#6E6E73]">
+            <span className="text-base shrink-0">💡</span>
+            <span>{t.termsExtNote}</span>
+          </div>
+        </div>
       </div>
 
       {/* CTA Box */}
