@@ -29,11 +29,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <InitTheme />
         <title>Прокат автомобилей в Грузии от 1 дня</title>
-        <link href="/favicon.svg?v=20261001" rel="icon" type="image/svg+xml" />
-        <link href="/favicon-32x32.png?v=20261001" rel="icon" type="image/png" sizes="32x32" />
-        <link href="/favicon-16x16.png?v=20261001" rel="icon" type="image/png" sizes="16x16" />
-        <link href="/favicon.ico?v=20261001" rel="icon" sizes="any" />
-        <link href="/apple-touch-icon.png?v=20261001" rel="apple-touch-icon" sizes="180x180" />
+        <link href="/favicon.svg?v=20261001-v2" rel="icon" type="image/svg+xml" />
+        <link href="/favicon-32x32.png?v=20261001-v2" rel="icon" type="image/png" sizes="32x32" />
+        <link href="/favicon-16x16.png?v=20261001-v2" rel="icon" type="image/png" sizes="16x16" />
+        <link href="/favicon.ico?v=20261001-v2" rel="icon" sizes="any" />
+        <link href="/favicon.ico?v=20261001-v2" rel="shortcut icon" />
+        <link href="/apple-touch-icon.png?v=20261001-v2" rel="apple-touch-icon" sizes="180x180" />
+        <link href="/apple-touch-icon-precomposed.png?v=20261001-v2" rel="apple-touch-icon-precomposed" sizes="180x180" />
       </head>
       <body className="bg-[#FFFFFF] text-[#1D1D1F] antialiased selection:bg-black selection:text-white">
         <AppProvider>
@@ -79,13 +81,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg?v=20261001', type: 'image/svg+xml' },
-      { url: '/favicon-32x32.png?v=20261001', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16x16.png?v=20261001', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon.ico?v=20261001', sizes: 'any' },
+      { url: '/favicon.svg?v=20261001-v2', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png?v=20261001-v2', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png?v=20261001-v2', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico?v=20261001-v2', sizes: 'any' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png?v=20261001', sizes: '180x180' },
+      { url: '/apple-touch-icon.png?v=20261001-v2', sizes: '180x180' },
+      { url: '/apple-touch-icon-precomposed.png?v=20261001-v2', sizes: '180x180' },
     ],
+    shortcut: ['/favicon.ico?v=20261001-v2'],
   },
 }
