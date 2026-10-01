@@ -32,21 +32,18 @@ export const MobileFloatingBar: React.FC = () => {
   return (
     <div className="md:hidden fixed bottom-3 left-3 right-3 z-40">
       <div className="bg-[#1D1D1F]/90 backdrop-blur-2xl border border-white/10 rounded-2xl p-2.5 px-3.5 shadow-[0_16px_36px_-4px_rgba(0,0,0,0.35)] flex items-center justify-between gap-2 text-white">
-        <div>
-          <span className="text-[10px] text-[#86868B] block uppercase font-bold tracking-wider">
-            {cityName} • {t.carsInFleet}
-          </span>
-          <span className="text-xs font-semibold text-white">
-            {t.basePickupFree}
-          </span>
+        <div className="flex-1 pr-1.5 min-w-0">
+          <p className="text-[11px] sm:text-xs font-semibold text-white leading-tight">
+            {t.floatingBarCta || 'Напиши даты поездки, чтобы получить список доступных автомобилей'}
+          </p>
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 shrink-0">
           <a
             href={`https://wa.me/995591050752?text=${inquiryMsg}`}
             target="_blank"
             rel="noreferrer"
-            className="h-9 px-3.5 bg-[#25D366] text-white rounded-xl text-xs font-bold flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+            className="h-9 px-3 bg-[#25D366] text-white rounded-xl text-xs font-bold flex items-center justify-center transition-transform active:scale-95 shadow-sm"
           >
             WhatsApp
           </a>
@@ -54,7 +51,7 @@ export const MobileFloatingBar: React.FC = () => {
             href={`https://t.me/${currentCity.telegram}?text=${inquiryMsg}`}
             target="_blank"
             rel="noreferrer"
-            className="h-9 px-3.5 bg-white text-[#1D1D1F] rounded-xl text-xs font-bold flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+            className="h-9 px-3 bg-white text-[#1D1D1F] rounded-xl text-xs font-bold flex items-center justify-center transition-transform active:scale-95 shadow-sm"
           >
             Telegram
           </a>
