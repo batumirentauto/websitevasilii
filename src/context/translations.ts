@@ -228,7 +228,7 @@ export const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     termsGuaranteeTitle: 'Гарантия предоставления автомобиля',
     termsGuaranteeText: 'Мы всегда стараемся предоставить именно выбранный вами автомобиль. Однако дорога непредсказуема: если с машиной в предыдущей аренде что-то случится, мы гарантируем вам оперативную подмену. В таком случае мы бесплатно повысим класс авто либо предложим вариант чуть проще, но с обязательным перерасчетом стоимости в меньшую сторону. Мы не обещаем конкретный госномер, но гарантируем, что вы точно не останетесь без машины в путешествии.',
     accidentHelpTitle: 'Помощь при ДТП или происшествии (24/7)',
-    accidentHelpDesc: 'Если случится ДТП или другое происшествие — не переживайте. Сохраняйте спокойствие и сразу свяжитесь с нами по номеру экстренной линии. Мы оперативно скоординируем действия, вызовем полицию/страховую при необходимости и организуем помощь или подмену авто.',
+    accidentHelpDesc: 'Если случится ДТП или другое происшествие — не переживайте. Сохраняйте спокойствие и сразу свяжитесь с нами по номеру экстренной линии. Мы скоординируем ваши действия, подробно объясним как всё правильно оформить и оперативно поможем с решением ситуации или подменой авто.',
     accidentHelpShort: 'При ДТП или происшествии (24/7):',
   },
   en: {
@@ -458,7 +458,7 @@ freeIntercityBadge: 'Intercity return (Batumi / Tbilisi / Kutaisi) — 0 ₾ (no
     termsGuaranteeTitle: 'Vehicle Replacement Guarantee',
     termsGuaranteeText: 'We always aim to deliver the exact model you chose. If unexpected issues arise with the car from a previous rental, we guarantee a prompt replacement: we will upgrade your vehicle class for free or offer a slightly simpler option with a mandatory price reduction. You are 100% guaranteed to have a car for your journey.',
     accidentHelpTitle: '24/7 Roadside & Accident Support',
-    accidentHelpDesc: 'If an accident or other incident occurs on the road — stay calm and call our emergency line immediately. We will coordinate all necessary steps, dispatch roadside help, and arrange a replacement vehicle if needed.',
+    accidentHelpDesc: 'If an accident or other incident occurs on the road — stay calm and call our emergency line immediately. We will guide you through the process, explain the exact steps to take, and promptly arrange assistance or a replacement car.',
     accidentHelpShort: 'Accident / roadside support 24/7:',
   },
   ar: {
