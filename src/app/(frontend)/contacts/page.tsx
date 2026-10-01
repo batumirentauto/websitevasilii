@@ -205,6 +205,35 @@ export default function ContactsPage() {
           </a>
         </div>
       </div>
+
+      {/* Emergency Roadside & Accident SOS Box */}
+      <div className="mt-6 bg-[#FFF5F5] border border-[#FF3B30]/20 p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <span className="text-xs font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">
+            🚨 {t.accidentHelpTitle || 'Помощь при ДТП или происшествии (24/7)'}
+          </span>
+          <a
+            href="tel:+995591181430"
+            className="text-2xl sm:text-4xl font-extrabold text-[#1D1D1F] hover:text-[#FF3B30] transition-colors"
+          >
+            +995 591 181 430
+          </a>
+          <p className="text-xs text-[#6E6E73] mt-2 max-w-xl">
+            {t.accidentHelpDesc}
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3 shrink-0">
+          <a
+            href="https://wa.me/995591181430"
+            target="_blank"
+            rel="noreferrer"
+            className="h-12 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
+          >
+            WhatsApp SOS 24/7
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

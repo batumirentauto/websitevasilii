@@ -85,6 +85,8 @@ export const CITIES_DATA: Record<
 
 export const PHONE_NUMBER = '+995 591 050 752'
 export const WHATSAPP_PHONE = '995591050752'
+export const EMERGENCY_PHONE = '+995 591 181 430'
+export const EMERGENCY_WHATSAPP = '995591181430'
 
 export type RentalDuration = '1-2' | '3-5' | '6-13' | '14-29' | '30+'
 

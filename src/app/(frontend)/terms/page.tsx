@@ -107,6 +107,33 @@ export default function TermsPage() {
           </p>
         </div>
 
+        {/* Accident / Incident Support (SOS 24/7) */}
+        <div className="bg-[#FFF5F5] border border-[#FF3B30]/20 p-8 rounded-3xl">
+          <h2 className="text-xl font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">
+            <span>🚨</span> {t.accidentHelpTitle || 'Помощь при ДТП или происшествии (24/7)'}
+          </h2>
+          <p className="text-sm text-[#48484A] leading-relaxed mb-5">
+            {t.accidentHelpDesc}
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="tel:+995591181430"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-sm font-bold shadow-xs transition-transform active:scale-95"
+            >
+              <span>📞 +995 591 181 430</span>
+            </a>
+            <a
+              href="https://wa.me/995591181430"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-bold shadow-xs transition-transform active:scale-95"
+            >
+              <span>WhatsApp SOS</span>
+            </a>
+            <span className="text-xs text-[#86868B] font-medium">Круглосуточная поддержка 24/7</span>
+          </div>
+        </div>
+
         {/* Territory */}
         <div className="bg-[#F5F5F7] p-8 rounded-3xl border border-black/[0.04]">
           <h2 className="text-xl font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">

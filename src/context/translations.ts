@@ -227,6 +227,9 @@ export const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     guaranteeDesc: 'Мы всегда стараемся выдать именно выбранный вами автомобиль. Однако дорога непредсказуема, и если с машиной в предыдущей аренде что-то случится, мы гарантируем вам подмену: бесплатно повысим класс авто либо предложим вариант чуть проще, но с обязательным перерасчетом стоимости в меньшую сторону.',
     termsGuaranteeTitle: 'Гарантия предоставления автомобиля',
     termsGuaranteeText: 'Мы всегда стараемся предоставить именно выбранный вами автомобиль. Однако дорога непредсказуема: если с машиной в предыдущей аренде что-то случится, мы гарантируем вам оперативную подмену. В таком случае мы бесплатно повысим класс авто либо предложим вариант чуть проще, но с обязательным перерасчетом стоимости в меньшую сторону. Мы не обещаем конкретный госномер, но гарантируем, что вы точно не останетесь без машины в путешествии.',
+    accidentHelpTitle: 'Помощь при ДТП или происшествии (24/7)',
+    accidentHelpDesc: 'Если случится ДТП или другое происшествие — не переживайте. Сохраняйте спокойствие и сразу свяжитесь с нами по номеру экстренной линии. Мы оперативно скоординируем действия, вызовем полицию/страховую при необходимости и организуем помощь или подмену авто.',
+    accidentHelpShort: 'При ДТП или происшествии (24/7):',
   },
   en: {
     brandName: 'VASILII RENT',
@@ -454,6 +457,9 @@ freeIntercityBadge: 'Intercity return (Batumi / Tbilisi / Kutaisi) — 0 ₾ (no
     guaranteeDesc: 'We always strive to provide the exact vehicle you selected. However, road conditions are unpredictable: if anything happens to the car during a previous rental, we guarantee a replacement. We will either upgrade your vehicle category for free or provide an alternative with an immediate price discount.',
     termsGuaranteeTitle: 'Vehicle Replacement Guarantee',
     termsGuaranteeText: 'We always aim to deliver the exact model you chose. If unexpected issues arise with the car from a previous rental, we guarantee a prompt replacement: we will upgrade your vehicle class for free or offer a slightly simpler option with a mandatory price reduction. You are 100% guaranteed to have a car for your journey.',
+    accidentHelpTitle: '24/7 Roadside & Accident Support',
+    accidentHelpDesc: 'If an accident or other incident occurs on the road — stay calm and call our emergency line immediately. We will coordinate all necessary steps, dispatch roadside help, and arrange a replacement vehicle if needed.',
+    accidentHelpShort: 'Accident / roadside support 24/7:',
   },
   ar: {
     brandName: 'VASILII RENT',
@@ -681,6 +687,9 @@ freeIntercityBadge: 'التسليم في مدينة أخرى (باتومي / ت�
     guaranteeDesc: 'نحرص دائمًا على تسليم نفس السيارة المختارة. ولكن في حال حدوث أي طارئ من الرحلة السابقة، نضمن لك توفير بديل فوري: ترقية مجانية لفئة أعلى أو خيار آخر مع تخفيض السعر تلقائيًا لصالحك.',
     termsGuaranteeTitle: 'ضمان استبدال وتوفير السيارة',
     termsGuaranteeText: 'نحرص على تسليم السيارة المحددة بالذات. وفي حالة حدوث أي طارئ غير متوقع، نضمن لك سيارة بديلة فورية مجانًا لفئة أعلى أو خيارًا بسعر مخفض، لضمان استمرار رحلتك بكل راحة.',
+    accidentHelpTitle: 'الدعم في حالات الحوادث والطوارئ (24/7)',
+    accidentHelpDesc: 'في حال وقوع حادث أو أي طارئ على الطريق — لا تقلق. تواصل معنا فورًا على خط الطوارئ، وسنقوم بتنسيق الإجراءات وتوفير المساعدة أو سيارة بديلة على الفور.',
+    accidentHelpShort: 'في حال الحوادث أو الطوارئ (24/7):',
   },
   fa: {
     brandName: 'VASILII RENT',
@@ -908,6 +917,9 @@ freeIntercityBadge: 'تحویل در شهر دیگر (باتومی / تفلیس 
     guaranteeDesc: 'ما همیشه تلاش می‌کنیم دقیقاً همان خودروی انتخابی را تحویل دهیم. اما در صورت بروز هرگونه پیشامد غیرمنتظره، جایگزینی فوری را تضمین می‌کنیم: ارتقای رایگان به کلاسی بالاتر یا ارائه گزینه‌ای دیگر با کاهش حتمی قیمت.',
     termsGuaranteeTitle: 'تضمین جایگزینی خودرو',
     termsGuaranteeText: 'ما همواره متعهد به تحویل خودروی انتخابی شما هستیم و در شرایط اضطراری، تحویل خودروی جایگزین یا ارتقای رایگان را ضمانت می‌کنیم تا سفر شما بدون معطلی ادامه یابد.',
+    accidentHelpTitle: 'پشتیبانی ۲۴ ساعته تصادفات و حوادث',
+    accidentHelpDesc: 'اگر تصادف یا اتفاق دیگری در جاده رخ داد — نگران نباشید. بلافاصله با شماره امداد اضطراری ما تماس بگیرید. ما همه اقدامات لازم، اعزام امداد و در صورت نیاز خودروی جایگزین را هماهنگ می‌کنیم.',
+    accidentHelpShort: 'در صورت تصادف یا سانحه (۲۴/۷):',
   },
   pl: {
     brandName: 'VASILII RENT',
@@ -1135,6 +1147,9 @@ freeIntercityBadge: 'Zwrot w innym mieście (Batumi / Tbilisi / Kutaisi) — 0 �
     guaranteeDesc: 'Zawsze staramy się wydać dokładnie wybrany model. Jeśli jednak w poprzednim wynajmie wydarzy się coś nieprzewidzianego, gwarantujemy natychmiastowe auto zastępcze: bezpłatne podwyższenie klasy lub tańszy model z korektą ceny na Twoją korzyść.',
     termsGuaranteeTitle: 'Gwarancja podstawienia pojazdu',
     termsGuaranteeText: 'Zawsze dążymy do wydania dokładnie wybranego pojazdu. W razie nieprzewidzianych okoliczności gwarantujemy bezpłatne podwyższenie klasy lub zwrot różnicy w cenie przy tańszym aucie. Z nami nigdy nie zostaniesz bez samochodu.',
+    accidentHelpTitle: 'Pomoc w razie wypadku lub kolizji (24/7)',
+    accidentHelpDesc: 'W razie kolizji, wypadku lub awarii na drodze — zachowaj spokój i natychmiast skontaktuj się z nami pod numerem alarmowym. Skoordynujemy pomoc drogową i zorganizujemy auto zastępcze.',
+    accidentHelpShort: 'W razie wypadku lub kolizji (24/7):',
   },
   de: {
     brandName: 'VASILII RENT',
@@ -1362,6 +1377,9 @@ freeIntercityBadge: 'Rückgabe in anderer Stadt (Batumi / Tiflis / Kutaissi) —
     guaranteeDesc: 'Wir bemühen uns stets, exakt das gebuchte Fahrzeug bereitzustellen. Sollte es durch unvorhergesehene Umstände bei der Vorvermietung ausfallen, garantieren wir Ersatz: kostenloses Upgrade in eine höhere Fahrzeugklasse oder eine günstigere Alternative mit Erstattung der Preisdifferenz.',
     termsGuaranteeTitle: 'Fahrzeug- & Mobilitätsgarantie',
     termsGuaranteeText: 'Wir garantieren die Bereitstellung eines Fahrzeugs. Sollte Ihr Wunschmodell kurzfristig ausfallen, erhalten Sie kostenfrei ein Upgrade oder ein alternatives Fahrzeug mit Preisanpassung zu Ihren Gunsten. Sie bleiben zu 100% mobil.',
+    accidentHelpTitle: '24/7 Unfall- & Pannenunterstützung',
+    accidentHelpDesc: 'Sollte es zu einem Unfall oder Vorfall auf der Straße kommen — bewahren Sie Ruhe und rufen Sie sofort unsere Notfallnummer an. Wir koordinieren die nötigen Schritte und organisieren bei Bedarf ein Ersatzfahrzeug.',
+    accidentHelpShort: 'Bei Unfall oder Notfall (24/7):',
   },
   it: {
     brandName: 'VASILII RENT',
@@ -1589,6 +1607,9 @@ freeIntercityBadge: 'Riconsegna in altra città (Batumi / Tbilisi / Kutaisi) —
     guaranteeDesc: 'Ci impegniamo sempre a consegnare esattamente l\'auto selezionata. Se dovesse verificarsi un imprevisto nel noleggio precedente, garantiamo una sostituzione: upgrade gratuito di categoria o opzione alternativa con immediato ricalcolo del prezzo a tuo favore.',
     termsGuaranteeTitle: 'Garanzia di sostituzione veicolo',
     termsGuaranteeText: 'Garantiamo sempre la mobilità durante il tuo viaggio. In caso di imprevisti con l\'auto prenotata, offriamo un upgrade gratuito o una soluzione conveniente con sconto sul prezzo.',
+    accidentHelpTitle: 'Assistenza incidenti ed emergenze 24/7',
+    accidentHelpDesc: 'In caso di incidente o emergenza stradale — non preoccuparti. Contattaci subito al nostro numero di emergenza: coordineremo l\'assistenza necessaria e organizzeremo un\'auto sostitutiva.',
+    accidentHelpShort: 'In caso di incidente (24/7):',
   },
   fr: {
     brandName: 'VASILII RENT',
@@ -1816,5 +1837,8 @@ freeIntercityBadge: 'Retour dans une autre ville (Batoumi / Tbilissi / Koutaïss
     guaranteeDesc: 'Nous mettons tout en œuvre pour vous fournir exactement le modèle choisi. En cas d\'imprévu lors de la location précédente, nous garantissons un véhicule de remplacement : surclassement gratuit ou option alternative avec ajustement tarifaire immédiat en votre faveur.',
     termsGuaranteeTitle: 'Garantie de mise à disposition',
     termsGuaranteeText: 'Nous garantissons votre mobilité. En cas d\'imprévu avec le modèle sélectionné, nous effectuons un surclassement gratuit ou proposons un véhicule avec réduction de prix immédiate. Vous ne resterez jamais sans voiture.',
+    accidentHelpTitle: 'Assistance 24/7 en cas d\'accident ou incident',
+    accidentHelpDesc: 'En cas d\'accident ou incident sur la route — restez serein et contactez immédiatement notre ligne d\'urgence. Nous coordonnerons l\'assistance requise et mettrons à disposition un véhicule de remplacement.',
+    accidentHelpShort: 'En cas d\'accident ou incident (24/7) :',
   },
 }

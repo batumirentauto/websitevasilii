@@ -103,30 +103,44 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#86868B] mb-4">
               {t.footerContact}
             </h4>
-            <div className="space-y-2 text-xs">
-              <a
-                href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
-                className="block text-sm font-bold text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
-              >
-                {PHONE_NUMBER}
-              </a>
-              <p className="text-xs text-[#86868B]">{t.footer247}</p>
-              <div className="flex gap-2 pt-2">
+            <div className="space-y-3 text-xs">
+              <div>
                 <a
-                  href="https://wa.me/995591050752"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-4 py-2 rounded-full bg-[#25D366] text-white font-semibold text-xs hover:bg-[#20ba59] transition-colors"
+                  href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
+                  className="block text-sm font-bold text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
                 >
-                  WhatsApp
+                  {PHONE_NUMBER}
                 </a>
+                <p className="text-xs text-[#86868B]">{t.footer247}</p>
+                <div className="flex gap-2 pt-2">
+                  <a
+                    href="https://wa.me/995591050752"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-2 rounded-full bg-[#25D366] text-white font-semibold text-xs hover:bg-[#20ba59] transition-colors"
+                  >
+                    WhatsApp
+                  </a>
+                  <a
+                    href={`https://t.me/${currentCityData.telegram}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-2 rounded-full bg-[#1D1D1F] text-white font-semibold text-xs hover:bg-black transition-colors"
+                  >
+                    Telegram
+                  </a>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-black/[0.06]">
+                <span className="text-[10px] font-bold text-[#FF3B30] uppercase tracking-wider block mb-0.5">
+                  🚨 SOS / При ДТП (24/7):
+                </span>
                 <a
-                  href={`https://t.me/${currentCityData.telegram}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-4 py-2 rounded-full bg-[#1D1D1F] text-white font-semibold text-xs hover:bg-black transition-colors"
+                  href="tel:+995591181430"
+                  className="block text-sm font-bold text-[#1D1D1F] hover:text-[#FF3B30] transition-colors"
                 >
-                  Telegram
+                  +995 591 181 430
                 </a>
               </div>
             </div>

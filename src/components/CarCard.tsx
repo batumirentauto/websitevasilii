@@ -513,6 +513,18 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               <p className="text-xs text-[#6E6E73] leading-relaxed">
                 {t.guaranteeDesc}
               </p>
+              <div className="mt-2.5 pt-2.5 border-t border-black/[0.06] flex items-center justify-between flex-wrap gap-2 text-xs">
+                <span className="text-[#86868B] flex items-center gap-1">
+                  <span>🚨</span> {t.accidentHelpShort || 'При ДТП или происшествии (24/7):'}
+                </span>
+                <a
+                  href="tel:+995591181430"
+                  onClick={(e) => e.stopPropagation()}
+                  className="font-bold text-[#1D1D1F] hover:text-[#FF3B30] transition-colors"
+                >
+                  +995 591 181 430
+                </a>
+              </div>
             </div>
 
             {/* Booking CTA row */}
