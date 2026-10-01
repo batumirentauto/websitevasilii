@@ -68,11 +68,33 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Col 3: Current Selected City Base */}
+          {/* Col 3: Current Selected City Base & Regional Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#86868B] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#86868B] mb-3">
               {t.baseLabel}: {getCityName(city, lang)}
             </h4>
+            <div className="flex items-center gap-2 mb-3 text-xs">
+              <Link
+                href="/batumi"
+                className={`transition-colors ${city === 'batumi' ? 'font-bold text-[#1D1D1F] underline decoration-2' : 'text-[#6E6E73] hover:text-[#1D1D1F]'}`}
+              >
+                {getCityName('batumi', lang)}
+              </Link>
+              <span className="text-[#D2D2D7]">•</span>
+              <Link
+                href="/tbilisi"
+                className={`transition-colors ${city === 'tbilisi' ? 'font-bold text-[#1D1D1F] underline decoration-2' : 'text-[#6E6E73] hover:text-[#1D1D1F]'}`}
+              >
+                {getCityName('tbilisi', lang)}
+              </Link>
+              <span className="text-[#D2D2D7]">•</span>
+              <Link
+                href="/kutaisi"
+                className={`transition-colors ${city === 'kutaisi' ? 'font-bold text-[#1D1D1F] underline decoration-2' : 'text-[#6E6E73] hover:text-[#1D1D1F]'}`}
+              >
+                {getCityName('kutaisi', lang)}
+              </Link>
+            </div>
             <p className="text-xs text-[#1D1D1F] font-semibold mb-1">
               {getCityAddress(city, lang)}
             </p>

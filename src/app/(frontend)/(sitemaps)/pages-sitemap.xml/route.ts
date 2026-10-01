@@ -39,6 +39,24 @@ const getPagesSitemap = unstable_cache(
         priority: 1.0,
       },
       {
+        loc: `${SITE_URL}/batumi`,
+        lastmod: dateFallback,
+        changefreq: 'daily',
+        priority: 0.9,
+      },
+      {
+        loc: `${SITE_URL}/tbilisi`,
+        lastmod: dateFallback,
+        changefreq: 'daily',
+        priority: 0.9,
+      },
+      {
+        loc: `${SITE_URL}/kutaisi`,
+        lastmod: dateFallback,
+        changefreq: 'daily',
+        priority: 0.9,
+      },
+      {
         loc: `${SITE_URL}/terms`,
         lastmod: dateFallback,
         changefreq: 'weekly',

@@ -20,6 +20,9 @@ module.exports = {
   additionalPaths: async (config) => {
     const pages = [
       { path: '/', priority: 1.0, changefreq: 'daily' },
+      { path: '/batumi', priority: 0.9, changefreq: 'daily' },
+      { path: '/tbilisi', priority: 0.9, changefreq: 'daily' },
+      { path: '/kutaisi', priority: 0.9, changefreq: 'daily' },
       { path: '/terms', priority: 0.8, changefreq: 'weekly' },
       { path: '/contacts', priority: 0.8, changefreq: 'weekly' },
       { path: '/reviews', priority: 0.8, changefreq: 'daily' },

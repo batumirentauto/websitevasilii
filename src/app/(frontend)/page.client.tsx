@@ -8,17 +8,40 @@ import ReviewsSection from '@/components/ReviewsSection'
 import { useApp, CITIES_DATA, City, getCityName, getCityAddress, getCityDeliveryNote } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
-export default function HomePage() {
+interface HomePageProps {
+  initialCity?: City
+  customTitle?: string
+  customH1?: string
+  customSubtitle?: string
+}
+
+export default function HomePage({
+  initialCity,
+  customTitle,
+  customH1,
+  customSubtitle,
+}: HomePageProps = {}) {
   const { lang, city, setCity } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+
+  React.useEffect(() => {
+    if (initialCity && city !== initialCity) {
+      setCity(initialCity)
+    }
+  }, [initialCity])
+
   const currentCity = CITIES_DATA[city]
 
   React.useEffect(() => {
-    document.title =
-      lang === 'ru'
-        ? 'Аренда авто в Грузии от 1 дня без залога — VASILII RENT'
-        : 'Car Rental in Georgia from 1 Day (Zero Deposit) — VASILII RENT'
-  }, [lang])
+    if (customTitle) {
+      document.title = customTitle
+    } else {
+      document.title =
+        lang === 'ru'
+          ? 'Аренда авто в Грузии от 1 дня без залога — VASILII RENT'
+          : 'Car Rental in Georgia from 1 Day (Zero Deposit) — VASILII RENT'
+    }
+  }, [lang, customTitle])
 
   return (
     <div className="bg-[#FFFFFF]">
@@ -37,12 +60,12 @@ export default function HomePage() {
 
               {/* Main Display Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#1D1D1F] tracking-tight leading-[1.1] mb-4">
-                {t.heroTitle}
+                {customH1 || t.heroTitle}
               </h1>
 
               {/* Subtitle */}
               <p className="text-sm sm:text-base text-[#6E6E73] font-normal leading-relaxed mb-6 max-w-xl">
-                {t.heroSubtitle}
+                {customSubtitle || t.heroSubtitle}
               </p>
 
               {/* City & Duration Selection Card */}
