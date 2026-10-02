@@ -145,7 +145,7 @@ export default function HomePage({
                 <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full">
                   <Image
                     src="/images/hero-georgia.jpg"
-                    alt={heroHeadline || t.heroTitle}
+                    alt={t.heroTitle}
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
