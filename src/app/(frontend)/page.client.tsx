@@ -181,6 +181,10 @@ export default function HomePage({
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
+                    <span>{t.secondDriverFreePill}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
                     <span>{lang === 'ru' ? 'Мыть при возврате не нужно' : 'No need to wash on return'}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">

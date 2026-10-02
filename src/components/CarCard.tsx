@@ -513,6 +513,22 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <span className="font-semibold text-[#1D1D1F]">{t.specMinPeriodValue}</span>
               </div>
               <div className="col-span-2 pt-2.5 mt-0.5 border-t border-black/[0.06] flex items-center justify-between flex-wrap gap-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm">👥</span>
+                  <div>
+                    <span className="text-[#86868B] block text-[11px] font-medium">
+                      {t.specSecondDriver || 'Второй водитель:'}
+                    </span>
+                    <span className="font-semibold text-[#1D1D1F]">
+                      {t.specSecondDriverValue || 'Бесплатно в договоре (0 ₾)'}
+                    </span>
+                  </div>
+                </div>
+                <span className="text-[11px] font-bold text-[#34C759] bg-[#34C759]/10 px-2.5 py-0.5 rounded-full">
+                  ✓ 0 ₾
+                </span>
+              </div>
+              <div className="col-span-2 pt-2 mt-0.5 border-t border-black/[0.06] flex items-center justify-between flex-wrap gap-1.5">
                 <div>
                   <span className="text-[#86868B] block text-[11px]">{t.specExtension || 'Продление аренды:'}</span>
                   <span className="font-semibold text-[#1D1D1F]">
