@@ -8,6 +8,39 @@ import ReviewsSection from '@/components/ReviewsSection'
 import { useApp, CITIES_DATA, City, Lang, getCityName, getCityAddress, getCityDeliveryNote } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
+const LOCAL_CITY_H1: Record<City, Record<Lang, string>> = {
+  batumi: {
+    ru: 'Прокат автомобилей в Грузии с подачей в аэропорт Батуми',
+    en: 'Car Rental in Georgia with Batumi Airport Delivery',
+    ar: 'تأجير سيارات في جورجيا مع التوصيل إلى مطار باتومي',
+    fa: 'اجاره خودرو در گرجستان با تحویل در فرودگاه باتومی',
+    pl: 'Wynajem samochodów w Gruzji z dostawą na lotnisko w Batumi',
+    de: 'Mietwagen in Georgien mit Übergabe am Flughafen Batumi',
+    it: 'Noleggio auto in Georgia con consegna all’aeroporto di Batumi',
+    fr: 'Location de voiture en Géorgie avec livraison à l’aéroport de Batumi',
+  },
+  tbilisi: {
+    ru: 'Прокат автомобилей в Грузии с подачей в аэропорт Тбилиси',
+    en: 'Car Rental in Georgia with Tbilisi Airport Delivery',
+    ar: 'تأجير سيارات في جورجيا مع التوصيل إلى مطار تبليسي',
+    fa: 'اجاره خودرو در گرجستان با تحویل در فرودگاه تفلیس',
+    pl: 'Wynajem samochodów w Gruzji z dostawą na lotnisko w Tbilisi',
+    de: 'Mietwagen in Georgien mit Übergabe am Flughafen Tiflis',
+    it: 'Noleggio auto in Georgia con consegna all’aeroporto di Tbilisi',
+    fr: 'Location de voiture en Géorgie avec livraison à l’aéroport de Tbilissi',
+  },
+  kutaisi: {
+    ru: 'Прокат автомобилей в аэропорту Кутаиси без ограничения пробега',
+    en: 'Car Rental at Kutaisi Airport with Unlimited Mileage',
+    ar: 'تأجير سيارات في مطار كوتايسي مع كيلومترات غير محدودة',
+    fa: 'اجاره خودرو در فرودگاه کوتائیسی با کیلومتر نامحدود',
+    pl: 'Wynajem samochodów na lotnisku w Kutaisi bez limitu kilometrów',
+    de: 'Mietwagen am Flughafen Kutaissi mit unbegrenzten Kilometern',
+    it: 'Noleggio auto all’aeroporto di Kutaisi con chilometraggio illimitato',
+    fr: 'Location de voiture à l’aéroport de Koutaïssi avec kilométrage illimité',
+  },
+}
+
 interface HomePageProps {
   initialCity?: City
 }
@@ -26,12 +59,20 @@ export default function HomePage({
 
   const currentCity = CITIES_DATA[city]
 
+  // On the main page, keep the general headline across all airports
+  // On local pages (batumi, tbilisi, kutaisi), use the specific city landing headline
+  const heroHeadline = initialCity
+    ? (LOCAL_CITY_H1[city]?.[lang] || LOCAL_CITY_H1[initialCity]?.[lang] || t.heroTitle)
+    : t.heroTitle
+
   React.useEffect(() => {
-    document.title =
-      lang === 'ru'
-        ? 'Аренда авто в Грузии от 1 дня без залога — VASILII RENT'
-        : 'Car Rental in Georgia from 1 Day (Zero Deposit) — VASILII RENT'
-  }, [lang])
+    if (!initialCity) {
+      document.title =
+        lang === 'ru'
+          ? 'Прокат автомобилей в Грузии с подачей в аэропорты Тбилиси, Кутаиси и Батуми — VASILII RENT'
+          : 'Car Rental in Georgia from 1 Day (Zero Deposit) — VASILII RENT'
+    }
+  }, [lang, initialCity])
 
   return (
     <div className="bg-[#FFFFFF]">
@@ -50,7 +91,7 @@ export default function HomePage({
 
               {/* Main Display Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#1D1D1F] tracking-tight leading-[1.1] mb-4">
-                {t.heroTitle}
+                {heroHeadline}
               </h1>
 
               {/* Subtitle */}
@@ -145,7 +186,7 @@ export default function HomePage({
                 <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full">
                   <Image
                     src="/images/hero-georgia.jpg"
-                    alt={t.heroTitle}
+                    alt={heroHeadline}
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
