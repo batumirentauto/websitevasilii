@@ -10,82 +10,10 @@ import { TRANSLATIONS } from '@/context/translations'
 
 interface HomePageProps {
   initialCity?: City
-  customTitle?: string
-  customH1?: string
-  customSubtitle?: string
-}
-
-const CITY_H1: Record<City, Record<Lang, string>> = {
-  batumi: {
-    ru: 'Прокат автомобилей в Батуми от 1 дня без залога',
-    en: 'Car Rental in Batumi from 1 Day (Zero Deposit)',
-    ar: 'تأجير سيارات في باتومي ابتداءً من يوم واحد بدون تأمين',
-    fa: 'اجاره خودرو در باتومی از ۱ روز بدون ودیعه',
-    pl: 'Wynajem aut w Batumi od 1 doby bez kaucji',
-    de: 'Mietwagen in Batumi ab 1 Tag ohne Kaution',
-    it: 'Noleggio auto a Batumi da 1 giorno senza deposito',
-    fr: 'Location de voiture à Batoumi dès 1 jour sans caution',
-  },
-  tbilisi: {
-    ru: 'Аренда автомобилей в Тбилиси от 1 дня без залога',
-    en: 'Car Rental in Tbilisi from 1 Day (Zero Deposit)',
-    ar: 'تأجير سيارات في تبليسي ابتداءً من يوم واحد بدون تأمين',
-    fa: 'اجاره خودرو در تفلیس از ۱ روز بدون ودیعه',
-    pl: 'Wynajem aut w Tbilisi od 1 doby bez kaucji',
-    de: 'Mietwagen in Tiflis ab 1 Tag ohne Kaution',
-    it: 'Noleggio auto a Tbilisi da 1 giorno senza deposito',
-    fr: 'Location de voiture à Tbilissi dès 1 jour sans caution',
-  },
-  kutaisi: {
-    ru: 'Прокат авто в аэропорту Кутаиси от 1 дня без залога',
-    en: 'Car Rental at Kutaisi Airport from 1 Day (Zero Deposit)',
-    ar: 'تأجير سيارات في مطار كوتايسي ابتداءً من يوم واحد بدون تأمين',
-    fa: 'اجاره خودرو در فرودگاه کوتایسی از ۱ روز بدون ودیعه',
-    pl: 'Wynajem aut na lotnisku Kutaisi od 1 doby bez kaucji',
-    de: 'Mietwagen am Flughafen Kutaissi ab 1 Tag ohne Kaution',
-    it: 'Noleggio auto all\'aeroporto di Kutaisi da 1 giorno senza deposito',
-    fr: 'Location de voiture à l\'aéroport de Koutaïssi dès 1 jour sans caution',
-  },
-}
-
-const CITY_SUBTITLE: Record<City, Record<Lang, string>> = {
-  batumi: {
-    ru: 'Честные цены без скрытых наценок, страховка КАСКО + ОСАГО и бесплатный 1-й час продления. Выдача с базы на ул. Мамия Варшанидзе 154 или в аэропорту Батуми.',
-    en: 'Fair transparent prices with zero hidden markups, full CASCO + TPL insurance, and free 1st extra hour. Pick up at our base on Mamiya Varshanidze St or request delivery to Batumi Airport.',
-    ar: 'أسعار شفافة دون رسوم خفية، تأمين شامل كاسكو وساعة أولى مجانية للتمديد. الاستلام من فرعنا في شارع ماميا فارشانيدزه أو مطار باتومي.',
-    fa: 'قیمت‌های منصفانه بدون هزینه پنهان، بیمه کامل بدنه و شخص ثالث، و ۱ ساعت تمدید رایگان. تحویل از دفتر خیابان مامیا وارشانیدزه یا فرودگاه باتومی.',
-    pl: 'Uczciwe ceny bez ukrytych opłat, pełne ubezpieczenie i pierwsza godzina gratis przy przedłużeniu. Odbiór z bazy przy ul. Mamiya Varshanidze lub na lotnisku Batumi.',
-    de: 'Faire Preise ohne versteckte Aufschläge, Vollkasko-Versicherung und 1. kostenlose Stunde bei Verlängerung. Abholung an unserer Station in der Mamiya-Varshanidze-Str. oder am Flughafen Batumi.',
-    it: 'Prezzi trasparenti senza costi nascosti, assicurazione completa KASKO e 1ª ora gratis di proroga. Ritiro presso la nostra base in via Mamiya Varshanidze o all\'aeroporto di Batumi.',
-    fr: 'Tarifs transparents sans frais cachés, assurance tous risques et 1re heure gratuite pour prolongation. Prise en charge à notre base rue Mamiya Varchanidzé ou à l\'aéroport de Batoumi.',
-  },
-  tbilisi: {
-    ru: 'Надежные автомобили для поездок по Тбилиси, в Казбеги, Кахетию, Боржоми и Гудаури. Без залога на карте, страховка КАСКО + ОСАГО и бесплатный 1-й час продления.',
-    en: 'Reliable vehicles for road trips across Tbilisi, Kazbegi, Kakheti, Borjomi, and Gudauri. Zero card deposit, full CASCO + TPL insurance, and free 1st extra hour.',
-    ar: 'سيارات موثوقة لرحلاتك في تبليسي، كازبيجي، كاخيتي، بورجومي وغوداوري. بدون حجز مبلغ تأمين على البطاقة، تأمين شامل وساعة أولى مجانية.',
-    fa: 'خودروهای مطمئن برای سفر به تفلیس، کازبگی، کاختی، برجومی و گودائوری. بدون مسدود کردن پول روی کارت، بیمه کامل و ۱ ساعت تمدید رایگان.',
-    pl: 'Niezawodne auta na wyjazdy po Tbilisi, do Kazbegi, Kachetii, Borjomi i Gudauri. Bez blokady kaucji na karcie, pełne ubezpieczenie i pierwsza godzina gratis.',
-    de: 'Zuverlässige Fahrzeuge für Fahrten in Tiflis, nach Kasbegi, Kachetien, Bordschomi und Gudauri. Ohne Kautionsblockierung, Vollkasko und 1. kostenlose Überstunde.',
-    it: 'Auto affidabili per viaggiare a Tbilisi, Kazbegi, Cachezia, Borjomi e Gudauri. Senza blocco del deposito su carta, assicurazione completa e 1ª ora gratis.',
-    fr: 'Véhicules fiables pour vos escapades à Tbilissi, Kazbegi, Kakhétie, Bordjomi et Goudaouri. Sans blocage de caution sur carte, assurance complète et 1re heure offerte.',
-  },
-  kutaisi: {
-    ru: 'Круглосуточная встреча у терминала прилёта 24/7. Быстрое оформление за 10 минут, страховка КАСКО + ОСАГО включена, без залога и с возвратом в Батуми или Тбилиси.',
-    en: '24/7 terminal meet & greet for your flight arrivals. Fast 10-minute handover, full CASCO + TPL insurance, zero deposit, and free drop-off in Batumi or Tbilisi.',
-    ar: 'استقبال عند صالة الوصول على مدار 24/7 لكل الرحلات. تسليم سريع خلال 10 دقائق، تأمين شامل كاسكو، بدون تأمين وإمكانية التسليم في باتومي أو تبليسي.',
-    fa: 'استقبال ۲۴ ساعته در ترمینال پروازهای ورودی فرودگاه. تحویل سریع ۱۰ دقیقه‌ای، بیمه کامل، بدون ودیعه و امکان بازگشت در باتومی یا تفلیس.',
-    pl: 'Całodobowe powitanie w terminalu przylotów 24/7. Szybki odbiór w 10 minut, pełne ubezpieczenie, brak kaucji i możliwość zwrotu w Batumi lub Tbilisi.',
-    de: 'Rund-um-die-Uhr-Abholung am Ankunftsterminal 24/7. Schnelle Übergabe in 10 Minuten, Vollkasko inklusive, ohne Kaution und Rückgabe in Batumi oder Tiflis möglich.',
-    it: 'Accoglienza h24 al terminal arrivi per il tuo volo. Consegna rapida in 10 minuti, assicurazione KASKO inclusa, nessun deposito e riconsegna a Batumi o Tbilisi.',
-    fr: 'Accueil personnalisé au terminal des arrivées 24h/24. Prise en charge rapide en 10 minutes, assurance tous risques incluse, sans caution et retour à Batoumi ou Tbilissi.',
-  },
 }
 
 export default function HomePage({
   initialCity,
-  customTitle,
-  customH1,
-  customSubtitle,
 }: HomePageProps = {}) {
   const { lang, city, setCity } = useApp()
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
@@ -99,28 +27,11 @@ export default function HomePage({
   const currentCity = CITIES_DATA[city]
 
   React.useEffect(() => {
-    if (customTitle) {
-      document.title = customTitle
-    } else if (initialCity) {
-      const cityTitle = CITY_H1[initialCity]?.[lang] || CITY_H1[initialCity]?.ru
-      document.title = `${cityTitle} — VASILII RENT`
-    } else {
-      document.title =
-        lang === 'ru'
-          ? 'Аренда авто в Грузии от 1 дня без залога — VASILII RENT'
-          : 'Car Rental in Georgia from 1 Day (Zero Deposit) — VASILII RENT'
-    }
-  }, [lang, customTitle, initialCity])
-
-  const heroHeadline =
-    customH1 ||
-    (initialCity ? CITY_H1[initialCity]?.[lang] || CITY_H1[initialCity]?.ru : t.heroTitle)
-
-  const heroSub =
-    customSubtitle ||
-    (initialCity
-      ? CITY_SUBTITLE[initialCity]?.[lang] || CITY_SUBTITLE[initialCity]?.ru
-      : t.heroSubtitle)
+    document.title =
+      lang === 'ru'
+        ? 'Аренда авто в Грузии от 1 дня без залога — VASILII RENT'
+        : 'Car Rental in Georgia from 1 Day (Zero Deposit) — VASILII RENT'
+  }, [lang])
 
   return (
     <div className="bg-[#FFFFFF]">
@@ -139,12 +50,12 @@ export default function HomePage({
 
               {/* Main Display Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#1D1D1F] tracking-tight leading-[1.1] mb-4">
-                {heroHeadline}
+                {t.heroTitle}
               </h1>
 
               {/* Subtitle */}
               <p className="text-sm sm:text-base text-[#6E6E73] font-normal leading-relaxed mb-6 max-w-xl">
-                {heroSub}
+                {t.heroSubtitle}
               </p>
 
               {/* City & Duration Selection Card */}
@@ -154,9 +65,9 @@ export default function HomePage({
                 </span>
                 <div className="grid grid-cols-3 gap-2">
                   {(['batumi', 'tbilisi', 'kutaisi'] as City[]).map((cKey) => (
-                    <Link
+                    <button
                       key={cKey}
-                      href={`/${cKey}`}
+                      type="button"
                       onClick={() => setCity(cKey)}
                       className={`py-3 px-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 text-center ${
                         city === cKey
@@ -165,7 +76,7 @@ export default function HomePage({
                       }`}
                     >
                       {getCityName(cKey, lang)}
-                    </Link>
+                    </button>
                   ))}
                 </div>
 
