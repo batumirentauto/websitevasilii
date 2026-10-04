@@ -122,7 +122,11 @@ export default function HomePage({
                 </div>
 
                 {/* Competitive Advantages Row in Hero */}
-                <div className="mt-3 pt-3 border-t border-black/[0.05] grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div className="mt-3 pt-3 border-t border-black/[0.05] grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
+                    <span className="text-[#34C759]">✓</span>
+                    <span>{t.payOnPickupPill}</span>
+                  </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#1D1D1F]">
                     <span className="text-[#34C759]">✓</span>
                     <span>{t.unlimitedMileage}</span>
@@ -203,6 +207,9 @@ export default function HomePage({
 
                   {/* Floating badges on image */}
                   <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 pointer-events-none">
+                    <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
+                      ✓ {t.payOnPickupPill}
+                    </span>
                     <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm flex items-center gap-1.5">
                       ✓ {t.heroBadgeNoPrepayment}
                     </span>
