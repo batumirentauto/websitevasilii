@@ -15,7 +15,7 @@
     "panoramicRoof": false,
     "fuelType": "Hybrid",
     "fuelConsumption": "Трасса 7.6 л • Средний 7.4 л",
-    "priceGel": 110,
+    "priceGel": 120,
     "depositGel": 0,
     "featured": false,
     "images": [
@@ -24,11 +24,11 @@
       "/fleet/Ford_Escape_2010/IMG_1333.jpg"
     ],
     "prices": {
-      "1-2": 110,
-      "3-5": 100,
-      "6-13": 90,
+      "1-2": 120,
+      "3-5": 110,
+      "6-13": 100,
       "14-29": 90,
-      "30+": 52
+      "30+": 60
     },
     "engine": "2.5 Гибрид",
     "engineEn": "2.5L Hybrid",

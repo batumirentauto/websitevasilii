@@ -27,3 +27,13 @@ node_modules/
 /playwright/.cache/
 *.tsbuildinfo
 *.zip
+
+# Telegram export & sessions
+*.session
+*.session-journal
+telegram_faq_export.json
+telegram_full_dialogs.json
+clients_database.csv
+export_telegram_*.py
+tg_export_session.session
+
