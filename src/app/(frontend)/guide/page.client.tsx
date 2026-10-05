@@ -86,6 +86,18 @@ export default function GuidePageClient() {
           >
             <span>⛽</span> {isEn ? 'Fuel & Gas Stations' : 'Топливо и АЗС'}
           </a>
+          <a
+            href="#patrol-control"
+            className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#FFEBEA] hover:border-[#FF3B30]/30 border border-black/[0.08] text-xs font-bold text-[#FF3B30] transition-colors shadow-xs flex items-center gap-1.5"
+          >
+            <span>📱</span> {isEn ? 'Phone, Belts & Turn Signals' : 'Телефон, ремни и поворотники'}
+          </a>
+          <a
+            href="#alcohol"
+            className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#FFEBEA] hover:border-[#FF3B30]/30 border border-black/[0.08] text-xs font-bold text-[#FF3B30] transition-colors shadow-xs flex items-center gap-1.5"
+          >
+            <span>🍷</span> {isEn ? 'Alcohol: Limit 0.3 ‰ & Raids' : 'Алкоголь: порог 0.3 ‰ и продувки'}
+          </a>
         </div>
 
         {/* ========================================================
@@ -777,7 +789,84 @@ export default function GuidePageClient() {
         </section>
 
         {/* ========================================================
-            CARD 7: ZERO ALCOHOL TOLERANCE (0.00 ‰)
+            CARD 7: PATROL SURVEILLANCE — PHONE, SEATBELTS & TURN SIGNALS
+           ======================================================== */}
+        <section
+          id="patrol-control"
+          className="bg-white rounded-3xl p-6 sm:p-10 border-2 border-[#FF3B30]/25 shadow-sm mb-8 scroll-mt-24"
+        >
+          <div className="flex items-start gap-4 mb-6">
+            <div className="w-12 h-12 rounded-2xl bg-[#FFF5F5] border border-[#FF3B30]/20 flex items-center justify-center text-2xl shrink-0">
+              📱
+            </div>
+            <div>
+              <span className="text-xs font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">
+                {isEn ? 'Strict Patrol Enforcement' : 'Жесткий контроль патрульной полиции'}
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
+                {isEn
+                  ? 'Phone in Hand, Seatbelts & Turn Signals'
+                  : 'Телефон в руке, ремни безопасности и поворотники'}
+              </h2>
+            </div>
+          </div>
+
+          <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed mb-6">
+            {isEn
+              ? 'Georgian police patrol cars actively monitor moving traffic in cities and on highways. Officers pay extraordinary attention to three infractions that frequently catch foreign tourists by surprise:'
+              : 'Экипажи патрульной полиции в Грузии ведут непрерывное наблюдение в транспортном потоке. Есть три частых нарушения, за которые патрули останавливают и штрафуют безоговорочно:'}
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            {/* Phone */}
+            <div className="bg-[#FFF5F5] border border-[#FF3B30]/20 p-5 rounded-2xl">
+              <span className="text-xs font-extrabold text-[#FF3B30] uppercase tracking-wider block mb-1">
+                {isEn ? 'Fine 50 GEL' : 'Штраф 50 лари'}
+              </span>
+              <h3 className="text-sm font-bold text-[#1D1D1F] mb-2 flex items-center gap-1.5">
+                <span>📵</span> {isEn ? 'Phone in Hand' : 'Телефон в руке'}
+              </h3>
+              <p className="text-xs text-[#48484A] leading-relaxed">
+                {isEn
+                  ? 'Holding a phone while driving (even when stationary at a traffic light or in a jam) is strictly prohibited. You may only use hands-free, Bluetooth, Apple CarPlay/Android Auto, or a dash mount.'
+                  : 'Патрули высматривают водителей с телефоном в руке. Запрещено не только говорить, но даже держать смартфон в руке или смотреть в навигатор на светофоре. Разрешены только громкая связь (Hands-free), CarPlay или держатель на панели.'}
+              </p>
+            </div>
+
+            {/* Seatbelt */}
+            <div className="bg-[#F5F5F7] border border-black/[0.04] p-5 rounded-2xl">
+              <span className="text-xs font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">
+                {isEn ? 'Fine 50 GEL • 10 Points' : 'Штраф 50 лари • 10 баллов'}
+              </span>
+              <h3 className="text-sm font-bold text-[#1D1D1F] mb-2 flex items-center gap-1.5">
+                <span>💺</span> {isEn ? 'Seatbelt Required' : 'Ремень безопасности'}
+              </h3>
+              <p className="text-xs text-[#48484A] leading-relaxed">
+                {isEn
+                  ? 'Mandatory for both driver and front-seat passenger. Controlled by officers in unmarked/marked patrol cruisers and high-resolution overhead smart cameras.'
+                  : 'Обязательно пристегиваться водителю и переднему пассажиру. Нарушение фиксируется как инспекторами патруля, так и умными камерами высокого разрешения на перекрестках.'}
+              </p>
+            </div>
+
+            {/* Turn Signals */}
+            <div className="bg-[#FFF5F5] border border-[#FF3B30]/20 p-5 rounded-2xl">
+              <span className="text-xs font-extrabold text-[#FF3B30] uppercase tracking-wider block mb-1">
+                {isEn ? 'Fine 100 GEL • 20 Points' : 'Штраф 100 лари • 20 баллов'}
+              </span>
+              <h3 className="text-sm font-bold text-[#1D1D1F] mb-2 flex items-center gap-1.5">
+                <span>💡</span> {isEn ? 'Turn Signals' : 'Поворотники при маневре'}
+              </h3>
+              <p className="text-xs text-[#48484A] leading-relaxed">
+                {isEn
+                  ? 'Failure to signal before lane changes, roundabout exits, or turns. Patrol cars trailing behind in traffic immediately flash emergency lights and issue a 100 GEL ticket.'
+                  : 'Перестроение, поворот или съезд с кольца без включенного указателя поворота квалифицируется как опасное маневрирование. Патрули едут сзади в потоке и моментально включают мигалки.'}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            CARD 8: ALCOHOL LIMIT (0.3 ‰) & POLICE BREATHALYZER RAIDS
            ======================================================== */}
         <section
           id="alcohol"
@@ -789,27 +878,94 @@ export default function GuidePageClient() {
             </div>
             <div>
               <span className="text-xs font-bold text-[#E11D48] uppercase tracking-wider block mb-1">
-                {isEn ? 'Zero Tolerance' : 'Абсолютный сухой закон'}
+                {isEn ? 'Legal Limit: 0.3 ‰ & Police Raids' : 'Статья 116 КоАП Грузии: лимит 0,3 ‰ и рейды'}
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
-                {isEn ? 'Alcohol Limit Behind the Wheel: 0.00 ‰' : 'Алкоголь за рулем: строго 0.00 ‰'}
+                {isEn
+                  ? 'Alcohol Behind the Wheel: 0.3 ‰ Limit & Breathalyzers'
+                  : 'Алкоголь за рулем: допустимый лимит 0,3 ‰ и частые продувки'}
               </h2>
             </div>
           </div>
 
-          <div className="bg-[#FFF5F5] border border-[#FF3B30]/20 rounded-2xl p-5 mb-4">
+          <div className="bg-[#FFF5F5] border border-[#FF3B30]/20 rounded-2xl p-5 mb-5">
+            <h3 className="text-sm font-bold text-[#FF3B30] mb-2 flex items-center gap-2">
+              <span>🚨</span> {isEn ? 'Frequent Police Breathalyzer Raids' : 'Внимание: участились массовые ночные продувки!'}
+            </h3>
             <p className="text-xs sm:text-sm text-[#1D1D1F] leading-relaxed">
               {isEn
-                ? 'Georgia maintains zero alcohol tolerance (0.00 ‰). Even a single glass of famous Georgian wine or chacha before driving leads to severe consequences: fine from 700 GEL, suspension of driving license for 6–12 months, and immediate complete voiding of all insurance coverage.'
-                : 'В Грузии абсолютно нулевой допустимый порог алкоголя в крови (0.00 ‰). Даже один бокал знаменитого грузинского вина или рюмка чачи перед поездкой приведет к серьезным последствиям: штраф от 700 лари, лишение водительских прав на срок от 6 месяцев до года и полное аннулирование страховки КАСКО/ОСАГО.'}
+                ? 'Patrol police in Georgia frequently conduct massive anti-drink-driving raids. Officers block lanes and systematically test all drivers with breathalyzers — especially during evenings, weekends, on Batumi/Tbilisi seaside boulevards, near restaurant zones, and at city exits.'
+                : 'Патрульная полиция Грузии в последнее время регулярно устраивает рейды с повальной проверкой на алкотестерах. Патрули перекрывают полосы и продувают всех водителей подряд — особенно по вечерам, в выходные дни, на набережных Батуми и Тбилиси, у ресторанов и на выездах из городов.'}
             </p>
           </div>
 
-          <p className="text-xs sm:text-sm text-[#6E6E73] leading-relaxed">
-            {isEn
-              ? 'Taxis in Georgia (Bolt, Yandex Go) are exceptionally affordable (often 3–8 GEL around town). Enjoy Georgian hospitality and wine culture safely without getting behind the wheel!'
-              : 'Такси в городах Грузии (Bolt, Yandex Go) стоит очень дешево (поездка по городу обычно 3–8 лари). Наслаждайтесь грузинским гостеприимством и вином безопасно — вызовите такси!'}
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+            <div className="bg-[#E8FAF0] border border-[#34C759]/20 p-5 rounded-2xl">
+              <span className="text-xs font-bold text-[#248A3D] uppercase tracking-wider block mb-1">
+                {isEn ? 'Legal Tolerance' : 'Законная норма'}
+              </span>
+              <h4 className="text-base font-extrabold text-[#1D1D1F] mb-1">
+                {isEn ? 'Up to 0.30 ‰' : 'До 0,30 промилле'}
+              </h4>
+              <p className="text-xs text-[#248A3D] font-semibold mb-1">
+                {isEn ? '0 GEL • No penalty' : '0 ₾ • Без штрафа'}
+              </p>
+              <p className="text-xs text-[#6E6E73] leading-relaxed">
+                {isEn
+                  ? 'Up to 0.30 per mille in breath/blood is considered within the permissible physiological margin under Article 116 of the Code of Administrative Offenses.'
+                  : 'Показатель до 0,3 промилле является допустимой погрешностью по ст. 116 КоАП Грузии и не считается правонарушением.'}
+              </p>
+            </div>
+
+            <div className="bg-[#F5F5F7] border border-black/[0.04] p-5 rounded-2xl">
+              <span className="text-xs font-bold text-[#FF9500] uppercase tracking-wider block mb-1">
+                {isEn ? 'Moderate Intoxication' : 'Превышение нормы'}
+              </span>
+              <h4 className="text-base font-extrabold text-[#1D1D1F] mb-1">
+                {isEn ? 'From 0.30 to 0.70 ‰' : 'От 0,30 до 0,70 ‰'}
+              </h4>
+              <p className="text-xs text-[#FF3B30] font-semibold mb-1">
+                {isEn ? '6-month license suspension' : 'Лишение прав на 6 месяцев'}
+              </p>
+              <p className="text-xs text-[#6E6E73] leading-relaxed">
+                {isEn
+                  ? 'Suspension of driving privileges for 6 months (or replacement penalty), plus complete forfeiture of insurance.'
+                  : 'Приостановление действия водительских прав на 6 месяцев и аннулирование страхового покрытия.'}
+              </p>
+            </div>
+
+            <div className="bg-[#FFF5F5] border border-[#FF3B30]/20 p-5 rounded-2xl">
+              <span className="text-xs font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">
+                {isEn ? 'Heavy / Refusal' : 'Тяжелое / Отказ'}
+              </span>
+              <h4 className="text-base font-extrabold text-[#1D1D1F] mb-1">
+                {isEn ? 'Over 0.70 ‰ or Refusal' : 'Свыше 0,70 ‰ или отказ'}
+              </h4>
+              <p className="text-xs text-[#FF3B30] font-bold mb-1">
+                {isEn ? '1-year suspension + fine/arrest' : 'Лишение на 1 год + арест/штраф'}
+              </p>
+              <p className="text-xs text-[#6E6E73] leading-relaxed">
+                {isEn
+                  ? 'Refusing the breathalyzer test automatically equates to severe intoxication (1-year license ban + up to 3,000 GEL fine or administrative arrest).'
+                  : 'Отказ от продувки в алкотестер приравнивается к опьянению: лишение прав на 1 год плюс штраф до 3 000 лари или административный арест.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-[#F5F5F7] p-4 rounded-xl border border-black/[0.04] text-xs text-[#48484A] flex items-start gap-2.5">
+            <span className="text-[#0071E3] text-base shrink-0">💡</span>
+            <p className="leading-relaxed">
+              {isEn ? (
+                <>
+                  <strong>Practical recommendation:</strong> 0.3 per mille is a very narrow threshold that a single glass of wine can easily exceed. In case of any alcohol-related accident, insurance (CDW/TPL) is completely voided. City taxis (Bolt, Yandex Go) cost only 3–8 GEL — don&apos;t risk your vacation!
+                </>
+              ) : (
+                <>
+                  <strong>Совет от VASILII RENT:</strong> 0,3 промилле — очень тонкая граница, которую легко превысить даже бокалом домашнего вина или чачи. При показаниях выше 0,3 ‰ страховка КАСКО полностью сгорает. Такси в городах Грузии (Bolt, Yandex Go) стоит копейки (3–8 лари) — наслаждайтесь грузинским вином и заказывайте такси!
+                </>
+              )}
+            </p>
+          </div>
         </section>
 
         {/* ========================================================
