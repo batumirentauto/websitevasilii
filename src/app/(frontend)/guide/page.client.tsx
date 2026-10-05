@@ -440,12 +440,12 @@ export default function GuidePageClient() {
                 %
               </span>
               <h3 className="text-sm font-bold text-[#1D1D1F] mb-1">
-                {isEn ? '20% Discount within 30 days' : 'Скидка 20% в первые 30 дней'}
+                {isEn ? '20% Discount within 10 days' : 'Скидка 20% в первые 10 дней'}
               </h3>
               <p className="text-xs text-[#6E6E73] leading-relaxed">
                 {isEn
-                  ? 'Paying within 30 days grants an automatic 20% government discount (e.g., 50 GEL becomes 40 GEL). Payment can be completed directly online.'
-                  : 'При оплате штрафа в течение первых 30 дней государство дает 20% скидку (например, штраф 50 лари оплачивается как 40 лари)!'}
+                  ? 'Paying within 10 days grants an automatic 20% government discount (e.g., a 50 GEL fine becomes 40 GEL). Payment can be completed directly online.'
+                  : 'При оплате штрафа в течение первых 10 дней государство дает 20% скидку (например, штраф 50 лари оплачивается как 40 лари)!'}
               </p>
             </div>
           </div>
