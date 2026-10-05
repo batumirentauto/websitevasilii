@@ -246,8 +246,8 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <span>{t.panorama}</span>
               </span>
             )}
-            <span className="text-[11px] font-semibold text-[#248A3D] bg-[#E8FAF0] px-2.5 py-1 rounded-md border border-[#34C759]/20" title="Возврат в Батуми, Тбилиси или Кутаиси">
-              ⇄ {lang === 'ru' ? 'Возврат в любом городе' : 'Intercity return'}
+            <span className="text-[11px] font-semibold text-[#248A3D] bg-[#E8FAF0] px-2.5 py-1 rounded-md border border-[#34C759]/20" title="Возврат в Батуми, Тбилиси или Кутаиси по согласованию">
+              ⇄ {lang === 'ru' ? 'Возврат в другом городе (по запросу)' : 'Intercity return (on request)'}
             </span>
           </div>
         </div>

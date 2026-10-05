@@ -169,13 +169,13 @@ export default function HomePage({
                           {lang === 'ru' ? 'Возврат в другом городе (One-Way)' : 'Intercity Return (One-Way)'}
                         </span>
                         <span className="text-[10px] font-black uppercase tracking-wider bg-[#34C759] text-white px-2 py-0.5 rounded-full">
-                          0 ₾ {lang === 'ru' ? 'без доплаты' : 'free drop-off'}
+                          0 ₾ {lang === 'ru' ? 'по запросу' : 'upon request'}
                         </span>
                       </div>
                       <p className="text-[11px] text-[#48484A] mt-0.5 leading-snug">
                         {lang === 'ru'
-                          ? 'Возьмите авто в Батуми и сдайте в Тбилиси или в аэропорту Кутаиси без переплат'
-                          : 'Pick up in Batumi, drop off in Tbilisi or Kutaisi Airport with zero relocation fee'}
+                          ? 'Возьмите авто в Батуми и сдайте в Тбилиси или в аэропорту Кутаиси (доступно по предварительному запросу)'
+                          : 'Pick up in Batumi, drop off in Tbilisi or Kutaisi Airport (available upon advance request)'}
                       </p>
                     </div>
                   </div>
@@ -363,7 +363,7 @@ export default function HomePage({
           {/* 7. Free Intercity Drop-off */}
           <div className="bg-gradient-to-br from-[#F5F5F7] to-[#E8FAF0] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors border-2 border-[#34C759]/40 relative overflow-hidden shadow-xs">
             <div className="absolute top-0 right-0 bg-[#34C759] text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider">
-              {lang === 'ru' ? 'ONE-WAY 0 ₾' : 'ONE-WAY 0 ₾'}
+              {lang === 'ru' ? 'ONE-WAY • ПО ЗАПРОСУ' : 'ONE-WAY • UPON REQUEST'}
             </div>
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs border border-[#34C759]/20">
               ⚡
@@ -372,10 +372,12 @@ export default function HomePage({
               <span>{t.benefit7Title}</span>
             </h3>
             <p className="text-xs text-[#48484A] leading-relaxed">
-              {t.benefit7Desc}
+              {lang === 'ru'
+                ? 'Возьмите авто в Батуми и верните в Тбилиси или в аэропорту Кутаиси абсолютно БЕЗ доплаты за перегон (по предварительному запросу).'
+                : t.benefit7Desc}
             </p>
             <div className="mt-3 pt-2.5 border-t border-black/[0.06] text-[11px] font-bold text-[#248A3D] flex items-center gap-1">
-              <span>✓ Батуми ⇄ Тбилиси ⇄ Кутаиси</span>
+              <span>✓ Батуми ⇄ Тбилиси ⇄ Кутаиси (по запросу)</span>
             </div>
           </div>
 
