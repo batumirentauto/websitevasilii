@@ -62,10 +62,10 @@ export default function GuidePageClient() {
             <span>🎯</span> {isEn ? 'Speed Tolerance (+15 km/h)' : 'Лимит скорости (+15 км/ч)'}
           </a>
           <a
-            href="#police-check"
+            href="#protocols-check"
             className="px-3.5 py-1.5 rounded-full bg-white hover:bg-black hover:text-white border border-black/[0.08] text-xs font-semibold text-[#1D1D1F] transition-colors shadow-xs flex items-center gap-1.5"
           >
-            <span>🔍</span> {isEn ? 'Check Fines (police.ge)' : 'Проверка на police.ge'}
+            <span>🔍</span> {isEn ? 'Check Fines (protocols.ge)' : 'Проверка штрафов (protocols.ge)'}
           </a>
           <a
             href="#animals-mountains"
@@ -367,10 +367,10 @@ export default function GuidePageClient() {
         </section>
 
         {/* ========================================================
-            CARD 3: HOW TO CHECK FINES (POLICE.GE & 20% DISCOUNT)
+            CARD 4: HOW TO CHECK FINES (PROTOCOLS.GE & 20% DISCOUNT)
            ======================================================== */}
         <section
-          id="police-check"
+          id="protocols-check"
           className="bg-white rounded-3xl p-6 sm:p-10 border border-black/[0.06] shadow-sm mb-8 scroll-mt-24"
         >
           <div className="flex items-start gap-4 mb-6">
@@ -379,18 +379,18 @@ export default function GuidePageClient() {
             </div>
             <div>
               <span className="text-xs font-bold text-[#34C759] uppercase tracking-wider block mb-1">
-                {isEn ? 'Official Portal & 20% Discount' : 'Официальный портал МВД и скидка 20%'}
+                {isEn ? 'Best Portal for Protocols & 20% Discount' : 'Лучший сервис проверки и скидка 20%'}
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
-                {isEn ? 'Checking Fines on police.ge' : 'Как проверить штрафы на сайте police.ge'}
+                {isEn ? 'Checking Fines: protocols.ge' : 'Проверка штрафов на сайте protocols.ge'}
               </h2>
             </div>
           </div>
 
           <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed mb-6">
             {isEn
-              ? 'All traffic video fines issued in Georgia are uploaded directly to the official portal of the Ministry of Internal Affairs: police.ge (video fines section). You can verify any fine with full photographic proof, exact coordinates, and timestamp.'
-              : 'Все видеоштрафы дорожной полиции Грузии загружаются в единую официальную базу МВД на сайте police.ge (раздел видеоштрафов). Любой штраф можно проверить лично с точной фотографией автомобиля, временем и координатами.'}
+              ? 'In Georgia, the fastest and most convenient portal to check administrative protocols and video fines is protocols.ge. It directly connects to the Ministry of Internal Affairs database, showing all protocols, photographic evidence, exact timestamps, and payment amounts with discount.'
+              : 'В Грузии удобнее и быстрее всего проверять видеоштрафы и протоколы патрульной полиции на специализированном государственном портале protocols.ge (также база доступна на police.ge). Здесь собраны все активные протоколы с фотографиями фиксации, временем, местом и расчетом суммы.'}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -399,12 +399,12 @@ export default function GuidePageClient() {
                 1
               </span>
               <h3 className="text-sm font-bold text-[#1D1D1F] mb-1">
-                {isEn ? 'Open police.ge' : 'Зайдите на police.ge'}
+                {isEn ? 'Open protocols.ge' : 'Зайдите на protocols.ge'}
               </h3>
               <p className="text-xs text-[#6E6E73] leading-relaxed">
                 {isEn
-                  ? 'Open the official website of the Georgian Ministry of Internal Affairs (available in Georgian and English).'
-                  : 'Перейдите на официальный сайт МВД Грузии police.ge в раздел проверки штрафов (Video Fines).'}
+                  ? 'Open the specialized official portal protocols.ge (or police.ge). The interface is fast, clear, and available in Georgian and English.'
+                  : 'Перейдите на официальный сервис protocols.ge. Сайт работает быстро и адаптирован для моментального поиска по номеру.'}
               </p>
             </div>
 
@@ -417,8 +417,8 @@ export default function GuidePageClient() {
               </h3>
               <p className="text-xs text-[#6E6E73] leading-relaxed">
                 {isEn
-                  ? 'Input the vehicle license plate (e.g., GG-123-RR) and the registration certificate number (provided by us upon rental pickup).'
-                  : 'Введите госномер авто и номер техпаспорта (мы всегда высылаем фото техпаспорта вам в WhatsApp при выдаче машины).'}
+                  ? 'Input the vehicle plate number and the technical passport / registration certificate (provided by us in WhatsApp upon rental pickup).'
+                  : 'Введите номер автомобиля и номер техпаспорта (фото техпаспорта мы сразу отправляем вам в WhatsApp при выдаче автомобиля).'}
               </p>
             </div>
 
@@ -431,8 +431,8 @@ export default function GuidePageClient() {
               </h3>
               <p className="text-xs text-[#6E6E73] leading-relaxed">
                 {isEn
-                  ? 'Paying within 30 days grants an automatic 20% discount (e.g. 50 GEL becomes 40 GEL). No intermediaries needed.'
-                  : 'При оплате штрафа в течение 30 дней государство дает 20% скидку (например, штраф 50 лари оплачивается как 40 лари)!'}
+                  ? 'Paying within 30 days grants an automatic 20% government discount (e.g., 50 GEL becomes 40 GEL). Payment can be completed directly online.'
+                  : 'При оплате штрафа в течение первых 30 дней государство дает 20% скидку (например, штраф 50 лари оплачивается как 40 лари)!'}
               </p>
             </div>
           </div>
@@ -444,17 +444,17 @@ export default function GuidePageClient() {
               </span>
               <p className="text-xs text-[#6E6E73]">
                 {isEn
-                  ? 'We never add hidden processing fees or markups for fines. If a fine appears, you pay the exact official amount with the 20% discount.'
-                  : 'Мы не берем комиссий за обработку штрафов. Вы оплачиваете ровно ту сумму, которая указана в официальной базе со скидкой 20%.'}
+                  ? 'We never add processing surcharges for fines. You pay the exact official sum with the 20% discount directly on protocols.ge or via your bank.'
+                  : 'Мы не берем комиссий за обработку штрафов. Вы можете оплатить точную сумму со скидкой 20% прямо на protocols.ge или через банковское приложение.'}
               </p>
             </div>
             <a
-              href="https://police.ge"
+              href="https://protocols.ge"
               target="_blank"
               rel="noreferrer"
               className="px-5 py-2.5 rounded-full bg-[#1D1D1F] text-white hover:bg-black text-xs font-bold shrink-0 transition-transform active:scale-95 shadow-sm"
             >
-              {isEn ? 'Open police.ge ↗' : 'Перейти на police.ge ↗'}
+              {isEn ? 'Open protocols.ge ↗' : 'Перейти на protocols.ge ↗'}
             </a>
           </div>
         </section>
