@@ -468,100 +468,27 @@ export default function GuidePageClient() {
               </span>
             </div>
 
-            {/* Authentic Interactive Certificate Card */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-black/[0.08] mb-6 bg-gradient-to-br from-[#EBF7F2] via-[#F3FAF6] to-[#E5F3EC] p-6 sm:p-8 text-[#1D1D1F]">
-              {/* Header with Flag & Document Title */}
-              <div className="flex items-start justify-between border-b border-[#2D7A58]/20 pb-4 mb-5 gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-7 rounded bg-white shadow-xs border border-black/10 flex items-center justify-center text-lg shrink-0">
-                    🇬🇪
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold tracking-widest text-[#2D7A58] uppercase block">
-                      საქართველო • GEORGIA
-                    </span>
-                    <h4 className="text-xs sm:text-sm font-extrabold text-[#1D1D1F] tracking-tight">
-                      სატრანსპორტო საშუალების სარეგისტრაციო მოწმობა
-                    </h4>
-                    <span className="text-[10px] text-[#557A68] font-medium block">
-                      VEHICLE REGISTRATION CERTIFICATE
-                    </span>
-                  </div>
-                </div>
-
-                {/* Highlighted Field 2: Certificate Number (Top Right) */}
-                <div className="bg-white/90 backdrop-blur-sm p-3 rounded-xl border-2 border-[#00C7BE] shadow-md text-right shrink-0">
-                  <div className="flex items-center justify-end gap-1.5 mb-0.5">
-                    <span className="w-2 h-2 rounded-full bg-[#00C7BE] animate-pulse" />
-                    <span className="text-[10px] font-extrabold text-[#00A39B] uppercase tracking-wider">
-                      {isEn ? '2. Tech Passport No.' : '2. Номер техпаспорта'}
-                    </span>
-                  </div>
-                  <span className="text-[9px] text-[#86868B] block mb-0.5 font-medium">მოწმობის № / CERTIFICATE NO.</span>
-                  <span className="font-mono font-black text-sm sm:text-base text-[#1D1D1F] tracking-wider bg-[#E5FBF9] px-2 py-0.5 rounded border border-[#00C7BE]/30 inline-block">
-                    AA00012345
-                  </span>
-                  <span className="text-[9px] text-[#00A39B] font-bold block mt-0.5">
-                    ↳ {isEn ? 'Enter in "Tech Passport"' : 'Вводить в «Tech Passport»'}
-                  </span>
-                </div>
+            {/* Authentic Processed Registration Certificate (Tech Passport) */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-black/[0.08] mb-6 bg-white p-3 sm:p-5 text-[#1D1D1F]">
+              <div className="relative w-full rounded-xl overflow-hidden bg-[#F5F5F7] border border-black/[0.06]">
+                <Image
+                  src="/images/georgia-tech-passport-sample.png"
+                  alt={isEn ? "Georgian Vehicle Registration Certificate with highlighted check fields" : "Свидетельство о регистрации ТС Грузии с выделенными полями для проверки штрафов"}
+                  width={1540}
+                  height={924}
+                  className="w-full h-auto object-contain rounded-xl"
+                  priority
+                />
               </div>
 
-              {/* Main Fields Grid */}
-              <div className="space-y-4">
-                {/* Highlighted Field 1: Registration Plate Number (A) */}
-                <div className="bg-white/95 p-4 sm:p-5 rounded-2xl border-2 border-[#FF9500] shadow-md">
-                  <div className="flex items-center justify-between mb-1.5 flex-wrap gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-[#FF9500] text-white text-[11px] font-black flex items-center justify-center">
-                        A
-                      </span>
-                      <span className="text-xs font-bold text-[#FF9500] uppercase tracking-wider">
-                        {isEn ? '1. Vehicle Plate Number' : '1. Номер машины (Госномер)'}
-                      </span>
-                    </div>
-                    <span className="text-[10px] text-[#FF9500] font-bold bg-[#FFF4E5] px-2 py-0.5 rounded">
-                      ↳ {isEn ? 'Enter in "Car No."' : 'Вводить в «Car No.» на protocols.ge'}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                    <div>
-                      <span className="text-[10px] text-[#86868B] block">სარეგისტრაციო ნომერი / REGISTRATION NUMBER</span>
-                      <span className="text-2xl sm:text-3xl font-black font-mono tracking-wider text-[#1D1D1F]">
-                        GG-123-RR
-                      </span>
-                    </div>
-                    <div className="text-[11px] text-[#6E6E73] bg-[#F5F5F7] px-3 py-1 rounded-lg">
-                      {isEn ? 'Standard Georgian Euro-plate' : 'Стандартный номер (2 буквы - 3 цифры - 2 буквы)'}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Secondary Reference Fields */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-[11px]">
-                  <div className="bg-white/80 p-2.5 rounded-xl border border-[#2D7A58]/15">
-                    <span className="text-[#86868B] block text-[9px]">B. Дата регистрации</span>
-                    <span className="font-semibold text-[#1D1D1F]">15.06.2023</span>
-                  </div>
-                  <div className="bg-white/80 p-2.5 rounded-xl border border-[#2D7A58]/15">
-                    <span className="text-[#86868B] block text-[9px]">D.1 Марка / Make</span>
-                    <span className="font-semibold text-[#1D1D1F]">TOYOTA</span>
-                  </div>
-                  <div className="bg-white/80 p-2.5 rounded-xl border border-[#2D7A58]/15">
-                    <span className="text-[#86868B] block text-[9px]">D.2 Модель / Model</span>
-                    <span className="font-semibold text-[#1D1D1F]">RAV4 HYBRID</span>
-                  </div>
-                  <div className="bg-white/80 p-2.5 rounded-xl border border-[#2D7A58]/15">
-                    <span className="text-[#86868B] block text-[9px]">E. VIN / Кузов</span>
-                    <span className="font-mono text-[10px] text-[#1D1D1F]">JTM...1234567</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Security / Agency Stamp */}
-              <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#2D7A58]/15 text-[10px] text-[#557A68]">
-                <span>საქართველოს შსს მომსახურების სააგენტო • LEPL Service Agency of MIA</span>
-                <span className="font-mono text-[9px] text-[#86868B]">ISO/IEC 7810 POLYCARBONATE</span>
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-[#6E6E73]">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#34C759]"></span>
+                  {isEn ? 'Official Georgian MIA Registration Certificate' : 'Оригинальный техпаспорт (Service Agency of MIA Georgia)'}
+                </span>
+                <span className="text-[11px] bg-[#F5F5F7] px-2.5 py-1 rounded-md border border-black/[0.04]">
+                  🔒 {isEn ? 'Personal data blurred for privacy' : 'Персональные данные владельца надежно заблюрены'}
+                </span>
               </div>
             </div>
 
@@ -571,7 +498,7 @@ export default function GuidePageClient() {
               <div className="bg-white p-5 rounded-2xl border-2 border-[#FF9500]/30 shadow-xs">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-[#FFF4E5] border border-[#FF9500]/30 text-[#FF9500] font-black text-xs flex items-center justify-center">
-                    A
+                    1
                   </span>
                   <h4 className="text-sm font-bold text-[#1D1D1F]">
                     {isEn ? '1. Vehicle Plate Number (Car No.)' : '1. Номер машины (Госномер)'}
@@ -581,12 +508,12 @@ export default function GuidePageClient() {
                   <p>
                     <strong className="text-[#1D1D1F]">{isEn ? 'Where on certificate:' : 'Где в техпаспорте:'}</strong>{' '}
                     {isEn
-                      ? 'Center row marked with letter (A) / "სარეგისტრაციო ნომერი"'
-                      : 'Строка по центру с буквой (A) / «სარეგისტრაციო ნომერი»'}
+                      ? 'Row (A) / "სარეგისტრაციო ნომერი / Registration number"'
+                      : 'Строка (A) сверху / «სარეგისტრაციო ნომერი / Registration number»'}
                   </p>
                   <p>
-                    <strong className="text-[#1D1D1F]">{isEn ? 'Example format:' : 'Пример формата:'}</strong>{' '}
-                    <span className="font-mono font-bold text-[#FF9500] bg-[#FFF4E5] px-1.5 py-0.5 rounded">GG-123-RR</span>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Example on card:' : 'На примере на фото:'}</strong>{' '}
+                    <span className="font-mono font-bold text-[#FF9500] bg-[#FFF4E5] px-1.5 py-0.5 rounded">BO090OK</span>
                   </p>
                   <p>
                     <strong className="text-[#1D1D1F]">{isEn ? 'Field on protocols.ge:' : 'Поле на protocols.ge:'}</strong>{' '}
@@ -599,7 +526,7 @@ export default function GuidePageClient() {
               <div className="bg-white p-5 rounded-2xl border-2 border-[#00C7BE]/30 shadow-xs">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-[#E5FBF9] border border-[#00C7BE]/30 text-[#00A39B] font-black text-xs flex items-center justify-center">
-                    №
+                    2
                   </span>
                   <h4 className="text-sm font-bold text-[#1D1D1F]">
                     {isEn ? '2. Tech Passport Number' : '2. Номер техпаспорта'}
@@ -609,12 +536,12 @@ export default function GuidePageClient() {
                   <p>
                     <strong className="text-[#1D1D1F]">{isEn ? 'Where on certificate:' : 'Где в техпаспорте:'}</strong>{' '}
                     {isEn
-                      ? 'Top right corner marked as "CERTIFICATE NO. / მოწმობის №"'
-                      : 'Правый верхний угол: графа «CERTIFICATE NO. / მოწმობის №»'}
+                      ? 'Bottom-left corner above MIA issuance text'
+                      : 'Левый нижний угол, прямо над текстом «მოწმობა გაცემულია...»'}
                   </p>
                   <p>
-                    <strong className="text-[#1D1D1F]">{isEn ? 'Example format:' : 'Пример формата:'}</strong>{' '}
-                    <span className="font-mono font-bold text-[#00A39B] bg-[#E5FBF9] px-1.5 py-0.5 rounded">AA00012345</span>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Example on card:' : 'На примере на фото:'}</strong>{' '}
+                    <span className="font-mono font-bold text-[#00A39B] bg-[#E5FBF9] px-1.5 py-0.5 rounded">AJA10131235</span>
                   </p>
                   <p>
                     <strong className="text-[#1D1D1F]">{isEn ? 'Field on protocols.ge:' : 'Поле на protocols.ge:'}</strong>{' '}
