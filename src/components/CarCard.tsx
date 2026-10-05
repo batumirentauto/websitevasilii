@@ -326,40 +326,31 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
         </div>
 
         {/* Footer: Price Row & Quick Actions */}
-        <div className="pt-2.5 border-t border-black/[0.05] flex flex-col gap-2">
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-2xl font-bold text-[#1D1D1F] tracking-tight">
-                {formatPrice(effectivePriceGel)}
+        <div className="pt-3 border-t border-black/[0.05] flex flex-col gap-2.5">
+          {/* Price display row */}
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-[10px] text-[#86868B] uppercase tracking-wider block font-semibold mb-0.5">
+                {lang === 'ru' ? 'Стоимость за сутки' : 'Daily rate'}
               </span>
-              {hasDiscount && (
-                <span className="text-xs text-[#86868B] line-through font-normal">
-                  {formatPrice(car.priceGel)}
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-2xl font-black text-[#1D1D1F] tracking-tight">
+                  {formatPrice(effectivePriceGel)}
                 </span>
-              )}
-              <span className="text-xs font-normal text-[#86868B]">{t.perDay}</span>
+                {hasDiscount && (
+                  <span className="text-xs text-[#86868B] line-through font-normal">
+                    {formatPrice(car.priceGel)}
+                  </span>
+                )}
+                <span className="text-xs font-normal text-[#86868B]">{t.perDay}</span>
+              </div>
             </div>
 
-            <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
-              <a
-                href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices, datesInput)}
-                target="_blank"
-                rel="noreferrer"
-                className="h-8 px-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] font-semibold flex items-center justify-center gap-1 transition-all active:scale-95 shadow-xs"
-                title="WhatsApp"
-              >
-                <span>WA</span>
-              </a>
-              <a
-                href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices, datesInput)}
-                target="_blank"
-                rel="noreferrer"
-                className="h-8 px-2.5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-[11px] font-semibold flex items-center justify-center gap-1 transition-all active:scale-95 shadow-xs"
-                title="Telegram"
-              >
-                <span>TG</span>
-              </a>
-            </div>
+            {hasDiscount && (
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-[#34C759]/15 text-[#248A3D] border border-[#34C759]/20">
+                {activeTier ? `-${activeTier.discountPercent}%` : 'Скидка'}
+              </span>
+            )}
           </div>
 
           {/* Primary Availability CTA Button: sends prefilled Telegram check */}
@@ -368,10 +359,40 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices, datesInput)}
               target="_blank"
               rel="noreferrer"
-              className="w-full h-9 px-3 rounded-xl bg-[#0088CC] hover:bg-[#0077b5] text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all active:scale-98 shadow-sm group"
+              className="w-full h-10 px-3.5 rounded-2xl bg-[#0088CC] hover:bg-[#0077b5] text-white text-xs font-bold flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-sm group"
             >
-              <span>✈️</span>
+              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+              </svg>
               <span className="truncate">{t.checkAvailabilityDates || 'Узнать доступность на мои даты'}</span>
+            </a>
+          </div>
+
+          {/* Full-size WhatsApp and Telegram Messenger Buttons */}
+          <div className="grid grid-cols-2 gap-2" onClick={(e) => e.stopPropagation()}>
+            <a
+              href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices, datesInput)}
+              target="_blank"
+              rel="noreferrer"
+              className="h-10 px-3 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-transform active:scale-[0.98] shadow-sm"
+              title="Написать в WhatsApp"
+            >
+              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.24-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.18-.48-.3z" />
+              </svg>
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices, datesInput)}
+              target="_blank"
+              rel="noreferrer"
+              className="h-10 px-3 rounded-2xl bg-[#1D1D1F] hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-transform active:scale-[0.98] shadow-sm"
+              title="Написать в Telegram"
+            >
+              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+              </svg>
+              <span>Telegram</span>
             </a>
           </div>
         </div>
