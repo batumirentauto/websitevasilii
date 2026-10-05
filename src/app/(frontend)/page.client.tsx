@@ -157,9 +157,35 @@ export default function HomePage({
                   </div>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-black/[0.04] text-[11px] text-[#34C759] font-bold flex items-center justify-start gap-1.5">
-                  <span>⚡</span>
-                  <span>{t.freeIntercityBadge}</span>
+                {/* Highlighted Intercity / One-Way Return Banner */}
+                <div className="mt-3.5 pt-3 border-t border-black/[0.06] bg-gradient-to-r from-[#F0FDF4] to-[#E8FAF0] p-3 rounded-2xl border border-[#34C759]/25 flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-[#34C759] text-white flex items-center justify-center text-xs font-black shrink-0 shadow-xs">
+                      ⚡
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-xs font-extrabold text-[#1D1D1F]">
+                          {lang === 'ru' ? 'Возврат в другом городе (One-Way)' : 'Intercity Return (One-Way)'}
+                        </span>
+                        <span className="text-[10px] font-black uppercase tracking-wider bg-[#34C759] text-white px-2 py-0.5 rounded-full">
+                          0 ₾ {lang === 'ru' ? 'без доплаты' : 'free drop-off'}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-[#48484A] mt-0.5 leading-snug">
+                        {lang === 'ru'
+                          ? 'Возьмите авто в Батуми и сдайте в Тбилиси или в аэропорту Кутаиси без переплат'
+                          : 'Pick up in Batumi, drop off in Tbilisi or Kutaisi Airport with zero relocation fee'}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-[#248A3D] bg-white/80 px-2.5 py-1 rounded-lg border border-[#34C759]/20">
+                    <span>Батуми</span>
+                    <span>⇄</span>
+                    <span>Тбилиси</span>
+                    <span>⇄</span>
+                    <span>Кутаиси</span>
+                  </div>
                 </div>
               </div>
 
@@ -335,14 +361,22 @@ export default function HomePage({
           </div>
 
           {/* 7. Free Intercity Drop-off */}
-          <div className="bg-[#F5F5F7] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors">
-            <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs">
+          <div className="bg-gradient-to-br from-[#F5F5F7] to-[#E8FAF0] p-6 rounded-3xl hover:bg-[#EFEFF2] transition-colors border-2 border-[#34C759]/40 relative overflow-hidden shadow-xs">
+            <div className="absolute top-0 right-0 bg-[#34C759] text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider">
+              {lang === 'ru' ? 'ONE-WAY 0 ₾' : 'ONE-WAY 0 ₾'}
+            </div>
+            <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs border border-[#34C759]/20">
               ⚡
             </div>
-            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5">{t.benefit7Title}</h3>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">
+            <h3 className="font-bold text-base text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
+              <span>{t.benefit7Title}</span>
+            </h3>
+            <p className="text-xs text-[#48484A] leading-relaxed">
               {t.benefit7Desc}
             </p>
+            <div className="mt-3 pt-2.5 border-t border-black/[0.06] text-[11px] font-bold text-[#248A3D] flex items-center gap-1">
+              <span>✓ Батуми ⇄ Тбилиси ⇄ Кутаиси</span>
+            </div>
           </div>
 
           {/* 8. Mobility & Car Replacement Guarantee */}
