@@ -16,6 +16,7 @@ function getCarBrand(carName: string): string {
 }
 
 type SortOption = 'price-asc' | 'price-desc' | 'brand-asc'
+type PriceRange = 'all' | 'under120' | '120-180' | 'premium'
 
 export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }> = ({
   limit,
@@ -26,6 +27,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
 
   const [category, setCategory] = useState<'all' | 'suv' | 'sedan' | 'cabrio' | 'minivan'>('all')
   const [selectedBrand, setSelectedBrand] = useState<string>('all')
+  const [priceRange, setPriceRange] = useState<PriceRange>('all')
   const [sortBy, setSortBy] = useState<SortOption>('price-asc')
   const [filter7Seats, setFilter7Seats] = useState(false)
   const [filterHybrid, setFilterHybrid] = useState(false)
@@ -51,6 +53,22 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
 
     if (selectedBrand !== 'all') {
       result = result.filter((c) => getCarBrand(c.name) === selectedBrand)
+    }
+
+    if (priceRange !== 'all') {
+      result = result.filter((c) => {
+        const effectiveDailyPrice = calculateDailyPrice(c.priceGel, duration, c.prices)
+        if (priceRange === 'under120') {
+          return effectiveDailyPrice <= 120
+        }
+        if (priceRange === '120-180') {
+          return effectiveDailyPrice > 120 && effectiveDailyPrice <= 180
+        }
+        if (priceRange === 'premium') {
+          return effectiveDailyPrice > 180
+        }
+        return true
+      })
     }
 
     if (filter7Seats) {
@@ -101,7 +119,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
     }
 
     return result
-  }, [category, selectedBrand, sortBy, filter7Seats, filterHybrid, filterCarplay, filterAwd, filterNoDeposit, duration, limit])
+  }, [category, selectedBrand, priceRange, sortBy, filter7Seats, filterHybrid, filterCarplay, filterAwd, filterNoDeposit, duration, limit])
 
   return (
     <section id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-36">
@@ -208,6 +226,54 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
             </button>
           </div>
 
+          {/* Price Range Filter Pills */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+            <span className="text-[11px] font-bold text-[#86868B] uppercase tracking-wider mr-1 shrink-0">
+              {t.priceFilterLabel || 'По цене:'}
+            </span>
+            <button
+              onClick={() => setPriceRange('all')}
+              className={`h-8 px-3.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                priceRange === 'all'
+                  ? 'bg-[#1D1D1F] text-white shadow-xs'
+                  : 'bg-white text-[#6E6E73] hover:text-[#1D1D1F] border border-black/[0.08]'
+              }`}
+            >
+              {t.filterPriceAll || 'Все цены'}
+            </button>
+            <button
+              onClick={() => setPriceRange('under120')}
+              className={`h-8 px-3.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                priceRange === 'under120'
+                  ? 'bg-[#1D1D1F] text-white shadow-xs'
+                  : 'bg-white text-[#6E6E73] hover:text-[#1D1D1F] border border-black/[0.08]'
+              }`}
+            >
+              {t.filterPriceUnder120 || 'До 120 ₾'}
+            </button>
+            <button
+              onClick={() => setPriceRange('120-180')}
+              className={`h-8 px-3.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                priceRange === '120-180'
+                  ? 'bg-[#1D1D1F] text-white shadow-xs'
+                  : 'bg-white text-[#6E6E73] hover:text-[#1D1D1F] border border-black/[0.08]'
+              }`}
+            >
+              {t.filterPrice120to180 || '120–180 ₾'}
+            </button>
+            <button
+              onClick={() => setPriceRange('premium')}
+              className={`h-8 px-3.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-1 ${
+                priceRange === 'premium'
+                  ? 'bg-[#1D1D1F] text-white shadow-xs'
+                  : 'bg-white text-[#6E6E73] hover:text-[#1D1D1F] border border-black/[0.08]'
+              }`}
+            >
+              <span>⭐</span>
+              <span>{t.filterPricePremium || 'Премиум'}</span>
+            </button>
+          </div>
+
           {/* Quick Feature Filter Pills & Brand Dropdown */}
           <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
             {/* Brand Select Dropdown */}
@@ -290,11 +356,12 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
               ✨ {t.filterWithoutDeposit}
             </button>
 
-            {(filter7Seats || filterHybrid || filterCarplay || filterAwd || filterNoDeposit || category !== 'all' || selectedBrand !== 'all' || sortBy !== 'price-asc') && (
+            {(filter7Seats || filterHybrid || filterCarplay || filterAwd || filterNoDeposit || category !== 'all' || selectedBrand !== 'all' || priceRange !== 'all' || sortBy !== 'price-asc') && (
               <button
                 onClick={() => {
                   setCategory('all')
                   setSelectedBrand('all')
+                  setPriceRange('all')
                   setSortBy('price-asc')
                   setFilter7Seats(false)
                   setFilterHybrid(false)
