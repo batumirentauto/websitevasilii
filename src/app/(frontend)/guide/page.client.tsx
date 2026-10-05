@@ -215,11 +215,11 @@ export default function GuidePageClient() {
             <p className="text-sm sm:text-base font-semibold text-[#1D1D1F] leading-relaxed mb-3">
               {isEn ? (
                 <>
-                  <strong className="text-[#FF3B30]">No electronic licenses accepted:</strong> The Georgian Patrol Police <strong>categorically rejects</strong> photos of driver’s licenses on smartphones, screenshots, electronic documents in applications like Gosuslugi, Diia, eGov, etc. Foreign tourists must have their <strong>physical original license (plastic card or paper document)</strong> physically present.
+                  <strong className="text-[#FF3B30]">No digital or electronic licenses accepted:</strong> The Georgian Patrol Police <strong>categorically rejects</strong> digital driver’s licenses in government mobile applications, smartphone photos, or scans. Foreign visitors must have their <strong>physical original license (plastic card or official paper document)</strong> physically present with them.
                 </>
               ) : (
                 <>
-                  <strong className="text-[#FF3B30]">Электронные права и фото не принимаются:</strong> Патрульная полиция Грузии <strong>категорически не принимает</strong> у иностранных граждан водительские удостоверения в виде фото на телефоне, скриншотов или электронных документов в приложениях «Госуслуги», «Дія», eGov и их аналогов. При себе обязан быть исключительно <strong>физический оригинал (пластик/бумага)</strong>!
+                  <strong className="text-[#FF3B30]">Электронные права и фото не принимаются:</strong> Патрульная полиция Грузии <strong>категорически не принимает</strong> у иностранных граждан цифровые водительские удостоверения в государственных приложениях, фото на телефоне, сканы или скриншоты. При себе обязан быть исключительно <strong>физический оригинал документа (пластик или бумага)</strong>!
                 </>
               )}
             </p>

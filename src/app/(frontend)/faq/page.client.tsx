@@ -225,13 +225,13 @@ export default function FaqClient() {
       category: 'documents',
       categoryLabelRu: 'Документы и стаж',
       categoryLabelEn: 'Documents & Experience',
-      questionRu: 'Подойдут ли электронные права, Госуслуги или фото на телефоне?',
-      questionEn: 'Are electronic driving licenses, apps or smartphone photos accepted?',
+      questionRu: 'Подойдут ли электронные права, государственные приложения или фото на телефоне?',
+      questionEn: 'Are digital licenses, government mobile apps, or smartphone photos accepted?',
       highlight: 'Строго физический оригинал',
       answerRu: (
         <div className="space-y-3">
           <p className="text-[#FF3B30] font-bold">
-            ⚠️ КАТЕГОРИЧЕСКИ НЕТ! Фото на телефоне, сканы, приложения «Госуслуги», «Дія», eGov полицией Грузии не принимаются.
+            ⚠️ КАТЕГОРИЧЕСКИ НЕТ! Фото на телефоне, сканы или электронные удостоверения в любых государственных приложениях полицией Грузии не принимаются.
           </p>
           <p>
             Патрульная полиция Грузии требует у иностранных граждан исключительно <strong>физический пластиковый оригинал прав</strong> (национальные права вашей страны с латинской транслитерацией либо МВУ).
