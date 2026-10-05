@@ -86,7 +86,10 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
 
   const [activeImageIdx, setActiveImageIdx] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+  const [datesInput, setDatesInput] = useState('')
   const [localDuration, setLocalDuration] = useState<RentalDuration>(globalDuration || '1-2')
+
+  const isEn = lang !== 'ru'
 
   useEffect(() => {
     setLocalDuration(globalDuration || '1-2')
@@ -305,9 +308,23 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
           </div>
         </div>
 
+        {/* Date input row for availability check */}
+        <div className="pt-2 pb-1.5 border-t border-black/[0.05]" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center gap-1.5 bg-[#F5F5F7] rounded-xl px-2.5 py-1.5 border border-black/[0.04] focus-within:border-[#0088CC] focus-within:bg-white transition-all">
+            <span className="text-xs text-[#86868B] shrink-0">📅</span>
+            <input
+              type="text"
+              value={datesInput}
+              onChange={(e) => setDatesInput(e.target.value)}
+              placeholder={isEn ? "Your dates (e.g. 10-15 Oct)..." : "Ваши даты (например: 10-15 октября)..."}
+              className="w-full bg-transparent text-[11px] font-medium text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none"
+            />
+          </div>
+        </div>
+
         {/* Footer: Price Row & Quick Actions */}
-        <div className="pt-3 border-t border-black/[0.05] flex items-center justify-between gap-2">
-          <div>
+        <div className="pt-2.5 border-t border-black/[0.05] flex flex-col gap-2">
+          <div className="flex items-center justify-between gap-2">
             <div className="flex items-baseline gap-1.5">
               <span className="text-2xl font-bold text-[#1D1D1F] tracking-tight">
                 {formatPrice(effectivePriceGel)}
@@ -319,26 +336,39 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               )}
               <span className="text-xs font-normal text-[#86868B]">{t.perDay}</span>
             </div>
+
+            <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+              <a
+                href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices, datesInput)}
+                target="_blank"
+                rel="noreferrer"
+                className="h-8 px-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] font-semibold flex items-center justify-center gap-1 transition-all active:scale-95 shadow-xs"
+                title="WhatsApp"
+              >
+                <span>WA</span>
+              </a>
+              <a
+                href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices, datesInput)}
+                target="_blank"
+                rel="noreferrer"
+                className="h-8 px-2.5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-[11px] font-semibold flex items-center justify-center gap-1 transition-all active:scale-95 shadow-xs"
+                title="Telegram"
+              >
+                <span>TG</span>
+              </a>
+            </div>
           </div>
 
-          <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+          {/* Primary Availability CTA Button: sends prefilled Telegram check */}
+          <div onClick={(e) => e.stopPropagation()}>
             <a
-              href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices)}
+              href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices, datesInput)}
               target="_blank"
               rel="noreferrer"
-              className="h-9 px-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
-              title="WhatsApp"
+              className="w-full h-9 px-3 rounded-xl bg-[#0088CC] hover:bg-[#0077b5] text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all active:scale-98 shadow-sm group"
             >
-              <span>{t.btnBookWhatsApp}</span>
-            </a>
-            <a
-              href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices)}
-              target="_blank"
-              rel="noreferrer"
-              className="h-9 px-3.5 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm"
-              title="Telegram"
-            >
-              <span>{t.btnBookTelegram}</span>
+              <span>✈️</span>
+              <span className="truncate">{t.checkAvailabilityDates || 'Узнать доступность на мои даты'}</span>
             </a>
           </div>
         </div>
@@ -564,6 +594,20 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               </div>
             </div>
 
+            {/* Modal Dates Input */}
+            <div className="bg-[#F5F5F7] p-3.5 rounded-2xl border border-black/[0.05] mb-4">
+              <label className="block text-xs font-bold text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
+                <span>📅</span> {isEn ? "Specify your travel dates:" : "Укажите даты поездки:"}
+              </label>
+              <input
+                type="text"
+                value={datesInput}
+                onChange={(e) => setDatesInput(e.target.value)}
+                placeholder={isEn ? "e.g. 10-15 October, 5 days..." : "Например: 10-15 октября, 5 дней..."}
+                className="w-full bg-white px-3.5 py-2.5 rounded-xl border border-black/[0.08] text-xs font-semibold text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none focus:ring-2 focus:ring-[#0088CC]"
+              />
+            </div>
+
             {/* Booking CTA row */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
               <div>
@@ -583,22 +627,23 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
                 <a
-                  href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices)}
+                  href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices, datesInput)}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 sm:flex-initial h-12 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
+                  className="h-12 px-6 rounded-full bg-[#0088CC] hover:bg-[#0077b5] text-white text-xs font-bold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
                 >
-                  <span>WhatsApp</span>
+                  <span>✈️</span>
+                  <span>{t.checkAvailabilityDates || 'Узнать доступность на мои даты'}</span>
                 </a>
                 <a
-                  href={getBookingLink(car.name, car.priceGel, 'telegram', duration, car.prices)}
+                  href={getBookingLink(car.name, car.priceGel, 'whatsapp', duration, car.prices, datesInput)}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 sm:flex-initial h-12 px-6 rounded-full bg-[#1D1D1F] hover:bg-black text-white text-sm font-semibold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
+                  className="h-12 px-5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md"
                 >
-                  <span>Telegram</span>
+                  <span>WhatsApp</span>
                 </a>
               </div>
             </div>

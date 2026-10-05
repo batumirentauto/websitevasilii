@@ -200,7 +200,8 @@ interface AppContextType {
     basePriceGel: number,
     type: 'whatsapp' | 'telegram',
     customDuration?: RentalDuration,
-    customPrices?: Partial<Record<RentalDuration, number>>
+    customPrices?: Partial<Record<RentalDuration, number>>,
+    dates?: string
   ) => string
 }
 
@@ -334,7 +335,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     basePriceGel: number,
     type: 'whatsapp' | 'telegram',
     customDuration?: RentalDuration,
-    customPrices?: Partial<Record<RentalDuration, number>>
+    customPrices?: Partial<Record<RentalDuration, number>>,
+    dates?: string
   ) => {
     const activeDur = customDuration || duration
     const effectivePriceGel = calculateDailyPrice(basePriceGel, activeDur, customPrices)
@@ -343,21 +345,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const tier = DURATION_TIERS.find((t) => t.id === activeDur)
     const durLabel = getTierLabel(tier || DURATION_TIERS[0], lang)
 
-    let messageText = `Здравствуйте! Интересует аренда автомобиля ${carName} на ${durLabel} (${priceText}/сутки) в городе ${cityName}. Свободна ли машина на мои даты?`
+    const dateStr = dates && dates.trim() ? dates.trim() : '[ДАТА]'
+
+    let messageText = `Здравствуйте! Интересует ${carName} на даты: ${dateStr} в городе ${cityName}. Автомобиль свободен?`
     if (lang === 'en') {
-      messageText = `Hello! I would like to rent the ${carName} for ${durLabel} (${priceText}/day) in ${cityName}. Is it available for my dates?`
+      messageText = `Hello! Interested in ${carName} for dates: ${dateStr} in ${cityName}. Is the car available?`
     } else if (lang === 'de') {
-      messageText = `Hallo! Ich interessiere mich für den ${carName} für ${durLabel} (${priceText}/Tag) in ${cityName}. Ist der Wagen verfügbar?`
+      messageText = `Hallo! Interessiert am ${carName} für Termine: ${dateStr} in ${cityName}. Ist der Wagen frei?`
     } else if (lang === 'fr') {
-      messageText = `Bonjour ! Je souhaite louer la ${carName} pour ${durLabel} (${priceText}/jour) à ${cityName}. Est-elle disponible ?`
+      messageText = `Bonjour ! Intéressé(e) par ${carName} aux dates : ${dateStr} à ${cityName}. Le véhicule est-il disponible ?`
     } else if (lang === 'it') {
-      messageText = `Ciao! Vorrei noleggiare la ${carName} per ${durLabel} (${priceText}/giorno) a ${cityName}. È disponibile per le mie date?`
+      messageText = `Ciao! Interessato/a a ${carName} per le date: ${dateStr} a ${cityName}. L'auto è disponibile?`
     } else if (lang === 'pl') {
-      messageText = `Dzień dobry! Interesuje mnie wynajem ${carName} na ${durLabel} (${priceText}/dzień) w mieście ${cityName}. Czy auto jest dostępne?`
+      messageText = `Dzień dobry! Interesuje mnie ${carName} na terminy: ${dateStr} w mieście ${cityName}. Czy samochód jest wolny?`
     } else if (lang === 'ar') {
-      messageText = `مرحباً! أود استئجار سيارة ${carName} لمدة ${durLabel} (${priceText}/يوم) في ${cityName}. هل هي متوفرة لتاريخ رحلتي؟`
+      messageText = `مرحباً! أود الاستفسار عن ${carName} للتواريخ: ${dateStr} في ${cityName}. هل السيارة متوفرة؟`
     } else if (lang === 'fa') {
-      messageText = `سلام! مایل به اجاره خودروی ${carName} برای ${durLabel} (${priceText}/روز) در ${cityName} هستم. آیا در تاریخ‌های من موجود است؟`
+      messageText = `سلام! مایل به اجاره ${carName} در تاریخ‌های: ${dateStr} در ${cityName} هستم. آیا خودرو موجود است؟`
     }
 
     const message = encodeURIComponent(messageText)
