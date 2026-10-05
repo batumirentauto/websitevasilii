@@ -32,8 +32,9 @@ node_modules/
 *.session
 *.session-journal
 telegram_faq_export.json
-telegram_full_dialogs.json
-clients_database.csv
-export_telegram_*.py
-tg_export_session.session
+telegram_full_dialogs*.json
+clients_database*.csv
+export_*.py
+tg_export_session*.session
+
 

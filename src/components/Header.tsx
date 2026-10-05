@@ -83,6 +83,9 @@ export const Header: React.FC = () => {
           <Link href="/terms" className="hover:text-[#1D1D1F] transition-colors">
             {t.navTerms}
           </Link>
+          <Link href="/guide" className="hover:text-[#1D1D1F] transition-colors">
+            {t.navGuide || 'Памятка'}
+          </Link>
           <Link href="/contacts" className="hover:text-[#1D1D1F] transition-colors">
             {t.navContacts}
           </Link>
@@ -235,6 +238,13 @@ export const Header: React.FC = () => {
               className="py-1 hover:text-[#0071E3]"
             >
               {t.navTerms}
+            </Link>
+            <Link
+              href="/guide"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#0071E3]"
+            >
+              {t.navGuide || 'Памятка водителю'}
             </Link>
             <Link
               href="/contacts"
