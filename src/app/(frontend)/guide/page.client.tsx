@@ -36,13 +36,19 @@ export default function GuidePageClient() {
           </h1>
           <p className="text-base sm:text-lg text-[#6E6E73] leading-relaxed">
             {isEn
-              ? 'Essential driving knowledge for tourists: section speed cameras, non-penalized tolerance +15 km/h, avoiding cascading fines, parking apps, and mountain road safety.'
-              : 'Всё, что важно знать туристу за рулем: как работают секционные камеры средней скорости, нештрафуемый порог +15 км/ч, как не получить 3–4 штрафа за 5 минут, парковки и правила в горах.'}
+              ? 'Essential driving knowledge for tourists: physical license rules, section speed cameras, non-penalized tolerance +15 km/h, avoiding cascading fines, parking apps, and mountain road safety.'
+              : 'Всё, что важно знать туристу за рулем: строгие требования к оригиналу прав, как работают секционные камеры, нештрафуемый порог +15 км/ч, как не получить 3–4 штрафа за 5 минут, парковки и правила в горах.'}
           </p>
         </div>
 
         {/* Quick Jump Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+          <a
+            href="#license-original"
+            className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#FFEBEA] hover:border-[#FF3B30]/30 border border-black/[0.08] text-xs font-bold text-[#FF3B30] transition-colors shadow-xs flex items-center gap-1.5"
+          >
+            <span>🪪</span> {isEn ? 'Physical License (Risk ~1500 ₾)' : 'Оригинал прав (риск 1500 ₾)'}
+          </a>
           <a
             href="#section-control"
             className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#FFEBEA] hover:border-[#FF3B30]/30 border border-black/[0.08] text-xs font-bold text-[#FF3B30] transition-colors shadow-xs flex items-center gap-1.5"
@@ -166,7 +172,91 @@ export default function GuidePageClient() {
         </section>
 
         {/* ========================================================
-            CARD 2: SPEED LIMIT TOLERANCE (+15 KM/H)
+            CARD 2: CRITICAL — ORIGINAL PHYSICAL DRIVER'S LICENSE ONLY
+           ======================================================== */}
+        <section
+          id="license-original"
+          className="bg-white rounded-3xl p-6 sm:p-10 border-2 border-[#FF3B30]/30 shadow-lg mb-8 relative overflow-hidden scroll-mt-24"
+        >
+          <div className="absolute top-0 right-0 bg-[#FF3B30] text-white text-[11px] font-extrabold uppercase px-4 py-1.5 rounded-bl-2xl tracking-wider">
+            {isEn ? 'STRICT POLICE RULE' : 'СТРОГОЕ ТРЕБОВАНИЕ ПОЛИЦИИ'}
+          </div>
+
+          <div className="flex items-start gap-4 mb-6">
+            <div className="w-12 h-12 rounded-2xl bg-[#FFF5F5] border border-[#FF3B30]/20 flex items-center justify-center text-2xl shrink-0">
+              🪪
+            </div>
+            <div>
+              <span className="text-xs font-bold text-[#FF3B30] uppercase tracking-wider block mb-1">
+                {isEn ? 'Foreign Drivers Warning' : 'Водительские права для иностранцев в Грузии'}
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
+                {isEn
+                  ? 'Strictly Physical Original License (No photos or apps!)'
+                  : 'Строго физический оригинал прав: фото и Госуслуги не действуют'}
+              </h2>
+            </div>
+          </div>
+
+          <div className="bg-[#FFF5F5] border border-[#FF3B30]/20 rounded-2xl p-5 sm:p-6 mb-6">
+            <p className="text-sm sm:text-base font-semibold text-[#1D1D1F] leading-relaxed mb-3">
+              {isEn ? (
+                <>
+                  <strong className="text-[#FF3B30]">No electronic licenses accepted:</strong> The Georgian Patrol Police <strong>categorically rejects</strong> photos of driver’s licenses on smartphones, screenshots, electronic documents in applications like Gosuslugi, Diia, eGov, etc. Foreign tourists must have their <strong>physical original license (plastic card or paper document)</strong> physically present.
+                </>
+              ) : (
+                <>
+                  <strong className="text-[#FF3B30]">Электронные права и фото не принимаются:</strong> Патрульная полиция Грузии <strong>категорически не принимает</strong> у иностранных граждан водительские удостоверения в виде фото на телефоне, скриншотов или электронных документов в приложениях «Госуслуги», «Дія», eGov и их аналогов. При себе обязан быть исключительно <strong>физический оригинал (пластик/бумага)</strong>!
+                </>
+              )}
+            </p>
+            <p className="text-sm sm:text-base font-bold text-[#FF3B30] leading-relaxed">
+              {isEn
+                ? '⚡ Financial risk ~1,500 GEL + vehicle impound: Driving without the physical document leads to severe penalties (~1,500 GEL total with towing/impound), and the police have the authority to leave you on the roadside and tow the car away.'
+                : '⚡ Общая сумма штрафов плюс возможная эвакуация составят около 1 500 лари! Кроме того, патруль имеет право высадить вас прямо посреди трассы и увезти автомобиль на штрафстоянку.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04]">
+              <h3 className="text-sm font-bold text-[#1D1D1F] mb-2 flex items-center gap-2">
+                <span>👥</span> {isEn ? 'Passenger with an original license saves the car' : 'Если рядом пассажир с нормальными правами'}
+              </h3>
+              <p className="text-xs sm:text-sm text-[#6E6E73] leading-relaxed">
+                {isEn
+                  ? 'If another person in the car has an original physical license, the vehicle will NOT be impounded or towed — police will permit handing over the steering wheel so you can continue your journey. However, the unlicensed driver will still receive the fine.'
+                  : 'Если рядом с вами в автомобиле находится спутник с нормальными физическими правами, машину на штрафстоянку НЕ заберут — руль разрешат передать ему, и вы сможете продолжить поездку. Но водителя без оригинала прав при этом всё равно оштрафуют.'}
+              </p>
+            </div>
+
+            <div className="bg-[#E8FAF0] p-5 rounded-2xl border border-[#34C759]/20">
+              <h3 className="text-sm font-bold text-[#248A3D] mb-2 flex items-center gap-2">
+                <span>💡</span> {isEn ? 'Lifesaver: 10 days to cancel fines!' : 'Главный лайфхак: 10 дней на аннулирование штрафа!'}
+              </h3>
+              <p className="text-xs sm:text-sm text-[#1D1D1F] leading-relaxed">
+                {isEn
+                  ? 'You have 10 days! If the driver presents the original physical driving license at a Georgian police precinct within 10 days of the stop (for example, if you left it at the hotel and bring it in), the issued fines can be officially cancelled.'
+                  : 'У вас есть 10 дней! Если в течение 10 дней с момента составления протокола водитель обратится в отделение патрульной полиции с оригиналом своих прав (например, забыли в гостинице или вам оперативно передали документ), выписанные штрафы могут быть официально аннулированы.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-[#1D1D1F] text-white p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span className="text-xs font-bold text-[#34C759] uppercase tracking-wider block mb-1">
+                {isEn ? 'Rule of Thumb' : 'Золотое правило туриста'}
+              </span>
+              <p className="text-xs sm:text-sm text-[#D2D2D7]">
+                {isEn
+                  ? 'Never leave your physical driver’s license in the hotel safe or luggage. Always keep it on you alongside your passport.'
+                  : 'Никогда не оставляйте пластиковое водительское удостоверение в номере отеля или чемодане. Всегда держите оригинал при себе рядом с паспортом.'}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            CARD 3: SPEED LIMIT TOLERANCE (+15 KM/H)
            ======================================================== */}
         <section
           id="speed-limits"
