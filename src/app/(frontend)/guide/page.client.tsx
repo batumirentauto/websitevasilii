@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useApp, PHONE_NUMBER, EMERGENCY_PHONE, EMERGENCY_WHATSAPP } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
@@ -433,6 +434,112 @@ export default function GuidePageClient() {
                 {isEn
                   ? 'Paying within 30 days grants an automatic 20% government discount (e.g., 50 GEL becomes 40 GEL). Payment can be completed directly online.'
                   : 'При оплате штрафа в течение первых 30 дней государство дает 20% скидку (например, штраф 50 лари оплачивается как 40 лари)!'}
+              </p>
+            </div>
+          </div>
+
+          {/* Visual Diagram: Georgian Registration Certificate (Tech Passport) */}
+          <div className="bg-[#F5F5F7] rounded-3xl p-6 sm:p-8 border border-black/[0.06] mb-6">
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div>
+                <span className="text-[11px] font-bold text-[#0071E3] uppercase tracking-wider block mb-0.5">
+                  {isEn ? 'Visual Field Guide' : 'Наглядная схема техпаспорта'}
+                </span>
+                <h3 className="text-lg sm:text-xl font-extrabold text-[#1D1D1F]">
+                  {isEn
+                    ? 'Where to find Vehicle Number & Tech Passport Number'
+                    : 'Откуда брать номер машины и номер техпаспорта'}
+                </h3>
+              </div>
+              <span className="text-xs text-[#86868B] bg-white px-3 py-1 rounded-full border border-black/[0.06] font-semibold">
+                {isEn ? 'Registration Certificate' : 'Свидетельство о регистрации ТС'}
+              </span>
+            </div>
+
+            {/* Photo with highlighted callouts */}
+            <div className="relative rounded-2xl overflow-hidden shadow-md border border-black/[0.08] mb-6 bg-white group">
+              <Image
+                src="/images/georgia-tech-passport-sample.jpg"
+                alt="Техпаспорт Грузии — где найти номер машины и номер техпаспорта для проверки штрафов на protocols.ge"
+                width={1200}
+                height={675}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
+
+            {/* Explanation of the two highlighted fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Field 1: Plate Number */}
+              <div className="bg-white p-5 rounded-2xl border-2 border-[#FF9500]/30 shadow-xs">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-6 h-6 rounded-full bg-[#FFF4E5] border border-[#FF9500]/30 text-[#FF9500] font-black text-xs flex items-center justify-center">
+                    A
+                  </span>
+                  <h4 className="text-sm font-bold text-[#1D1D1F]">
+                    {isEn ? '1. Vehicle Plate Number (Car No.)' : '1. Номер машины (Госномер)'}
+                  </h4>
+                </div>
+                <div className="space-y-1.5 text-xs text-[#6E6E73]">
+                  <p>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Where on certificate:' : 'Где в техпаспорте:'}</strong>{' '}
+                    {isEn
+                      ? 'Center row marked with letter (A) / "სარეგისტრაციო ნომერი"'
+                      : 'Строка по центру с буквой (A) / «სარეგისტრაციო ნომერი»'}
+                  </p>
+                  <p>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Example format:' : 'Пример формата:'}</strong>{' '}
+                    <span className="font-mono font-bold text-[#FF9500] bg-[#FFF4E5] px-1.5 py-0.5 rounded">GG-123-RR</span>
+                  </p>
+                  <p>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Field on protocols.ge:' : 'Поле на protocols.ge:'}</strong>{' '}
+                    <span className="text-[#1D1D1F] font-semibold">«ავტომობილის ნომერი / Car No.»</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Field 2: Certificate Number */}
+              <div className="bg-white p-5 rounded-2xl border-2 border-[#00C7BE]/30 shadow-xs">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-6 h-6 rounded-full bg-[#E5FBF9] border border-[#00C7BE]/30 text-[#00A39B] font-black text-xs flex items-center justify-center">
+                    №
+                  </span>
+                  <h4 className="text-sm font-bold text-[#1D1D1F]">
+                    {isEn ? '2. Tech Passport Number' : '2. Номер техпаспорта'}
+                  </h4>
+                </div>
+                <div className="space-y-1.5 text-xs text-[#6E6E73]">
+                  <p>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Where on certificate:' : 'Где в техпаспорте:'}</strong>{' '}
+                    {isEn
+                      ? 'Top right corner marked as "CERTIFICATE NO. / მოწმობის №"'
+                      : 'Правый верхний угол: графа «CERTIFICATE NO. / მოწმობის №»'}
+                  </p>
+                  <p>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Example format:' : 'Пример формата:'}</strong>{' '}
+                    <span className="font-mono font-bold text-[#00A39B] bg-[#E5FBF9] px-1.5 py-0.5 rounded">AA00012345</span>
+                  </p>
+                  <p>
+                    <strong className="text-[#1D1D1F]">{isEn ? 'Field on protocols.ge:' : 'Поле на protocols.ge:'}</strong>{' '}
+                    <span className="text-[#1D1D1F] font-semibold">«ტექ.პასპორტის ნომერი / Tech Passport»</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick search tip */}
+            <div className="mt-4 p-4 rounded-xl bg-white border border-black/[0.04] text-xs text-[#48484A] flex items-start gap-2.5">
+              <span className="text-[#34C759] text-base shrink-0">💡</span>
+              <p className="leading-relaxed">
+                {isEn ? (
+                  <>
+                    <strong>Step-by-step on protocols.ge:</strong> Select tab <em>«Vehicle»</em> (ავტოსატრანსპორტო საშუალება) → check <em>«Without receipt no.»</em> (ქვითრის ნომრის გარეშე) → enter Car No. and Tech Passport No. → click <em>«Search» (ძებნა)</em>.
+                  </>
+                ) : (
+                  <>
+                    <strong>Как заполнять на protocols.ge:</strong> Выберите вкладку <em>«Транспортное средство» (Vehicle)</em> → переключите на <em>«Без номера квитанции» (Without receipt no.)</em> → вставьте номер машины и номер техпаспорта → нажмите кнопку <em>«Поиск» (Search / ძებნა)</em>.
+                  </>
+                )}
               </p>
             </div>
           </div>
