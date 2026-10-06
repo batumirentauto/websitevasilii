@@ -290,8 +290,8 @@ export default function GuidePageClient() {
 
           <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed mb-6">
             {isEn
-              ? 'In Georgia, the non-penalized speed tolerance is +15 km/h above the posted sign. Any speed at +15 km/h or higher triggers an automatic video fine (usually 50 GEL). Notice: unlike Russia (+20 km/h), in Georgia exceeding by 15 km/h already incurs a fine!'
-              : 'В Грузии нештрафуемый порог превышения составляет ровно +15 км/ч к знаку. Начиная с +15 км/ч и выше автоматически выписывается штраф (стандартно 50 лари). Обратите внимание: в отличие от РФ (+20 км/ч), в Грузии превышение на 15 км/ч уже штрафуется!'}
+              ? 'In Georgia, the non-penalized speed tolerance is +15 km/h above the posted sign. Any speed at +15 km/h or higher triggers an automatic video fine (from 50 to 300 GEL depending on speed excess). Notice: unlike Russia (+20 km/h), in Georgia exceeding by 15 km/h already incurs a fine!'
+              : 'В Грузии нештрафуемый порог превышения составляет ровно +15 км/ч к знаку. Начиная с +15 км/ч и выше автоматически выписывается штраф (от 50 до 300 лари в зависимости от превышения). Обратите внимание: в отличие от РФ (+20 км/ч), в Грузии превышение на 15 км/ч уже штрафуется!'}
           </p>
 
           {/* Interactive Visual Table */}
@@ -309,7 +309,7 @@ export default function GuidePageClient() {
                   {isEn ? 'Up to 74 km/h: 0 ₾ (No fine)' : 'До 74 км/ч: 0 ₾ (без штрафа)'}
                 </p>
                 <p className="text-[#FF3B30] font-bold">
-                  {isEn ? 'From 75 km/h: 50 ₾ fine' : 'С 75 км/ч: штраф 50 ₾'}
+                  {isEn ? 'From 75 km/h: fine from 50 ₾' : 'С 75 км/ч: штраф от 50 ₾'}
                 </p>
               </div>
             </div>
@@ -327,7 +327,7 @@ export default function GuidePageClient() {
                   {isEn ? 'Up to 104 km/h: 0 ₾ (No fine)' : 'До 104 км/ч: 0 ₾ (без штрафа)'}
                 </p>
                 <p className="text-[#FF3B30] font-bold">
-                  {isEn ? 'From 105 km/h: 50 ₾ fine' : 'со 105 км/ч: штраф 50 ₾'}
+                  {isEn ? 'From 105 km/h: fine from 50 ₾' : 'со 105 км/ч: штраф от 50 ₾'}
                 </p>
               </div>
             </div>
@@ -345,32 +345,20 @@ export default function GuidePageClient() {
                   {isEn ? 'Up to 124 km/h: 0 ₾ (No fine)' : 'До 124 км/ч: 0 ₾ (без штрафа)'}
                 </p>
                 <p className="text-[#FF3B30] font-bold">
-                  {isEn ? 'From 125 km/h: 50 ₾ fine' : 'со 125 км/ч: штраф 50 ₾'}
+                  {isEn ? 'From 125 km/h: fine from 50 ₾' : 'со 125 км/ч: штраф от 50 ₾'}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04] space-y-2 text-xs sm:text-sm text-[#48484A]">
+          <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04] space-y-2.5 text-xs sm:text-sm text-[#48484A]">
             <p className="flex items-start gap-2">
-              <span className="text-[#FF9500] font-bold">⚠️</span>
+              <span className="text-[#FF3B30] font-bold">⚡</span>
               <span>
-                <strong>{isEn ? 'Excess 15–40 km/h:' : 'Превышение на 15–40 км/ч:'}</strong>{' '}
-                {isEn ? '50–100 GEL (50 GEL up to +30 km/h, 100 GEL for +31–40 km/h).' : '50–100 лари (50 лари при превышении до +30 км/ч, 100 лари при +31–40 км/ч).'}
-              </span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-[#FF3B30] font-bold">🚨</span>
-              <span>
-                <strong>{isEn ? 'Excess > 40–50 km/h:' : 'Превышение на 40+ км/ч (и свыше 50 км/ч):'}</strong>{' '}
-                {isEn ? 'Fine of 150–300 GEL (up to 300 GEL for 50+ km/h).' : 'Штраф от 150 до 300 лари (при превышении более чем на 50 км/ч — 300 лари).'}
-              </span>
-            </p>
-            <p className="flex items-start gap-2">
-              <span className="text-[#FF3B30] font-bold">🛑</span>
-              <span>
-                <strong>{isEn ? 'Dangerous situation:' : 'Создание аварийной обстановки:'}</strong>{' '}
-                {isEn ? 'Fine of 250 GEL.' : 'Штраф 250 лари.'}
+                <strong>{isEn ? 'Speeding fines in Georgia:' : 'Размер штрафов за превышение скорости:'}</strong>{' '}
+                {isEn
+                  ? 'From 50 to 300 GEL depending on how much the limit is exceeded (50 GEL for moderate speeding, up to 300 GEL for heavy speeding).'
+                  : 'От 50 до 300 лари в зависимости от величины превышения (50 лари за стандартное превышение, до 300 лари при сильном превышении скорости).'}
               </span>
             </p>
             <p className="flex items-start gap-2">
