@@ -767,11 +767,11 @@ export default function GuidePageClient() {
                   <p>
                     {isEn ? (
                       <>
-                        <strong className="text-[#1D1D1F]">Free parking in Kutaisi:</strong> In Kutaisi, parking is significantly easier and more relaxed. Along most city streets and neighborhoods, you can easily find free parking spots without needing to pay municipal fees.
+                        <strong className="text-[#1D1D1F]">Parking in Kutaisi:</strong> In Kutaisi, parking is very relaxed. Along most city streets and neighborhoods, you can easily find <strong>free parking spots</strong>. Only a few central streets have municipal paid parking (very cheap: ~2 GEL/day, ~5 GEL/week), which can be paid in any street PayBox terminal (under <em>Kutaisi Parking / Parking Service</em>) with cash or via TBC/BoG bank apps.
                       </>
                     ) : (
                       <>
-                        <strong className="text-[#1D1D1F]">Бесплатная парковка в Кутаиси:</strong> В Кутаиси ситуация с парковкой намного проще. На большинстве городских улиц и в кварталах можно совершенно спокойно найти бесплатные парковочные места, платных зон очень мало.
+                        <strong className="text-[#1D1D1F]">Парковка в Кутаиси:</strong> В Кутаиси всё устроено намного проще. На большинстве городских улиц и в кварталах можно совершенно спокойно найти <strong>бесплатные парковочные места</strong>. Платная муниципальная зона действует только на отдельных центральных улицах — тарифы символические (~2 ₾ в день, ~5 ₾ на неделю). Оплатить их можно в любом уличном терминале PayBox (раздел <em>Kutaisi Parking / Parking Service</em>) наличными или через приложение местного банка.
                       </>
                     )}
                   </p>
