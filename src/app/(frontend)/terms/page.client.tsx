@@ -6,8 +6,7 @@ import { useApp } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 export default function TermsPage() {
-  const { lang } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, t } = useApp()
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">

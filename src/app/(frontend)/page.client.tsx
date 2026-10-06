@@ -13,6 +13,7 @@ const LOCAL_CITY_H1: Record<City, Record<Lang, string>> = {
     ru: 'Прокат автомобилей в Грузии с подачей в аэропорт Батуми',
     ua: 'Оренда автомобілів у Грузії з подачею в аеропорт Батумі',
     en: 'Car Rental in Georgia with Batumi Airport Delivery',
+    tr: 'Batum Havalimanı Teslimatlı Gürcistan Araç Kiralama',
     ar: 'تأجير سيارات في جورجيا مع التوصيل إلى مطار باتومي',
     fa: 'اجاره خودرو در گرجستان با تحویل در فرودگاه باتومی',
     pl: 'Wynajem samochodów w Gruzji z dostawą na lotnisko w Batumi',
@@ -24,6 +25,7 @@ const LOCAL_CITY_H1: Record<City, Record<Lang, string>> = {
     ru: 'Прокат автомобилей в Грузии с подачей в аэропорт Тбилиси',
     ua: 'Оренда автомобілів у Грузії з подачею в аеропорт Тбілісі',
     en: 'Car Rental in Georgia with Tbilisi Airport Delivery',
+    tr: 'Tiflis Havalimanı Teslimatlı Gürcistan Araç Kiralama',
     ar: 'تأجير سيارات في جورجيا مع التوصيل إلى مطار تبليسي',
     fa: 'اجاره خودرو در گرجستان با تحویل در فرودگاه تفلیس',
     pl: 'Wynajem samochodów w Gruzji z dostawą na lotnisko w Tbilisi',
@@ -35,6 +37,7 @@ const LOCAL_CITY_H1: Record<City, Record<Lang, string>> = {
     ru: 'Прокат автомобилей в аэропорту Кутаиси без ограничения пробега',
     ua: 'Оренда автомобілів в аеропорту Кутаїсі без обмеження пробігу',
     en: 'Car Rental at Kutaisi Airport with Unlimited Mileage',
+    tr: 'Kutaisi Havalimanı Sınırsız Kilometreli Araç Kiralama',
     ar: 'تأجير سيارات في مطار كوتايسي مع كيلومترات غير محدودة',
     fa: 'اجاره خودرو در فرودگاه کوتائیسی با کیلومتر نامحدود',
     pl: 'Wynajem samochodów na lotnisku w Kutaisi bez limitu kilometrów',
@@ -52,7 +55,7 @@ export default function HomePage({
   initialCity,
 }: HomePageProps = {}) {
   const { lang, city, setCity } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en || TRANSLATIONS.ru
 
   React.useEffect(() => {
     if (initialCity && city !== initialCity) {
@@ -73,6 +76,10 @@ export default function HomePage({
       document.title =
         lang === 'ru'
           ? 'Прокат автомобилей в Грузии с подачей в аэропорты Тбилиси, Кутаиси и Батуми — VASILII RENT'
+          : lang === 'ua'
+          ? 'Оренда авто в Грузії з подачею в аеропорти Тбілісі, Кутаїсі та Батумі — VASILII RENT'
+          : lang === 'tr'
+          ? 'Tiflis, Kutaisi ve Batum Havalimanı Teslimatlı Gürcistan Araç Kiralama — VASILII RENT'
           : 'Car Rental in Georgia from 1 Day (Zero Deposit) — VASILII RENT'
     }
   }, [lang, initialCity])
@@ -149,6 +156,8 @@ export default function HomePage({
                         ? 'Мыть при возврате не нужно'
                         : lang === 'ua'
                         ? 'Мити при поверненні не потрібно'
+                        : lang === 'tr'
+                        ? 'Teslimde araç yıkama gerekmez'
                         : 'No need to wash on return'}
                     </span>
                   </div>
@@ -163,6 +172,8 @@ export default function HomePage({
                         ? 'Возраст от 21 года'
                         : lang === 'ua'
                         ? 'Вік від 21 року'
+                        : lang === 'tr'
+                        ? '21 yaş ve üzeri'
                         : 'Age 21+'}
                     </span>
                   </div>
@@ -173,6 +184,8 @@ export default function HomePage({
                         ? 'Стаж от 0 лет'
                         : lang === 'ua'
                         ? 'Стаж від 0 років'
+                        : lang === 'tr'
+                        ? '0 yıl ve üzeri ehliyet deneyimi'
                         : 'License from 0y'}
                     </span>
                   </div>
@@ -191,6 +204,8 @@ export default function HomePage({
                             ? 'Возврат в другом городе (One-Way)'
                             : lang === 'ua'
                             ? 'Повернення в іншому місті (One-Way)'
+                            : lang === 'tr'
+                            ? 'Farklı şehirde teslim (Tek Yön)'
                             : 'Intercity Return (One-Way)'}
                         </span>
                         <span className="text-[10px] font-black uppercase tracking-wider bg-[#34C759] text-white px-2 py-0.5 rounded-full">
@@ -199,6 +214,8 @@ export default function HomePage({
                             ? 'по запросу'
                             : lang === 'ua'
                             ? 'за запитом'
+                            : lang === 'tr'
+                            ? 'talep üzerine'
                             : 'upon request'}
                         </span>
                       </div>
@@ -207,16 +224,18 @@ export default function HomePage({
                           ? 'Возьмите авто в Батуми и сдайте в Тбилиси или в аэропорту Кутаиси (доступно по предварительному запросу)'
                           : lang === 'ua'
                           ? 'Візьміть авто в Батумі та поверніть у Тбілісі або в аеропорту Кутаїсі (доступно за попереднім запитом)'
+                          : lang === 'tr'
+                          ? 'Aracı Batum\'dan alıp Tiflis\'te veya Kutaisi Havalimanı\'nda teslim edin (önceden talep üzerine)'
                           : 'Pick up in Batumi, drop off in Tbilisi or Kutaisi Airport (available upon advance request)'}
                       </p>
                     </div>
                   </div>
                   <div className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-[#248A3D] bg-white/80 px-2.5 py-1 rounded-lg border border-[#34C759]/20">
-                    <span>{lang === 'ua' ? 'Батумі' : 'Батуми'}</span>
+                    <span>{lang === 'ua' ? 'Батумі' : lang === 'tr' ? 'Batum' : lang === 'ru' ? 'Батуми' : 'Batumi'}</span>
                     <span>⇄</span>
-                    <span>{lang === 'ua' ? 'Тбілісі' : 'Тбилиси'}</span>
+                    <span>{lang === 'ua' ? 'Тбілісі' : lang === 'tr' ? 'Tiflis' : lang === 'ru' ? 'Тбилиси' : 'Tbilisi'}</span>
                     <span>⇄</span>
-                    <span>{lang === 'ua' ? 'Кутаїсі' : 'Кутаиси'}</span>
+                    <span>{lang === 'ua' ? 'Кутаїсі' : lang === 'tr' ? 'Kutaisi' : lang === 'ru' ? 'Кутаиси' : 'Kutaisi'}</span>
                   </div>
                 </div>
               </div>
@@ -399,6 +418,8 @@ export default function HomePage({
                 ? 'ONE-WAY • ПО ЗАПРОСУ'
                 : lang === 'ua'
                 ? 'ONE-WAY • ЗА ЗАПИТОМ'
+                : lang === 'tr'
+                ? 'ONE-WAY • TALEP ÜZERİNE'
                 : 'ONE-WAY • UPON REQUEST'}
             </div>
             <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-lg mb-4 shadow-xs border border-[#34C759]/20">
@@ -412,13 +433,19 @@ export default function HomePage({
                 ? 'Возьмите авто в Батуми и верните в Тбилиси или в аэропорту Кутаиси абсолютно БЕЗ доплаты за перегон (по предварительному запросу).'
                 : lang === 'ua'
                 ? 'Візьміть авто в Батумі та поверніть у Тбілісі або в аеропорту Кутаїсі абсолютно БЕЗ доплати за перегін (за попереднім запитом).'
+                : lang === 'tr'
+                ? 'Aracı Batum\'dan teslim alıp Tiflis\'te veya Kutaisi Havalimanı\'nda teslim bırakın — ek transfer ücreti OLMADAN (önceden talep üzerine).'
                 : t.benefit7Desc}
             </p>
             <div className="mt-3 pt-2.5 border-t border-black/[0.06] text-[11px] font-bold text-[#248A3D] flex items-center gap-1">
               <span>
                 {lang === 'ua'
                   ? '✓ Батумі ⇄ Тбілісі ⇄ Кутаїсі (за запитом)'
-                  : '✓ Батуми ⇄ Тбилиси ⇄ Кутаиси (по запросу)'}
+                  : lang === 'tr'
+                  ? '✓ Batum ⇄ Tiflis ⇄ Kutaisi (talep üzerine)'
+                  : lang === 'ru'
+                  ? '✓ Батуми ⇄ Тбилиси ⇄ Кутаиси (по запросу)'
+                  : '✓ Batumi ⇄ Tbilisi ⇄ Kutaisi (on request)'}
               </span>
             </div>
           </div>

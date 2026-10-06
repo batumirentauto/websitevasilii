@@ -6,8 +6,7 @@ import { useApp, EMERGENCY_PHONE, EMERGENCY_WHATSAPP } from '@/context/AppContex
 import { TRANSLATIONS } from '@/context/translations'
 
 export default function SosPage() {
-  const { lang } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, t } = useApp()
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">

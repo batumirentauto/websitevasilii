@@ -5,8 +5,7 @@ import { useApp, CITIES_DATA, PHONE_NUMBER, getCityName, getCityAddress, getCity
 import { TRANSLATIONS } from '@/context/translations'
 
 export default function ContactsPage() {
-  const { lang } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, t } = useApp()
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">

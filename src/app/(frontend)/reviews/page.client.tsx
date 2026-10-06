@@ -29,8 +29,7 @@ interface ReviewItem {
 }
 
 export default function ReviewsPage() {
-  const { lang, t: contextT } = useApp()
-  const t = contextT || TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, t } = useApp()
   const [activeFilter, setActiveFilter] = useState<string>('all')
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
 

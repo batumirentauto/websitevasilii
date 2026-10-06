@@ -7,9 +7,10 @@ import { useApp, CITIES_DATA, City, Currency, Lang, PHONE_NUMBER, getCityName } 
 import { TRANSLATIONS } from '@/context/translations'
 
 const LANG_OPTIONS: { code: Lang; label: string; flag: string }[] = [
+  { code: 'en', label: 'English', flag: '🇬🇧' },
   { code: 'ru', label: 'Русский', flag: '🇷🇺' },
   { code: 'ua', label: 'Українська', flag: '🇺🇦' },
-  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'tr', label: 'Türkçe', flag: '🇹🇷' },
   { code: 'ar', label: 'العربية', flag: '🇦🇪' },
   { code: 'fa', label: 'فارسی', flag: '🇮🇷' },
   { code: 'pl', label: 'Polski', flag: '🇵🇱' },
@@ -20,7 +21,7 @@ const LANG_OPTIONS: { code: Lang; label: string; flag: string }[] = [
 
 export const Header: React.FC = () => {
   const { city, setCity, currency, setCurrency, lang, setLang } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en || TRANSLATIONS.ru
 
   const [scrolled, setScrolled] = useState(false)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
@@ -165,6 +166,8 @@ export const Header: React.FC = () => {
               rawHeaderMsg = 'Ciao! Vorrei informazioni sul noleggio auto in Georgia.'
             } else if (lang === 'pl') {
               rawHeaderMsg = 'Dzień dobry! Chciałbym zapytać o wynajem samochodu w Gruzji.'
+            } else if (lang === 'tr') {
+              rawHeaderMsg = 'Merhaba! Gürcistan\'da araç kiralama hakkında bilgi almak istiyorum.'
             } else if (lang === 'ar') {
               rawHeaderMsg = 'مرحباً! أود الاستفسار عن تأجير سيارة في جورجيا.'
             } else if (lang === 'fa') {

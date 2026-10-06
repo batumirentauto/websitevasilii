@@ -22,8 +22,7 @@ export const CatalogSection: React.FC<{ limit?: number; showFilters?: boolean }>
   limit,
   showFilters = true,
 }) => {
-  const { lang, duration, setDuration } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, duration, setDuration, t } = useApp()
 
   const [category, setCategory] = useState<'all' | 'suv' | 'sedan' | 'cabrio' | 'minivan'>('all')
   const [selectedBrand, setSelectedBrand] = useState<string>('all')

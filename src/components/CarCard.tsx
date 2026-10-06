@@ -75,6 +75,9 @@ export function formatSeats(seats: number, lang: string, fallback: string): stri
     if (seats >= 2 && seats <= 4) return `${seats} місця`
     return `${seats} місць`
   }
+  if (lang === 'tr') {
+    return `${seats} koltuk`
+  }
   return `${seats} ${fallback}`
 }
 
@@ -85,8 +88,7 @@ export function getExtensionHourlyRate(dailyPriceGel: number): number {
 }
 
 export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
-  const { formatPrice, getBookingLink, lang, duration: globalDuration } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { formatPrice, getBookingLink, lang, duration: globalDuration, t } = useApp()
 
   const [activeImageIdx, setActiveImageIdx] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
@@ -256,6 +258,8 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 ? 'Возврат в другом городе (по запросу)'
                 : lang === 'ua'
                 ? 'Повернення в іншому місті (за запитом)'
+                : lang === 'tr'
+                ? 'Farklı şehirde teslim (talep üzerine)'
                 : 'Intercity return (on request)'}
             </span>
           </div>
@@ -333,6 +337,8 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                   ? 'Ваши даты (например: 10-15 октября)...'
                   : lang === 'ua'
                   ? 'Ваші дати (наприклад: 10-15 жовтня)...'
+                  : lang === 'tr'
+                  ? 'Tarihleriniz (örn: 10-15 Ekim)...'
                   : 'Your dates (e.g. 10-15 Oct)...'
               }
               className="w-full bg-transparent text-[11px] font-medium text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none"
@@ -350,6 +356,8 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                   ? 'Стоимость за сутки'
                   : lang === 'ua'
                   ? 'Вартість за добу'
+                  : lang === 'tr'
+                  ? 'Günlük fiyat'
                   : 'Daily rate'}
               </span>
               <div className="flex items-baseline gap-1.5">
@@ -645,6 +653,8 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                   ? 'Укажите даты поездки:'
                   : lang === 'ua'
                   ? 'Вкажіть дати поїздки:'
+                  : lang === 'tr'
+                  ? 'Seyahat tarihlerini belirtin:'
                   : 'Specify your travel dates:'}
               </label>
               <input
@@ -656,6 +666,8 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                     ? 'Например: 10-15 октября, 5 дней...'
                     : lang === 'ua'
                     ? 'Наприклад: 10-15 жовтня, 5 днів...'
+                    : lang === 'tr'
+                    ? 'Örneğin: 10-15 Ekim, 5 gün...'
                     : 'e.g. 10-15 October, 5 days...'
                 }
                 className="w-full bg-white px-3.5 py-2.5 rounded-xl border border-black/[0.08] text-xs font-semibold text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none focus:ring-2 focus:ring-[#0088CC]"

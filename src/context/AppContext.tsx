@@ -5,7 +5,7 @@ import { TRANSLATIONS } from './translations'
 
 export type Currency = 'GEL' | 'USD' | 'EUR'
 export type City = 'batumi' | 'tbilisi' | 'kutaisi'
-export type Lang = 'ru' | 'en' | 'ua' | 'ar' | 'fa' | 'pl' | 'de' | 'it' | 'fr'
+export type Lang = 'ru' | 'en' | 'ua' | 'tr' | 'ar' | 'fa' | 'pl' | 'de' | 'it' | 'fr'
 
 // Currency exchange rates relative to 1 GEL
 // 1 USD = 2.60 GEL
@@ -164,6 +164,10 @@ export function getTierLabel(tier: DurationTier, lang: Lang, short = false): str
     const dayWord = short ? 'd.' : 'dni'
     return `${tier.id.replace('-', '–')} ${dayWord}`
   }
+  if (lang === 'tr') {
+    const dayWord = short ? 'gün' : 'gün'
+    return `${tier.id.replace('-', '–')} ${dayWord}`
+  }
   if (lang === 'ar') {
     return `${tier.id.replace('-', '–')} يوم`
   }
@@ -243,7 +247,7 @@ const AppContext = createContext<AppContextType | null>(null)
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currency, setCurrencyState] = useState<Currency>('GEL')
   const [city, setCityState] = useState<City>('batumi')
-  const [lang, setLangState] = useState<Lang>('ru')
+  const [lang, setLangState] = useState<Lang>('en')
   const [duration, setDurationState] = useState<RentalDuration>('1-2')
 
   useEffect(() => {
@@ -254,7 +258,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         // 1. Language from URL (?lang=... or ?l=...)
         const rawUrlLang = (params.get('lang') || params.get('l'))?.toLowerCase()
         const urlLang = (rawUrlLang === 'uk' ? 'ua' : rawUrlLang) as Lang
-        const validLangs: Lang[] = ['ru', 'en', 'ua', 'ar', 'fa', 'pl', 'de', 'it', 'fr']
+        const validLangs: Lang[] = ['en', 'ru', 'ua', 'tr', 'ar', 'fa', 'pl', 'de', 'it', 'fr']
         if (urlLang && validLangs.includes(urlLang)) {
           setLangState(urlLang)
           localStorage.setItem('vasilii_lang', urlLang)
@@ -267,6 +271,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             setLangState(savedLang)
             document.documentElement.lang = savedLang === 'ua' ? 'uk' : savedLang
             document.documentElement.dir = savedLang === 'ar' || savedLang === 'fa' ? 'rtl' : 'ltr'
+          } else {
+            setLangState('en')
+            document.documentElement.lang = 'en'
+            document.documentElement.dir = 'ltr'
           }
         }
 
@@ -395,6 +403,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       messageText = `Ciao! Interessato/a a ${carName} per le date: ${dateStr} a ${cityName}. L'auto è disponibile?`
     } else if (lang === 'pl') {
       messageText = `Dzień dobry! Interesuje mnie ${carName} na terminy: ${dateStr} w mieście ${cityName}. Czy samochód jest wolny?`
+    } else if (lang === 'tr') {
+      messageText = `Merhaba! ${cityName} şehrinde ${dateStr} tarihleri için ${carName} aracı ile ilgileniyorum. Araç müsait mi?`
     } else if (lang === 'ar') {
       messageText = `مرحباً! أود الاستفسار عن ${carName} للتواريخ: ${dateStr} في ${cityName}. هل السيارة متوفرة؟`
     } else if (lang === 'fa') {
@@ -420,7 +430,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setCity,
         lang,
         setLang,
-        t: TRANSLATIONS[lang] || TRANSLATIONS.ru,
+        t: TRANSLATIONS[lang] || TRANSLATIONS.en || TRANSLATIONS.ru,
         duration,
         setDuration,
         convertPrice,

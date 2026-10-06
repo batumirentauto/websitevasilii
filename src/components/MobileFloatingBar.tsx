@@ -6,7 +6,7 @@ import { TRANSLATIONS } from '@/context/translations'
 
 export const MobileFloatingBar: React.FC = () => {
   const { lang, city } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en || TRANSLATIONS.ru
   const currentCity = CITIES_DATA[city]
   const cityName = getCityName(city, lang)
 
@@ -23,6 +23,8 @@ export const MobileFloatingBar: React.FC = () => {
     rawInquiry = `Ciao! Vorrei verificare la disponibilità delle auto a ${cityName}.`
   } else if (lang === 'pl') {
     rawInquiry = `Dzień dobry! Chciałbym sprawdzić dostępność samochodów w mieście ${cityName}.`
+  } else if (lang === 'tr') {
+    rawInquiry = `Merhaba! ${cityName} şehrindeki müsait araçları öğrenmek istiyorum.`
   } else if (lang === 'ar') {
     rawInquiry = `مرحباً! أود معرفة السيارات المتاحة في مدينة ${cityName}.`
   } else if (lang === 'fa') {

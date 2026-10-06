@@ -7,8 +7,7 @@ import { useApp, CITIES_DATA, PHONE_NUMBER, getCityName, getCityAddress, getCity
 import { TRANSLATIONS } from '@/context/translations'
 
 export const Footer: React.FC = () => {
-  const { lang, city } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, city, t } = useApp()
   const currentCityData = CITIES_DATA[city]
 
   return (

@@ -8,8 +8,7 @@ import { TRANSLATIONS } from '@/context/translations'
 import reviewsData from '@/data/reviews.json'
 
 export default function ReviewsSection() {
-  const { lang, t: contextT } = useApp()
-  const t = contextT || TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, t } = useApp()
 
   // Curate top 4 high-impact reviews for the homepage
   const featuredReviews = reviewsData.filter((r) =>

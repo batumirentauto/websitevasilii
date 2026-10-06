@@ -18,8 +18,7 @@ interface FaqItem {
 }
 
 export default function FaqClient() {
-  const { lang } = useApp()
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru
+  const { lang, t } = useApp()
   const isEn = lang !== 'ru'
 
   const [activeCategory, setActiveCategory] = useState<string>('all')
