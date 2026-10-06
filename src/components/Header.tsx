@@ -172,14 +172,33 @@ export const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Direct WhatsApp Call button */}
+          {/* Direct Contact: Phone on top, WhatsApp below */}
+          <div className="hidden sm:flex flex-col items-end justify-center">
+            <a
+              href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
+              className="text-xs font-bold text-[#1D1D1F] hover:text-[#0071E3] transition-colors flex items-center gap-1 tracking-tight"
+            >
+              <span className="text-[11px]">📞</span>
+              <span>{PHONE_NUMBER}</span>
+            </a>
+            <a
+              href={`https://wa.me/995591050752?text=${encodeURIComponent(rawHeaderMsg)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 px-2 py-0.5 mt-0.5 rounded-full bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#1D8338] text-[10px] font-bold transition-all"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] inline-block animate-pulse" />
+              <span>WhatsApp 24/7</span>
+            </a>
+          </div>
+
+          {/* Mobile phone quick call icon */}
           <a
-            href={`https://wa.me/995591050752?text=${encodeURIComponent(rawHeaderMsg)}`}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden sm:flex h-9 px-4 rounded-full bg-[#1D1D1F] text-white text-xs font-semibold items-center gap-1.5 hover:bg-black transition-all active:scale-95 shadow-sm"
+            href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
+            className="sm:hidden w-8 h-8 rounded-full bg-[#F5F5F7] flex items-center justify-center text-xs text-[#1D1D1F] hover:bg-[#E5E5EA] transition-colors"
+            title={PHONE_NUMBER}
           >
-            <span>WhatsApp</span>
+            📞
           </a>
 
           {/* Mobile hamburger */}
