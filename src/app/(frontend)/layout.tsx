@@ -48,7 +48,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             />
 
             <Header />
-            <main className="pt-[82px] sm:pt-[92px] min-h-screen">{children}</main>
+            <main className="pt-16 min-h-screen">{children}</main>
             <Footer />
             <MobileFloatingBar />
           </Providers>

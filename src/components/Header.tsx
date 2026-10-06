@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useApp, CITIES_DATA, City, Currency, Lang, PHONE_NUMBER, getCityName } from '@/context/AppContext'
+import { useApp, City, Currency, Lang, PHONE_NUMBER, getCityName } from '@/context/AppContext'
 import { TRANSLATIONS } from '@/context/translations'
 
 const LANG_OPTIONS: { code: Lang; label: string; flag: string }[] = [
@@ -57,69 +57,14 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top Phone & Contact Bar */}
-      <div className="bg-[#1D1D1F] text-white text-[11px] sm:text-xs py-1.5 px-3 sm:px-6 border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
-          {/* Direct Phone Number */}
-          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-            <a
-              href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
-              className="inline-flex items-center gap-1.5 font-bold text-white hover:text-[#34C759] transition-colors shrink-0 tracking-wide"
-            >
-              <span className="text-xs">📞</span>
-              <span>{PHONE_NUMBER}</span>
-            </a>
-            <span className="text-white/30 hidden sm:inline">•</span>
-            <span className="text-white/70 text-[10px] sm:text-[11px] truncate hidden sm:inline">
-              {lang === 'ru'
-                ? 'Круглосуточно 24/7 (Звонки и WhatsApp)'
-                : lang === 'ua'
-                ? 'Цілодобово 24/7 (Дзвінки та WhatsApp)'
-                : '24/7 Support (Calls & WhatsApp)'}
-            </span>
-          </div>
-
-          {/* Quick links & Locations */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 text-[10px] sm:text-[11px]">
-            <a
-              href={`https://wa.me/995591050752?text=${encodeURIComponent(rawHeaderMsg)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 text-[#25D366] hover:underline font-semibold"
-            >
-              <span>WhatsApp</span>
-            </a>
-            <span className="text-white/30">•</span>
-            <a
-              href="https://t.me/rentcarvasilii"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 text-[#29B6F6] hover:underline font-semibold"
-            >
-              <span>Telegram</span>
-            </a>
-            <span className="text-white/30 hidden md:inline">•</span>
-            <span className="text-white/60 hidden md:inline">
-              {lang === 'ru'
-                ? 'Батуми • Тбилиси • Аэропорт Кутаиси'
-                : lang === 'ua'
-                ? 'Батумі • Тбілісі • Аеропорт Кутаїсі'
-                : 'Batumi • Tbilisi • Kutaisi Airport'}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navbar */}
-      <div
-        className={`transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/90 backdrop-blur-xl border-b border-black/[0.06] shadow-sm'
-            : 'bg-white/80 backdrop-blur-md border-b border-black/[0.04]'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-4">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/85 backdrop-blur-xl border-b border-black/[0.06] shadow-sm'
+          : 'bg-white/50 backdrop-blur-md border-b border-black/[0.04]'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Brandmark */}
         <Link href="/" className="flex items-center gap-2 group shrink-0">
           <Image
@@ -133,7 +78,7 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* City Segmented Picker (Center / Left) */}
-        <div className="hidden lg:flex items-center bg-[#F5F5F7] p-1 rounded-full text-xs font-semibold">
+        <div className="hidden lg:flex items-center bg-[#F5F5F7] p-1 rounded-full text-xs font-semibold shrink-0">
           {(['batumi', 'tbilisi', 'kutaisi'] as City[]).map((cKey) => (
             <Link
               key={cKey}
@@ -151,7 +96,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Center Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#6E6E73]">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-medium text-[#6E6E73] shrink-0">
           <Link href="/#catalog" className="hover:text-[#1D1D1F] transition-colors">
             {t.navVehicles}
           </Link>
@@ -176,8 +121,8 @@ export const Header: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Right Section: Currency Switcher + Lang Dropdown + Messenger Call */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Right Section: Currency Switcher + Lang Dropdown + WhatsApp */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Currency Segmented Switcher */}
           <div className="flex bg-[#F5F5F7] p-0.5 rounded-full text-[11px] font-semibold">
             {(['GEL', 'USD', 'EUR'] as Currency[]).map((c) => (
@@ -227,15 +172,6 @@ export const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Direct Phone Call for Desktop */}
-          <a
-            href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
-            className="hidden xl:inline-flex items-center gap-1.5 text-xs font-bold text-[#1D1D1F] hover:text-[#0071E3] transition-colors whitespace-nowrap"
-          >
-            <span>📞</span>
-            <span>{PHONE_NUMBER}</span>
-          </a>
-
           {/* Direct WhatsApp Call button */}
           <a
             href={`https://wa.me/995591050752?text=${encodeURIComponent(rawHeaderMsg)}`}
@@ -256,7 +192,6 @@ export const Header: React.FC = () => {
           </button>
         </div>
       </div>
-    </div>
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
