@@ -190,36 +190,34 @@ export default function FaqClient() {
       ),
     },
 
-    // 2. Оплата и валюта
+    // 2. Оплата и расчеты
     {
       id: 'payment-methods',
       category: 'payment',
-      categoryLabelRu: 'Оплата и валюта',
-      categoryLabelEn: 'Payment & Currency',
-      questionRu: 'Какими способами и в какой валюте можно оплатить аренду?',
-      questionEn: 'What payment methods and currencies do you accept?',
-      highlight: 'Наличные / Переводы / USDT',
+      categoryLabelRu: 'Способы оплаты',
+      categoryLabelEn: 'Payment Methods',
+      questionRu: 'Какими способами можно оплатить аренду автомобиля?',
+      questionEn: 'What payment methods are available for car rental?',
+      highlight: isEn ? 'Cash / Card / Bank transfer' : 'Наличные / Карта / Банковский перевод',
       answerRu: (
         <div className="space-y-3">
-          <p>Оплата происходит при получении машины, любым удобным для вас способом:</p>
+          <p>Оплата происходит при получении автомобиля. Мы предлагаем удобные способы расчета:</p>
           <ul className="list-disc pl-5 space-y-1.5 text-sm">
-            <li><strong>Наличными:</strong> лари (GEL), доллары (USD), евро (EUR).</li>
-            <li><strong>Рублевым переводом (RUB):</strong> Сбер, Т-Банк по актуальному биржевому курсу.</li>
-            <li><strong>Криптовалютой:</strong> USDT (TRC-20 / TON) без скрытых комиссий.</li>
-            <li><strong>Переводом в Грузии:</strong> на грузинский счет (Credo Bank, BoG, TBC).</li>
-            <li><strong>Банковскими картами Visa / Mastercard зарубежных банков.</strong></li>
+            <li><strong>Наличными:</strong> при передаче автомобиля.</li>
+            <li><strong>Оплата банковской картой (по запросу):</strong> если вы планируете оплату картой, сообщите об этом менеджеру при согласовании бронирования.</li>
+            <li><strong>Переводом на счет в грузинском банке:</strong> прямой расчет на банковский счет в Грузии (Bank of Georgia, TBC, Credo и др.).</li>
+            <li><strong>Другие способы оплаты:</strong> возможность альтернативных способов расчета вы всегда можете уточнить у нашего менеджера.</li>
           </ul>
         </div>
       ),
       answerEn: (
         <div className="space-y-3">
-          <p>Payment takes place upon car pickup in whatever method suits you best:</p>
+          <p>Payment takes place upon vehicle pickup. We offer convenient payment options:</p>
           <ul className="list-disc pl-5 space-y-1.5 text-sm">
-            <li><strong>Cash:</strong> GEL, USD, or EUR.</li>
-            <li><strong>Direct bank transfer:</strong> Georgian banks (Credo, BoG, TBC).</li>
-            <li><strong>Online bank transfers (RUB):</strong> via mobile banking.</li>
-            <li><strong>Cryptocurrency:</strong> USDT (TRC-20 / TON) directly.</li>
-            <li><strong>International cards:</strong> Visa / Mastercard.</li>
+            <li><strong>Cash:</strong> upon vehicle handover.</li>
+            <li><strong>Bank card payment (on request):</strong> if you plan to pay by card, please let our manager know when confirming your reservation.</li>
+            <li><strong>Transfer to a Georgian bank account:</strong> direct payment to a bank account in Georgia (Bank of Georgia, TBC, Credo, etc.).</li>
+            <li><strong>Other payment options:</strong> feel free to check with our manager for alternative payment arrangements upon booking.</li>
           </ul>
         </div>
       ),
@@ -227,14 +225,14 @@ export default function FaqClient() {
     {
       id: 'online-pay-third-party',
       category: 'payment',
-      categoryLabelRu: 'Оплата и валюта',
-      categoryLabelEn: 'Payment & Currency',
-      questionRu: 'Может ли оплатить аренду другой человек (например, супруга переводом онлайн, а заберет муж)?',
-      questionEn: 'Can someone else pay online (e.g. spouse pays remotely while husband collects the car)?',
+      categoryLabelRu: 'Способы оплаты',
+      categoryLabelEn: 'Payment Methods',
+      questionRu: 'Может ли оплатить аренду другой человек (например, родственник удаленно, а заберет водитель)?',
+      questionEn: 'Can someone else pay remotely while another driver collects the vehicle?',
       answerRu: (
         <div className="space-y-3">
           <p>
-            <strong>Да, конечно!</strong> Вы можете оплатить удаленно переводом на карту или USDT, а автомобиль получит указанный в договоре водитель с оригиналом прав.
+            <strong>Да, конечно!</strong> Оплату можно произвести удаленно (переводом или картой по согласованию с менеджером), а автомобиль получит указанный в договоре водитель с оригиналом прав.
           </p>
           <p>
             Главное условие: тот, кто фактически садится за руль, должен иметь при себе физический оригинал своего водительского удостоверения и паспорт для оформления договора.
@@ -244,7 +242,7 @@ export default function FaqClient() {
       answerEn: (
         <div className="space-y-3">
           <p>
-            <strong>Yes, absolutely!</strong> You can pay remotely via card transfer or USDT, while the registered driver picks up the vehicle.
+            <strong>Yes, absolutely!</strong> Payment can be completed remotely (via transfer or card upon agreement with the manager), while the designated driver receives the vehicle.
           </p>
           <p>
             Crucial condition: the person who drives must present their physical original driving license and passport for contract registration.
@@ -707,7 +705,7 @@ export default function FaqClient() {
   const categories = [
     { id: 'all', labelRu: 'Все вопросы', labelEn: 'All Questions', count: faqData.length },
     { id: 'booking', labelRu: 'Залог и бронь', labelEn: 'Deposit & Booking', count: faqData.filter(i => i.category === 'booking').length },
-    { id: 'payment', labelRu: 'Оплата и валюта', labelEn: 'Payment & Currency', count: faqData.filter(i => i.category === 'payment').length },
+    { id: 'payment', labelRu: 'Способы оплаты', labelEn: 'Payment Methods', count: faqData.filter(i => i.category === 'payment').length },
     { id: 'documents', labelRu: 'Документы и права', labelEn: 'Documents & License', count: faqData.filter(i => i.category === 'documents').length },
     { id: 'insurance', labelRu: 'Страховка и ДТП', labelEn: 'Insurance & SOS', count: faqData.filter(i => i.category === 'insurance').length },
     { id: 'delivery', labelRu: 'Подача и адреса', labelEn: 'Delivery & Hubs', count: faqData.filter(i => i.category === 'delivery').length },
@@ -768,7 +766,7 @@ export default function FaqClient() {
             placeholder={
               isEn
                 ? 'Search questions (e.g. deposit, card, license, child seat)...'
-                : 'Поиск по вопросам (например: залог, рубли, права, мойка, кресло)...'
+                : 'Поиск по вопросам (например: залог, карта, права, мойка, кресло)...'
             }
             className="w-full pl-12 pr-10 py-3.5 bg-white border border-black/[0.08] rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0071E3] focus:border-transparent shadow-xs transition-all placeholder:text-[#86868B]"
           />
