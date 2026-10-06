@@ -652,7 +652,7 @@ export default function FaqClient() {
             <strong>Правило уровня топлива:</strong> возвращайте машину с тем же уровнем топлива, с которым получили (обычно мы выдаем с полным или фиксированным баком, отмеченным в акте).
           </p>
           <p>
-            <strong>Тип топлива:</strong> в зависимости от машины используется бензин (95, 98, 100) либо дизель (92 не используется). Точный тип топлива уточняйте у менеджера при выдаче автомобиля. Заправляйтесь на проверенных сетевых АЗС: Gulf, Wissol, Rompetrol, Socar, Connect.
+            <strong>Тип топлива:</strong> в зависимости от машины используется бензин (95 или 100) либо дизель (92 не используется). Точный тип топлива уточняйте у менеджера при выдаче автомобиля. Заправляйтесь на проверенных сетевых АЗС: Gulf, Wissol, Rompetrol, Socar, Connect.
           </p>
         </div>
       ),
@@ -662,7 +662,7 @@ export default function FaqClient() {
             <strong>Fuel level policy:</strong> Same-to-same. Return the car with the same fuel level you received it with (recorded upon pickup).
           </p>
           <p>
-            <strong>Fuel type:</strong> depending on the vehicle, cars run on petrol (95, 98, 100) or diesel (we never use 92). Please confirm the exact fuel grade with your manager upon pickup. Refuel at reputable branded stations: Gulf, Wissol, Rompetrol, Socar, Connect.
+            <strong>Fuel type:</strong> depending on the vehicle, cars run on petrol (95 or 100) or diesel (we never use 92). Please confirm the exact fuel grade with your manager upon pickup. Refuel at reputable branded stations: Gulf, Wissol, Rompetrol, Socar, Connect.
           </p>
         </div>
       ),

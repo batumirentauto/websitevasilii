@@ -978,8 +978,8 @@ export default function GuidePageClient() {
               </h3>
               <p className="text-xs sm:text-sm text-[#6E6E73] leading-relaxed mb-3">
                 {isEn
-                  ? 'Depending on the vehicle model, cars run on petrol (95, 98, or 100) or diesel on specific models. We never use 92 Regular. Please always confirm the exact fuel type for your car with the manager upon pickup.'
-                  : 'В зависимости от модели автомобиля используется бензин (95, 98 или 100) либо дизельное топливо на отдельных машинах. Топливо 92 Regular мы нигде не используем. Точный тип топлива для вашего автомобиля обязательно уточняйте у менеджера при получении.'}
+                  ? 'Depending on the vehicle model, cars run on petrol (95 or 100) or diesel on specific models. We never use 92 Regular. Please always confirm the exact fuel type for your car with the manager upon pickup.'
+                  : 'В зависимости от модели автомобиля используется бензин (95 или 100) либо дизельное топливо на отдельных машинах. Топливо 92 Regular мы нигде не используем. Точный тип топлива для вашего автомобиля обязательно уточняйте у менеджера при получении.'}
               </p>
               <div className="text-xs font-semibold text-[#1D1D1F] bg-white p-3 rounded-xl border border-black/[0.06]">
                 {isEn
