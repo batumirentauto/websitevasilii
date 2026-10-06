@@ -282,6 +282,44 @@ export default function TermsPage() {
         </div>
       </div>
 
+      {/* FAQ & Guide quick links banner */}
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Link
+          href="/faq"
+          className="p-5 bg-white rounded-2xl border border-black/[0.06] hover:border-[#0071E3]/40 hover:shadow-md transition-all flex items-center justify-between group"
+        >
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-[#0071E3] mb-1">
+              FAQ
+            </div>
+            <div className="text-sm font-bold text-[#1D1D1F] group-hover:text-[#0071E3] transition-colors">
+              {lang === 'ru' ? 'Часто задаваемые вопросы' : 'Frequently Asked Questions'}
+            </div>
+            <div className="text-xs text-[#86868B] mt-0.5">
+              {lang === 'ru' ? 'Оплата, залог 0 ₾, страховка, пересечение границ' : 'Payment, zero deposit, insurance, borders'}
+            </div>
+          </div>
+          <span className="text-lg text-[#86868B] group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
+        <Link
+          href="/guide"
+          className="p-5 bg-white rounded-2xl border border-black/[0.06] hover:border-[#34C759]/40 hover:shadow-md transition-all flex items-center justify-between group"
+        >
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-[#34C759] mb-1">
+              {lang === 'ru' ? 'Памятка' : 'Guide'}
+            </div>
+            <div className="text-sm font-bold text-[#1D1D1F] group-hover:text-[#34C759] transition-colors">
+              {lang === 'ru' ? 'Памятка водителю по Грузии' : 'Tourist Driving & Road Guide'}
+            </div>
+            <div className="text-xs text-[#86868B] mt-0.5">
+              {lang === 'ru' ? 'ПДД, камеры скорости, парковки в Батуми и Тбилиси' : 'Rules, speed cameras, parking in Batumi & Tbilisi'}
+            </div>
+          </div>
+          <span className="text-lg text-[#86868B] group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
+      </div>
+
       {/* CTA Box */}
       <div className="mt-12 text-center bg-[#1D1D1F] text-white p-8 rounded-3xl">
         <h3 className="text-2xl font-bold mb-2">{t.termsCtaTitle}</h3>

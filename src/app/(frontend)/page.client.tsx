@@ -493,6 +493,65 @@ export default function HomePage({
         </div>
       </section>
 
+      {/* FAQ & Guide Hub Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Link
+            href="/faq"
+            className="p-6 bg-white rounded-3xl border border-black/[0.06] hover:border-[#0071E3]/40 hover:shadow-lg transition-all flex items-center justify-between group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center text-2xl shrink-0">
+                ❓
+              </div>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-[#0071E3] mb-1">
+                  FAQ
+                </div>
+                <h3 className="font-bold text-base text-[#1D1D1F] group-hover:text-[#0071E3] transition-colors">
+                  {lang === 'ru' ? 'Часто задаваемые вопросы' : 'Frequently Asked Questions'}
+                </h3>
+                <p className="text-xs text-[#6E6E73] mt-0.5">
+                  {lang === 'ru'
+                    ? 'Залог 0 ₾, способы оплаты, страховка, пересечение границ'
+                    : 'Zero deposit, payment methods, insurance & cross-border rules'}
+                </p>
+              </div>
+            </div>
+            <span className="text-xl text-[#86868B] group-hover:translate-x-1 group-hover:text-[#0071E3] transition-all">
+              →
+            </span>
+          </Link>
+
+          <Link
+            href="/guide"
+            className="p-6 bg-white rounded-3xl border border-black/[0.06] hover:border-[#34C759]/40 hover:shadow-lg transition-all flex items-center justify-between group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#34C759]/10 text-[#34C759] flex items-center justify-center text-2xl shrink-0">
+                💡
+              </div>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-[#34C759] mb-1">
+                  {lang === 'ru' ? 'Памятка' : 'Guide'}
+                </div>
+                <h3 className="font-bold text-base text-[#1D1D1F] group-hover:text-[#34C759] transition-colors">
+                  {lang === 'ru' ? 'Памятка водителю по Грузии' : 'Tourist Driving Guide'}
+                </h3>
+                <p className="text-xs text-[#6E6E73] mt-0.5">
+                  {lang === 'ru'
+                    ? 'ПДД, камеры скорости, парковки в Батуми, Тбилиси и Кутаиси'
+                    : 'Speed cameras, fines, parking rules in Batumi, Tbilisi & Kutaisi'}
+                </p>
+              </div>
+            </div>
+            <span className="text-xl text-[#86868B] group-hover:translate-x-1 group-hover:text-[#34C759] transition-all">
+              →
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* Real Customer Reviews Section */}
       <ReviewsSection />
     </div>

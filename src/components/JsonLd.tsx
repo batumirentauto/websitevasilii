@@ -100,7 +100,7 @@ export const JsonLd: React.FC = () => {
   // FAQ Schema for Rich Google Snippets
   const faqSchema = {
     '@type': 'FAQPage',
-    '@id': `${siteUrl}/#faq`,
+    '@id': `${siteUrl}/faq`,
     mainEntity: [
       {
         '@type': 'Question',

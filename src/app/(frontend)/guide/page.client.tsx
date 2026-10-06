@@ -1224,13 +1224,19 @@ export default function GuidePageClient() {
           </div>
         </section>
 
-        {/* Return to Catalog CTA */}
-        <div className="text-center pt-2">
+        {/* Navigation to FAQ & Fleet */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-black/[0.06]">
           <Link
             href="/#catalog"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
           >
             <span>← {isEn ? 'Back to Vehicle Fleet' : 'Вернуться к каталогу автомобилей'}</span>
+          </Link>
+          <Link
+            href="/faq"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#0071E3] hover:underline"
+          >
+            <span>{isEn ? 'Frequently Asked Questions (FAQ)' : 'Часто задаваемые вопросы (FAQ)'} →</span>
           </Link>
         </div>
       </div>
