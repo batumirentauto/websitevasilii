@@ -205,7 +205,7 @@ export default function GuidePageClient() {
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
                 {isEn
                   ? 'Strictly Physical Original License (No photos or apps!)'
-                  : 'Строго физический оригинал прав: фото и Госуслуги не действуют'}
+                  : 'Строго физический оригинал прав: фото и электронные права не действуют'}
               </h2>
             </div>
           </div>
@@ -290,8 +290,8 @@ export default function GuidePageClient() {
 
           <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed mb-6">
             {isEn
-              ? 'In Georgia, the non-penalized speed tolerance is +15 km/h above the posted sign. Any speed at +15 km/h or higher triggers an automatic video fine (from 50 to 300 GEL depending on speed excess). Notice: unlike Russia (+20 km/h), in Georgia exceeding by 15 km/h already incurs a fine!'
-              : 'В Грузии нештрафуемый порог превышения составляет ровно +15 км/ч к знаку. Начиная с +15 км/ч и выше автоматически выписывается штраф (от 50 до 300 лари в зависимости от превышения). Обратите внимание: в отличие от РФ (+20 км/ч), в Грузии превышение на 15 км/ч уже штрафуется!'}
+              ? 'In Georgia, the non-penalized speed tolerance is strictly +15 km/h above the posted sign. Any speed at +15 km/h or higher triggers an automatic video fine (from 50 to 300 GEL depending on speed excess). Notice: the non-penalized tolerance is strictly +15 km/h — exceeding by 15 km/h already triggers a fine!'
+              : 'В Грузии нештрафуемый порог превышения составляет ровно +15 км/ч к знаку. Начиная с +15 км/ч и выше автоматически выписывается штраф (от 50 до 300 лари в зависимости от превышения). Обратите внимание: нештрафуемый лимит строго +15 км/ч — превышение уже на 15 км/ч наказывается штрафом!'}
           </p>
 
           {/* Interactive Visual Table */}

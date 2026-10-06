@@ -196,15 +196,15 @@ export default function FaqClient() {
       category: 'payment',
       categoryLabelRu: 'Оплата и валюта',
       categoryLabelEn: 'Payment & Currency',
-      questionRu: 'Какими способами и в какой валюте можно оплатить аренду? Можно ли картой РФ?',
-      questionEn: 'What payment methods and currencies do you accept? Can I pay in Russian Roubles or USDT?',
-      highlight: 'Рубли / Наличные / USDT',
+      questionRu: 'Какими способами и в какой валюте можно оплатить аренду?',
+      questionEn: 'What payment methods and currencies do you accept?',
+      highlight: 'Наличные / Переводы / USDT',
       answerRu: (
         <div className="space-y-3">
           <p>Оплата происходит при получении машины, любым удобным для вас способом:</p>
           <ul className="list-disc pl-5 space-y-1.5 text-sm">
             <li><strong>Наличными:</strong> лари (GEL), доллары (USD), евро (EUR).</li>
-            <li><strong>Переводом из РФ (рубли):</strong> на карты Сбербанк, Т-Банк (Тинькофф) по актуальному биржевому курсу.</li>
+            <li><strong>Рублевым переводом (RUB):</strong> Сбер, Т-Банк по актуальному биржевому курсу.</li>
             <li><strong>Криптовалютой:</strong> USDT (TRC-20 / TON) без скрытых комиссий.</li>
             <li><strong>Переводом в Грузии:</strong> на грузинский счет (Credo Bank, BoG, TBC).</li>
             <li><strong>Банковскими картами Visa / Mastercard зарубежных банков.</strong></li>
@@ -217,7 +217,7 @@ export default function FaqClient() {
           <ul className="list-disc pl-5 space-y-1.5 text-sm">
             <li><strong>Cash:</strong> GEL, USD, or EUR.</li>
             <li><strong>Direct bank transfer:</strong> Georgian banks (Credo, BoG, TBC).</li>
-            <li><strong>Russian bank transfers (RUB):</strong> Sber / T-Bank via online banking.</li>
+            <li><strong>Online bank transfers (RUB):</strong> via mobile banking.</li>
             <li><strong>Cryptocurrency:</strong> USDT (TRC-20 / TON) directly.</li>
             <li><strong>International cards:</strong> Visa / Mastercard.</li>
           </ul>
@@ -548,8 +548,8 @@ export default function FaqClient() {
       category: 'trips',
       categoryLabelRu: 'Маршруты и горы',
       categoryLabelEn: 'Routes & Mountains',
-      questionRu: 'Можно ли выехать на машине в Турцию, Армению или РФ?',
-      questionEn: 'Can I cross the border into Turkey, Armenia or Russia?',
+      questionRu: 'Можно ли выехать на машине в Турцию, Армению или другие соседние страны?',
+      questionEn: 'Can I cross the border into Turkey, Armenia or other neighboring countries?',
       answerRu: (
         <div className="space-y-3">
           <p>

@@ -46,7 +46,7 @@ export default function TermsPage() {
               <div>
                 <span>{t.termReq3}</span>
                 <span className="block text-xs text-[#FF3B30] font-semibold mt-0.5">
-                  ⚠️ Патрульная полиция требует строго физический оригинал прав (фото и Госуслуги не действуют).{' '}
+                  ⚠️ Патрульная полиция требует строго физический оригинал прав (фото и электронные права не действуют).{' '}
                   <Link href="/guide#license-original" className="underline hover:text-[#1D1D1F]">
                     Подробнее в памятке →
                   </Link>
