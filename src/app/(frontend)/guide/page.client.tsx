@@ -974,17 +974,17 @@ export default function GuidePageClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04]">
               <h3 className="text-sm font-bold text-[#1D1D1F] mb-2 flex items-center gap-2">
-                <span>🛢️</span> {isEn ? 'Recommended Fuel' : 'Рекомендуемое топливо'}
+                <span>🛢️</span> {isEn ? 'Fuel Type' : 'Тип топлива'}
               </h3>
               <p className="text-xs sm:text-sm text-[#6E6E73] leading-relaxed mb-3">
                 {isEn
-                  ? '95% of our rental fleet (including Toyota hybrids, Ford, Lexus) operates on 95 Premium (Euro 5). Specific 4x4 SUVs also accept 92 Regular.'
-                  : 'Для 95% автомобилей нашего автопарка (включая гибриды Toyota, Ford, Lexus) подходит качественный бензин 95 Premium (Евро-5). Некоторые внедорожники могут заправляться 92 Regular.'}
+                  ? 'Depending on the vehicle model, cars run on petrol (95, 98, or 100) or diesel on specific models. We never use 92 Regular. Please always confirm the exact fuel type for your car with the manager upon pickup.'
+                  : 'В зависимости от модели автомобиля используется бензин (95, 98 или 100) либо дизельное топливо на отдельных машинах. Топливо 92 Regular мы нигде не используем. Точный тип топлива для вашего автомобиля обязательно уточняйте у менеджера при получении.'}
               </p>
               <div className="text-xs font-semibold text-[#1D1D1F] bg-white p-3 rounded-xl border border-black/[0.06]">
                 {isEn
-                  ? 'A fuel sticker is always placed on the fuel flap of your car.'
-                  : 'На лючке бензобака каждого авто наклеена подсказка с точным типом бензина.'}
+                  ? 'The fuel type is also indicated on the sticker inside the fuel filler flap.'
+                  : 'Также напоминание с точным типом топлива наклеено на внутренней стороне лючка бензобака.'}
               </div>
             </div>
 
@@ -994,13 +994,13 @@ export default function GuidePageClient() {
               </h3>
               <p className="text-xs sm:text-sm text-[#6E6E73] leading-relaxed mb-3">
                 {isEn
-                  ? 'Stick to reliable international & major chains with clean fuel: Gulf, Wissol, Rompetrol, Socar, Lukoil. Avoid unbranded small pumps in mountain villages.'
-                  : 'Заправляйтесь на крупных сетевых станциях с гарантированным качеством: Gulf, Wissol, Rompetrol, Socar, Lukoil. Избегайте безымянных колонок в высокогорных селах.'}
+                  ? 'Refuel only at major reliable chain stations with quality fuel: Gulf, Wissol, Rompetrol, Socar, Connect. Avoid unbranded small pumps in mountain villages.'
+                  : 'Заправляйтесь на крупных сетевых станциях с гарантированным качеством: Gulf, Wissol, Rompetrol, Socar, Connect. Избегайте безымянных колонок в высокогорных селах.'}
               </p>
               <div className="text-xs font-semibold text-[#1D1D1F] bg-white p-3 rounded-xl border border-black/[0.06]">
                 {isEn
-                  ? 'Attendants pump fuel for you everywhere. Just tell them "Premium" and the amount or "Full".'
-                  : 'На всех АЗС работают заправщики. Достаточно сказать «Премиум» и сумму (например «50 лари») или «Полный бак». Оплата прямо у колонки.'}
+                  ? 'Attendants pump fuel for you everywhere. Just tell them the fuel type and amount or "Full".'
+                  : 'На всех АЗС работают заправщики. Достаточно назвать нужный вид топлива и сумму (или «Полный бак»). Оплата картой или наличными у колонки.'}
               </div>
             </div>
           </div>
