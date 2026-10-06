@@ -77,7 +77,7 @@ export default function GuidePageClient() {
             href="#parking"
             className="px-3.5 py-1.5 rounded-full bg-white hover:bg-black hover:text-white border border-black/[0.08] text-xs font-semibold text-[#1D1D1F] transition-colors shadow-xs flex items-center gap-1.5"
           >
-            <span>🅿️</span> {isEn ? 'City Parking' : 'Парковка в городах'}
+            <span>🅿️</span> {isEn ? 'Parking & Towing Rules' : 'Парковка и эвакуация'}
           </a>
           <a
             href="#fuel"
@@ -676,65 +676,188 @@ export default function GuidePageClient() {
             </div>
             <div>
               <span className="text-xs font-bold text-[#0071E3] uppercase tracking-wider block mb-1">
-                {isEn ? 'Municipal Parking Rules' : 'Правила парковки в городах'}
+                {isEn ? 'Municipal Parking & Towing' : 'Правила парковки в городах'}
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
-                {isEn ? 'Parking in Batumi, Tbilisi & Kutaisi' : 'Парковка в Батуми, Тбилиси и Кутаиси'}
+                {isEn ? 'Parking in Batumi, Tbilisi & Strict Towing Rules' : 'Парковка в Батуми, Тбилиси и правила эвакуации'}
               </h2>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {/* Batumi Parking */}
-            <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04]">
-              <h3 className="text-sm font-bold text-[#1D1D1F] mb-2 flex items-center gap-2">
-                <span>🌊</span> {isEn ? 'Batumi Parking' : 'Парковка в Батуми'}
-              </h3>
-              <p className="text-xs text-[#6E6E73] leading-relaxed mb-3">
-                {isEn
-                  ? 'Most street parking spaces marked with white lines in Batumi are municipal paid parking. Prices are very low: ~1 GEL/day, 10 GEL/week, 20 GEL/month.'
-                  : 'Почти все размеченные карманы вдоль улиц в центре Батуми относятся к муниципальной платной парковке. Стоимость очень демократичная: 1 ₾ в день, 10 ₾ на неделю, 20 ₾ на месяц.'}
-              </p>
-              <div className="text-xs text-[#1D1D1F] font-semibold bg-white p-3 rounded-xl border border-black/[0.06]">
-                {isEn
-                  ? 'Payment: via PayBox terminals (Batumi Parking / BPM section) or TBC/BoG banking apps.'
-                  : 'Как оплатить: в терминалах PayBox (раздел «Парковка Батуми» / BPM) или в приложениях TBC и Bank of Georgia.'}
+            <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04] flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-bold text-[#1D1D1F] flex items-center gap-2">
+                    <span>🌊</span> {isEn ? 'Batumi Parking' : 'Парковка в Батуми'}
+                  </h3>
+                  <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#E8FAF0] text-[#248A3D] border border-[#34C759]/20">
+                    {isEn ? 'Included with Fleet' : 'Оплачена нами'}
+                  </span>
+                </div>
+                <div className="space-y-3 text-xs text-[#48484A] leading-relaxed">
+                  <p>
+                    {isEn ? (
+                      <>
+                        <strong className="text-[#1D1D1F]">Municipal street parking is already paid:</strong> all marked street bays (white road markings) throughout Batumi are fully covered and paid by us for our entire rental fleet. You do <strong>not</strong> need to pay anything extra for municipal street parking!
+                      </>
+                    ) : (
+                      <>
+                        <strong className="text-[#1D1D1F]">Муниципальные парковки уже оплачены:</strong> все размеченные уличные карманы (белая разметка вдоль улиц) по всему Батуми для наших автомобилей <strong>уже оплачены нами</strong>. Вам дополнительно ничего оплачивать не нужно!
+                      </>
+                    )}
+                  </p>
+                  <p>
+                    {isEn ? (
+                      <>
+                        <strong className="text-[#1D1D1F]">Private barrier-gate lots:</strong> parking areas behind boom barriers (shopping malls, private commercial lots, hotels) are paid, and drivers pay them independently on-site upon entry/exit.
+                      </>
+                    ) : (
+                      <>
+                        <strong className="text-[#1D1D1F]">Парковки со шлагбаумами:</strong> стоянки под шлагбаумами (у торговых центров, отелей или на закрытых частных территориях) являются платными — их водитель оплачивает самостоятельно при въезде или выезде.
+                      </>
+                    )}
+                  </p>
+                </div>
+              </div>
+
+              {/* Street Attendants Notice */}
+              <div className="mt-4 p-3.5 bg-white rounded-xl border border-black/[0.06] text-xs">
+                <div className="font-bold text-[#1D1D1F] mb-1 flex items-center gap-1.5">
+                  <span>🪙</span> {isEn ? 'Street Parking Attendants' : 'Уличные парковщики в городе'}
+                </div>
+                <p className="text-[#6E6E73] leading-relaxed">
+                  {isEn
+                    ? 'In the city, you will often encounter street attendants (with vests/whistles) collecting cash, even on public municipal spots. While technically unofficial, a local custom has long developed not to dispute or argue with them: it is standard to give 1–2 GEL for directing you into a spot or helping you merge into traffic. It keeps things calm and saves your nerves.'
+                    : 'В городе (даже на муниципальных бесплатных для вас парковках) часто стоят уличные регулировщики со свистками и собирают деньги. Формально эта деятельность не является официальной, но в городе давно сложилась традиция не спорить и не конфликтовать с ними, а дать 1–2 лари за помощь при заезде или выезде. Спорить не стоит — это обычная местная специфика, которая сохранит ваше спокойствие.'}
+                </p>
               </div>
             </div>
 
-            {/* Tbilisi Parking */}
-            <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04]">
-              <h3 className="text-sm font-bold text-[#1D1D1F] mb-2 flex items-center gap-2">
-                <span>🏛️</span> {isEn ? 'Tbilisi Parking' : 'Парковка в Тбилиси'}
-              </h3>
-              <p className="text-xs text-[#6E6E73] leading-relaxed mb-3">
-                {isEn
-                  ? 'Tbilisi uses zonal hourly parking (Zones A, B, C) in the historic center and central avenues, costing 1 to 3 GEL per hour via the Tbilisi Parking mobile app.'
-                  : 'В центре Тбилиси действует зональная почасовая парковка (зоны A, B, C) стоимостью 1–3 лари в час через мобильное приложение Tbilisi Parking.'}
-              </p>
-              <div className="text-xs text-[#1D1D1F] font-semibold bg-white p-3 rounded-xl border border-black/[0.06]">
-                {isEn
-                  ? 'Outside central hourly zones, standard municipal subscription parking applies.'
-                  : 'За пределами центральных почасовых зон действует стандартный муниципальный абонемент.'}
+            {/* Tbilisi & Other Cities Parking */}
+            <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04] flex flex-col justify-between">
+              <div>
+                <h3 className="text-sm font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">
+                  <span>🏛️</span> {isEn ? 'Parking in Tbilisi & Other Cities' : 'Парковка в Тбилиси и других городах'}
+                </h3>
+                <div className="space-y-3 text-xs text-[#48484A] leading-relaxed">
+                  <p>
+                    {isEn ? (
+                      <>
+                        <strong className="text-[#1D1D1F]">Tbilisi Central Hourly Zones:</strong> in the center and main avenues (Zones A, B, C), parking costs 1–3 GEL per hour via the official <em>Tbilisi Parking</em> app.
+                      </>
+                    ) : (
+                      <>
+                        <strong className="text-[#1D1D1F]">Тбилиси (почасовые зоны):</strong> в историческом центре и на ключевых проспектах действует зональная почасовая оплата (зоны A, B, C: 1–3 лари в час через мобильное приложение <em>Tbilisi Parking</em>).
+                      </>
+                    )}
+                  </p>
+                  <p>
+                    {isEn ? (
+                      <>
+                        <strong className="text-[#1D1D1F]">Outside Hourly Zones:</strong> outside central zones in Tbilisi, standard municipal subscription rules apply.
+                      </>
+                    ) : (
+                      <>
+                        <strong className="text-[#1D1D1F]">Вне почасовых зон Тбилиси:</strong> за пределами зон A, B, C действует стандартный городской муниципальный абонемент.
+                      </>
+                    )}
+                  </p>
+                  <p>
+                    {isEn ? (
+                      <>
+                        <strong className="text-[#1D1D1F]">Kutaisi & Region:</strong> street parking in most parts of Kutaisi is free or municipal.
+                      </>
+                    ) : (
+                      <>
+                        <strong className="text-[#1D1D1F]">Кутаиси:</strong> на большинстве улиц города парковка бесплатная или муниципальная.
+                      </>
+                    )}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-4 p-3.5 bg-white rounded-xl border border-black/[0.06] text-xs text-[#1D1D1F]">
+                <span className="font-semibold text-[#0071E3] block mb-0.5">
+                  {isEn ? '📱 Official Tbilisi Parking App:' : '📱 Приложение для парковки в Тбилиси:'}
+                </span>
+                <span className="text-[#6E6E73] leading-relaxed block">
+                  {isEn
+                    ? 'Download "Tbilisi Parking" from App Store or Google Play to activate and pay hourly sessions with bank card.'
+                    : 'Скачайте приложение «Tbilisi Parking» в App Store или Google Play для быстрой почасовой оплаты картой.'}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Tow Truck Warning */}
-          <div className="bg-[#FFF5F5] border border-[#FF3B30]/25 rounded-2xl p-5">
-            <h3 className="text-sm font-bold text-[#FF3B30] mb-2 flex items-center gap-2">
-              <span>🚨</span> {isEn ? 'Immediate Towing Warning' : 'Внимание: моментальная эвакуация на штрафстоянку'}
-            </h3>
-            <p className="text-xs sm:text-sm text-[#1D1D1F] leading-relaxed mb-2">
-              {isEn
-                ? 'Never park in disabled spots (blue signage with wheelchair icon) or dedicated bus lanes (BUS LANE / yellow zigzag lines). Municipal tow trucks in Tbilisi and Batumi take vehicles within 3–5 minutes!'
-                : 'Никогда не паркуйтесь на местах для инвалидов (синяя разметка с пиктограммой коляски) и на автобусных полосах (BUS LANE / желтая зигзагообразная разметка). Эвакуаторы в Батуми и Тбилиси работают молниеносно — машину увозят за 3–5 минут!'}
-            </p>
-            <p className="text-xs text-[#FF3B30] font-bold">
-              {isEn
-                ? 'Towing fee + penalty starts from 150 GEL, plus time wasted recovering the vehicle.'
-                : 'Штраф за эвакуатор и стоянку начинается от 150 лари плюс потерянные полдня на возврат машины.'}
-            </p>
+          {/* Tow Truck Warning & Crucial Rules */}
+          <div className="bg-[#FFF5F5] border-2 border-[#FF3B30]/30 rounded-2xl p-5 sm:p-6 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <span className="text-2xl">🚨</span>
+              <div>
+                <h3 className="text-base sm:text-lg font-extrabold text-[#D70015]">
+                  {isEn
+                    ? 'Critical Warning: Immediate Towing, Impound Lots & Weekend Risk'
+                    : 'Важнейшее предупреждение: эвакуация, штрафстоянка и правила парковки'}
+                </h3>
+                <p className="text-xs text-[#6E6E73]">
+                  {isEn
+                    ? 'Please read carefully to avoid major financial and time losses'
+                    : 'Пожалуйста, прочитайте внимательно, чтобы избежать крупных финансовых потерь и сорванного отдыха'}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
+              {/* Bus Stops & Disabled */}
+              <div className="bg-white rounded-xl p-4 border border-[#FF3B30]/15 shadow-2xs space-y-1.5">
+                <div className="text-xs font-bold text-[#D70015] flex items-center gap-1.5">
+                  <span>⛔</span> {isEn ? 'Bus Stops — Highest Tow Priority' : 'Автобусные остановки — строжайший запрет'}
+                </div>
+                <p className="text-xs text-[#48484A] leading-relaxed">
+                  {isEn
+                    ? 'Never park in bus stops (BUS LANE, yellow zigzag road lines) or blue wheelchair disabled spaces. Towing services at bus stops operate with zero tolerance — vehicles are removed in 2–3 minutes flat!'
+                    : 'Категорически запрещено парковаться на автобусных остановках (желтая зигзагообразная разметка, полосы BUS LANE) и на синих местах для инвалидов. На автобусных остановках эвакуаторы работают особенно жестко и молниеносно — машину увозят буквально за 2–3 минуты!'}
+                </p>
+              </div>
+
+              {/* Herd Mentality Warning */}
+              <div className="bg-white rounded-xl p-4 border border-[#FF3B30]/15 shadow-2xs space-y-1.5">
+                <div className="text-xs font-bold text-[#D70015] flex items-center gap-1.5">
+                  <span>👥</span> {isEn ? '"Everyone is parked here" is a dangerous trap!' : 'Ловушка «все стоят, и я встал»'}
+                </div>
+                <p className="text-xs text-[#48484A] leading-relaxed">
+                  {isEn
+                    ? 'If you see many cars lined up in an unauthorized area, it does NOT mean it is permitted. Tow trucks in Georgia frequently arrive in teams and tow away every single vehicle in that line one by one in a single sweep.'
+                    : 'Если вы видите, что в неположенном месте припарковано много других автомобилей, это НЕ значит, что они припаркованы правильно. Эвакуаторы регулярно приезжают целой колонной и увозят сразу всех нарушителей разом за один приезд.'}
+                </p>
+              </div>
+
+              {/* Weekend Impound Risk */}
+              <div className="bg-white rounded-xl p-4 border border-[#FF3B30]/15 shadow-2xs space-y-1.5">
+                <div className="text-xs font-bold text-[#D70015] flex items-center gap-1.5">
+                  <span>⏳</span> {isEn ? 'Weekend Impound: Multi-day rental loss + costs' : 'Эвакуация на выходные — потеря времени и денег'}
+                </div>
+                <p className="text-xs text-[#48484A] leading-relaxed">
+                  {isEn
+                    ? 'If an improperly parked car is towed on Friday evening, impound facilities often do not release cars until Monday! In this scenario, you will be liable for the fine, towing/impound fees, AND all extra rental days over the weekend. Check signs carefully: properly parked cars are NEVER towed.'
+                    : 'Если машина уедет на штрафстоянку в пятницу вечером, забрать её часто удается только в понедельник! В этом случае водитель попадает не только на штраф и эвакуатор, но и на оплату лишних дней аренды автомобиля за все выходные. Паркуйтесь только по правилам — правильно припаркованную машину никто никуда не увезет.'}
+                </p>
+              </div>
+
+              {/* Always Stay Reachable */}
+              <div className="bg-white rounded-xl p-4 border border-[#FF3B30]/15 shadow-2xs space-y-1.5">
+                <div className="text-xs font-bold text-[#D70015] flex items-center gap-1.5">
+                  <span>📞</span> {isEn ? 'Always stay reachable on phone & WhatsApp!' : 'Всегда оставайтесь на связи (телефон и WhatsApp)'}
+                </div>
+                <p className="text-xs text-[#48484A] leading-relaxed">
+                  {isEn
+                    ? 'Please keep your phone active! When a parked car causes a minor obstruction, police often call the vehicle owner (our rental office) asking us to contact the driver to move it. If you answer our call, the situation is resolved in 2 minutes without towing or fines. But if you are unreachable, police immediately dispatch a tow truck after unsuccessful attempts.'
+                    : 'Пожалуйста, всегда будьте на связи! Когда машина кому-то мешает, полиция обычно сначала звонит владельцу (в наш прокат) и просит связаться с водителем, чтобы переставить авто. Мы сразу набираем вам. Если вы на связи — вопрос решается за 2 минуты без эвакуации и без штрафа. Но если до клиента невозможно дозвониться, после пары звонков полицейские вызывают эвакуатор на штрафстоянку.'}
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
