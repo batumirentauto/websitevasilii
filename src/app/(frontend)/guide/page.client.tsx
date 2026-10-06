@@ -739,99 +739,87 @@ export default function GuidePageClient() {
             <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04] flex flex-col justify-between">
               <div>
                 <h3 className="text-sm font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">
-                  <span>🏛️</span> {isEn ? 'Parking in Tbilisi & Kutaisi' : 'Парковка в Тбилиси и Кутаиси'}
+                  <span>🏛️</span> {isEn ? 'Parking in Tbilisi & Other Cities' : 'Парковка в Тбилиси и других городах'}
                 </h3>
                 <div className="space-y-3 text-xs text-[#48484A] leading-relaxed">
                   <p>
                     {isEn ? (
                       <>
-                        <strong className="text-[#1D1D1F]">Tbilisi Zonal Parking:</strong> in central districts and avenues (Zones A, B, C), parking costs 1–3 GEL per hour. Outside central hourly zones, standard municipal subscription applies.
+                        <strong className="text-[#1D1D1F]">Tbilisi Central Hourly Zones:</strong> in the historic center and main avenues (Zones A, B, C), parking costs 1–3 GEL per hour.
                       </>
                     ) : (
                       <>
-                        <strong className="text-[#1D1D1F]">Зональная парковка в Тбилиси:</strong> в историческом центре и на ключевых проспектах действует зональная почасовая оплата (зоны A, B, C: 1–3 лари в час). Вне почасовых зон действует стандартный муниципальный абонемент.
+                        <strong className="text-[#1D1D1F]">Тбилиси (почасовые зоны):</strong> в историческом центре и на ключевых проспектах действует зональная почасовая оплата (зоны A, B, C: 1–3 лари в час).
                       </>
                     )}
                   </p>
                   <p>
                     {isEn ? (
                       <>
-                        <strong className="text-[#1D1D1F]">Georgian Bank App (if available):</strong> if you have a Georgian bank account (Bank of Georgia or TBC), open the app (<em>Payments → Parking → Tbilisi</em>) to purchase a day, week, or monthly parking pass in just 2 clicks by entering the license plate.
+                        <strong className="text-[#1D1D1F]">Outside Hourly Zones:</strong> outside central zones in Tbilisi, standard municipal subscription rules apply.
                       </>
                     ) : (
                       <>
-                        <strong className="text-[#1D1D1F]">Через мобильный банк Грузии:</strong> если у вас есть карта местного банка (Bank of Georgia или TBC), в приложении (раздел <em>Платежи → Транспорт / Парковка → Tbilisi Parking</em>) можно в 2 клика купить абонемент на день или на неделю по госномеру авто.
+                        <strong className="text-[#1D1D1F]">Вне почасовых зон Тбилиси:</strong> за пределами зон A, B, C действует стандартный городской муниципальный абонемент.
                       </>
                     )}
                   </p>
                   <p>
                     {isEn ? (
                       <>
-                        <strong className="text-[#1D1D1F]">Parking in Kutaisi:</strong> In Kutaisi, parking is very relaxed. Along most city streets and neighborhoods, you can easily find <strong>free parking spots</strong>. Only a few central streets have municipal paid parking (very cheap: ~2 GEL/day, ~5 GEL/week), which can be paid in any street PayBox terminal (under <em>Kutaisi Parking / Parking Service</em>) with cash or via TBC/BoG bank apps.
+                        <strong className="text-[#1D1D1F]">Kutaisi & Region:</strong> street parking in most parts of Kutaisi is free or municipal.
                       </>
                     ) : (
                       <>
-                        <strong className="text-[#1D1D1F]">Парковка в Кутаиси:</strong> В Кутаиси всё устроено намного проще. На большинстве городских улиц и в кварталах можно совершенно спокойно найти <strong>бесплатные парковочные места</strong>. Платная муниципальная зона действует только на отдельных центральных улицах — тарифы символические (~2 ₾ в день, ~5 ₾ на неделю). Оплатить их можно в любом уличном терминале PayBox (раздел <em>Kutaisi Parking / Parking Service</em>) наличными или через приложение местного банка.
+                        <strong className="text-[#1D1D1F]">Кутаиси:</strong> на большинстве улиц города парковка бесплатная или муниципальная.
                       </>
                     )}
                   </p>
                 </div>
               </div>
 
-              {/* Tourist Payment Guide Box */}
               <div className="mt-4 p-3.5 bg-white rounded-xl border border-black/[0.06] text-xs text-[#1D1D1F]">
                 <div className="font-bold text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
-                  <span>💡</span> {isEn ? 'How to Pay in Tbilisi Without a Local Bank' : 'Как оплатить парковку в Тбилиси без местного банка'}
+                  <span>ℹ️</span> {isEn ? 'Important for Tourists in Tbilisi' : 'Важно для туристов в Тбилиси'}
                 </div>
-                <div className="text-[#6E6E73] leading-relaxed space-y-2">
+                <div className="text-[#6E6E73] leading-relaxed space-y-1.5">
                   <p>
                     {isEn ? (
                       <>
-                        <strong className="text-[#1D1D1F]">1. Street PayBox Terminals (Cash in GEL):</strong> Orange and blue terminals (TBC Pay, Express Pay) are located everywhere on streets, outside Spar/Nikora, and at metro stations. Switch language to English, go to <em>Transport / Parking → Tbilisi Parking</em>, enter vehicle plate number, and insert cash GEL. No local card or Georgian ID needed!
+                        <strong className="text-[#1D1D1F]">App limitation:</strong> In the <em>Tbilisi Parking</em> app, registration is only possible if you hold a <strong>Georgian personal ID</strong>. For international tourists without a local ID, the app will not work.
                       </>
                     ) : (
                       <>
-                        <strong className="text-[#1D1D1F]">1. Уличные терминалы PayBox (наличными в лари):</strong> Оранжевые и синие терминалы (TBC Pay, Express Pay) стоят буквально на каждом углу — у магазинов Spar, Nikora, аптек и метро. Переключите язык на русский, выберите <em>Транспорт / Парковка → Tbilisi Parking</em>, введите номер авто и внесите наличные лари. Местный банк и грузинский ID не нужны!
+                        <strong className="text-[#1D1D1F]">Нюанс приложения:</strong> В мобильном приложении <em>Tbilisi Parking</em> можно зарегистрироваться только при наличии <strong>грузинского личного номера (ID)</strong>. Туристам без местного ID это приложение не поможет.
                       </>
                     )}
                   </p>
                   <p>
                     {isEn ? (
                       <>
-                        <strong className="text-[#1D1D1F]">2. Official Website{' '}
-                          <a
-                            href="https://parking.tbilisi.gov.ge"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#0071E3] font-semibold underline hover:text-[#0051A8]"
-                          >
-                            parking.tbilisi.gov.ge
-                          </a>:
-                        </strong> Open in browser (Chrome/Safari) with auto-translate. Enter 3 details: <strong>parking zone number</strong> (from roadside sign), <strong>duration</strong> (hours), and <strong>car plate number</strong>, then pay by international bank card.
+                        <strong className="text-[#1D1D1F]">Website payment:</strong> You can pay online via the official municipal portal{' '}
+                        <a
+                          href="https://parking.tbilisi.gov.ge"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#0071E3] font-semibold underline hover:text-[#0051A8]"
+                        >
+                          parking.tbilisi.gov.ge
+                        </a>
+                        . The site is in Georgian, but you can easily translate it using your browser&apos;s auto-translator (Chrome or Safari). To pay, you need to enter 3 details: <strong>the parking zone number</strong> (displayed on the street parking sign), <strong>the parking duration</strong> (how long you want to park), and <strong>the vehicle plate number</strong>, then pay by bank card.
                       </>
                     ) : (
                       <>
-                        <strong className="text-[#1D1D1F]">2. Официальный сайт{' '}
-                          <a
-                            href="https://parking.tbilisi.gov.ge"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#0071E3] font-semibold underline hover:text-[#0051A8]"
-                          >
-                            parking.tbilisi.gov.ge
-                          </a>:
-                        </strong> Откройте сайт в браузере (Google Chrome или Safari с автопереводом). Укажите 3 параметра: <strong>номер парковки/зоны</strong> (со знака на улице), <strong>время стоянки</strong> и <strong>госномер авто</strong>, затем оплатите банковской картой.
-                      </>
-                    )}
-                  </p>
-                  <p>
-                    {isEn ? (
-                      <>
-                        <strong className="text-[#1D1D1F]">3. Note on "Tbilisi Parking" App:</strong> The mobile app requires a Georgian Personal ID number to register, so international tourists without local ID will not be able to use it.
-                      </>
-                    ) : (
-                      <>
-                        <strong className="text-[#1D1D1F]">3. Нюанс мобильного приложения:</strong> В приложении <em>Tbilisi Parking</em> регистрация требует обязательный грузинский личный номер (ID/ВНЖ), поэтому туристам без местного ID оно не подойдет.
+                        <strong className="text-[#1D1D1F]">Оплата через сайт:</strong> Оплатить парковку можно онлайн на официальном портале{' '}
+                        <a
+                          href="https://parking.tbilisi.gov.ge"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#0071E3] font-semibold underline hover:text-[#0051A8]"
+                        >
+                          parking.tbilisi.gov.ge
+                        </a>
+                        . Сайт работает на грузинском языке, но страницу можно легко перевести встроенным автопереводчиком браузера (в Google Chrome, Safari или Яндекс). Для оплаты нужно указать три параметра: <strong>номер парковки</strong> (указан на знаке/табличке у дороги), <strong>время парковки</strong> (на сколько вы хотите оставить машину) и <strong>госномер автомобиля</strong>, после чего оплатить банковской картой.
                       </>
                     )}
                   </p>
