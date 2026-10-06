@@ -140,8 +140,8 @@ export default function GuidePageClient() {
             </p>
             <p className="text-sm sm:text-base font-bold text-[#FF3B30] leading-relaxed">
               {isEn
-                ? '⚡ Cascading fines: These sectors are often chained back-to-back without gaps! If you cruise with excessive speed, you will trigger multiple sectors in a row, receiving 3–4 separate fines (50–100 GEL each) within just 5 to 7 minutes of driving!'
-                : '⚡ Каскадные штрафы: Такие сектора часто установлены цепочкой друг за другом без перерывов! Если ехать быстрее разрешенного, вы нарушите правила на каждом отрезке пути и получите 3–4 штрафа подряд (по 50–100 лари каждый) всего за 5–7 минут быстрой езды!'}
+                ? '⚡ Cascading fines: These sectors are often chained back-to-back without gaps! If you cruise with excessive speed, you will trigger multiple sectors in a row, receiving 3–4 separate fines (50–300 GEL each) within just 5 to 7 minutes of driving!'
+                : '⚡ Каскадные штрафы: Такие сектора часто установлены цепочкой друг за другом без перерывов! Если ехать быстрее разрешенного, вы нарушите правила на каждом отрезке пути и получите 3–4 штрафа подряд (по 50–300 лари каждый) всего за 5–7 минут быстрой езды!'}
             </p>
           </div>
 
@@ -355,12 +355,19 @@ export default function GuidePageClient() {
             <p className="flex items-start gap-2">
               <span className="text-[#FF9500] font-bold">⚠️</span>
               <span>
-                <strong>{isEn ? 'Excess > 40 km/h:' : 'Превышение более чем на +40 км/ч:'}</strong>{' '}
-                {isEn ? 'Fine of 150 GEL.' : 'Штраф 150 лари.'}
+                <strong>{isEn ? 'Excess 15–40 km/h:' : 'Превышение на 15–40 км/ч:'}</strong>{' '}
+                {isEn ? '50–100 GEL (50 GEL up to +30 km/h, 100 GEL for +31–40 km/h).' : '50–100 лари (50 лари при превышении до +30 км/ч, 100 лари при +31–40 км/ч).'}
               </span>
             </p>
             <p className="flex items-start gap-2">
               <span className="text-[#FF3B30] font-bold">🚨</span>
+              <span>
+                <strong>{isEn ? 'Excess > 40–50 km/h:' : 'Превышение на 40+ км/ч (и свыше 50 км/ч):'}</strong>{' '}
+                {isEn ? 'Fine of 150–300 GEL (up to 300 GEL for 50+ km/h).' : 'Штраф от 150 до 300 лари (при превышении более чем на 50 км/ч — 300 лари).'}
+              </span>
+            </p>
+            <p className="flex items-start gap-2">
+              <span className="text-[#FF3B30] font-bold">🛑</span>
               <span>
                 <strong>{isEn ? 'Dangerous situation:' : 'Создание аварийной обстановки:'}</strong>{' '}
                 {isEn ? 'Fine of 250 GEL.' : 'Штраф 250 лари.'}
