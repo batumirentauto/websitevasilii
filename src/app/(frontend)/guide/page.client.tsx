@@ -396,8 +396,8 @@ export default function GuidePageClient() {
 
           <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed mb-6">
             {isEn
-              ? 'In Georgia, the fastest and most convenient portal to check administrative protocols and video fines is protocols.ge. It directly connects to the Ministry of Internal Affairs database, showing all protocols, photographic evidence, exact timestamps, and payment amounts with discount.'
-              : 'В Грузии удобнее и быстрее всего проверять видеоштрафы и протоколы патрульной полиции на специализированном государственном портале protocols.ge (также база доступна на police.ge). Здесь собраны все активные протоколы с фотографиями фиксации, временем, местом и расчетом суммы.'}
+              ? 'In Georgia, the fastest and most convenient portal to check administrative protocols and video fines is protocols.ge (also available via police.ge). Directly on the site, you can view the fine itself along with attached photo and video evidence, verify the exact location and timestamp, and immediately pay online with a bank card with an automatic 20% discount.'
+              : 'В Грузии удобнее и быстрее всего проверять видеоштрафы и протоколы патрульной полиции на специализированном государственном портале protocols.ge (также база доступна на police.ge). Прямо на сайте можно посмотреть сам штраф, привязанные к нему фото- и видеоматериалы нарушения, точное время и место, а также сразу оплатить банковской картой со скидкой 20%.'}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -431,15 +431,15 @@ export default function GuidePageClient() {
 
             <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04]">
               <span className="w-7 h-7 rounded-full bg-[#34C759] text-white text-xs font-bold flex items-center justify-center mb-3">
-                %
+                💳
               </span>
               <h3 className="text-sm font-bold text-[#1D1D1F] mb-1">
-                {isEn ? '20% Discount within 10 days' : 'Скидка 20% в первые 10 дней'}
+                {isEn ? 'View & Pay by Card (-20%)' : 'Просмотр и оплата картой (-20%)'}
               </h3>
               <p className="text-xs text-[#6E6E73] leading-relaxed">
                 {isEn
-                  ? 'Paying within 10 days grants an automatic 20% government discount (e.g., a 50 GEL fine becomes 40 GEL). Payment can be completed directly online.'
-                  : 'При оплате штрафа в течение первых 10 дней государство дает 20% скидку (например, штраф 50 лари оплачивается как 40 лари)!'}
+                  ? 'View the fine details, inspect the attached photo and video footage, and pay directly on the site with a bank card. During the first 10 days, an automatic 20% discount applies!'
+                  : 'Смотрите сам штраф, привязанные фото- и видеоматериалы и оплачивайте прямо на сайте банковской картой. В первые 10 дней действует скидка 20% (например, 50 лари оплачивается как 40 лари)!'}
               </p>
             </div>
           </div>
