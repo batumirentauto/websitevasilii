@@ -806,7 +806,7 @@ export default function GuidePageClient() {
                         >
                           parking.tbilisi.gov.ge
                         </a>
-                        . The site is in Georgian, but you can easily use your browser&apos;s automatic translation (Google Chrome or Safari translation) to enter the vehicle plate number and pay by bank card.
+                        . The site is in Georgian, but you can easily translate it using your browser&apos;s auto-translator (Chrome or Safari). To pay, you need to enter 3 details: <strong>the parking zone number</strong> (displayed on the street parking sign), <strong>the parking duration</strong> (how long you want to park), and <strong>the vehicle plate number</strong>, then pay by bank card.
                       </>
                     ) : (
                       <>
@@ -819,7 +819,7 @@ export default function GuidePageClient() {
                         >
                           parking.tbilisi.gov.ge
                         </a>
-                        . Сайт работает на грузинском языке, но страницу можно легко перевести встроенным автопереводчиком браузера (в Google Chrome, Safari или Яндекс), ввести госномер авто и оплатить банковской картой.
+                        . Сайт работает на грузинском языке, но страницу можно легко перевести встроенным автопереводчиком браузера (в Google Chrome, Safari или Яндекс). Для оплаты нужно указать три параметра: <strong>номер парковки</strong> (указан на знаке/табличке у дороги), <strong>время парковки</strong> (на сколько вы хотите оставить машину) и <strong>госномер автомобиля</strong>, после чего оплатить банковской картой.
                       </>
                     )}
                   </p>
