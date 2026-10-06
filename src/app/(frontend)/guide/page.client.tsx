@@ -735,11 +735,11 @@ export default function GuidePageClient() {
               </div>
             </div>
 
-            {/* Tbilisi & Other Cities Parking */}
+            {/* Tbilisi Parking */}
             <div className="bg-[#F5F5F7] p-5 rounded-2xl border border-black/[0.04] flex flex-col justify-between">
               <div>
                 <h3 className="text-sm font-bold text-[#1D1D1F] mb-3 flex items-center gap-2">
-                  <span>🏛️</span> {isEn ? 'Parking in Tbilisi & Other Cities' : 'Парковка в Тбилиси и других городах'}
+                  <span>🏛️</span> {isEn ? 'Parking in Tbilisi' : 'Парковка в Тбилиси'}
                 </h3>
                 <div className="space-y-3 text-xs text-[#48484A] leading-relaxed">
                   <p>
@@ -761,17 +761,6 @@ export default function GuidePageClient() {
                     ) : (
                       <>
                         <strong className="text-[#1D1D1F]">Вне почасовых зон Тбилиси:</strong> за пределами зон A, B, C действует стандартный городской муниципальный абонемент.
-                      </>
-                    )}
-                  </p>
-                  <p>
-                    {isEn ? (
-                      <>
-                        <strong className="text-[#1D1D1F]">Kutaisi & Region:</strong> street parking in most parts of Kutaisi is free or municipal.
-                      </>
-                    ) : (
-                      <>
-                        <strong className="text-[#1D1D1F]">Кутаиси:</strong> на большинстве улиц города парковка бесплатная или муниципальная.
                       </>
                     )}
                   </p>
@@ -824,6 +813,69 @@ export default function GuidePageClient() {
                     )}
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Kutaisi Parking Block */}
+          <div className="bg-[#F5F5F7] p-5 sm:p-6 rounded-2xl border border-black/[0.04] mb-6">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm sm:text-base font-bold text-[#1D1D1F] flex items-center gap-2">
+                <span>🏰</span> {isEn ? 'Parking in Kutaisi' : 'Парковка в Кутаиси'}
+              </h3>
+              <span className="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-[#E8FAF0] text-[#248A3D] border border-[#34C759]/20">
+                {isEn ? 'Mostly Free' : 'В основном бесплатно'}
+              </span>
+            </div>
+
+            <div className="space-y-2 text-xs sm:text-sm text-[#48484A] leading-relaxed mb-4">
+              <p>
+                {isEn ? (
+                  <>
+                    <strong className="text-[#1D1D1F]">Easy free parking:</strong> In Kutaisi, parking is significantly more relaxed than in Tbilisi or Batumi. Along the vast majority of streets, residential neighborhoods, and near most hotels, you can easily find <strong>free parking spots</strong> without paying municipal fees.
+                  </>
+                ) : (
+                  <>
+                    <strong className="text-[#1D1D1F]">Легко найти бесплатные места:</strong> В Кутаиси ситуация с парковкой намного проще и спокойнее, чем в Тбилиси или Батуми. На подавляющем большинстве городских улиц, в кварталах и у отелей парковка <strong>абсолютно бесплатная</strong> — можно спокойно оставлять машину без оплаты.
+                  </>
+                )}
+              </p>
+              <p>
+                {isEn ? (
+                  <>
+                    <strong className="text-[#1D1D1F]">Central paid zones & low tariffs:</strong> Municipal paid parking applies only on key central streets (around the Colchis Fountain, central square, and bazaar). Tariffs are very affordable: <strong>~2 GEL per day</strong> or <strong>~5 GEL for 1 week</strong>.
+                  </>
+                ) : (
+                  <>
+                    <strong className="text-[#1D1D1F]">Где действует платная парковка и тарифы:</strong> Платная муниципальная разметка есть только на ключевых центральных улицах (район Колхидского фонтана, центральной площади, рынка). Тарифы символические: <strong>2 ₾ в день</strong> или <strong>5 ₾ на неделю</strong>.
+                  </>
+                )}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              {/* Option 1: Bank app */}
+              <div className="bg-white p-3.5 rounded-xl border border-black/[0.06] text-xs">
+                <div className="font-bold text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
+                  <span>📱</span> {isEn ? '1. Via Georgian Bank App (Day / Week Pass)' : '1. Через банковское приложение (на день или неделю)'}
+                </div>
+                <p className="text-[#6E6E73] leading-relaxed">
+                  {isEn
+                    ? 'If you have an account with Bank of Georgia or TBC Bank, open the mobile app: go to Payments → Transport / Parking → "Kutaisi Parking" (Parking Service), enter the car plate number, and pay for 1 day (2 GEL) or 1 week (5 GEL) in two clicks.'
+                    : 'Если у вас есть карта грузинского банка (Bank of Georgia или TBC), откройте приложение: раздел «Платежи» → «Транспорт / Парковка» → «Kutaisi Parking» (Parking Service), введите номер машины и оплатите парковку на день (2 ₾) или на неделю (5 ₾) в пару кликов.'}
+                </p>
+              </div>
+
+              {/* Option 2: PayBox terminals for tourists */}
+              <div className="bg-white p-3.5 rounded-xl border border-black/[0.06] text-xs">
+                <div className="font-bold text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
+                  <span>🪙</span> {isEn ? '2. Street PayBox Terminals (No local bank needed)' : '2. Уличные терминалы PayBox (без местного банка)'}
+                </div>
+                <p className="text-[#6E6E73] leading-relaxed">
+                  {isEn
+                    ? 'Tourists without a local bank account can pay cash in GEL at any orange or blue PayBox / TBC Pay terminal on the street. Select "Kutaisi Parking", enter the license plate, and insert cash GEL. No Georgian ID or local account needed!'
+                    : 'Если у вас нет счета в местном банке, оплатить можно наличными через любой оранжевый или синий терминал PayBox / TBC Pay на улицах города. Выберите «Парковка Кутаиси», введите номер авто и внесите наличные лари. Местный банк и грузинский ID не требуются!'}
+                </p>
               </div>
             </div>
           </div>
