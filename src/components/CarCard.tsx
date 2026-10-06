@@ -60,7 +60,7 @@ export function formatDrive(drive: string, lang: string): string {
 }
 
 export function formatConsumption(consumption: string, lang: string): string {
-  if (lang === 'ru') {
+  if (lang === 'ru' || lang === 'uk') {
     return consumption.replace(/L\/100km/i, 'л / 100 км').replace(/l\/100km/i, 'л / 100 км')
   }
   return consumption
@@ -70,6 +70,10 @@ export function formatSeats(seats: number, lang: string, fallback: string): stri
   if (lang === 'ru') {
     if (seats >= 2 && seats <= 4) return `${seats} места`
     return `${seats} мест`
+  }
+  if (lang === 'uk') {
+    if (seats >= 2 && seats <= 4) return `${seats} місця`
+    return `${seats} місць`
   }
   return `${seats} ${fallback}`
 }
@@ -247,7 +251,12 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               </span>
             )}
             <span className="text-[11px] font-semibold text-[#248A3D] bg-[#E8FAF0] px-2.5 py-1 rounded-md border border-[#34C759]/20" title="Возврат в Батуми, Тбилиси или Кутаиси по согласованию">
-              ⇄ {lang === 'ru' ? 'Возврат в другом городе (по запросу)' : 'Intercity return (on request)'}
+              ⇄{' '}
+              {lang === 'ru'
+                ? 'Возврат в другом городе (по запросу)'
+                : lang === 'uk'
+                ? 'Повернення в іншому місті (за запитом)'
+                : 'Intercity return (on request)'}
             </span>
           </div>
         </div>
@@ -319,7 +328,13 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               type="text"
               value={datesInput}
               onChange={(e) => setDatesInput(e.target.value)}
-              placeholder={isEn ? "Your dates (e.g. 10-15 Oct)..." : "Ваши даты (например: 10-15 октября)..."}
+              placeholder={
+                lang === 'ru'
+                  ? 'Ваши даты (например: 10-15 октября)...'
+                  : lang === 'uk'
+                  ? 'Ваші дати (наприклад: 10-15 жовтня)...'
+                  : 'Your dates (e.g. 10-15 Oct)...'
+              }
               className="w-full bg-transparent text-[11px] font-medium text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none"
             />
           </div>
@@ -331,7 +346,11 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
           <div className="flex items-center justify-between">
             <div>
               <span className="text-[10px] text-[#86868B] uppercase tracking-wider block font-semibold mb-0.5">
-                {lang === 'ru' ? 'Стоимость за сутки' : 'Daily rate'}
+                {lang === 'ru'
+                  ? 'Стоимость за сутки'
+                  : lang === 'uk'
+                  ? 'Вартість за добу'
+                  : 'Daily rate'}
               </span>
               <div className="flex items-baseline gap-1.5">
                 <span className="text-2xl font-black text-[#1D1D1F] tracking-tight">
@@ -621,13 +640,24 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
             {/* Modal Dates Input */}
             <div className="bg-[#F5F5F7] p-3.5 rounded-2xl border border-black/[0.05] mb-4">
               <label className="block text-xs font-bold text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
-                <span>📅</span> {isEn ? "Specify your travel dates:" : "Укажите даты поездки:"}
+                <span>📅</span>{' '}
+                {lang === 'ru'
+                  ? 'Укажите даты поездки:'
+                  : lang === 'uk'
+                  ? 'Вкажіть дати поїздки:'
+                  : 'Specify your travel dates:'}
               </label>
               <input
                 type="text"
                 value={datesInput}
                 onChange={(e) => setDatesInput(e.target.value)}
-                placeholder={isEn ? "e.g. 10-15 October, 5 days..." : "Например: 10-15 октября, 5 дней..."}
+                placeholder={
+                  lang === 'ru'
+                    ? 'Например: 10-15 октября, 5 дней...'
+                    : lang === 'uk'
+                    ? 'Наприклад: 10-15 жовтня, 5 днів...'
+                    : 'e.g. 10-15 October, 5 days...'
+                }
                 className="w-full bg-white px-3.5 py-2.5 rounded-xl border border-black/[0.08] text-xs font-semibold text-[#1D1D1F] placeholder:text-[#86868B] focus:outline-none focus:ring-2 focus:ring-[#0088CC]"
               />
             </div>

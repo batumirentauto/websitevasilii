@@ -8,6 +8,7 @@ import { TRANSLATIONS } from '@/context/translations'
 
 const LANG_OPTIONS: { code: Lang; label: string; flag: string }[] = [
   { code: 'ru', label: 'Русский', flag: '🇷🇺' },
+  { code: 'uk', label: 'Українська', flag: '🇺🇦' },
   { code: 'en', label: 'English', flag: '🇬🇧' },
   { code: 'ar', label: 'العربية', flag: '🇦🇪' },
   { code: 'fa', label: 'فارسی', flag: '🇮🇷' },
@@ -152,7 +153,9 @@ export const Header: React.FC = () => {
           {/* Direct WhatsApp Call button */}
           {(() => {
             let rawHeaderMsg = 'Здравствуйте! Хочу уточнить по поводу аренды авто в Грузии.'
-            if (lang === 'en') {
+            if (lang === 'uk') {
+              rawHeaderMsg = 'Вітаю! Хочу уточнити щодо оренди авто в Грузії.'
+            } else if (lang === 'en') {
               rawHeaderMsg = 'Hello! I would like to inquire about car rental in Georgia.'
             } else if (lang === 'de') {
               rawHeaderMsg = 'Hallo! Ich interessiere mich für eine Autovermietung in Georgien.'

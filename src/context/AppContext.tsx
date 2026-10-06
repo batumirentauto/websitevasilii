@@ -5,7 +5,7 @@ import { TRANSLATIONS } from './translations'
 
 export type Currency = 'GEL' | 'USD' | 'EUR'
 export type City = 'batumi' | 'tbilisi' | 'kutaisi'
-export type Lang = 'ru' | 'en' | 'ar' | 'fa' | 'pl' | 'de' | 'it' | 'fr'
+export type Lang = 'ru' | 'en' | 'uk' | 'ar' | 'fa' | 'pl' | 'de' | 'it' | 'fr'
 
 // Currency exchange rates relative to 1 GEL
 // 1 USD = 2.60 GEL
@@ -27,13 +27,17 @@ export const CITIES_DATA: Record<
   {
     nameRu: string
     nameEn: string
+    nameUk: string
     baseAddressRu: string
     baseAddressEn: string
+    baseAddressUk: string
     landmarksRu: string
     landmarksEn: string
+    landmarksUk: string
     pickupType: 'base' | 'airport'
     deliveryNoteRu: string
     deliveryNoteEn: string
+    deliveryNoteUk: string
     telegram: string
     yandexMapUrl?: string
     googleMapUrl?: string
@@ -42,13 +46,17 @@ export const CITIES_DATA: Record<
   batumi: {
     nameRu: 'Батуми',
     nameEn: 'Batumi',
+    nameUk: 'Батумі',
     baseAddressRu: 'ул. Мамия Варшанидзе 154',
     baseAddressEn: '154 Mamiya Varshanidze St, Batumi',
+    baseAddressUk: 'вул. Мамія Варшанідзе 154',
     landmarksRu: 'Ориентир: Adjara Detailing, вход на территорию напротив здания Apolo\nКоординаты: 41.6239948640617, 41.63840215223446',
     landmarksEn: 'Landmark: Adjara Detailing, entrance opposite the Apolo building\nCoordinates: 41.6239948640617, 41.63840215223446',
+    landmarksUk: 'Орієнтир: Adjara Detailing, вхід на територію навпроти будівлі Apolo\nКоординати: 41.6239948640617, 41.63840215223446',
     pickupType: 'base',
     deliveryNoteRu: 'Выдача с базы бесплатно. Бесплатная подача в аэропорт Батуми / по городу — по запросу.',
     deliveryNoteEn: 'Free pick-up at our base. Free Batumi Airport / city delivery on request.',
+    deliveryNoteUk: 'Видача з бази безкоштовно. Безкоштовна подача в аеропорт Батумі / по місту — за запитом.',
     telegram: 'rentcarvasilii',
     yandexMapUrl: 'https://yandex.ru/maps/?text=Batumi+Varshanidze+154',
     googleMapUrl: 'https://maps.app.goo.gl/paKrzJftPzEZDA1G7',
@@ -56,13 +64,17 @@ export const CITIES_DATA: Record<
   tbilisi: {
     nameRu: 'Тбилиси',
     nameEn: 'Tbilisi',
+    nameUk: 'Тбілісі',
     baseAddressRu: '3-й микрорайон Нуцубидзе, 4-й квартал',
     baseAddressEn: 'Nutsubidze 3rd Microdistrict, 4th Quarter, Tbilisi',
+    baseAddressUk: '3-й мікрорайон Нуцубідзе, 4-й квартал',
     landmarksRu: 'Координаты: 41.730792, 44.735812',
     landmarksEn: 'Coordinates: 41.730792, 44.735812',
+    landmarksUk: 'Координати: 41.730792, 44.735812',
     pickupType: 'base',
     deliveryNoteRu: 'Выдача с базы бесплатно. Доставка в аэропорт Тбилиси (TBS) / к отелю — по запросу. Стоимость 30 ₾ днем и 50 ₾ ночью.',
     deliveryNoteEn: 'Free pick-up at our base. Tbilisi Airport (TBS) / hotel delivery on request (30 ₾ daytime, 50 ₾ nighttime).',
+    deliveryNoteUk: 'Видача з бази безкоштовно. Доставка в аеропорт Тбілісі (TBS) / до готелю — за запитом. Вартість 30 ₾ вдень і 50 ₾ вночі.',
     telegram: 'bicho_car_rental_tbilisi',
     yandexMapUrl: 'https://yandex.ru/maps/?whatshere%5Bzoom%5D=16&whatshere%5Bpoint%5D=44.735812%2C41.730792',
     googleMapUrl: 'https://maps.google.com/?q=41.730792,44.735812',
@@ -70,13 +82,17 @@ export const CITIES_DATA: Record<
   kutaisi: {
     nameRu: 'Кутаиси',
     nameEn: 'Kutaisi',
+    nameUk: 'Кутаїсі',
     baseAddressRu: 'Международный Аэропорт Кутаиси (KUT)',
     baseAddressEn: 'Kutaisi International Airport (KUT)',
+    baseAddressUk: 'Міжнародний Аеропорт Кутаїсі (KUT)',
     landmarksRu: 'Встречаем у терминала прилёта круглосуточно\nКоординаты: 42.1820426721349, 42.465328413138685',
     landmarksEn: 'Direct meet & greet outside arrivals terminal 24/7\nCoordinates: 42.1820426721349, 42.465328413138685',
+    landmarksUk: 'Зустрічаємо біля терміналу прибуття цілодобово\nКоординати: 42.1820426721349, 42.465328413138685',
     pickupType: 'airport',
     deliveryNoteRu: 'Базовая выдача прямо в аэропорту Кутаиси к вашему рейсу 24 часа в сутки. Доставка в город 30 ₾.',
     deliveryNoteEn: 'Direct handover right at Kutaisi Airport terminal to your flight 24/7. City delivery 30 ₾.',
+    deliveryNoteUk: 'Базова видача прямо в аеропорту Кутаїсі до вашого рейсу 24 години на добу. Доставка в місто 30 ₾.',
     telegram: 'kutaisi_rent_car_vasilii',
     yandexMapUrl: 'https://yandex.com.ge/maps/-/CXaqy-9K',
     googleMapUrl: 'https://maps.google.com/?q=42.1820426721349,42.465328413138685',
@@ -123,6 +139,15 @@ export function getTierLabel(tier: DurationTier, lang: Lang, short = false): str
     if (short) return tier.label.replace(' дня', ' дн').replace(' дней', ' дн')
     return tier.label
   }
+  if (lang === 'uk') {
+    if (short) return tier.label.replace(' дня', ' дн').replace(' дней', ' дн')
+    if (tier.id === '1-2') return '1–2 дні'
+    if (tier.id === '3-5') return '3–5 днів'
+    if (tier.id === '6-13') return '6–13 днів'
+    if (tier.id === '14-29') return '14–29 днів'
+    if (tier.id === '30+') return 'від 30 днів'
+    return tier.label
+  }
   if (lang === 'de') {
     const dayWord = short ? 'T.' : 'Tage'
     return `${tier.id.replace('-', '–')} ${dayWord}`
@@ -157,25 +182,33 @@ export function getTierLabel(tier: DurationTier, lang: Lang, short = false): str
 export function getCityName(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
-  return lang === 'ru' ? city.nameRu : city.nameEn
+  if (lang === 'ru') return city.nameRu
+  if (lang === 'uk') return city.nameUk
+  return city.nameEn
 }
 
 export function getCityAddress(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
-  return lang === 'ru' ? city.baseAddressRu : city.baseAddressEn
+  if (lang === 'ru') return city.baseAddressRu
+  if (lang === 'uk') return city.baseAddressUk
+  return city.baseAddressEn
 }
 
 export function getCityLandmarks(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
-  return lang === 'ru' ? city.landmarksRu : city.landmarksEn
+  if (lang === 'ru') return city.landmarksRu
+  if (lang === 'uk') return city.landmarksUk
+  return city.landmarksEn
 }
 
 export function getCityDeliveryNote(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
-  return lang === 'ru' ? city.deliveryNoteRu : city.deliveryNoteEn
+  if (lang === 'ru') return city.deliveryNoteRu
+  if (lang === 'uk') return city.deliveryNoteUk
+  return city.deliveryNoteEn
 }
 
 interface AppContextType {
@@ -220,7 +253,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
         // 1. Language from URL (?lang=... or ?l=...)
         const urlLang = (params.get('lang') || params.get('l'))?.toLowerCase() as Lang
-        const validLangs: Lang[] = ['ru', 'en', 'ar', 'fa', 'pl', 'de', 'it', 'fr']
+        const validLangs: Lang[] = ['ru', 'en', 'uk', 'ar', 'fa', 'pl', 'de', 'it', 'fr']
         if (urlLang && validLangs.includes(urlLang)) {
           setLangState(urlLang)
           localStorage.setItem('vasilii_lang', urlLang)
@@ -348,7 +381,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const dateStr = dates && dates.trim() ? dates.trim() : '[ДАТА]'
 
     let messageText = `Здравствуйте! Интересует ${carName} на даты: ${dateStr} в городе ${cityName}. Автомобиль свободен?`
-    if (lang === 'en') {
+    if (lang === 'uk') {
+      messageText = `Вітаю! Цікавить ${carName} на дати: ${dateStr} у місті ${cityName}. Автомобіль вільний?`
+    } else if (lang === 'en') {
       messageText = `Hello! Interested in ${carName} for dates: ${dateStr} in ${cityName}. Is the car available?`
     } else if (lang === 'de') {
       messageText = `Hallo! Interessiert am ${carName} für Termine: ${dateStr} in ${cityName}. Ist der Wagen frei?`
