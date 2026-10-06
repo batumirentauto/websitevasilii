@@ -983,8 +983,8 @@ export default function GuidePageClient() {
               </p>
               <div className="text-xs font-semibold text-[#1D1D1F] bg-white p-3 rounded-xl border border-black/[0.06]">
                 {isEn
-                  ? 'The fuel type is also indicated on the sticker inside the fuel filler flap.'
-                  : 'Также напоминание с точным типом топлива наклеено на внутренней стороне лючка бензобака.'}
+                  ? 'ℹ️ Always check the required fuel type directly with the manager when receiving the vehicle.'
+                  : 'ℹ️ Точный вид топлива всегда уточняйте непосредственно у менеджера при получении автомобиля.'}
               </div>
             </div>
 
