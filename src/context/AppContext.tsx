@@ -5,7 +5,7 @@ import { TRANSLATIONS } from './translations'
 
 export type Currency = 'GEL' | 'USD' | 'EUR'
 export type City = 'batumi' | 'tbilisi' | 'kutaisi'
-export type Lang = 'ru' | 'en' | 'uk' | 'ar' | 'fa' | 'pl' | 'de' | 'it' | 'fr'
+export type Lang = 'ru' | 'en' | 'ua' | 'ar' | 'fa' | 'pl' | 'de' | 'it' | 'fr'
 
 // Currency exchange rates relative to 1 GEL
 // 1 USD = 2.60 GEL
@@ -139,7 +139,7 @@ export function getTierLabel(tier: DurationTier, lang: Lang, short = false): str
     if (short) return tier.label.replace(' дня', ' дн').replace(' дней', ' дн')
     return tier.label
   }
-  if (lang === 'uk') {
+  if (lang === 'ua') {
     if (short) return tier.label.replace(' дня', ' дн').replace(' дней', ' дн')
     if (tier.id === '1-2') return '1–2 дні'
     if (tier.id === '3-5') return '3–5 днів'
@@ -183,7 +183,7 @@ export function getCityName(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
   if (lang === 'ru') return city.nameRu
-  if (lang === 'uk') return city.nameUk
+  if (lang === 'ua') return city.nameUk
   return city.nameEn
 }
 
@@ -191,7 +191,7 @@ export function getCityAddress(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
   if (lang === 'ru') return city.baseAddressRu
-  if (lang === 'uk') return city.baseAddressUk
+  if (lang === 'ua') return city.baseAddressUk
   return city.baseAddressEn
 }
 
@@ -199,7 +199,7 @@ export function getCityLandmarks(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
   if (lang === 'ru') return city.landmarksRu
-  if (lang === 'uk') return city.landmarksUk
+  if (lang === 'ua') return city.landmarksUk
   return city.landmarksEn
 }
 
@@ -207,7 +207,7 @@ export function getCityDeliveryNote(cityKey: City, lang: Lang): string {
   const city = CITIES_DATA[cityKey]
   if (!city) return ''
   if (lang === 'ru') return city.deliveryNoteRu
-  if (lang === 'uk') return city.deliveryNoteUk
+  if (lang === 'ua') return city.deliveryNoteUk
   return city.deliveryNoteEn
 }
 
@@ -252,18 +252,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const params = new URLSearchParams(window.location.search)
 
         // 1. Language from URL (?lang=... or ?l=...)
-        const urlLang = (params.get('lang') || params.get('l'))?.toLowerCase() as Lang
-        const validLangs: Lang[] = ['ru', 'en', 'uk', 'ar', 'fa', 'pl', 'de', 'it', 'fr']
+        const rawUrlLang = (params.get('lang') || params.get('l'))?.toLowerCase()
+        const urlLang = (rawUrlLang === 'uk' ? 'ua' : rawUrlLang) as Lang
+        const validLangs: Lang[] = ['ru', 'en', 'ua', 'ar', 'fa', 'pl', 'de', 'it', 'fr']
         if (urlLang && validLangs.includes(urlLang)) {
           setLangState(urlLang)
           localStorage.setItem('vasilii_lang', urlLang)
-          document.documentElement.lang = urlLang
+          document.documentElement.lang = urlLang === 'ua' ? 'uk' : urlLang
           document.documentElement.dir = urlLang === 'ar' || urlLang === 'fa' ? 'rtl' : 'ltr'
         } else {
-          const savedLang = localStorage.getItem('vasilii_lang') as Lang
+          const rawSavedLang = localStorage.getItem('vasilii_lang')
+          const savedLang = (rawSavedLang === 'uk' ? 'ua' : rawSavedLang) as Lang
           if (savedLang && validLangs.includes(savedLang)) {
             setLangState(savedLang)
-            document.documentElement.lang = savedLang
+            document.documentElement.lang = savedLang === 'ua' ? 'uk' : savedLang
             document.documentElement.dir = savedLang === 'ar' || savedLang === 'fa' ? 'rtl' : 'ltr'
           }
         }
@@ -381,7 +383,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const dateStr = dates && dates.trim() ? dates.trim() : '[ДАТА]'
 
     let messageText = `Здравствуйте! Интересует ${carName} на даты: ${dateStr} в городе ${cityName}. Автомобиль свободен?`
-    if (lang === 'uk') {
+    if (lang === 'ua') {
       messageText = `Вітаю! Цікавить ${carName} на дати: ${dateStr} у місті ${cityName}. Автомобіль вільний?`
     } else if (lang === 'en') {
       messageText = `Hello! Interested in ${carName} for dates: ${dateStr} in ${cityName}. Is the car available?`

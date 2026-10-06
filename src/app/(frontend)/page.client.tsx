@@ -11,7 +11,7 @@ import { TRANSLATIONS } from '@/context/translations'
 const LOCAL_CITY_H1: Record<City, Record<Lang, string>> = {
   batumi: {
     ru: 'Прокат автомобилей в Грузии с подачей в аэропорт Батуми',
-    uk: 'Оренда автомобілів у Грузії з подачею в аеропорт Батумі',
+    ua: 'Оренда автомобілів у Грузії з подачею в аеропорт Батумі',
     en: 'Car Rental in Georgia with Batumi Airport Delivery',
     ar: 'تأجير سيارات في جورجيا مع التوصيل إلى مطار باتومي',
     fa: 'اجاره خودرو در گرجستان با تحویل در فرودگاه باتومی',
@@ -22,7 +22,7 @@ const LOCAL_CITY_H1: Record<City, Record<Lang, string>> = {
   },
   tbilisi: {
     ru: 'Прокат автомобилей в Грузии с подачей в аэропорт Тбилиси',
-    uk: 'Оренда автомобілів у Грузії з подачею в аеропорт Тбілісі',
+    ua: 'Оренда автомобілів у Грузії з подачею в аеропорт Тбілісі',
     en: 'Car Rental in Georgia with Tbilisi Airport Delivery',
     ar: 'تأجير سيارات في جورجيا مع التوصيل إلى مطار تبليسي',
     fa: 'اجاره خودرو در گرجستان با تحویل در فرودگاه تفلیس',
@@ -33,7 +33,7 @@ const LOCAL_CITY_H1: Record<City, Record<Lang, string>> = {
   },
   kutaisi: {
     ru: 'Прокат автомобилей в аэропорту Кутаиси без ограничения пробега',
-    uk: 'Оренда автомобілів в аеропорту Кутаїсі без обмеження пробігу',
+    ua: 'Оренда автомобілів в аеропорту Кутаїсі без обмеження пробігу',
     en: 'Car Rental at Kutaisi Airport with Unlimited Mileage',
     ar: 'تأجير سيارات في مطار كوتايسي مع كيلومترات غير محدودة',
     fa: 'اجاره خودرو در فرودگاه کوتائیسی با کیلومتر نامحدود',
@@ -147,7 +147,7 @@ export default function HomePage({
                     <span>
                       {lang === 'ru'
                         ? 'Мыть при возврате не нужно'
-                        : lang === 'uk'
+                        : lang === 'ua'
                         ? 'Мити при поверненні не потрібно'
                         : 'No need to wash on return'}
                     </span>
@@ -161,7 +161,7 @@ export default function HomePage({
                     <span>
                       {lang === 'ru'
                         ? 'Возраст от 21 года'
-                        : lang === 'uk'
+                        : lang === 'ua'
                         ? 'Вік від 21 року'
                         : 'Age 21+'}
                     </span>
@@ -171,7 +171,7 @@ export default function HomePage({
                     <span>
                       {lang === 'ru'
                         ? 'Стаж от 0 лет'
-                        : lang === 'uk'
+                        : lang === 'ua'
                         ? 'Стаж від 0 років'
                         : 'License from 0y'}
                     </span>
@@ -189,7 +189,7 @@ export default function HomePage({
                         <span className="text-xs font-extrabold text-[#1D1D1F]">
                           {lang === 'ru'
                             ? 'Возврат в другом городе (One-Way)'
-                            : lang === 'uk'
+                            : lang === 'ua'
                             ? 'Повернення в іншому місті (One-Way)'
                             : 'Intercity Return (One-Way)'}
                         </span>
@@ -197,7 +197,7 @@ export default function HomePage({
                           0 ₾{' '}
                           {lang === 'ru'
                             ? 'по запросу'
-                            : lang === 'uk'
+                            : lang === 'ua'
                             ? 'за запитом'
                             : 'upon request'}
                         </span>
@@ -205,18 +205,18 @@ export default function HomePage({
                       <p className="text-[11px] text-[#48484A] mt-0.5 leading-snug">
                         {lang === 'ru'
                           ? 'Возьмите авто в Батуми и сдайте в Тбилиси или в аэропорту Кутаиси (доступно по предварительному запросу)'
-                          : lang === 'uk'
+                          : lang === 'ua'
                           ? 'Візьміть авто в Батумі та поверніть у Тбілісі або в аеропорту Кутаїсі (доступно за попереднім запитом)'
                           : 'Pick up in Batumi, drop off in Tbilisi or Kutaisi Airport (available upon advance request)'}
                       </p>
                     </div>
                   </div>
                   <div className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-[#248A3D] bg-white/80 px-2.5 py-1 rounded-lg border border-[#34C759]/20">
-                    <span>{lang === 'uk' ? 'Батумі' : 'Батуми'}</span>
+                    <span>{lang === 'ua' ? 'Батумі' : 'Батуми'}</span>
                     <span>⇄</span>
-                    <span>{lang === 'uk' ? 'Тбілісі' : 'Тбилиси'}</span>
+                    <span>{lang === 'ua' ? 'Тбілісі' : 'Тбилиси'}</span>
                     <span>⇄</span>
-                    <span>{lang === 'uk' ? 'Кутаїсі' : 'Кутаиси'}</span>
+                    <span>{lang === 'ua' ? 'Кутаїсі' : 'Кутаиси'}</span>
                   </div>
                 </div>
               </div>
@@ -397,7 +397,7 @@ export default function HomePage({
             <div className="absolute top-0 right-0 bg-[#34C759] text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider">
               {lang === 'ru'
                 ? 'ONE-WAY • ПО ЗАПРОСУ'
-                : lang === 'uk'
+                : lang === 'ua'
                 ? 'ONE-WAY • ЗА ЗАПИТОМ'
                 : 'ONE-WAY • UPON REQUEST'}
             </div>
@@ -410,13 +410,13 @@ export default function HomePage({
             <p className="text-xs text-[#48484A] leading-relaxed">
               {lang === 'ru'
                 ? 'Возьмите авто в Батуми и верните в Тбилиси или в аэропорту Кутаиси абсолютно БЕЗ доплаты за перегон (по предварительному запросу).'
-                : lang === 'uk'
+                : lang === 'ua'
                 ? 'Візьміть авто в Батумі та поверніть у Тбілісі або в аеропорту Кутаїсі абсолютно БЕЗ доплати за перегін (за попереднім запитом).'
                 : t.benefit7Desc}
             </p>
             <div className="mt-3 pt-2.5 border-t border-black/[0.06] text-[11px] font-bold text-[#248A3D] flex items-center gap-1">
               <span>
-                {lang === 'uk'
+                {lang === 'ua'
                   ? '✓ Батумі ⇄ Тбілісі ⇄ Кутаїсі (за запитом)'
                   : '✓ Батуми ⇄ Тбилиси ⇄ Кутаиси (по запросу)'}
               </span>

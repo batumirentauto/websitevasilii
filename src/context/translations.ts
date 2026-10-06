@@ -274,7 +274,7 @@ export const TRANSLATIONS: Record<Lang, Record<string, string>> = {
     termsExtDayDesc: 'Начиная с 8-го часа, оплачиваются полные следующие сутки аренды автомобиля.',
     termsExtNote: 'Возможность продления зависит от графика следующих бронирований автомобиля и всегда подтверждается менеджером заранее.',
   },
-  uk: {
+  ua: {
     brandName: 'VASILII RENT',
     brandTagline: 'Оренда авто в Грузії',
     navVehicles: 'Автопарк',

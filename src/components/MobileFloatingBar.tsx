@@ -11,7 +11,7 @@ export const MobileFloatingBar: React.FC = () => {
   const cityName = getCityName(city, lang)
 
   let rawInquiry = `Здравствуйте! Хочу узнать наличие авто в городе ${cityName}.`
-  if (lang === 'uk') {
+  if (lang === 'ua') {
     rawInquiry = `Вітаю! Хочу дізнатися про наявність авто у місті ${cityName}.`
   } else if (lang === 'en') {
     rawInquiry = `Hello! I would like to check car availability in ${cityName}.`

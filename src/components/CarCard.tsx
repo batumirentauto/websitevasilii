@@ -60,7 +60,7 @@ export function formatDrive(drive: string, lang: string): string {
 }
 
 export function formatConsumption(consumption: string, lang: string): string {
-  if (lang === 'ru' || lang === 'uk') {
+  if (lang === 'ru' || lang === 'ua') {
     return consumption.replace(/L\/100km/i, 'л / 100 км').replace(/l\/100km/i, 'л / 100 км')
   }
   return consumption
@@ -71,7 +71,7 @@ export function formatSeats(seats: number, lang: string, fallback: string): stri
     if (seats >= 2 && seats <= 4) return `${seats} места`
     return `${seats} мест`
   }
-  if (lang === 'uk') {
+  if (lang === 'ua') {
     if (seats >= 2 && seats <= 4) return `${seats} місця`
     return `${seats} місць`
   }
@@ -254,7 +254,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               ⇄{' '}
               {lang === 'ru'
                 ? 'Возврат в другом городе (по запросу)'
-                : lang === 'uk'
+                : lang === 'ua'
                 ? 'Повернення в іншому місті (за запитом)'
                 : 'Intercity return (on request)'}
             </span>
@@ -331,7 +331,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               placeholder={
                 lang === 'ru'
                   ? 'Ваши даты (например: 10-15 октября)...'
-                  : lang === 'uk'
+                  : lang === 'ua'
                   ? 'Ваші дати (наприклад: 10-15 жовтня)...'
                   : 'Your dates (e.g. 10-15 Oct)...'
               }
@@ -348,7 +348,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
               <span className="text-[10px] text-[#86868B] uppercase tracking-wider block font-semibold mb-0.5">
                 {lang === 'ru'
                   ? 'Стоимость за сутки'
-                  : lang === 'uk'
+                  : lang === 'ua'
                   ? 'Вартість за добу'
                   : 'Daily rate'}
               </span>
@@ -643,7 +643,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 <span>📅</span>{' '}
                 {lang === 'ru'
                   ? 'Укажите даты поездки:'
-                  : lang === 'uk'
+                  : lang === 'ua'
                   ? 'Вкажіть дати поїздки:'
                   : 'Specify your travel dates:'}
               </label>
@@ -654,7 +654,7 @@ export const CarCard: React.FC<{ car: CarItem }> = ({ car }) => {
                 placeholder={
                   lang === 'ru'
                     ? 'Например: 10-15 октября, 5 дней...'
-                    : lang === 'uk'
+                    : lang === 'ua'
                     ? 'Наприклад: 10-15 жовтня, 5 днів...'
                     : 'e.g. 10-15 October, 5 days...'
                 }
