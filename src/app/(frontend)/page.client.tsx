@@ -493,6 +493,118 @@ export default function HomePage({
         </div>
       </section>
 
+      {/* Payment Methods Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-black/[0.06] shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <span className="text-xs font-bold text-[#0071E3] uppercase tracking-wider block mb-1">
+                {lang === 'ru'
+                  ? 'ПРОЗРАЧНЫЕ РАСЧЕТЫ • БЕЗ СКРЫТЫХ КОМИССИЙ'
+                  : lang === 'ua'
+                  ? 'ПРОЗОРІ РОЗРАХУНКИ • БЕЗ ПРИХОВАНИХ КОМІСІЙ'
+                  : 'TRANSPARENT PAYMENTS • NO HIDDEN FEES'}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#1D1D1F]">
+                {lang === 'ru'
+                  ? 'Удобные способы оплаты'
+                  : lang === 'ua'
+                  ? 'Зручні способи оплати'
+                  : 'Flexible Payment Methods'}
+              </h2>
+              <p className="text-xs sm:text-sm text-[#6E6E73] mt-1">
+                {lang === 'ru'
+                  ? 'Оплата производится при получении автомобиля — без обязательной предоплаты при бронировании'
+                  : lang === 'ua'
+                  ? 'Оплата здійснюється при отриманні автомобіля — без обов\'язкової передоплати при бронюванні'
+                  : 'Payment is made upon vehicle pickup — zero advance prepayment required'}
+              </p>
+            </div>
+            <Link
+              href="/faq#payment-methods"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0071E3] hover:underline shrink-0"
+            >
+              <span>{lang === 'ru' ? 'Подробнее в FAQ' : 'More in FAQ'}</span>
+              <span>→</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* 1. Cash */}
+            <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-black/[0.03] flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl mb-3 shadow-2xs">
+                  💵
+                </div>
+                <h3 className="font-bold text-sm text-[#1D1D1F] mb-1">
+                  {lang === 'ru' ? 'Наличные' : 'Cash Payment'}
+                </h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
+                  {lang === 'ru'
+                    ? 'Оплата наличными прямо при передаче автомобиля (лари GEL, доллары USD, евро EUR).'
+                    : 'Pay cash directly upon vehicle handover (GEL, USD, or EUR).'}
+                </p>
+              </div>
+              <span className="mt-3 text-[11px] font-bold text-[#34C759]">✓ {lang === 'ru' ? 'Быстро и просто' : 'Fast & simple'}</span>
+            </div>
+
+            {/* 2. Bank Cards */}
+            <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-black/[0.03] flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl mb-3 shadow-2xs">
+                  💳
+                </div>
+                <h3 className="font-bold text-sm text-[#1D1D1F] mb-1">
+                  {lang === 'ru' ? 'Банковская карта' : 'Bank Cards'}
+                </h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
+                  {lang === 'ru'
+                    ? 'Оплата картой доступна по предварительному запросу при согласовании бронирования.'
+                    : 'Card payments available upon advance request when confirming your booking.'}
+                </p>
+              </div>
+              <span className="mt-3 text-[11px] font-bold text-[#0071E3]">ℹ️ {lang === 'ru' ? 'По запросу' : 'Upon request'}</span>
+            </div>
+
+            {/* 3. Georgian Bank Transfer */}
+            <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-black/[0.03] flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl mb-3 shadow-2xs">
+                  🏦
+                </div>
+                <h3 className="font-bold text-sm text-[#1D1D1F] mb-1">
+                  {lang === 'ru' ? 'Банковский перевод' : 'Local Bank Transfer'}
+                </h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
+                  {lang === 'ru'
+                    ? 'Прямой перевод на расчетный счет в Грузии: Bank of Georgia (BOG), TBC Bank, Credo.'
+                    : 'Direct transfer to Georgian bank accounts: Bank of Georgia, TBC, Credo.'}
+                </p>
+              </div>
+              <span className="mt-3 text-[11px] font-bold text-[#34C759]">✓ {lang === 'ru' ? 'Без комиссий' : 'No local fees'}</span>
+            </div>
+
+            {/* 4. Remote / Alternative */}
+            <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-black/[0.03] flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl mb-3 shadow-2xs">
+                  🤝
+                </div>
+                <h3 className="font-bold text-sm text-[#1D1D1F] mb-1">
+                  {lang === 'ru' ? 'Удаленная оплата' : 'Remote Payment'}
+                </h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">
+                  {lang === 'ru'
+                    ? 'Может оплатить родственник или компания удаленно, а машину примет водитель с правами.'
+                    : 'Can be paid remotely by a friend, family member, or business partner.'}
+                </p>
+              </div>
+              <span className="mt-3 text-[11px] font-bold text-[#86868B]">💬 {lang === 'ru' ? 'Уточняйте в чате' : 'Discuss via chat'}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ & Guide Hub Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
