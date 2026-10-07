@@ -696,7 +696,7 @@ export default function FaqClient() {
           </p>
           <ul className="list-disc pl-5 space-y-1.5 text-sm">
             <li><strong>Первый 1 час задержки:</strong> совершенно <strong>бесплатно (0 ₾)</strong>! Вы спокойно доезжаете без нервов и спешки.</li>
-            <li><strong>Следующие до 6 часов:</strong> оплачиваются по прозрачному почасовому тарифу (10–15 ₾/час в зависимости от класса машины), без необходимости переплачивать за целые лишние сутки.</li>
+            <li><strong>Следующие до 6 часов:</strong> оплачиваются по прозрачному почасовому тарифу (10–20 ₾/час в зависимости от класса машины), без необходимости переплачивать за целые лишние сутки.</li>
             <li><strong>Свыше 7 часов задержки:</strong> рассчитываются как следующие сутки аренды.</li>
           </ul>
         </div>
@@ -708,7 +708,7 @@ export default function FaqClient() {
           </p>
           <ul className="list-disc pl-5 space-y-1.5 text-sm">
             <li><strong>First +1 hour delay:</strong> completely <strong>free of charge (0 ₾)</strong>! No stress if you get caught in traffic.</li>
-            <li><strong>Next 2 to 6 hours:</strong> billed at a clear hourly rate (10–15 GEL/hr depending on vehicle class) without charging a full day.</li>
+            <li><strong>Next 2 to 6 hours:</strong> billed at a clear hourly rate (10–20 GEL/hr depending on vehicle class) without charging a full day.</li>
             <li><strong>Beyond 7 hours:</strong> billed as a regular extra 24-hour day.</li>
           </ul>
         </div>
