@@ -518,26 +518,30 @@ export default function FaqClient() {
           </p>
           <ul className="list-disc pl-5 space-y-1 text-sm text-[#48484A]">
             <li>Тушетия (экстремальный перевал Абано) — запрещено на всех автомобилях.</li>
-            <li>Ушгули (дорога Местия — Ушгули) на седанах (разрешено только на полноприводных кроссоверах/внедорожниках 4x4 при сухой погоде).</li>
             <li>Оккупированные территории (Абхазия и Южная Осетия) — въезд запрещен законом Грузии.</li>
-            <li>Глубокое бездорожье, броды через горные реки и каменистые русла.</li>
+            <li>Глубокое бездорожье, броды через горные реки и каменистые русла без дорожного покрытия.</li>
           </ul>
+          <p className="text-xs text-[#28CD41] font-medium bg-[#E8FAF0] p-2.5 rounded-xl border border-[#34C759]/20">
+            ✅ <strong>Сванетия (Местия и Ушгули):</strong> Дорога в Ушгули давно полностью заасфальтирована! Поездки в Ушгули разрешены на всех автомобилях парка (седаны, кроссоверы и внедорожники).
+          </p>
         </div>
       ),
       answerEn: (
         <div className="space-y-3">
           <p>
-            <strong>Allowed:</strong> All standard public roads across Georgia: Batumi, Tbilisi, Kakheti, Borjomi, Bakuriani, Kazbegi, Mestia (Svaneti), etc.
+            <strong>Allowed:</strong> All standard public roads across Georgia: Batumi, Tbilisi, Kakheti, Borjomi, Bakuriani, Kazbegi, Svaneti (Mestia & Ushguli), etc.
           </p>
           <p className="text-[#FF3B30] font-semibold">
             Prohibited extreme off-road routes:
           </p>
           <ul className="list-disc pl-5 space-y-1 text-sm text-[#48484A]">
             <li>Tusheti (Abano Pass) — strictly prohibited for all rental vehicles.</li>
-            <li>Mestia to Ushguli on sedans (permitted only on 4x4 AWD SUVs under dry weather).</li>
             <li>Occupied territories (Abkhazia, South Ossetia) — illegal under Georgian law.</li>
-            <li>River crossings, extreme boulders, and off-road tracks.</li>
+            <li>River crossings, extreme boulders, and unpaved off-road tracks.</li>
           </ul>
+          <p className="text-xs text-[#28CD41] font-medium bg-[#E8FAF0] p-2.5 rounded-xl border border-[#34C759]/20">
+            ✅ <strong>Svaneti (Mestia & Ushguli):</strong> The road to Ushguli has asphalt pavement. Travel to Ushguli is permitted on all vehicles (sedans, crossovers and SUVs).
+          </p>
         </div>
       ),
     },

@@ -341,22 +341,27 @@ async function executeAgentTask(promptText: string, chatId: number, image?: Imag
   const systemInstruction = `Ты — ведущий AI-разработчик сайта Vasilii Rent (vslrentcar.com), построенного на Next.js 15 (App Router, Tailwind CSS, TypeScript).
 Владелец сайта (Василий) пишет тебе задачи, идеи или вопросы по сайту и автопарку голосом, текстом или присылает скриншоты сайта, прайс-листов и документов.${historySection}
 
-Ключевые файлы сайта:
+Ключевые файлы сайта (ВНИМАНИЕ: Все страницы используют архитектуру App Router с клиентскими компонентами *.client.tsx или словарём translations.ts! ВСЕ тексты, блоки, вопросы, правила находятся в *.client.tsx или translations.ts, а НЕ в page.tsx!):
 1. "src/data/cars.json" — каталог моделей автомобилей (45 моделей, всего в парке более 80 машин):
    - id, name, category, year, transmission, seats, drive, carplay, fuelType, fuelConsumption, priceGel (цена в лари), depositGel (залог в лари), featured (хит), images.
 2. "src/context/translations.ts" — словарь 8 языков (ru, en, ar, fa, pl, de, it, fr):
-   - тексты hero-блока, преимущества, бейджи (в т.ч. freeIntercityBadge), требования, контакты.
-3. "src/app/(frontend)/page.tsx" — главная страница:
-   - hero-секция, селектор городов, баннер бесплатного перегона, популярные авто, полный каталог, 3 шага аренды (Шаг 1: клиент пишет в мессенджер с датами и городом; Шаг 2: мы присылаем список свободных авто и клиент выбирает; Шаг 3: быстрое оформление без предоплаты за 5 минут), преимущества.
-4. "src/app/(frontend)/terms/page.tsx" — страница условий аренды:
-   - требования, страховка, правила поездок, бесплатный возврат в любом городе.
-5. "src/app/(frontend)/contacts/page.tsx" — адреса баз и координаты:
-   - Батуми (ул. Мамия Варшанидзе 154), Тбилиси (Нуцубидзе), Кутаиси (Аэропорт KUT).
-6. "src/components/Header.tsx", "src/components/Footer.tsx" — шапка и подвал.
-7. "src/context/AppContext.tsx" — глобальный контекст приложения:
+   - тексты hero-блока, преимущества, бейджи, условия аренды (termsAllowedText, termsForbiddenText, termsDurationText и др.), требования, контакты.
+3. "src/app/(frontend)/page.client.tsx" — вся главная страница:
+   - hero-секция, селектор городов, баннер бесплатного перегона, популярные авто, полный каталог, 3 шага аренды, отзывы, блок преимуществ.
+4. "src/app/(frontend)/terms/page.client.tsx" — страница условий аренды:
+   - требования, страховка КАСКО без франшизы, исключения, разрешенные и запрещенные регионы, SOS 24/7.
+5. "src/app/(frontend)/faq/page.client.tsx" — интерактивная база знаний FAQ (частые вопросы):
+   - залог (0 лари), оплата (наличные, карта, перевод), бронь, отмена, разрешенные регионы, правила поездки в Ушгули, возврат, продление.
+6. "src/app/(frontend)/guide/page.client.tsx" — памятка водителю:
+   - секционные камеры, строгий оригинал прав (электронные не принимаются), ПДД, protocols.ge, парковки, заправки.
+7. "src/app/(frontend)/contacts/page.client.tsx" — адреса баз, карты, режим работы и телефоны.
+8. "src/components/Header.tsx", "src/components/Footer.tsx" — шапка сайта и подвал.
+9. "src/context/AppContext.tsx" — глобальный контекст приложения:
    - курсы валют (RATES: GEL: 1, USD, EUR) и логика конвертации цен с округлением вверх (Math.ceil), телефоны WhatsApp и горячей линии, адреса и координаты баз в городах (Батуми, Тбилиси, Кутаиси).
 
-Конкурентные преимущества Vasilii Rent:
+Конкурентные преимущества и правила Vasilii Rent:
+- Сванетия (Местия и Ушгули): Дорога в Ушгули полностью заасфальтирована! Поездки в Ушгули разрешены на всех авто парка (седаны, кроссоверы и внедорожники).
+- Единственный закрытый регион — Тушетия (перевал Абано / Омало) из-за крайней опасности перевала («дорога смерти»). Также запрещены оккупированные территории и бездорожье без покрытия.
 - Безлимитный пробег по всей Грузии.
 - Отсутствие депозита (большинство авто сдаются под 0 ₾ залог).
 - Бронирование без предоплаты.
@@ -419,9 +424,18 @@ async function executeAgentTask(promptText: string, chatId: number, image?: Imag
     return
   }
 
-  const targetFile = plan.targetFile
+  let targetFile = plan.targetFile
   if (!targetFile) {
     throw new Error('Целевой файл не определен.')
+  }
+
+  // Auto-redirect server page wrapper to its client counterpart if page.tsx was selected
+  if (targetFile.endsWith('/page.tsx')) {
+    const clientPath = targetFile.replace(/\/page\.tsx$/, '/page.client.tsx')
+    const clientTest = await getGitHubFile(clientPath)
+    if (clientTest) {
+      targetFile = clientPath
+    }
   }
 
   // Step 2: Fetch current content from GitHub
@@ -475,21 +489,52 @@ ${currentFile.content}
   const rawPatch = await callGemini([{ parts: patchParts }], true)
 
   const patchData = JSON.parse(rawPatch)
-  let newContent = currentFile.content
-
+  let patchApplied = false
   if (patchData.patches && Array.isArray(patchData.patches) && patchData.patches.length > 0) {
-    for (const p of patchData.patches) {
-      if (!p.search) continue
-      newContent = applyPatch(newContent, p.search, p.replace || '')
+    try {
+      let tempContent = currentFile.content
+      for (const p of patchData.patches) {
+        if (!p.search) continue
+        tempContent = applyPatch(tempContent, p.search, p.replace || '')
+      }
+      if (tempContent !== currentFile.content) {
+        newContent = tempContent
+        patchApplied = true
+      }
+    } catch (patchErr) {
+      console.warn('[Patch Warning] applyPatch failed, attempting full-file rewrite fallback:', patchErr)
     }
-  } else if (patchData.fullContent) {
-    newContent = patchData.fullContent
-  } else {
-    throw new Error('ИИ не предоставил ни патчей, ни содержимого файла.')
   }
 
-  if (newContent === currentFile.content) {
-    throw new Error('Файл не изменился. Проверьте формулировку задачи.')
+  if (!patchApplied && patchData.fullContent && patchData.fullContent !== currentFile.content) {
+    newContent = patchData.fullContent
+    patchApplied = true
+  }
+
+  // Automatic retry: If file did not change or search blocks couldn't match, ask AI for fullContent
+  if (!patchApplied || newContent === currentFile.content) {
+    await sendTelegramMessage(chatId, '⚙️ <i>Уточняю контекст и применяю полное обновление файла...</i>')
+    const fallbackPrompt = `Ты — ведущий разработчик.
+Задача: "${promptText || 'Внести правки по присланному скриншоту'}".
+Целевой файл: "${targetFile}".
+Файл не изменился через точечный патч. 
+Верни ПОЛНЫЙ готовый код обновленного файла СТРОГО в JSON:
+{
+  "fullContent": "полный текст всего файла с уже внедренными изменениями"
+}
+
+Текущий файл:
+\`\`\`
+${currentFile.content}
+\`\`\``
+
+    const fallbackRes = await callGemini([{ parts: [{ text: fallbackPrompt }] }], true)
+    const fallbackData = JSON.parse(fallbackRes)
+    if (fallbackData.fullContent && fallbackData.fullContent !== currentFile.content) {
+      newContent = fallbackData.fullContent
+    } else {
+      throw new Error('Файл не изменился. Проверьте формулировку задачи или попробуйте указать конкретный текст/параметр.')
+    }
   }
 
   // Step 4: Commit directly to GitHub
