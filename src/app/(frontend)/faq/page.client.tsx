@@ -555,21 +555,31 @@ export default function FaqClient() {
       answerRu: (
         <div className="space-y-3">
           <p>
-            <strong>Нет, выезд за пределы государственной границы Грузии запрещен.</strong>
+            <strong>Нет, выезд за пределы государственной границы Грузии запрещен.</strong> На это есть две веские причины:
           </p>
-          <p>
-            Страховка и генеральная доверенность действуют исключительно на территории Грузии. На пограничных КПП прокатный автомобиль без специальной нотариальной международной доверенности не пропустят.
-          </p>
+          <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#48484A]">
+            <li>
+              <strong>Требования законодательства:</strong> Чтобы пересечь границу на автомобиле с грузинской регистрацией, водитель обязан быть резидентом Грузии.
+            </li>
+            <li>
+              <strong>Высокие риски и страховка:</strong> Прокатная страховка действует исключительно на территории Грузии и не работает за границей. Любое происшествие, поломка или ДТП за пределами страны создадут огромные финансовые и организационные проблемы для всех сторон.
+            </li>
+          </ul>
         </div>
       ),
       answerEn: (
         <div className="space-y-3">
           <p>
-            <strong>No, crossing international borders is strictly not permitted.</strong>
+            <strong>No, crossing international borders is strictly prohibited.</strong> There are two main reasons:
           </p>
-          <p>
-            Insurance and registration documents are valid strictly inside Georgian territory. Border checkpoints will deny passage to rental vehicles without specialized international notarized powers.
-          </p>
+          <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#48484A]">
+            <li>
+              <strong>Legal residency requirement:</strong> To cross the border in a vehicle with Georgian license plates, the driver must be a legal resident of Georgia.
+            </li>
+            <li>
+              <strong>Insurance and operational risks:</strong> Vehicle insurance is valid strictly within Georgia. In the event of an accident, breakdown, or damage abroad, insurance will not cover costs, creating severe complications for both renter and company.
+            </li>
+          </ul>
         </div>
       ),
     },
