@@ -165,10 +165,10 @@ export default function FaqClient() {
       answerRu: (
         <div className="space-y-3">
           <p>
-            <strong>1 день аренды — это ровно сутки (24 часа)</strong> с момента фактического получения автомобиля.
+            <strong>1 день аренды — это ровно сутки (24 часа)</strong> начиная от времени, указанного в бронировании.
           </p>
           <p>
-            Например, если вы забрали автомобиль сегодня в <strong>14:00</strong> на 1 сутки, вернуть его нужно завтра до <strong>14:00</strong>. Никакой привязки к расчетным часам отелей или календарным дням нет.
+            Например, если в вашей брони указано время <strong>14:00</strong> на 1 сутки, вернуть автомобиль нужно завтра до <strong>14:00</strong>. Никакой привязки к расчетным часам отелей или календарным дням нет.
           </p>
           <p className="text-xs text-[#6E6E73]">
             <strong>Задерживаетесь при возврате?</strong> Первый час задержки (до 60 минут) — <strong>в подарок бесплатно</strong> при согласовании с менеджером. Если нужно продлить на 2–6 часов — действует честная почасовая оплата (10–20 ₾/час) без необходимости оплачивать полные дополнительные сутки!
@@ -178,10 +178,10 @@ export default function FaqClient() {
       answerEn: (
         <div className="space-y-3">
           <p>
-            <strong>1 rental day equals exactly 24 hours</strong> from the exact moment you receive the vehicle.
+            <strong>1 rental day equals exactly 24 hours</strong> starting from the time specified in your reservation.
           </p>
           <p>
-            For example, if you pick up the car at <strong>14:00</strong> today for 1 day, drop-off is due tomorrow by <strong>14:00</strong>. There are no hotel-style checkout cutoffs or calendar day restrictions.
+            For example, if your booking start time is <strong>14:00</strong> today for 1 day, drop-off is due tomorrow by <strong>14:00</strong>. There are no hotel-style checkout cutoffs or calendar day restrictions.
           </p>
           <p className="text-xs text-[#6E6E73]">
             <strong>Running late for drop-off?</strong> The 1st hour is <strong>free of charge</strong> with prior manager notice. If you need 2 to 6 extra hours, a fair hourly rate applies (10–20 GEL/hour) without paying for a full extra day!
