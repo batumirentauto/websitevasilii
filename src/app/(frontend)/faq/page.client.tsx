@@ -171,7 +171,7 @@ export default function FaqClient() {
             Например, если в вашей брони указано время <strong>14:00</strong> на 1 сутки, вернуть автомобиль нужно завтра до <strong>14:00</strong>. Никакой привязки к расчетным часам отелей или календарным дням нет.
           </p>
           <p className="text-xs text-[#6E6E73]">
-            <strong>Задерживаетесь при возврате?</strong> Первый час задержки (до 60 минут) — <strong>в подарок бесплатно</strong> при согласовании с менеджером. Если нужно продлить на 2–6 часов — действует честная почасовая оплата (10–20 ₾/час) без необходимости оплачивать полные дополнительные сутки!
+            <strong>Задерживаетесь при возврате?</strong> Первый час задержки (до 60 минут) — <strong>в подарок бесплатно</strong> при согласовании с менеджером. Со 2-го по 7-й час действует честная почасовая оплата (10–20 ₾/час) без переплаты за сутки. Спустя 7 часов (начиная с 8-го часа) рассчитываются уже следующие полные сутки аренды.
           </p>
         </div>
       ),
@@ -184,7 +184,7 @@ export default function FaqClient() {
             For example, if your booking start time is <strong>14:00</strong> today for 1 day, drop-off is due tomorrow by <strong>14:00</strong>. There are no hotel-style checkout cutoffs or calendar day restrictions.
           </p>
           <p className="text-xs text-[#6E6E73]">
-            <strong>Running late for drop-off?</strong> The 1st hour is <strong>free of charge</strong> with prior manager notice. If you need 2 to 6 extra hours, a fair hourly rate applies (10–20 GEL/hour) without paying for a full extra day!
+            <strong>Running late for drop-off?</strong> The 1st hour is <strong>free of charge</strong> with prior manager notice. Hours 2 to 7 are charged at a fair hourly rate (10–20 GEL/hour) without paying for a whole day. After 7 hours delay (starting from the 8th hour), a full subsequent rental day is calculated.
           </p>
         </div>
       ),
