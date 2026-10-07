@@ -592,30 +592,30 @@ export default function FaqClient() {
       categoryLabelEn: 'Return & Washing',
       questionRu: 'Можно ли взять машину в Батуми, а вернуть в Тбилиси или Кутаиси?',
       questionEn: 'Can I pick up in Batumi and drop off in Tbilisi or Kutaisi?',
-      highlight: 'One-way аренда доступна',
+      highlight: 'Всегда 0 ₾ (по запросу)',
       answerRu: (
         <div className="space-y-3">
           <p>
-            <strong>Да, междугородний возврат возможен!</strong> Это один из самых популярных маршрутов у туристов.
+            <strong>Да, возврат автомобиля в другом городе у нас всегда бесплатный (0 ₾)!</strong>
           </p>
           <p>
-            Вы можете взять автомобиль в Батуми и сдать его в Тбилиси или в аэропорту Кутаиси.
+            Вы можете взять автомобиль в Батуми и вернуть его в Тбилиси или в аэропорту Кутаиси абсолютно без доплат за перегон.
           </p>
-          <p className="text-xs text-[#6E6E73]">
-            При долгосрочной аренде (от 7–10 дней в зависимости от сезона) возврат в другом городе часто предоставляется <strong>бесплатно</strong>! Для коротких поездок действует небольшая стандартная плата за обратный перегон авто. Уточняйте точный расчет на ваши даты у менеджера.
+          <p className="text-xs text-[#28CD41] font-semibold bg-[#E8FAF0] p-2.5 rounded-xl border border-[#34C759]/20">
+            ℹ️ <strong>Единственное условие:</strong> услуга осуществляется <strong>по предварительному запросу при бронировании</strong>, чтобы мы заранее скоординировали логистику автомобиля.
           </p>
         </div>
       ),
       answerEn: (
         <div className="space-y-3">
           <p>
-            <strong>Yes, one-way intercity returns are available!</strong> This is one of our most popular travel options.
+            <strong>Yes, intercity vehicle drop-off is always 100% free (0 ₾)!</strong>
           </p>
           <p>
-            You can pick up your car in Batumi and drop it off in Tbilisi or Kutaisi Airport.
+            You can pick up a car in Batumi and return it in Tbilisi or at Kutaisi Airport with zero relocation fee.
           </p>
-          <p className="text-xs text-[#6E6E73]">
-            On longer rentals (typically 7–10+ days depending on seasonality), intercity returns are often provided <strong>completely free</strong>. For shorter bookings, a modest relocation fee applies.
+          <p className="text-xs text-[#28CD41] font-semibold bg-[#E8FAF0] p-2.5 rounded-xl border border-[#34C759]/20">
+            ℹ️ <strong>The only condition:</strong> this is arranged <strong>strictly upon advance request during booking</strong>, allowing us to coordinate vehicle logistics ahead of time.
           </p>
         </div>
       ),
