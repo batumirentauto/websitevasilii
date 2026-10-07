@@ -522,7 +522,7 @@ export default function FaqClient() {
             <li>Глубокое бездорожье, броды через горные реки и каменистые русла без дорожного покрытия.</li>
           </ul>
           <p className="text-xs text-[#28CD41] font-medium bg-[#E8FAF0] p-2.5 rounded-xl border border-[#34C759]/20">
-            ✅ <strong>Сванетия (Местия и Ушгули):</strong> Дорога в Ушгули давно полностью заасфальтирована! Поездки в Ушгули разрешены на всех автомобилях парка (седаны, кроссоверы и внедорожники).
+            ✅ <strong>Сванетия (Местия и Ушгули):</strong> Дорога в Ушгули давно полностью заасфальтирована. Проезд открыт, но из-за горного рельефа мы рекомендуем выбирать кроссовер.
           </p>
         </div>
       ),
@@ -540,7 +540,7 @@ export default function FaqClient() {
             <li>River crossings, extreme boulders, and unpaved off-road tracks.</li>
           </ul>
           <p className="text-xs text-[#28CD41] font-medium bg-[#E8FAF0] p-2.5 rounded-xl border border-[#34C759]/20">
-            ✅ <strong>Svaneti (Mestia & Ushguli):</strong> The road to Ushguli has asphalt pavement. Travel to Ushguli is permitted on all vehicles (sedans, crossovers and SUVs).
+            ✅ <strong>Svaneti (Mestia & Ushguli):</strong> The road to Ushguli is paved with asphalt. Driving is permitted, though we recommend choosing a crossover for mountain terrain.
           </p>
         </div>
       ),
