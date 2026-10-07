@@ -418,7 +418,7 @@ export default function FaqClient() {
                 {EMERGENCY_PHONE}
               </a>
             </li>
-            <li>Мы поможем вызвать патруль (112), зафиксировать протокол для страховой и скоординируем техническую помощь или подменный автомобиль.</li>
+            <li>Мы подскажем порядок действий, скоординируем оформление для страховой, при необходимости организуем техпомощь или подменный автомобиль.</li>
           </ol>
         </div>
       ),
@@ -434,7 +434,7 @@ export default function FaqClient() {
                 {EMERGENCY_PHONE}
               </a>
             </li>
-            <li>We coordinate with police (112) for the insurance protocol, arrange towing, or provide a replacement vehicle.</li>
+            <li>We will guide you on the exact steps, coordinate the process for insurance, and arrange roadside assistance or a replacement vehicle if needed.</li>
           </ol>
         </div>
       ),
